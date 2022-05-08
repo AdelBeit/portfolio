@@ -1,0 +1,17 @@
+.container__card {
+  color: var(--color-black);
+  font-size: var(--font-size-medium);
+}
+
+.card__header {
+  font-weight: bold;
+}
+
+.card__subtitle {
+  font-size: var(--font-size-medium);
+  color: var(--color-gray);
+}
+
+.card__content {
+  font-size: var(--font-size-medium);
+}

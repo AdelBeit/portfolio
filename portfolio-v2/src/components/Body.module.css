@@ -1,0 +1,6 @@
+.container__body {
+  display: grid;
+  grid-template-columns: var(--grid-column-template);
+  grid-template-rows: var(--grid-column-rows);
+  grid-template-areas: var(--grid-template-area);
+}

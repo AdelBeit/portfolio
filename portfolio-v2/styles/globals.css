@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap");
+
+:root {
+  --grid-column-template: 8fr 4fr;
+  --grid-row-template: repeat(3, 2fr) 6fr;
+  --grid-template-area: "experience education" "experience achievements"
+    "experience skills" "experience software";
+
+  --font-size-xlarge: 51px;
+  --font-size-large: 26px;
+  --font-size-medium: 20px;
+  --font-size-small: 16px;
+
+  --color-black: #000000;
+  --color-light-black: #323332;
+  --color-gray: #70706f;
+  --color-light-gray: #939598;
+
+  --font-regular: 400;
+  --font-bold: 700;
+
+  --main-padding: 50px 25px 0 50px;
+}
+
+html {
+  height: 100%;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Manrope, Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: var(--font-regular);
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+body > div,
+body > div > div {
+  min-height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

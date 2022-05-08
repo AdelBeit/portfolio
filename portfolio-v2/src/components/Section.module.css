@@ -1,0 +1,19 @@
+.section__ h2 {
+  color: var(--color-gray);
+}
+
+.section__.experience {
+  grid-area: experience;
+}
+
+.section__.education {
+  grid-area: education;
+}
+
+.section__.achievements {
+  grid-area: achievements;
+}
+
+.section__.skills {
+  grid-area: skills;
+}

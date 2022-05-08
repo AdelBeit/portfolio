@@ -1,0 +1,26 @@
+.container__header {
+  display: flex;
+  flex-direction: column;
+}
+
+.name,
+.section__info {
+  display: block;
+}
+
+.name {
+  font-size: var(--font-size-xlarge);
+  flex-basis: 70%;
+  font-weight: var(--font-bold);
+  color: var(--color-light-black);
+}
+
+.section__info {
+  flex-basis: 30%;
+  font-size: var(--font-size-medium);
+  color: var(--color-black);
+}
+
+.section__description {
+  color: var(--color-light-gray);
+}
