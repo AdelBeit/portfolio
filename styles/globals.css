@@ -7,14 +7,15 @@
     "experience skills" "experience software";
 
   --font-size-xlarge: 51px;
-  --font-size-large: 26px;
-  --font-size-medium: 20px;
-  --font-size-small: 16px;
+  --font-size-large: 24px;
+  --font-size-medium: 16px;
+  --font-size-small: 14px;
 
   --color-black: #000000;
   --color-light-black: #323332;
   --color-gray: #70706f;
   --color-light-gray: #939598;
+  --color-dark-red: #811010;
 
   --font-regular: 400;
   --font-bold: 700;
@@ -49,4 +50,10 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+@media print {
+  :root {
+    --color-dark-red: #70706f;
+  }
 }

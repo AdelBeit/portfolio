@@ -1,8 +1,0 @@
-.container__app {
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  padding: var(--main-padding);
-  min-width: 100%;
-  min-height: 100%;
-}

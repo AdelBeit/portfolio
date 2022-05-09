@@ -12,7 +12,7 @@
   font-size: var(--font-size-xlarge);
   flex-basis: 70%;
   font-weight: var(--font-bold);
-  color: var(--color-light-black);
+  color: var(--color-dark-red);
 }
 
 .section__info {
@@ -23,4 +23,10 @@
 
 .section__description {
   color: var(--color-light-gray);
+}
+
+@media print {
+  .name {
+    color: var(--color-light-black);
+  }
 }

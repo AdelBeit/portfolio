@@ -1,4 +1,5 @@
 import React from "react";
+import { nanoid } from "nanoid";
 import { useSite } from "../hooks/use_site_context";
 import styles from "./Body.module.css";
 import { Section } from "./Section";
@@ -14,8 +15,9 @@ function Body() {
           const duties = exp.duties.map((duty) => <li>{duty}</li>);
           return (
             <Card
+              key={nanoid()}
               header={exp.company}
-              subtitle={exp.role + " | " + exp.time}
+              subtitle={exp.role + "   |   " + exp.time}
               content={<ul>{duties}</ul>}
             />
           );

@@ -6,7 +6,7 @@ function Section({
   children,
 }: {
   title: string;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }) {
   return (
     <div className={styles["section__"] + " " + styles[title.toLowerCase()]}>

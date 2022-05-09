@@ -1,9 +1,10 @@
 .section__ h2 {
-  color: var(--color-gray);
+  color: var(--color-dark-red);
 }
 
 .section__.experience {
   grid-area: experience;
+  padding-right: 60px;
 }
 
 .section__.education {

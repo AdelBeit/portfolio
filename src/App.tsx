@@ -13,6 +13,7 @@ export default function App() {
       <Layout title="Adele">
         <div className={styles["container__app"]}>
           <Header />
+          <hr />
           <Body />
         </div>
       </Layout>
