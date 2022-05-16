@@ -64,7 +64,4 @@ export const SiteData = {
     "Quick Study",
     "Punctual",
   ],
-  techStack: ["Javascript"],
 };
-
-export type SiteData = typeof SiteData;

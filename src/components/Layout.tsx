@@ -3,10 +3,10 @@ import React from "react";
 
 export default function Layout({
   children,
-  title,
+  title = "Adele",
 }: {
   children: React.ReactNode;
-  title: string;
+  title?: string;
 }) {
   return (
     <>

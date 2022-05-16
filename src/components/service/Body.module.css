@@ -1,0 +1,46 @@
+@import "../../../styles/service_global.css";
+
+.container__body {
+  display: grid;
+  grid-template-columns: var(--grid-column-template);
+  grid-template-rows: var(--grid-column-rows);
+  grid-template-areas: var(--grid-template-area);
+  row-gap: 25px;
+  color: var(--color-main);
+}
+
+.section__experience {
+  grid-area: experience;
+  padding-right: 60px;
+}
+
+.section__experience h2,
+.section__projects h2 {
+  font-size: var(--size-section-large);
+}
+
+.section__projects h2 {
+  margin: 5px 0;
+}
+
+.section__education {
+  grid-area: education;
+}
+
+.section__achievements {
+  grid-area: achievements;
+}
+
+.section__skills {
+  grid-area: skills;
+}
+
+.card__header {
+  color: var(--color-main);
+}
+.card__subtitle {
+  color: var(--color-light-gray);
+}
+.card__content {
+  color: var(--color-main);
+}

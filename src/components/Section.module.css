@@ -1,20 +1,5 @@
-.section__ h2 {
-  color: var(--color-dark-red);
-}
-
-.section__.experience {
-  grid-area: experience;
-  padding-right: 60px;
-}
-
-.section__.education {
-  grid-area: education;
-}
-
-.section__.achievements {
-  grid-area: achievements;
-}
-
-.section__.skills {
-  grid-area: skills;
+.container__section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }

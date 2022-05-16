@@ -1,0 +1,28 @@
+.container__header {
+  display: flex;
+  flex-direction: column;
+}
+
+.section__name {
+  margin-bottom: 5px;
+  font-family: var(--font-family);
+  font-size: var(--font-size-xlarge);
+  flex-basis: 70%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.section__info {
+  font-size: var(--font-size-medium);
+  font-weight: normal;
+  flex-basis: 30%;
+}
+
+.section__name,
+.section__info {
+  display: block;
+}
+
+.section__info {
+  white-space: pre-wrap;
+}

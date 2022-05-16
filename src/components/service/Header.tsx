@@ -1,5 +1,5 @@
 import React from "react";
-import { useSite } from "../hooks/use_site_context";
+import { useSite } from "../../hooks/use_site_context";
 import styles from "./Header.module.css";
 
 function Header() {
@@ -8,9 +8,7 @@ function Header() {
     <div className={styles.container__header}>
       <span className={styles.name}>{name}</span>
       <div className={styles.section__info}>
-        <span className={styles.info}>
-          {role} | {site}
-        </span>
+        <span className={styles.info}>{role + "   |   " + site}</span>
       </div>
       <div className={styles.section__description}>
         <span className={styles.description}>{description}</span>
