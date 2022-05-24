@@ -15,7 +15,7 @@ function WithCardClasses(props) {
     <Card
       classes={{
         header: [styles.card__header],
-        subtitle: [styles.card__subtitles],
+        subtitle: [styles.card__subtitle],
         content: [styles.card__content],
       }}
       {...props}
@@ -49,7 +49,10 @@ Body.Achievements = () => {
   const { achievements } = useSite();
 
   return (
-    <WithSectionClasses classes={[styles.section__achievements]} title="Achievements">
+    <WithSectionClasses
+      classes={[styles.section__achievements]}
+      title="Achievements"
+    >
       <WithCardClasses
         content={achievements.map((achievement) => (
           <div key={nanoid()}>
@@ -79,7 +82,10 @@ Body.Experience = () => {
   const { experience } = useSite();
 
   return (
-    <WithSectionClasses classes={[styles.section__experience]} title="Experience">
+    <WithSectionClasses
+      classes={[styles.section__experience]}
+      title="Experience"
+    >
       {experience.map((exp) => {
         const duties = exp.duties.map((duty) => <li key={nanoid()}>{duty}</li>);
         return (
