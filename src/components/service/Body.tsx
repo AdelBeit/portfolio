@@ -14,9 +14,9 @@ function WithCardClasses(props) {
   return (
     <Card
       classes={{
-        header: [styles.card__header],
-        subtitle: [styles.card__subtitle],
-        content: [styles.card__content],
+        header: styles.card__header,
+        subtitle: styles.card__subtitle,
+        content: styles.card__content,
       }}
       {...props}
     />

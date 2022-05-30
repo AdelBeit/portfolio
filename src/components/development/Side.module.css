@@ -3,6 +3,7 @@
   line-height: 30px;
 
   background-color: var(--background-color-alt);
+  color: var(--color-alt);
 }
 
 .container__side a,

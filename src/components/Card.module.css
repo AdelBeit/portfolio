@@ -7,12 +7,7 @@
 }
 
 .card__subtitle {
-  font-size: var(--font-size-medium);
   white-space: pre-wrap;
-}
-
-.card__content {
-  font-size: var(--font-size-medium);
 }
 
 .card__content ul {

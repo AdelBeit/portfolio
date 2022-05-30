@@ -5,11 +5,11 @@ export const SiteData = {
   description: "",
   imgPaths: {
     icons: {
-      location: "",
-      phone: "",
-      email: "",
-      linkedin: "",
-      github: "",
+      city: "./icons/location.png",
+      phone: "./icons/phone.png",
+      email: "./icons/email.png",
+      linkedin: "./icons/linkedin.png",
+      github: "./icons/github.png",
     },
   },
   info: {
@@ -89,7 +89,7 @@ export const SiteData = {
     school: "Indiana University Bloomington",
     major: "Computer Science",
     degree: "Bachelor of Science",
-    gradYear: "2015 - 2019",
+    gradYear: "2019",
   },
   achievements: [
     {

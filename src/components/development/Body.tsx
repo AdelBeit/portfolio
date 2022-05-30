@@ -6,21 +6,35 @@ import { Section } from "../Section";
 import { Card } from "../Card";
 
 function Body({ children }: { children: React.ReactNode[] }) {
-  return <div className={styles.container__body}>{children}</div>;
+  return <Section classes={styles.container__body}>{children}</Section>;
+}
+
+function WithCardClasses(props) {
+  return (
+    <Card
+      classes={{
+        header: styles.card__header,
+        subtitle: styles.card__subtitle,
+        content: styles.card__content,
+      }}
+      {...props}
+    />
+  );
 }
 
 Body.Education = () => {
   const { education } = useSite();
 
   return (
-    <Section title="Education">
-      <Card
-        header={education.school}
+    <Section>
+      <WithCardClasses
+        header={"Education"}
         subtitle={
-          <>
-            <div>{education.major + " - " + education.degree}</div>
-            <div>{education.gradYear}</div>
-          </>
+          <ul>
+            <li>{education.major + " | " + education.gradYear}</li>
+            <li>{education.degree}</li>
+            <li>{education.school}</li>
+          </ul>
         }
       />
     </Section>
@@ -32,7 +46,7 @@ Body.Achievements = () => {
 
   return (
     <Section title="Achievements">
-      <Card
+      <WithCardClasses
         content={achievements.map((achievement) => (
           <div key={nanoid()}>
             {achievement.title + " - " + achievement.company}
@@ -47,8 +61,8 @@ Body.Skills = () => {
   const { skills } = useSite();
 
   return (
-    <Section title="Skills">
-      <Card
+    <Section>
+      <WithCardClasses
         content={skills.map((skill) => (
           <div key={nanoid()}>{skill}</div>
         ))}
@@ -65,7 +79,7 @@ Body.Experience = () => {
       {experience.map((exp) => {
         const duties = exp.duties.map((duty) => <li key={nanoid()}>{duty}</li>);
         return (
-          <Card
+          <WithCardClasses
             key={nanoid()}
             header={exp.company}
             subtitle={exp.role + "   |   " + exp.time}
@@ -84,7 +98,7 @@ Body.Projects = () => {
     <Section title="Projects">
       {projects.map((project) => {
         return (
-          <Card
+          <WithCardClasses
             key={nanoid()}
             header={<a href={project.url}>{project.title}</a>}
             subtitle={project.language + "   |   " + project.time.year}
@@ -97,38 +111,52 @@ Body.Projects = () => {
 };
 
 Body.Info = () => {
-  const { info } = useSite();
-  const cardContent = Object.values(info).map((e) => (
-    <li key={nanoid()} className={styles.e}>
-      {info[e]}
+  const { info, imgPaths } = useSite();
+  const cardContent = Object.keys(info).map((e) => (
+    <li key={nanoid()} className={styles[e]}>
+      <div className={styles.icon}>
+        <img src={imgPaths.icons[e]} />
+      </div>
+      <div className={styles.info}>{info[e]}</div>
     </li>
   ));
 
   return (
     <Section>
-      <Card content={<ul className={styles.section__info}>{cardContent}</ul>} />
+      <WithCardClasses
+        content={<ul className={styles.section__info}>{cardContent}</ul>}
+      />
     </Section>
   );
 };
 
-Body.TechStack = () => {
+Body.Languages = () => {
   const { techStack } = useSite();
   const languages = techStack.languages.map((lang) => (
     <li key={nanoid()}>{lang}</li>
   ));
+
+  return (
+    <Section>
+      <WithCardClasses
+        header="Languages"
+        content={<ul className={styles.section__languages}>{languages}</ul>}
+      />
+    </Section>
+  );
+};
+
+Body.Tools = () => {
+  const { techStack } = useSite();
   const tools = techStack.tools.map((tool) => <li key={nanoid()}>{tool}</li>);
 
   return (
-    <>
-      <Section title="Languages">
-        <Card
-          content={<ul className={styles.section__languages}>{languages}</ul>}
-        />
-      </Section>
-      <Section title="Tools">
-        <Card content={<ul className={styles.section__tools}>{tools}</ul>} />
-      </Section>
-    </>
+    <Section>
+      <WithCardClasses
+        header="Tools"
+        content={<ul className={styles.section__tools}>{tools}</ul>}
+      />
+    </Section>
   );
 };
 

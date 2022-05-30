@@ -1,0 +1,40 @@
+.section__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.section__info li {
+  display: flex;
+  column-gap: 20px;
+}
+
+.section__info .icon img {
+  width: 25px;
+}
+
+.github {
+  order: 4;
+}
+
+.linkedin {
+  order: 3;
+}
+
+.email {
+  order: 2;
+}
+
+.city {
+  order: 1;
+}
+
+.card__header {
+  font-size: var(--font-size-medium);
+}
+
+.card__subtitle {
+  font-size: var(--font-size-small);
+}
+.card__content {
+  font-size: var(--font-size-small);
+}

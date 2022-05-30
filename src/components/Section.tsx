@@ -5,11 +5,11 @@ import styles from "./Section.module.css";
 function Section({
   title = "",
   children,
-  classes = [],
+  classes = "",
 }: {
   title?: string;
   children: React.ReactNode;
-  classes?: string[];
+  classes?: string | string[];
 }) {
   title;
   return (

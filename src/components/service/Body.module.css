@@ -14,7 +14,7 @@
 
 .section__experience h2,
 .section__projects h2 {
-  font-size: var(--size-section-large);
+  font-size: var(--font-size-large);
 }
 
 .section__projects h2 {

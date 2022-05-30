@@ -7,7 +7,8 @@ function Side() {
     <div className={styles.container__side}>
       <Body.Info />
       <Body.Education />
-      <Body.TechStack />
+      <Body.Languages />
+      <Body.Tools />
     </div>
   );
 }

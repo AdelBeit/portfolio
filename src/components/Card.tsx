@@ -11,7 +11,7 @@ function Card({
   header?: React.ReactNode | React.ReactNode[];
   subtitle?: React.ReactNode | React.ReactNode[];
   content?: React.ReactNode | React.ReactNode[];
-  classes?: { [key: string]: string[] };
+  classes?: { [key: string]: string | string[] };
 }) {
   return (
     <div className={styles.container__card}>
