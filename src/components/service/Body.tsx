@@ -27,7 +27,7 @@ function WithSectionClasses(props) {
   return <Section {...props}>{props.children}</Section>;
 }
 
-Body.Education = () => {
+Body.Education = function Education() {
   const { education } = useSite();
 
   return (
@@ -44,8 +44,6 @@ Body.Education = () => {
     </WithSectionClasses>
   );
 };
-
-Body.Education.displayName = "Education";
 
 Body.Achievements = () => {
   const { achievements } = useSite();
