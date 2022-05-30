@@ -45,6 +45,8 @@ Body.Education = () => {
   );
 };
 
+Body.Education.displayName = "Education";
+
 Body.Achievements = () => {
   const { achievements } = useSite();
 
