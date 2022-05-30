@@ -27,7 +27,7 @@ function WithSectionClasses(props) {
   return <Section {...props}>{props.children}</Section>;
 }
 
-Body.Education = function Education() {
+Body.Education = () => {
   const { education } = useSite();
 
   return (
