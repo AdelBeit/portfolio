@@ -20,6 +20,14 @@
   color: var(--color-alt);
 }
 
+.section__info a:link {
+  text-decoration: none;
+}
+.section__info a:hover,
+.section__info a:focus {
+  text-decoration: underline;
+}
+
 .info {
   white-space: pre-wrap;
 }

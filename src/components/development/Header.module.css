@@ -26,3 +26,11 @@
 .section__info {
   white-space: pre-wrap;
 }
+
+.section__info a:link {
+  text-decoration: none;
+}
+.section__info a:hover,
+.section__info a:focus {
+  text-decoration: underline;
+}

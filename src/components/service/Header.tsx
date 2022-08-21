@@ -8,7 +8,10 @@ function Header() {
     <div className={styles.container__header}>
       <span className={styles.name}>{name}</span>
       <div className={styles.section__info}>
-        <span className={styles.info}>{role + "   |   " + site}</span>
+        <span className={styles.info}>
+          {`${role}   |   `}
+          <a href={`https://${site}`}>{site}</a>
+        </span>
       </div>
       <div className={styles.section__description}>
         <span className={styles.description}>{description}</span>
