@@ -20,12 +20,20 @@ export const SiteData = {
   },
   projects: [
     {
+      title: "Drum & Keys",
+      language: "NextJS",
+      time: { year: "2022", month: "mar" },
+      description:
+        "Jam with your friends with a keyboard and customizable drum machine on this web app. Powered by NextJS, ReactJS, and SocketIO.",
+      url: "https://dnk-app-ierav.ondigitalocean.app/",
+    },
+    {
       title: "bord",
-      language: "ReactJS",
+      language: "NextJS",
       time: { year: "2021", month: "feb" },
       description:
         "Track your favorite movies, shows and books with this secure, and responsive webapp. Powered by Auth0, AirtableDB. Built on JAMstack",
-      url: "https://github.com/AdelBeit/bord",
+      url: "https://bord.netlify.app/",
     },
     {
       title: "Secured Webapp",
@@ -42,14 +50,6 @@ export const SiteData = {
       description:
         "Listens for a command and a caption in the chat. Then takes the caption and overlays it onto an image using Cloudinary. Then posts the image back to the chat.",
       url: "https://github.com/AdelBeit/Zero",
-    },
-    {
-      title: "Object Classification",
-      language: "Python",
-      time: { year: "2018", month: "apr" },
-      description:
-        "Uses bag of words technique and a training image dataset to learn what objects look like, then uses the k-nearest neighbors algorithm to classify new images containing those objects.",
-      url: "https://github.com/AdelBeit/Sandbox/tree/master/Rusted/Object%20Classification",
     },
   ],
   experience: [
