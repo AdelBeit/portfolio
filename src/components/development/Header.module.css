@@ -27,7 +27,7 @@
   white-space: pre-wrap;
 }
 
-.section__info a:link {
+.section__info a,.section__info a:link {
   text-decoration: none;
 }
 .section__info a:hover,
