@@ -20,69 +20,74 @@ export const SiteData = {
   },
   projects: [
     {
+      title: "Resume Generator",
+      language: "NextJS, ReactJS, TypeScript",
+      time: { year: "2022", month: "mar" },
+      description: [
+        "Generates a resume from JSON data.",
+        "Uses flexbox to ensure responsiveness across devices",
+        "Powered by NextJS, ReactJS, and Typscript. Deployed on Vercel.",
+      ],
+      url: { demo: "https://adelbeit.com/", github: "https://github.com/AdelBeit/portfolio" }
+    },
+    {
       title: "Drum & Keys",
       language: "NextJS",
       time: { year: "2022", month: "mar" },
-      description:
-        "Jam with your friends with a keyboard and customizable drum machine on this web app. Powered by NextJS, ReactJS, and SocketIO.",
-      url: "https://dnk-app-ierav.ondigitalocean.app/",
+      description: [
+        "Uses Web Intersection Observer API and CSS transitions for animations.",
+        "Uses Web Audio API to play samples, and provide user volume controls.",
+        "Supports multi-user sessions using Web Socket API (Socket.IO)",
+        "Uses Docker and Digtial Occean for deployment. Powered by NextJS, ReactJS, ToneJS, and Socket.IO",
+      ],
+      url: { demo: "https://dnk-app-ierav.ondigitalocean.app/", github: "https://github.com/AdelBeit/dnk" }
     },
     {
       title: "bord",
       language: "NextJS",
       time: { year: "2021", month: "feb" },
       description:
-        "Track your favorite movies, shows and books with this secure, and responsive webapp. Powered by Auth0, AirtableDB. Built on JAMstack",
-      url: "https://bord.netlify.app/",
-    },
-    {
-      title: "Secured Webapp",
-      language: "ExpressJS",
-      time: { year: "2020", month: "aug" },
-      description:
-        "Secure webapp with native log-in functionality, uses JWT session tokens. Powered by MongoDB and PUGJS template engine.",
-      url: "https://github.com/AdelBeit/JWT_Webapp/tree/master/restapiDB",
-    },
-    {
-      title: "GroupMe Bot",
-      language: "NodeJS",
-      time: { year: "2019", month: "dec" },
-      description:
-        "Listens for a command and a caption in the chat. Then takes the caption and overlays it onto an image using Cloudinary. Then posts the image back to the chat.",
-      url: "https://github.com/AdelBeit/Zero",
-    },
+        [
+          "Built on JAMstack, Javascript API Markup stack.",
+          "Uses Auth0 for passwordless authentication, allowing for a seamless signup/login process through google account.",
+          "Uses AirtableDB to store book/movie/show titles.",
+          "Powered by ReactJS, SASS, Bootstrap, Auth0, AirtableDB. Deployed on Netlify.",
+        ],
+      url: { demo: "https://bord.netlify.app/", github: "https://github.com/AdelBeit/bord" }
+    }
   ],
   experience: [
     {
-      company: "Ideal Auto Sale & Service",
-      role: "Full Stack Developer",
+      company: "Freelance Developer",
+      role: "Ideal Auto",
       time: "2022",
       duties: [
-        "Gather requirements, design, build, and deliver a fast and sleek landing page for an auto mechanic shop.",
-        "Delivered the project on time.",
+        "Created a fast landing page for an auto mechanic shop using Typescript, NextJS, ReactJS, and NodeJS.",
+        "Designed the website in Figma and ensured client is satisfied with the design before implementation.",
+        "Ensured website responsiveness on multiple platforms using CSS media queries",
       ],
+      url: { demo: "https://www.idealauto.co/", github: "https://github.com/AdelBeit/Client_IdealAuto" }
     },
     {
       company: "Cox Communications",
-      role: "Software Engineer",
+      role: "Scrum Master",
       time: "2020 - 2021",
       duties: [
-        "Ran daily standup and facillitated discussions between stakeholders and developers.",
-        "Turned requirements into clearly defined and uniformly formatted stories using JIRA.",
-        "Refined and prioritized stories based on business needs and kept the backlog groomed.",
-        "Developed a script to retrieve and format release notes in to a custom format.",
+        "Kept developers on track by ensuring all business requirements well defined and formatted on JIRA for a multimillion dollar project.",
+        "Developed a script that standardized the list of release changes, streamlined their delivery to respective stakeholders, eliminating the task from project manager's to do list.",
       ],
+      url: { demo: "", github: "" }
     },
     {
       company: "TMobile",
-      role: "Software Engineer",
+      role: "Quality Engineer",
       time: "2019 - 2020",
       duties: [
-        "Built and automated UI tests using Tricentis Tosca.",
-        "Wrote and maintained Oracle MySQL scripts for test data gathering.",
-        "Designed, planned, executed, and reported manual and automated test cases",
-        "Reported and triaged bugs all the way to resolution.",
+        "Built and automated UI tests using Tricentis Tosca for several projects worth $10+ million.",
+        "Created and mainted Oracle MySQL scripts for test data gathering which reduced testing workload by 50%.",
+        "Designed, planned, and executed test cases for numeorus projects, collectively worth millions of dollars",
       ],
+      url: { demo: "", github: "" }
     },
   ],
   education: {
@@ -102,12 +107,18 @@ export const SiteData = {
 
   techStack: {
     languages: [
-      "JavaScript (React, Next)",
+      "Javascript", "ReactJS", "NextJS", "NodeJS", "ExpressJS",
+      "Typescript",
       "Python",
       "Java",
       "MongoDB",
       "HTML/CSS",
     ],
-    tools: ["Github", "JIRA"],
+    tools: ["Git", "JIRA", "Figma"],
   },
+  urls: {
+    linkedin: "https://www.linkedin.com/in/adel-beitvashahi/",
+    github: "https://github.com/AdelBeit",
+    email: "mailto:adelbeitvashahi@email.com"
+  }
 };
