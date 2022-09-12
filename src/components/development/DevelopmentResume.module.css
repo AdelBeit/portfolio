@@ -33,15 +33,13 @@
 
 .container__app a {
   color: inherit;
-  text-decoration: none;
 }
 
 .container__app > div {
   display: flex;
   flex-direction: column;
-  row-gap: 25px;
 }
 
 .container__app h2 {
-  margin: 9px 0;
+  margin: 8px 0 2px 0;
 }
