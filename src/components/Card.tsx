@@ -27,7 +27,15 @@ function Card({
       ) : null}
       {content ? (
         <div className={classNames(styles.card__content, classes["content"])}>
-          {content}
+          {Array.isArray(content) ? (
+            <ul>
+              {content.map((c) => (
+                <li>{c}</li>
+              ))}
+            </ul>
+          ) : (
+            content
+          )}
         </div>
       ) : null}
     </div>
