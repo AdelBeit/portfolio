@@ -1,11 +1,11 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { nanoid } from "nanoid";
 import styles from "./Body.module.css";
 import { useSite } from "../../hooks/use_site_context";
 import { Section } from "../Section";
 import { Card } from "../Card";
 
-function Body({ children }: { children: React.ReactNode[] }) {
+export function Body({ children }: { children: React.ReactNode[] }) {
   return <Section classes={styles.container__body}>{children}</Section>;
 }
 
@@ -22,7 +22,7 @@ function WithCardClasses(props) {
   );
 }
 
-Body.Education = () => {
+export const Education = () => {
   const { education } = useSite();
 
   return (
@@ -41,7 +41,7 @@ Body.Education = () => {
   );
 };
 
-Body.Achievements = () => {
+export const Achievements = () => {
   const { achievements } = useSite();
 
   return (
@@ -57,7 +57,7 @@ Body.Achievements = () => {
   );
 };
 
-Body.Skills = () => {
+export const Skills = () => {
   const { skills } = useSite();
 
   return (
@@ -71,18 +71,34 @@ Body.Skills = () => {
   );
 };
 
-Body.Experience = () => {
+export const Experience = () => {
   const { experience } = useSite();
 
   return (
     <Section title="Experience">
       {experience.map((exp) => {
         const duties = exp.duties.map((duty) => <li key={nanoid()}>{duty}</li>);
+        let subtitle: ReactNode = exp.role || exp.time;
+
+        if (exp.role && exp.time) {
+          subtitle = exp.role + "  |  " + exp.time;
+          if (exp.url.demo || exp.url.github) {
+            subtitle = (
+              <>
+                <a href={exp.url.github || exp.url.demo}>{exp.role}</a>
+                {"  |  " + exp.time}
+              </>
+            );
+          }
+        }
+
+        let header = exp.company;
+
         return (
           <WithCardClasses
             key={nanoid()}
-            header={exp.company}
-            subtitle={exp.role + "   |   " + exp.time}
+            header={header}
+            subtitle={subtitle}
             content={<ul>{duties}</ul>}
           />
         );
@@ -91,17 +107,25 @@ Body.Experience = () => {
   );
 };
 
-Body.Projects = () => {
+export const Projects = () => {
   const { projects } = useSite();
 
   return (
     <Section title="Projects">
       {projects.map((project) => {
+        const header = (
+          <>
+            <a href={project.url.demo}>{project.title}</a>
+            {"  |  "}
+            {project.url.github && <a href={project.url.github}>Code</a>}
+            {"  |  " + project.time.year}
+          </>
+        );
         return (
           <WithCardClasses
             key={nanoid()}
-            header={<a href={project.url}>{project.title}</a>}
-            subtitle={project.language + "   |   " + project.time.year}
+            header={header}
+            subtitle={""}
             content={project.description}
           />
         );
@@ -110,14 +134,16 @@ Body.Projects = () => {
   );
 };
 
-Body.Info = () => {
-  const { info, imgPaths } = useSite();
-  const cardContent = Object.keys(info).map((e) => (
-    <li key={nanoid()} className={styles[e]}>
+export const Info = () => {
+  const { info, imgPaths, urls } = useSite();
+  const cardContent = Object.keys(info).map((i) => (
+    <li key={nanoid()} className={styles[i]}>
       <div className={styles.icon}>
-        <img src={imgPaths.icons[e]} />
+        <img src={imgPaths.icons[i]} />
       </div>
-      <div className={styles.info}>{info[e]}</div>
+      <div className={styles.info}>
+        {urls[i] ? <a href={urls[i]}>{info[i]}</a> : info[i]}
+      </div>
     </li>
   ));
 
@@ -130,7 +156,7 @@ Body.Info = () => {
   );
 };
 
-Body.Languages = () => {
+export const Languages = () => {
   const { techStack } = useSite();
   const languages = techStack.languages.map((lang) => (
     <li key={nanoid()}>{lang}</li>
@@ -146,7 +172,7 @@ Body.Languages = () => {
   );
 };
 
-Body.Tools = () => {
+export const Tools = () => {
   const { techStack } = useSite();
   const tools = techStack.tools.map((tool) => <li key={nanoid()}>{tool}</li>);
 
@@ -159,5 +185,3 @@ Body.Tools = () => {
     </Section>
   );
 };
-
-export { Body };
