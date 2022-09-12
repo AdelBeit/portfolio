@@ -6,15 +6,6 @@
   color: var(--color-alt);
 }
 
-.container__side a,
-.container__side a:active,
-.container__side a:visited,
-.container__side a:hover,
-.container__side a:link,
-.container__side a:focus {
-  text-decoration: none;
-}
-
 .container__side ul {
   list-style: none;
   padding: 0;

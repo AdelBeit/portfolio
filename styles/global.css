@@ -19,3 +19,8 @@ div#__next {
 * {
   box-sizing: border-box;
 }
+
+a:focus,
+a:hover {
+  text-decoration: none !important;
+}

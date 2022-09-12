@@ -1,15 +1,6 @@
 .container__main {
   grid-area: main;
-  padding: 50px 25px 0 50px;
-}
-
-.container__main a,
-.container__main a:active,
-.container__main a:visited,
-.container__main a:hover,
-.container__main a:focus,
-.container__main a:link {
-  text-decoration: underline;
+  padding: 40px 25px 20px 50px;
 }
 
 .container__main .title {

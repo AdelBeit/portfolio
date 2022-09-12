@@ -27,11 +27,7 @@
   white-space: pre-wrap;
 }
 
-.section__info a,
-.section__info a:link {
-  text-decoration: none !important;
-}
 .section__info a:hover,
 .section__info a:focus {
-  text-decoration: underline !important;
+  text-decoration: none !important;
 }
