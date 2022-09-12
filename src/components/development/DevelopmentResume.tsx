@@ -8,14 +8,18 @@ import { Side } from "./Side";
 
 function App() {
   return (
-    <SiteContext.Provider value={{ ...SiteData }}>
-      <Layout>
-        <div className={styles["container__app"]}>
-          <Main />
-          <Side />
-        </div>
-      </Layout>
-    </SiteContext.Provider>
+    <>
+      {SiteData && (
+        <SiteContext.Provider value={{ ...SiteData }}>
+          <Layout>
+            <div className={styles["container__app"]}>
+              <Main />
+              <Side />
+            </div>
+          </Layout>
+        </SiteContext.Provider>
+      )}
+    </>
   );
 }
 
