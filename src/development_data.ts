@@ -25,8 +25,8 @@ export const SiteData = {
       time: { year: "2022", month: "mar" },
       description: [
         "Generates a resume from JSON data.",
-        "Uses flexbox to ensure responsiveness across devices",
-        "Powered by NextJS, ReactJS, and Typscript. Deployed on Vercel.",
+        "Uses Flexbox to ensure responsiveness across devices",
+        "Powered by NextJS, ReactJS, and Typescript. Deployed on Vercel.",
       ],
       url: { demo: "https://adelbeit.com/", github: "https://github.com/AdelBeit/portfolio" }
     },
@@ -38,7 +38,7 @@ export const SiteData = {
         "Uses Web Intersection Observer API and CSS transitions for animations.",
         "Uses Web Audio API to play samples, and provide user volume controls.",
         "Supports multi-user sessions using Web Socket API (Socket.IO)",
-        "Uses Docker and Digtial Occean for deployment. Powered by NextJS, ReactJS, ToneJS, and Socket.IO",
+        "Uses Docker and Digital Ocean for deployment. Powered by NextJS, ReactJS, ToneJS, and Socket.IO",
       ],
       url: { demo: "https://dnk-app-ierav.ondigitalocean.app/", github: "https://github.com/AdelBeit/dnk" }
     },
@@ -84,8 +84,8 @@ export const SiteData = {
       time: "2019 - 2020",
       duties: [
         "Built and automated UI tests using Tricentis Tosca for several projects worth $10+ million.",
-        "Created and mainted Oracle MySQL scripts for test data gathering which reduced testing workload by 50%.",
-        "Designed, planned, and executed test cases for numeorus projects, collectively worth millions of dollars",
+        "Created and maintained Oracle MySQL scripts for test data gathering which reduced testing workload by 50%.",
+        "Designed, planned, and executed test cases for numerous projects, collectively worth millions of dollars",
       ],
       url: { demo: "", github: "" }
     },
