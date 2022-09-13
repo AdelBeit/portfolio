@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Card.module.css";
 import classNames from "classnames";
+import { nanoid } from "nanoid";
 
 function Card({
   header = null,
@@ -30,7 +31,7 @@ function Card({
           {Array.isArray(content) ? (
             <ul>
               {content.map((c) => (
-                <li>{c}</li>
+                <li key={nanoid()}>{c}</li>
               ))}
             </ul>
           ) : (
