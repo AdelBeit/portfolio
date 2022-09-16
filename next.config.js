@@ -1,6 +1,14 @@
+const urls = { dnk: "https://dnk-app-ierav.ondigitalocean.app/home?roomID=1" };
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
-}
-
-module.exports = nextConfig
+  async redirects() {
+    return [
+      {
+        source: "/dnk",
+        destination: urls.dnk,
+        permanent: true,
+      },
+    ];
+  },
+};
