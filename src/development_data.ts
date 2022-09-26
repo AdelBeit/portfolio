@@ -40,7 +40,7 @@ export const SiteData = {
         "Supports multi-user sessions using Web Socket API (Socket.IO)",
         "Uses Docker and Digital Ocean for deployment. Powered by NextJS, ReactJS, ToneJS, and Socket.IO",
       ],
-      url: { demo: "https://dnk-app-ierav.ondigitalocean.app/", github: "https://github.com/AdelBeit/dnk" }
+      url: { demo: "https://adelbeit.com/dnk", github: "https://github.com/AdelBeit/dnk" }
     },
     {
       title: "bord",
