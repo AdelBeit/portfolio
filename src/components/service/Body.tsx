@@ -4,9 +4,8 @@ import styles from "./Body.module.css";
 import { useService } from "../../hooks/use_site_context";
 import { Section } from "../Section";
 import { Card } from "../Card";
-import classNames from "classnames";
 
-function Body({ children }: { children: React.ReactNode[] }) {
+export function Body({ children }: { children: React.ReactNode[] }) {
   return <div className={styles.container__body}>{children}</div>;
 }
 
@@ -27,7 +26,7 @@ function WithSectionClasses(props) {
   return <Section {...props}>{props.children}</Section>;
 }
 
-Body.Education = () => {
+export const Education = () => {
   const { education } = useService();
 
   return (
@@ -45,7 +44,7 @@ Body.Education = () => {
   );
 };
 
-Body.Achievements = () => {
+export const Achievements = () => {
   const { achievements } = useService();
 
   return (
@@ -64,7 +63,7 @@ Body.Achievements = () => {
   );
 };
 
-Body.Skills = () => {
+export const Skills = () => {
   const { skills } = useService();
 
   return (
@@ -78,7 +77,7 @@ Body.Skills = () => {
   );
 };
 
-Body.Experience = () => {
+export const Experience = () => {
   const { experience } = useService();
 
   return (
@@ -100,5 +99,3 @@ Body.Experience = () => {
     </WithSectionClasses>
   );
 };
-
-export { Body };

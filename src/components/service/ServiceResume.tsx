@@ -3,10 +3,9 @@ import styles from "./ServiceResume.module.css";
 
 import Layout from "../Layout";
 import { Header } from "./Header";
-import { Body } from "./Body";
-import { ServiceContext} from "../../hooks/use_site_context";
+import { Achievements, Body, Education, Experience, Skills } from "./Body";
+import { ServiceContext } from "../../hooks/use_site_context";
 import { SiteData } from "../../service_data";
-
 
 function App() {
   return (
@@ -16,10 +15,10 @@ function App() {
           <Header />
           <hr />
           <Body>
-            <Body.Experience />
-            <Body.Education />
-            <Body.Achievements />
-            <Body.Skills />
+            <Experience />
+            <Education />
+            <Achievements />
+            <Skills />
           </Body>
         </div>
       </Layout>
