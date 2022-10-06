@@ -2,6 +2,9 @@ export const SiteData = {
   name: "Adele Beitvashahi",
   role: "Software Engineer",
   site: "Adelbeit.com",
+  phone: "(812) 360 - 6898",
+  city: "Seattle, WA",
+  email: "adelbeitvashahi@gmail.com",
   description: "",
   experience: [
     {
