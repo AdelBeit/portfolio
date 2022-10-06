@@ -1,15 +1,16 @@
 import React from "react";
 import styles from "./ServiceResume.module.css";
-import { SiteData } from "../../service_data";
 
-import { SiteContext } from "../../hooks/use_site_context";
 import Layout from "../Layout";
 import { Header } from "./Header";
 import { Body } from "./Body";
+import { ServiceContext} from "../../hooks/use_site_context";
+import { SiteData } from "../../service_data";
+
 
 function App() {
   return (
-    <SiteContext.Provider value={{ ...SiteData }}>
+    <ServiceContext.Provider value={SiteData}>
       <Layout>
         <div className={styles["container__app"]}>
           <Header />
@@ -22,7 +23,7 @@ function App() {
           </Body>
         </div>
       </Layout>
-    </SiteContext.Provider>
+    </ServiceContext.Provider>
   );
 }
 

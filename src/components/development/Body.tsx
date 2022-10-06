@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { nanoid } from "nanoid";
 import styles from "./Body.module.css";
-import { useSite } from "../../hooks/use_site_context";
+import { useDev } from "../../hooks/use_site_context";
 import { Section } from "../Section";
 import { Card } from "../Card";
 
@@ -23,7 +23,7 @@ function WithCardClasses(props) {
 }
 
 export const Education = () => {
-  const { education } = useSite();
+  const { education } = useDev();
 
   return (
     <Section>
@@ -42,7 +42,7 @@ export const Education = () => {
 };
 
 export const Achievements = () => {
-  const { achievements } = useSite();
+  const { achievements } = useDev();
 
   return (
     <Section title="Achievements">
@@ -57,22 +57,8 @@ export const Achievements = () => {
   );
 };
 
-export const Skills = () => {
-  const { skills } = useSite();
-
-  return (
-    <Section>
-      <WithCardClasses
-        content={skills.map((skill) => (
-          <div key={nanoid()}>{skill}</div>
-        ))}
-      />
-    </Section>
-  );
-};
-
 export const Experience = () => {
-  const { experience } = useSite();
+  const { experience } = useDev();
 
   return (
     <Section title="Experience">
@@ -108,7 +94,7 @@ export const Experience = () => {
 };
 
 export const Projects = () => {
-  const { projects } = useSite();
+  const { projects } = useDev();
 
   return (
     <Section title="Projects">
@@ -135,7 +121,7 @@ export const Projects = () => {
 };
 
 export const Info = () => {
-  const { info, imgPaths, urls } = useSite();
+  const { info, imgPaths, urls } = useDev();
   const cardContent = Object.keys(info).map((i) => (
     <li key={nanoid()} className={styles[i]}>
       <div className={styles.icon}>
@@ -157,7 +143,7 @@ export const Info = () => {
 };
 
 export const Languages = () => {
-  const { techStack } = useSite();
+  const { techStack } = useDev();
   const languages = techStack.languages.map((lang) => (
     <li key={nanoid()}>{lang}</li>
   ));
@@ -173,7 +159,7 @@ export const Languages = () => {
 };
 
 export const Tools = () => {
-  const { techStack } = useSite();
+  const { techStack } = useDev();
   const tools = techStack.tools.map((tool) => <li key={nanoid()}>{tool}</li>);
 
   return (

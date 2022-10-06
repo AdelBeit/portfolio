@@ -1,7 +1,7 @@
 import React from "react";
 import { nanoid } from "nanoid";
 import styles from "./Body.module.css";
-import { useSite } from "../../hooks/use_site_context";
+import { useService } from "../../hooks/use_site_context";
 import { Section } from "../Section";
 import { Card } from "../Card";
 import classNames from "classnames";
@@ -28,7 +28,7 @@ function WithSectionClasses(props) {
 }
 
 Body.Education = () => {
-  const { education } = useSite();
+  const { education } = useService();
 
   return (
     <WithSectionClasses classes={[styles.section__education]} title="Education">
@@ -46,7 +46,7 @@ Body.Education = () => {
 };
 
 Body.Achievements = () => {
-  const { achievements } = useSite();
+  const { achievements } = useService();
 
   return (
     <WithSectionClasses
@@ -65,7 +65,7 @@ Body.Achievements = () => {
 };
 
 Body.Skills = () => {
-  const { skills } = useSite();
+  const { skills } = useService();
 
   return (
     <WithSectionClasses classes={[styles.section__skills]} title="Skills">
@@ -79,7 +79,7 @@ Body.Skills = () => {
 };
 
 Body.Experience = () => {
-  const { experience } = useSite();
+  const { experience } = useService();
 
   return (
     <WithSectionClasses

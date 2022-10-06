@@ -1,9 +1,9 @@
 import React from "react";
-import { useSite } from "../../hooks/use_site_context";
+import { useService } from "../../hooks/use_site_context";
 import styles from "./Header.module.css";
 
 function Header() {
-  const { name, role, site, description } = useSite();
+  const { name, role, site, description } = useService();
   return (
     <div className={styles.container__header}>
       <span className={styles.name}>{name}</span>

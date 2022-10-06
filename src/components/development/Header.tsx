@@ -1,11 +1,11 @@
 import React from "react";
-import { useSite } from "../../hooks/use_site_context";
+import { useDev } from "../../hooks/use_site_context";
 import styles from "./Header.module.css";
 
 function Header() {
-  const { role, site, description } = useSite();
+  const { role, site, description } = useDev();
   const name = { first: "", last: "" };
-  [name.first, name.last] = useSite().name.split(" ");
+  [name.first, name.last] = useDev().name.split(" ");
 
   return (
     <div className={styles.container__header}>
