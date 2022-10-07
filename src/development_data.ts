@@ -2,9 +2,6 @@ export const SiteData = {
   name: "Adele Beitvashahi",
   role: "Software Engineer",
   site: "Adelbeit.com",
-  city: "Seattle, WA",
-  phone: "(812) 360 - 6898",
-  email: "adelbeitvashahi@gmail.com",
   description: "",
   imgPaths: {
     icons: {
@@ -20,6 +17,7 @@ export const SiteData = {
     linkedin: "adel-beitvashahi",
     email: "adelbeitvashahi@gmail.com",
     city: "Seattle, WA",
+  phone: "(812) 360 - 6898",
   },
   projects: [
     {
