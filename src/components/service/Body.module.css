@@ -42,3 +42,9 @@
 .card__content {
   color: var(--color-main);
 }
+
+@media print{
+  .section__education .card__subtitle{
+    color: var(--color-main);
+  }
+}
