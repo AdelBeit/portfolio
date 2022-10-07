@@ -16,7 +16,7 @@ export const SiteData = {
     linkedin: "adel-beitvashahi",
     email: "adelbeitvashahi@gmail.com",
     city: "Seattle, WA",
-    phone: "(812) 360 - 6898",
+    phone: "(812)  360 - 6898",
   },
   projects: [
     {
