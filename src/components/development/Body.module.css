@@ -12,6 +12,25 @@
   width: 25px;
 }
 
+.section__info .phone {
+  display: none;
+}
+
+.section__info .phone .icon {
+  width: 20px;
+  padding: 0 2.5px;
+}
+
+.section__info .phone .icon img {
+  width: 20px;
+}
+
+@media print {
+  .section__info .phone {
+    display: inherit;
+  }
+}
+
 .github {
   order: 4;
 }
@@ -24,8 +43,12 @@
   order: 2;
 }
 
-.city {
+.phone {
   order: 1;
+}
+
+.city {
+  order: 0;
 }
 
 .card__header {
