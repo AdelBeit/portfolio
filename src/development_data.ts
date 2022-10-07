@@ -2,6 +2,7 @@ export const SiteData = {
   name: "Adele Beitvashahi",
   role: "Software Engineer",
   site: "Adelbeit.com",
+  description: "",
   imgPaths: {
     icons: {
       city: "./icons/location.png",
