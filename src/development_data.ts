@@ -2,7 +2,6 @@ export const SiteData = {
   name: "Adele Beitvashahi",
   role: "Software Engineer",
   site: "Adelbeit.com",
-  description: "",
   imgPaths: {
     icons: {
       city: "./icons/location.png",
@@ -17,20 +16,9 @@ export const SiteData = {
     linkedin: "adel-beitvashahi",
     email: "adelbeitvashahi@gmail.com",
     city: "Seattle, WA",
-  phone: "(812) 360 - 6898",
+    phone: "(812) 360 - 6898",
   },
   projects: [
-    {
-      title: "Resume Generator",
-      language: "NextJS, ReactJS, TypeScript",
-      time: { year: "2022", month: "mar" },
-      description: [
-        "Generates a resume from JSON data.",
-        "Uses Flexbox to ensure responsiveness across devices",
-        "Powered by NextJS, ReactJS, and Typescript. Deployed on Vercel.",
-      ],
-      url: { demo: "https://adelbeit.com/", github: "https://github.com/AdelBeit/portfolio" }
-    },
     {
       title: "Drum & Keys",
       language: "NextJS",
@@ -41,21 +29,40 @@ export const SiteData = {
         "Supports multi-user sessions using Web Socket API (Socket.IO)",
         "Uses Docker and Digital Ocean for deployment. Powered by NextJS, ReactJS, ToneJS, and Socket.IO",
       ],
-      url: { demo: "https://adelbeit.com/dnk", github: "https://github.com/AdelBeit/dnk" }
+      url: {
+        demo: "https://adelbeit.com/dnk",
+        github: "https://github.com/AdelBeit/dnk",
+      },
+    },
+    {
+      title: "Resume Generator",
+      language: "NextJS, ReactJS, TypeScript",
+      time: { year: "2022", month: "mar" },
+      description: [
+        "Generates a resume from JSON data.",
+        "Uses Flexbox to ensure responsiveness across devices",
+        "Powered by NextJS, ReactJS, and Typescript. Deployed on Vercel.",
+      ],
+      url: {
+        demo: "https://adelbeit.com/",
+        github: "https://github.com/AdelBeit/portfolio",
+      },
     },
     {
       title: "bord",
       language: "NextJS",
       time: { year: "2021", month: "feb" },
-      description:
-        [
-          "Built on JAMstack, Javascript API Markup stack.",
-          "Uses Auth0 for passwordless authentication, allowing for a seamless signup/login process through google account.",
-          "Uses AirtableDB to store book/movie/show titles.",
-          "Powered by ReactJS, SASS, Bootstrap, Auth0, AirtableDB. Deployed on Netlify.",
-        ],
-      url: { demo: "https://bord.netlify.app/", github: "https://github.com/AdelBeit/bord" }
-    }
+      description: [
+        "Built on JAMstack, Javascript API Markup stack.",
+        "Uses Auth0 for passwordless authentication, allowing for a seamless signup/login process through google account.",
+        "Uses AirtableDB to store book/movie/show titles.",
+        "Powered by ReactJS, SASS, Bootstrap, Auth0, AirtableDB. Deployed on Netlify.",
+      ],
+      url: {
+        demo: "https://bord.netlify.app/",
+        github: "https://github.com/AdelBeit/bord",
+      },
+    },
   ],
   experience: [
     {
@@ -67,7 +74,10 @@ export const SiteData = {
         "Designed the website in Figma and ensured client is satisfied with the design before implementation.",
         "Ensured website responsiveness on multiple platforms using CSS media queries",
       ],
-      url: { demo: "https://www.idealauto.co/", github: "https://github.com/AdelBeit/Client_IdealAuto" }
+      url: {
+        demo: "https://www.idealauto.co/",
+        github: "https://github.com/AdelBeit/Client_IdealAuto",
+      },
     },
     {
       company: "Cox Communications",
@@ -77,7 +87,7 @@ export const SiteData = {
         "Kept developers on track by ensuring all business requirements well defined and formatted on JIRA for a multimillion dollar project.",
         "Developed a script that standardized the list of release changes, streamlined their delivery to respective stakeholders, eliminating the task from project manager's to do list.",
       ],
-      url: { demo: "", github: "" }
+      url: { demo: "", github: "" },
     },
     {
       company: "TMobile",
@@ -88,7 +98,7 @@ export const SiteData = {
         "Created and maintained Oracle MySQL scripts for test data gathering which reduced testing workload by 50%.",
         "Designed, planned, and executed test cases for numerous projects, collectively worth millions of dollars",
       ],
-      url: { demo: "", github: "" }
+      url: { demo: "", github: "" },
     },
   ],
   education: {
@@ -108,7 +118,11 @@ export const SiteData = {
 
   techStack: {
     languages: [
-      "Javascript", "ReactJS", "NextJS", "NodeJS", "ExpressJS",
+      "Javascript",
+      "ReactJS",
+      "NextJS",
+      "NodeJS",
+      "ExpressJS",
       "Typescript",
       "Python",
       "Java",
@@ -120,6 +134,6 @@ export const SiteData = {
   urls: {
     linkedin: "https://www.linkedin.com/in/adel-beitvashahi/",
     github: "https://github.com/AdelBeit",
-    email: "mailto:adelbeitvashahi@email.com"
-  }
+    email: "mailto:adelbeitvashahi@email.com",
+  },
 };
