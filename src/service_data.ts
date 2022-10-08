@@ -8,14 +8,17 @@ export const SiteData = {
   description: "",
   experience: [
     {
-      company: "Ideal Auto Sale & Service",
-      role: "Full Stack Developer",
+      company: "Freelance Developer",
+      role: "Frontend Developer - Ideal Auto",
       time: "2022",
       duties: [
-        "Gather requirements, design, build, and deliver a fast and sleek landing page for an auto mechanic shop.",
-        "Delivered the project on time.",
+        "Designed and created a responsive JAM stack lead generation portal for an auto mechanic shop that generated a 150% increase in revenue within 2 months.",
+        "Designed the website in Figma and ensured client is satisfied with the design before implementation.",
       ],
-      url: { demo: "", github: "" }
+      url: {
+        demo: "https://www.idealauto.co/",
+        github: "https://github.com/AdelBeit/Client_IdealAuto",
+      },
     },
     {
       company: "Indiana University Information Technology Services",
@@ -26,7 +29,7 @@ export const SiteData = {
         "Entrusted with keys for multiple labs with $10,000+ in equipment.",
         "Troubleshoot broken lab equipment and file reports when necessary.",
       ],
-      url: { demo: "", github: "" }
+      url: { demo: "", github: "" },
     },
     {
       company: "Kroger",
@@ -36,7 +39,7 @@ export const SiteData = {
         "Scanned and interacted with 100+ customers a day in a fast, friendly, and efficient manner.",
         "Handled upwards of $1000 of cash per day, and was in charge of emptying the self checkout tills at the end of the day.",
       ],
-      url: { demo: "", github: "" }
+      url: { demo: "", github: "" },
     },
 
     {
@@ -47,7 +50,7 @@ export const SiteData = {
         "Output 100+ orders per day, working on multiple different orders simultaneously, in a fast and precise manner maximizing custumer satisfaction.",
         "Operated high-volume cooking equipment such as grills and deep fryers in a fast paced environment.",
       ],
-      url: { demo: "", github: "" }
+      url: { demo: "", github: "" },
     },
   ],
   education: {
