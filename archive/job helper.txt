@@ -26,3 +26,5 @@ Grill Cook
 
 - Output 100+ orders per day, working on multiple different orders simultaneously, in a fast and precise manner maximizing custumer satisfaction.
 - Operated high-volume cooking equipment such as grills and deep fryers in a fast paced environment.
+
+
