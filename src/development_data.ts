@@ -25,10 +25,8 @@ export const SiteData = {
       language: "NextJS",
       time: { year: "2022", month: "mar" },
       description: [
-        "Uses Web Intersection Observer API and CSS transitions for animations.",
-        "Uses Web Audio API to play samples, and provide user volume controls.",
-        "Supports multi-user sessions using Web Socket API (Socket.IO)",
-        "Uses Docker and Digital Ocean for deployment. Powered by NextJS, ReactJS, ToneJS, and Socket.IO",
+        "Designed and implemented a frontend web service with NextJS and ReactJS, that enables 10+ concurrent users in a room to jam out with virtual instruments using ToneJS.",
+        "Authored a real time Web Socket API to host many users in a room, using Docker for continous delivery to Digital Ocean.",
       ],
       url: {
         demo: "https://adelbeit.com/dnk",
@@ -36,56 +34,26 @@ export const SiteData = {
       },
     },
     {
-      title: "Resume Generator",
-      language: "NextJS, ReactJS, TypeScript",
-      time: { year: "2022", month: "mar" },
-      description: [
-        "Generates a resume from JSON data.",
-        "Uses Flexbox to ensure responsiveness across devices",
-        "Powered by NextJS, ReactJS, and Typescript. Deployed on Vercel.",
-      ],
-      url: {
-        demo: "https://adelbeit.com/",
-        github: "https://github.com/AdelBeit/portfolio",
-      },
-    },
-    {
-      title: "bord",
-      language: "NextJS",
-      time: { year: "2021", month: "feb" },
-      description: [
-        "Built on JAMstack, Javascript API Markup stack.",
-        "Uses Auth0 for passwordless authentication, allowing for a seamless signup/login process through google account.",
-        "Uses AirtableDB to store book/movie/show titles.",
-        "Powered by ReactJS, SASS, Bootstrap, Auth0, AirtableDB. Deployed on Netlify.",
-      ],
-      url: {
-        demo: "https://bord.netlify.app/",
-        github: "https://github.com/AdelBeit/bord",
-      },
-    },
-  ],
-  experience: [
-    {
-      company: "Freelance Developer",
-      role: "Ideal Auto",
-      time: "2022",
-      duties: [
-        "Created a fast landing page for an auto mechanic shop using Typescript, NextJS, ReactJS, and NodeJS.",
-        "Designed the website in Figma and ensured client is satisfied with the design before implementation.",
-        "Ensured website responsiveness on multiple platforms using CSS media queries",
-      ],
+      title: "Auto Sale & Repair Website",
       url: {
         demo: "https://www.idealauto.co/",
         github: "https://github.com/AdelBeit/Client_IdealAuto",
       },
+      language: "NextJS",
+      time: { year: "2022", month: "mar" },
+      description: [
+        "Designed and implemented a responsive JAM stack lead generation portal for an auto mechanic shop that generated a 150% increase in revenue within 2 months.",
+        "Designed the website in Figma and ensured client is satisfied with the design before implementation.",
+      ],
     },
+  ],
+  experience: [
     {
       company: "Cox Communications",
       role: "Scrum Master",
       time: "2020 - 2021",
       duties: [
-        "Kept developers on track by ensuring all business requirements well defined and formatted on JIRA for a multimillion dollar project.",
+        "Kept developers on track by ensuring all business requirements were well defined and formatted on JIRA for a multimillion dollar project.",
         "Developed a script that standardized the list of release changes, streamlined their delivery to respective stakeholders, eliminating the task from project manager's to do list.",
       ],
       url: { demo: "", github: "" },
@@ -95,6 +63,7 @@ export const SiteData = {
       role: "Quality Engineer",
       time: "2019 - 2020",
       duties: [
+        "Led a team of 4 members",
         "Built and automated UI tests using Tricentis Tosca for several projects worth $10+ million.",
         "Created and maintained Oracle MySQL scripts for test data gathering which reduced testing workload by 50%.",
         "Designed, planned, and executed test cases for numerous projects, collectively worth millions of dollars",
