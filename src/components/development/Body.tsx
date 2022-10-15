@@ -97,14 +97,14 @@ export const Projects = () => {
   const { projects } = useDev();
 
   return (
-    <Section title="Projects">
+    <Section title="Products">
       {projects.map((project) => {
         const header = (
           <>
             <a href={project.url.demo}>{project.title}</a>
             {"  |  "}
             {project.url.github && <a href={project.url.github}>Code</a>}
-            {"  |  " + project.time.year}
+            {/* {"  |  " + project.time.year} */}
           </>
         );
         return (
