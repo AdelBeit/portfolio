@@ -1,7 +1,12 @@
 export const SiteData = {
   name: "Adele Beitvashahi",
+  github: "https://github.com/adelbeit",
+  linkedin: "https://linkedin.com/in/adel-beitvashahi",
+  email: "adelbeitvashahi@gmail.com",
+  city: "Seattle, WA",
+  phone: "(812)  360 - 6898",
+  site: "https://adelbeit.com",
   role: "Frontend Engineer",
-  site: "Adelbeit.com",
   description:
     "Frontend Engineer with a passion for creating software that solves everyday problems. Demonstrated proficiency and ownership of the full software development lifecycle to solve complex business problems like lead generation. A curious and consistent frontend developer that is quick to adapt and master the latest technology.",
   imgPaths: {
@@ -13,14 +18,7 @@ export const SiteData = {
       github: "./icons/github.png",
     },
   },
-  info: {
-    github: "adelbeit",
-    linkedin: "adel-beitvashahi",
-    email: "adelbeitvashahi@gmail.com",
-    city: "Seattle, WA",
-    phone: "(812)  360 - 6898",
-  },
-  projects: [
+  products: [
     {
       title: "Drum & Keys",
       language: "NextJS",
