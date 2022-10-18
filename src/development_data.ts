@@ -1,8 +1,9 @@
 export const SiteData = {
   name: "Adele Beitvashahi",
-  role: "Software Engineer",
+  role: "Frontend Engineer",
   site: "Adelbeit.com",
-  description: "",
+  description:
+    "Frontend Engineer with a passion for creating software that solves everyday problems. Demonstrated proficiency and ownership of the full software development lifecycle to solve complex business problems like lead generation. A curious and consistent frontend developer that is quick to adapt and master the latest technology.",
   imgPaths: {
     icons: {
       city: "./icons/location.png",
@@ -25,7 +26,7 @@ export const SiteData = {
       language: "NextJS",
       time: { year: "2022", month: "mar" },
       description: [
-        "Designed and implemented a frontend web service with NextJS and ReactJS, that enables 10+ concurrent users in a room to jam out with virtual instruments using ToneJS.",
+        "Designed and implemented a progressive webapp with offline caching capabilities, that enables 10+ concurrent users in a room to jam out with virtual instruments using ToneJS, React, and Nextjs.",
         "Authored a real time Web Socket API to host many users in a room, using Docker for continous delivery to Digital Ocean.",
       ],
       url: {
@@ -54,7 +55,7 @@ export const SiteData = {
       time: "2020 - 2021",
       duties: [
         "Kept developers on track by ensuring all business requirements were well defined and formatted on JIRA for a multimillion dollar project.",
-        "Developed a script that standardized the list of release changes, streamlined their delivery to respective stakeholders, eliminating the task from project manager's to do list.",
+        "Authored a tool that standardized the list of release changes by streamlining their delivery to respective stakeholders, eliminating the task from project manager's to do list.",
       ],
       url: { demo: "", github: "" },
     },
@@ -63,10 +64,9 @@ export const SiteData = {
       role: "Quality Engineer",
       time: "2019 - 2020",
       duties: [
-        "Led a team of 4 members",
         "Built and automated UI tests using Tricentis Tosca for several projects worth $10+ million.",
         "Created and maintained Oracle MySQL scripts for test data gathering which reduced testing workload by 50%.",
-        "Designed, planned, and executed test cases for numerous projects, collectively worth millions of dollars",
+        "Spearheaded the design, and execution of test cases by mentoring diverse teams of quality engineers resulting in 100% test coverage of projects collectively worth upwards of $100 million.",
       ],
       url: { demo: "", github: "" },
     },
