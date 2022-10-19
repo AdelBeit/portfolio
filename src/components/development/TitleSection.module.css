@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container div {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size-user-info);
+  flex: 0 0 30%;
+}
+
+.container div * {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+}
+
+.container .left {
+  text-align: left;
+}
+.container .center {
+  flex: 1 0 auto;
+  text-align: center;
+}
+.container .right {
+  text-align: right;
+}
+
+.container .center * {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 100;
+  font-size: var(--font-size-name);
+}
+
+.container .city,
+.container .phone,
+.container .email {
+  font-weight: 100;
+}

@@ -1,0 +1,51 @@
+.container {
+  --font-size-name: 38px;
+  --font-size-user-info: 14px;
+  --font-size-section-header: 14px;
+  --font-size-card-header: var(--font-size-section-header);
+  --font-size-card-body: var(--font-size-section-header);
+  --font-size-card-subtitle: calc(var(--font-size-section-header) + 1px);
+
+  --main-padding: 50px;
+
+  --color-background: linear-gradient(147deg, #f9fcff 0%, #e7edf3 74%);
+  --color-background: white;
+  --color-font: #000;
+  --color-alternate: #6a6a6a;
+  --color-font-card-subtitle: #5d5d5d;
+
+  --card-justify-content: space-between;
+
+  font-family: Tahoma, Calibri, Cambria, "Times New Roman", Arial;
+
+  padding: var(--main-padding);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  background-image: var(--color-background);
+  color: var(--color-font);
+  min-width: 850px;
+}
+
+.container > .subcontainer {
+  max-width: 850px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.container hr {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  height: 2px;
+  border: none;
+}
+
+.container a:visited,
+.container a:active {
+  color: rgb(44, 44, 241);
+}
