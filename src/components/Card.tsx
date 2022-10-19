@@ -3,17 +3,19 @@ import styles from "./Card.module.css";
 import classNames from "classnames";
 import { nanoid } from "nanoid";
 
+interface CardProps {
+  header?: React.ReactNode | React.ReactNode[];
+  subtitle?: React.ReactNode | React.ReactNode[];
+  content?: React.ReactNode | React.ReactNode[];
+  classes?: { [key: string]: string | string[] };
+}
+
 function Card({
   header = null,
   subtitle = null,
   content = null,
   classes = { header: [], subtitle: [], content: [] },
-}: {
-  header?: React.ReactNode | React.ReactNode[];
-  subtitle?: React.ReactNode | React.ReactNode[];
-  content?: React.ReactNode | React.ReactNode[];
-  classes?: { [key: string]: string | string[] };
-}) {
+}: CardProps) {
   return (
     <div className={styles.container__card}>
       {header ? (

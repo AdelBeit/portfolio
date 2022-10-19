@@ -13,8 +13,8 @@
 .card__content ul {
   list-style-position: outside;
   white-space: pre-wrap;
-  list-style-type: "-   ";
   margin-left: -15px;
+  padding-inline-start: 30px;
 }
 
 .card__content ul,
