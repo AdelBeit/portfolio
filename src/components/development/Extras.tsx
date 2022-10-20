@@ -7,10 +7,10 @@ function Extras() {
   const { achievements, site, linkedin } = useDev();
   const links = (
     <>
-      <span>
+      {/* <span>
         <a href={"https://" + site}>{site}</a>
       </span>
-      {"; "}
+      {"; "} */}
       <span>
         <a href={"https://" + linkedin}>{linkedin}</a>
       </span>
