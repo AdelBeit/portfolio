@@ -50,7 +50,7 @@ export const SiteData = {
   ],
   experience: [
     {
-      company: "Cox Communications",
+      company: "Cox Communications (Capgemini)",
       role: "Scrum Master",
       time: "2020 - 2021",
       duties: [
@@ -60,7 +60,7 @@ export const SiteData = {
       url: { demo: "", github: "" },
     },
     {
-      company: "TMobile",
+      company: "TMobile (Capgemini)",
       role: "Quality Engineer",
       time: "2019 - 2020",
       duties: [
@@ -111,7 +111,7 @@ export const SiteData = {
       "HTML",
       "CSS",
     ],
-    tools: ["Git", "JIRA", "Figma"],
+    tools: ["Git", "JIRA", "Figma", "Vercel", "AWS", "Netlify", "Docker"],
   },
   urls: {
     linkedin: "https://www.linkedin.com/in/adel-beitvashahi/",
