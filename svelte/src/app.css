@@ -1,6 +1,6 @@
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: calc(15px + 0.390625vw);
   line-height: 24px;
   font-weight: 400;
 
@@ -47,10 +47,12 @@ h1 {
 }
 
 #app {
+  display: flex;
+  justify-content: center;
   max-width: 1280px;
   margin: 0 auto;
   padding: 1rem;
-  text-align: center;
+  text-align: left;
 }
 
 button {
@@ -88,4 +90,16 @@ button:focus-visible {
 /* globals */
 .highlight {
   border: solid red 2px;
+}
+.block {
+  display: block;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.z-10 {
+  z-index: -10;
 }

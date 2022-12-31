@@ -1,4 +1,4 @@
-<script>
+<script type="ts">
   let title = "untitled";
   let content = "no content";
 </script>

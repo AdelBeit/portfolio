@@ -2,18 +2,42 @@
   export let title = "title";
   export let content = "content";
   const buttons = ["linkedin", "github", "resume", "email"];
-  let height = 900;
+  export let initialWidth = 379;
+  export let initialHeight = 720;
+
+  let widthSlider = initialWidth;
+  let initialTitleTop = 1;
+  let initialTitleLeft = 9;
+  $: scalingFactor = widthSlider / initialWidth;
+  $: scaledHeight = initialHeight * scalingFactor;
+  $: titleTop =
+    initialTitleTop * 3 * Math.pow(3, scalingFactor) - initialTitleTop * 8;
+  $: titleLeft = initialTitleLeft * Math.pow(2, scalingFactor);
 </script>
 
-<div class="container" style:width="100%" style:height="100%">
-  <div class="svg_container absolute" style:height="100%" style:width="100%">
+<div style:width="1000px" style:height="800px" class="section">
+  <input
+    class="block"
+    id="width"
+    type="range"
+    min="379"
+    max="1000"
+    bind:value={widthSlider}
+  />
+  <p>
+    aspect ratio: {widthSlider / scaledHeight}, {widthSlider}, {scaledHeight}
+  </p>
+
+  <div
+    class="_card relative highlight"
+    style:width="{widthSlider}px"
+    style:height="{scaledHeight}px"
+  >
     <svg
-      width="379"
-      height="720"
-      preserveAspectRatio="xMidYMin"
-      viewBox="0 0 379 720"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      class="absolute"
+      width={widthSlider}
+      height={scaledHeight}
+      viewBox="0 0 {initialWidth} {initialHeight}"
     >
       <path
         d="M362 38H16.001L16 701.5L26 719.5L329.813 719.769L362 694.5V38Z"
@@ -48,27 +72,26 @@
         fill="#33FF00"
       />
     </svg>
-  </div>
-  <div class="title absolute">
-    <p>{title}</p>
-  </div>
-  <div class="content absolute">
-    <p>{content}</p>
+    <div class="text absolute" style="left: {titleLeft}px; top: {titleTop}px">
+      <p>
+        {title}, slider: {widthSlider}, scaling: {scalingFactor}, top: {titleTop}
+      </p>
+    </div>
+    <div class="text absolute" style="left: {titleLeft}px; top: {titleTop}px">
+      <p>{content}</p>
+    </div>
   </div>
 </div>
 
 <style>
-  .container {
-    position: relative;
+  .boxContainer {
+    display: flex;
+    flex-direction: row;
   }
-  .absolute {
-    position: absolute;
+  .text {
+    z-index: 10;
   }
-  svg {
-    position: relative;
-    max-height: 100%;
-  }
-
-  .title {
+  .svg_container {
+    z-index: -10;
   }
 </style>

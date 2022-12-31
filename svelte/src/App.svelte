@@ -1,4 +1,5 @@
 <script lang="ts">
+  import ScaledSvg from "./lib/ScaledSVG.svelte";
   import About from "./cards/About.svelte";
 </script>
 
