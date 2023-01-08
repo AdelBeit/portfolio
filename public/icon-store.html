@@ -1,0 +1,77 @@
+<style>
+  .shell {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    margin: 20px;
+    border: 2px solid red;
+  }
+
+  .icon {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+  }
+
+  .frame {
+    display: block;
+    position: relative;
+    top: 49.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+  }
+</style>
+<body>
+  <p>
+    make sure there are at least 2 svg files in your icon store folder to view
+    them here
+  </p>
+  <div class="container">
+    <div class="shell">
+      <svg class="frame" xmlns="http://www.w3.org/2000/svg">
+        <use
+          href="/symbols.svg#amazon_aws"
+          xlink:href="/symbols.svg#amazon_aws"
+          x="0"
+          y="0"
+          style="fill: black; stroke: yellow"
+        ></use>
+      </svg>
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg">
+        <use
+          href="/symbols.svg#arch_linux"
+          xlink:href="/symbols.svg#arch_linux"
+          x="0"
+          y="0"
+          style="fill: yellow"
+        ></use>
+      </svg>
+    </div>
+    <div class="shell">
+      <svg class="frame" xmlns="http://www.w3.org/2000/svg">
+        <use
+          href="/symbols.svg#amazon_aws"
+          xlink:href="/symbols.svg#amazon_aws"
+          x="0"
+          y="0"
+          style="fill: yellow; stroke: yellow"
+        ></use>
+      </svg>
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg">
+        <use
+          href="/symbols.svg#arch_linux"
+          xlink:href="/symbols.svg#arch_linux"
+          x="0"
+          y="0"
+          style="fill: black"
+        ></use>
+      </svg>
+    </div>
+  </div>
+</body>
