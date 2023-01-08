@@ -24,3 +24,36 @@ a:focus,
 a:hover {
   text-decoration: none !important;
 }
+
+/* utils */
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+.block {
+  display: block;
+}
+.inline-block {
+  display: inline-block;
+}
+.outline {
+  border: solid 2px red;
+}
+.highlight {
+  background: gray;
+}
+.hide {
+  display: none;
+}
+
+/* global vars */
+:root {
+  --black: #282828;
+  --green: #33ff00;
+  --amber: #ffb000;
+}
