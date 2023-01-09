@@ -62,6 +62,8 @@ export default function TechStack({
           padding: 5px 15px;
 
           align-items: center;
+
+          color: var(--black);
         }
 
         ._contentBox.description {
