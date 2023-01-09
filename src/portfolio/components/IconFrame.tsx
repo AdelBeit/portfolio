@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 interface FrameProps {
   _type: "button" | "icon";
   icon: string;
   shadow?: boolean;
   border?: boolean;
+  width?: number;
+  height?: number;
   clickHandler?: () => void;
 }
 
 interface IconProps {
   icon: FrameProps["icon"];
   color: "black" | "green" | "amber";
+  size?: string;
 }
 
 // export function Icon({
@@ -41,7 +44,7 @@ interface IconProps {
 //   );
 // }
 
-function Icon({ icon, color = "green" }: IconProps) {
+export function Icon({ icon, color = "green", size = "60%" }: IconProps) {
   return (
     <div className="_container relative">
       <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
@@ -54,8 +57,8 @@ function Icon({ icon, color = "green" }: IconProps) {
       </svg>
       <style jsx>{`
         ._container {
-          width: 60%;
-          height: 60%;
+          width: ${size};
+          height: ${size};
           fill: inherit;
         }
 
@@ -64,7 +67,6 @@ function Icon({ icon, color = "green" }: IconProps) {
           height: 100%;
           fill: var(--${color});
           fill: inherit;
-          pointer-events: none;
         }
       `}</style>
     </div>
@@ -76,21 +78,11 @@ export default function Frame({
   icon = "github",
   shadow = false,
   border = true,
-  clickHandler = () => {},
+  width = (clickHandler = () => {}),
 }: FrameProps) {
   const [color, setColor] = useState<IconProps["color"]>(
     _type === "button" ? "amber" : "green"
   );
-
-  const [hover, setHover] = useState(false);
-
-  const hoverHandler = (e) => {
-    setHover(true);
-  };
-
-  useEffect(() => {
-    // setColor()
-  }, [hover]);
 
   if (_type === "icon") {
     shadow = false;
@@ -102,7 +94,7 @@ export default function Frame({
 
   return (
     <div className="_container relative" onClick={clickHandler}>
-      <div className={"_frame underlay absolute " + (!shadow && "hide")}></div>
+      {!!shadow && <div className={"_frame underlay absolute"}></div>}
       <div className="_frame overlay absolute">
         <Icon {...{ icon, color }} />
       </div>
@@ -111,8 +103,8 @@ export default function Frame({
         ._container {
           width: 100%;
           height: 100%;
-          width: ${shadow ? 60 : 65}px;
-          height: ${shadow ? 60 : 65}px;
+          width: ${shadow ? 65 : 60}px;
+          height: ${shadow ? 65 : 60}px;
 
           // initialize vars to false
           --hovered: initial;
@@ -149,25 +141,3 @@ export default function Frame({
     </div>
   );
 }
-
-// export function Button({ shadow, onClick }: ButtonProps) {
-//   return (
-//     <div className="_container">
-//       <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
-//         <use
-//           href={`./svg stores/icons.svg#${icon}`}
-//           xlinkHref={`./svg stores/icons.svg#${icon}`}
-//           x="0"
-//           y="0"
-//         ></use>
-//       </svg>
-//       <style jsx>{`
-//         ._container {
-//         }
-
-//         ._svg {
-//         }
-//       `}</style>
-//     </div>
-//   );
-// }

@@ -1,10 +1,10 @@
 import React from "react";
 
-interface NavBagguetteProps {
+interface NavBaguetteProps {
   children: React.ReactNode;
 }
 
-export default function NavBagguette({ children }: NavBagguetteProps) {
+export default function NavBaguette({ children }: NavBaguetteProps) {
   return (
     <div className="_container fixed outline">
       {children}

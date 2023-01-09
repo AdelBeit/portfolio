@@ -2,32 +2,22 @@ import React from "react";
 import { scale } from "../../lib/scale";
 import Frame from "../IconFrame";
 
-interface AboutProps {
+interface TechStackProps {
   title?: string;
-  description?: string;
   width: number;
 }
 
-export default function About({
-  title = "title",
-  description = "description",
+export default function TechStack({
+  title = "tech stack",
   width = 0,
-}: AboutProps) {
-  const _name = "about";
-  const buttons = ["linkedin", "github", "resume", "email"];
-  const initialWidth = 379;
-  const initialHeight = 720;
+}: TechStackProps) {
+  const _name = "tech-stack";
+  const buttons = [];
+  const initialWidth = 348;
+  const initialHeight = 605;
   const height = scale(initialHeight, initialWidth, width);
 
   const scalingFactor = width / initialWidth;
-
-  // have height and width initials
-  // pass in width
-  // get svg from cards.svg store
-  // use Baguette nav with initialized buttons
-  // position buttons, modify based on width
-  // position content, modify based on width
-  // ** figure out how to make a factory for this
 
   return (
     <div className="_card relative" style={{ width: width, height: height }}>
@@ -40,17 +30,12 @@ export default function About({
         ></use>
       </svg>
       <div className="_contentBox title absolute">
-        <p>
-          {title}, slider: {width}, scaling: {scalingFactor}, top: {20}
-        </p>
+        <p>{title}</p>
       </div>
       <div className="_baguette absolute">
         {buttons.map((buttonIcon, _index) => (
           <Frame key={_index} icon={buttonIcon} _type="button" />
         ))}
-      </div>
-      <div className="_contentBox description absolute">
-        <p>{description}</p>
       </div>
       <style jsx>{`
         ._card {

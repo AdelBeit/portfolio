@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import About from "./components/sections/About";
 import ContentBox from "./components/ContentBox";
-import NavBox from "./components/NavBagguette";
+import NavBox from "./components/NavBaguette";
 import Frame from "./components/IconFrame";
 
 const black = "#282828";

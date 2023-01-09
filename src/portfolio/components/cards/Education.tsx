@@ -2,33 +2,24 @@ import React from "react";
 import { scale } from "../../lib/scale";
 import Frame from "../IconFrame";
 
-interface AboutProps {
+interface EducationProps {
   title?: string;
   description?: string;
   width: number;
 }
 
-export default function About({
-  title = "title",
-  description = "description",
+export default function Education({
+  title = "university",
+  description = "BS in BS",
   width = 0,
-}: AboutProps) {
-  const _name = "about";
-  const buttons = ["linkedin", "github", "resume", "email"];
-  const initialWidth = 379;
-  const initialHeight = 720;
+}: EducationProps) {
+  const _name = "education";
+  const buttons = [];
+  const initialWidth = 352;
+  const initialHeight = 252;
   const height = scale(initialHeight, initialWidth, width);
 
   const scalingFactor = width / initialWidth;
-
-  // have height and width initials
-  // pass in width
-  // get svg from cards.svg store
-  // use Baguette nav with initialized buttons
-  // position buttons, modify based on width
-  // position content, modify based on width
-  // ** figure out how to make a factory for this
-
   return (
     <div className="_card relative" style={{ width: width, height: height }}>
       <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
@@ -39,15 +30,18 @@ export default function About({
           y="0"
         ></use>
       </svg>
+      <svg className="_svg logo absolute" xmlns="https://www.w3.org/2000/svg">
+        <use
+          href={`./svg stores/icons.svg#iu`}
+          xlinkHref={`./svg stores/icons.svg#iu`}
+          x="0"
+          y="0"
+        ></use>
+      </svg>
       <div className="_contentBox title absolute">
         <p>
           {title}, slider: {width}, scaling: {scalingFactor}, top: {20}
         </p>
-      </div>
-      <div className="_baguette absolute">
-        {buttons.map((buttonIcon, _index) => (
-          <Frame key={_index} icon={buttonIcon} _type="button" />
-        ))}
       </div>
       <div className="_contentBox description absolute">
         <p>{description}</p>
@@ -61,43 +55,44 @@ export default function About({
         ._svg {
           height: 100%;
           width: 100%;
+         }
+         
+         ._svg.logo{
+         height: 40%;
+         width: 40%;
+
+         margin-top: ${scalingFactor * 110}px;
+         margin-left: ${scalingFactor * 5}px;
         }
 
         ._contentBox {
           z-index: 1;
           display: flex;
           justify-content: flex-start;
+          color: var(--green);
         }
 
         ._contentBox.title {
-          width: 97.5%;
+          width: 75%;
           height: ${scalingFactor * 52}px;
           margin-top: ${scalingFactor * 5}px;
           margin-left: ${scalingFactor * 5}px;
           padding: 5px 15px;
-
+          
           align-items: center;
+          
+          color: var(--black);          
         }
 
         ._contentBox.description {
-          width: 85%;
-          height: ${scalingFactor * 630}px;
-          margin-top: ${scalingFactor * 72}px;
-          margin-left: ${scalingFactor * 5}px;
-          padding: 0px 15px;
+          width: 50%;
+          height: ${scalingFactor * 55}px;
+          margin-top: ${scalingFactor * 135}px;
+          margin-left: ${scalingFactor * 143}px;
+          padding: 0px;
 
           align-items: flex-start;
-        }
-
-        ._baguette {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-          padding: 0;
-          margin-top: ${scalingFactor * 120}px;
-          margin-left: ${scalingFactor * 319}px;
-        }
-      `}</style>
+        `}</style>
     </div>
   );
 }
