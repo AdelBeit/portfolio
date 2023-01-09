@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import About from "./components/sections/About";
 import ContentBox from "./components/ContentBox";
 import NavBox from "./components/NavBaguette";
-import Frame from "./components/IconFrame";
 
 const black = "#282828";
 const green = "#33FF00";
@@ -11,7 +10,7 @@ const yellow = "#FFB000";
 const _styles = {
   width: "100%",
   height: "100%",
-  color: yellow,
+  color: green,
   backgroundColor: black,
 };
 

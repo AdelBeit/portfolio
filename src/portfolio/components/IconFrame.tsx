@@ -5,6 +5,7 @@ interface FrameProps {
   icon: string;
   shadow?: boolean;
   border?: boolean;
+  borderSize?: number;
   frameSize?: number;
   height?: number;
   iconSize?: string;
@@ -16,34 +17,6 @@ interface IconProps {
   color: "black" | "green" | "amber";
   size?: string;
 }
-
-// export function Icon({
-//   icon,
-//   border,
-//   shadow,
-//   interactive,
-//   onClick,
-// }: ) {
-//   return (
-//     <div className="_container">
-//       <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
-//         <use
-//           href={`./svg stores/icons.svg#${icon}`}
-//           xlinkHref={`./svg stores/icons.svg#${icon}`}
-//           x="0"
-//           y="0"
-//         ></use>
-//       </svg>
-//       <style jsx>{`
-//         ._container {
-//         }
-
-//         ._svg {
-//         }
-//       `}</style>
-//     </div>
-//   );
-// }
 
 export function Icon({ icon, color = "green", size = "60%" }: IconProps) {
   return (
@@ -79,6 +52,7 @@ export default function Frame({
   icon = "github",
   shadow = false,
   border = true,
+  borderSize = 4,
   frameSize = 60,
   iconSize = "60%",
   clickHandler = () => {},
@@ -115,8 +89,7 @@ export default function Frame({
         }
 
         ._container:hover {
-          --hovered: ;
-          fill: var(--black);
+          ${_type === "button" && "--hovered: ; fill: var(--black);"}
         }
 
         ._frame {
@@ -124,7 +97,7 @@ export default function Frame({
           height: ${frameSize}px;
           --bg: var(--hovered) var(--${color});
           background-color: var(--bg, var(--black));
-          border: solid ${border ? 4 : 0}px var(--${color});
+          border: solid ${border ? borderSize : 0}px var(--${color});
         }
 
         ._frame.overlay {

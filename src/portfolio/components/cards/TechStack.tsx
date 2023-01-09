@@ -11,7 +11,7 @@ export default function TechStack({
   title = "tech stack",
   width = 0,
 }: TechStackProps) {
-  const _name = "tech-stack";
+  const _name = "tech_stack";
   const icons = [
     "github",
     "github",
@@ -20,9 +20,26 @@ export default function TechStack({
     "github",
     "github",
     "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
   ];
-  const initialWidth = 348;
-  const initialHeight = 605;
+  const initialWidth = 352;
+  const initialHeight = 466;
   const height = scale(initialHeight, initialWidth, width);
 
   const scalingFactor = width / initialWidth;
@@ -37,24 +54,26 @@ export default function TechStack({
           y="0"
         ></use>
       </svg>
-      <div className="_contentBox title absolute">
+      <div className="_contentBox outline title absolute">
         <p>{title}</p>
       </div>
-      <div className="_icons outline absolute">
+      <div className="_icons">
         {icons.map((buttonIcon, _index) => (
           <Frame
             key={_index}
             icon={buttonIcon}
-            iconSize="80%"
-            frameSize={30}
+            iconSize="66%"
+            frameSize={45}
+            border={true}
+            borderSize={2}
             _type="icon"
           />
         ))}
       </div>
       <style jsx>{`
         ._card {
-          width: ${width};
-          height: ${height};
+          width: ${width}px;
+          height: ${height}px;
         }
 
         ._svg {
@@ -69,24 +88,24 @@ export default function TechStack({
         }
 
         ._contentBox.title {
-          width: 97.5%;
+          width: 75%;
           height: ${scalingFactor * 52}px;
           margin-top: ${scalingFactor * 5}px;
           margin-left: ${scalingFactor * 5}px;
           padding: 5px 15px;
+          color: var(--black);
 
           align-items: center;
-
-          color: var(--black);
         }
 
         ._icons {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-          padding: 0;
-          margin-top: ${scalingFactor * 120}px;
-          margin-left: ${scalingFactor * 319}px;
+          display: grid;
+          grid-template-columns: repeat(5, 30px);
+          grid-template-rows: repeat(4, 30px);
+          grid-gap: 33px;
+
+          margin-top: ${scalingFactor * 115}px;
+          margin-left: ${scalingFactor * 23}px;
         }
       `}</style>
     </div>

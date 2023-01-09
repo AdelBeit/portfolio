@@ -2,19 +2,33 @@ import React from "react";
 import { scale } from "../../lib/scale";
 import Frame from "../IconFrame";
 
-interface AboutProps {
+interface ProductProps {
   title?: string;
-  description?: string;
+  description?: string[];
   width: number;
 }
 
-export default function About({
+export default function Product({
   title = "title",
-  description = "description",
+  description = [
+    "m has been the industry's standard dummy text eve galley of type and scrambled it to make a type specimen book. It has survived not only five centuri",
+    "m has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a",
+    "m has been the industry's standard dummy text eveecimen book. It has survived not only five centuri",
+  ],
   width = 0,
-}: AboutProps) {
-  const _name = "about";
-  const buttons = ["linkedin", "github", "resume", "email"];
+}: ProductProps) {
+  const _name = "product";
+  const buttons = ["info", "github", "link"];
+  const techStack = [
+    "github",
+    "node",
+    "js",
+    "react",
+    "typescript",
+    "git",
+    "docker",
+    "node",
+  ];
   const initialWidth = 379;
   const initialHeight = 720;
   const height = scale(initialHeight, initialWidth, width);

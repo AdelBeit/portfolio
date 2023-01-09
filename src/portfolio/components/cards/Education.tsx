@@ -39,17 +39,15 @@ export default function Education({
         ></use>
       </svg>
       <div className="_contentBox title absolute">
-        <p>
-          {title}, slider: {width}, scaling: {scalingFactor}, top: {20}
-        </p>
+        <p>{title}</p>
       </div>
       <div className="_contentBox description absolute">
         <p>{description}</p>
       </div>
       <style jsx>{`
         ._card {
-          width: ${width};
-          height: ${height};
+          width: ${width}px;
+          height: ${height}px;
         }
 
         ._svg {
