@@ -5,8 +5,9 @@ interface FrameProps {
   icon: string;
   shadow?: boolean;
   border?: boolean;
-  width?: number;
+  frameSize?: number;
   height?: number;
+  iconSize?: string;
   clickHandler?: () => void;
 }
 
@@ -78,7 +79,9 @@ export default function Frame({
   icon = "github",
   shadow = false,
   border = true,
-  width = (clickHandler = () => {}),
+  frameSize = 60,
+  iconSize = "60%",
+  clickHandler = () => {},
 }: FrameProps) {
   const [color, setColor] = useState<IconProps["color"]>(
     _type === "button" ? "amber" : "green"
@@ -96,15 +99,15 @@ export default function Frame({
     <div className="_container relative" onClick={clickHandler}>
       {!!shadow && <div className={"_frame underlay absolute"}></div>}
       <div className="_frame overlay absolute">
-        <Icon {...{ icon, color }} />
+        <Icon {...{ icon, color, size: iconSize }} />
       </div>
 
       <style jsx>{`
         ._container {
           width: 100%;
           height: 100%;
-          width: ${shadow ? 65 : 60}px;
-          height: ${shadow ? 65 : 60}px;
+          width: ${shadow ? frameSize + 5 : frameSize}px;
+          height: ${shadow ? frameSize + 5 : frameSize}px;
 
           // initialize vars to false
           --hovered: initial;
@@ -117,8 +120,8 @@ export default function Frame({
         }
 
         ._frame {
-          width: 60px;
-          height: 60px;
+          width: ${frameSize}px;
+          height: ${frameSize}px;
           --bg: var(--hovered) var(--${color});
           background-color: var(--bg, var(--black));
           border: solid ${border ? 4 : 0}px var(--${color});

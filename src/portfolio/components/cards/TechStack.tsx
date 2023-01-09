@@ -12,7 +12,15 @@ export default function TechStack({
   width = 0,
 }: TechStackProps) {
   const _name = "tech-stack";
-  const buttons = [];
+  const icons = [
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+    "github",
+  ];
   const initialWidth = 348;
   const initialHeight = 605;
   const height = scale(initialHeight, initialWidth, width);
@@ -32,9 +40,15 @@ export default function TechStack({
       <div className="_contentBox title absolute">
         <p>{title}</p>
       </div>
-      <div className="_baguette absolute">
-        {buttons.map((buttonIcon, _index) => (
-          <Frame key={_index} icon={buttonIcon} _type="button" />
+      <div className="_icons outline absolute">
+        {icons.map((buttonIcon, _index) => (
+          <Frame
+            key={_index}
+            icon={buttonIcon}
+            iconSize="80%"
+            frameSize={30}
+            _type="icon"
+          />
         ))}
       </div>
       <style jsx>{`
@@ -66,17 +80,7 @@ export default function TechStack({
           color: var(--black);
         }
 
-        ._contentBox.description {
-          width: 85%;
-          height: ${scalingFactor * 630}px;
-          margin-top: ${scalingFactor * 72}px;
-          margin-left: ${scalingFactor * 5}px;
-          padding: 0px 15px;
-
-          align-items: flex-start;
-        }
-
-        ._baguette {
+        ._icons {
           display: flex;
           flex-direction: column;
           gap: 15px;
