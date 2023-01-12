@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { scale } from "../../lib/scale";
+import Baguette from "../Baguette";
 import Frame from "../IconFrame";
 
 interface ProductProps {
@@ -17,7 +18,13 @@ export default function Product({
   ],
   width = 0,
 }: ProductProps) {
-  const _name = "product";
+  const [active, setActive] = useState(false);
+
+  const clickHandler = (e: React.MouseEvent<HTMLElement>) => {
+    setActive((prevState) => !prevState);
+  };
+
+  const _name = "product." + (active ? "active" : "inactive");
   const buttons = ["info", "github", "link"];
   const techStack = [
     "github",
@@ -29,8 +36,8 @@ export default function Product({
     "docker",
     "node",
   ];
-  const initialWidth = 379;
-  const initialHeight = 720;
+  const initialWidth = 352;
+  const initialHeight = 605;
   const height = scale(initialHeight, initialWidth, width);
 
   const scalingFactor = width / initialWidth;
@@ -48,13 +55,27 @@ export default function Product({
       <div className="_contentBox title absolute">
         <p>{title}</p>
       </div>
-      <div className="_baguette absolute">
-        {buttons.map((buttonIcon, _index) => (
-          <Frame key={_index} icon={buttonIcon} _type="button" />
-        ))}
+      <div className="_baguette buttons absolute">
+        <Baguette crumbs={buttons} _type="button" />
+      </div>
+      <div className="_baguette tech_stack absolute">
+        <Baguette
+          crumbs={techStack}
+          _type="icon"
+          frameProps={{
+            iconSize: "66%",
+            frameSize: 30,
+            border: true,
+            borderSize: 2,
+          }}
+        />
       </div>
       <div className="_contentBox description absolute">
-        <p>{description}</p>
+        <ul>
+          {description.map((desc, _index) => (
+            <li key={_index}>{desc}</li>
+          ))}
+        </ul>
       </div>
       <style jsx>{`
         ._card {
@@ -81,6 +102,7 @@ export default function Product({
           padding: 5px 15px;
 
           align-items: center;
+          color: var(--black);
         }
 
         ._contentBox.description {
@@ -96,10 +118,31 @@ export default function Product({
         ._baguette {
           display: flex;
           flex-direction: column;
-          gap: 15px;
           padding: 0;
-          margin-top: ${scalingFactor * 120}px;
-          margin-left: ${scalingFactor * 319}px;
+          gap: 6px;
+        }
+
+        ._baguette.buttons {
+          margin-top: ${scalingFactor * 89}px;
+          margin-left: ${scalingFactor * 312}px;
+        }
+
+        ._baguette.tech_stack {
+          margin-top: ${scalingFactor * 110}px;
+          margin-left: ${scalingFactor * -11}px;
+        }
+
+        ul {
+          padding: 0;
+          padding-left: 30px;
+          max-width: 100%;
+        }
+        li {
+          padding-right: 10px;
+          word-wrap: break-word;
+        }
+        li:not(:last-child) {
+          margin-bottom: 7px;
         }
       `}</style>
     </div>

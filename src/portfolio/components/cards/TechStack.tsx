@@ -1,5 +1,6 @@
 import React from "react";
 import { scale } from "../../lib/scale";
+import Baguette from "../Baguette";
 import Frame from "../IconFrame";
 
 interface TechStackProps {
@@ -54,21 +55,20 @@ export default function TechStack({
           y="0"
         ></use>
       </svg>
-      <div className="_contentBox outline title absolute">
+      <div className="_contentBox title absolute">
         <p>{title}</p>
       </div>
       <div className="_icons">
-        {icons.map((buttonIcon, _index) => (
-          <Frame
-            key={_index}
-            icon={buttonIcon}
-            iconSize="66%"
-            frameSize={45}
-            border={true}
-            borderSize={2}
-            _type="icon"
-          />
-        ))}
+        <Baguette
+          crumbs={icons}
+          _type="icon"
+          frameProps={{
+            iconSize: "66%",
+            frameSize: 45,
+            border: true,
+            borderSize: 2,
+          }}
+        />
       </div>
       <style jsx>{`
         ._card {

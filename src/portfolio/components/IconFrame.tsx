@@ -1,24 +1,11 @@
-import React, { useState } from "react";
-
-interface FrameProps {
-  _type: "button" | "icon";
-  icon: string;
-  shadow?: boolean;
-  border?: boolean;
-  borderSize?: number;
-  frameSize?: number;
-  height?: number;
-  iconSize?: string;
-  clickHandler?: () => void;
-}
+import React from "react";
 
 interface IconProps {
-  icon: FrameProps["icon"];
-  color: "black" | "green" | "amber";
+  icon: IconFrameProps["icon"];
   size?: string;
 }
 
-export function Icon({ icon, color = "green", size = "60%" }: IconProps) {
+function Icon({ icon, size = "60%" }: IconProps) {
   return (
     <div className="_container relative">
       <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
@@ -39,7 +26,6 @@ export function Icon({ icon, color = "green", size = "60%" }: IconProps) {
         ._svg {
           width: 100%;
           height: 100%;
-          fill: var(--${color});
           fill: inherit;
         }
       `}</style>
@@ -47,27 +33,67 @@ export function Icon({ icon, color = "green", size = "60%" }: IconProps) {
   );
 }
 
-export default function Frame({
-  _type = "icon",
-  icon = "github",
-  shadow = false,
+interface BaseFrameProps {
+  icon: string;
+  frameSize?: number;
+}
+
+interface IconFrameProps extends BaseFrameProps {
+  _type: "icon";
+  border?: boolean;
+  borderSize?: number;
+}
+
+function IconFrame({
+  icon,
+  frameSize = 30,
   border = true,
-  borderSize = 4,
-  frameSize = 60,
-  iconSize = "60%",
-  clickHandler = () => {},
-}: FrameProps) {
-  const [color, setColor] = useState<IconProps["color"]>(
-    _type === "button" ? "amber" : "green"
+  borderSize = 2,
+}: IconFrameProps) {
+  const iconSize = "66%";
+
+  return (
+    <div className="_container relative">
+      <div className="_frame overlay absolute">
+        <Icon {...{ icon, size: iconSize }} />
+      </div>
+
+      <style jsx>{`
+        ._container {
+          width: 100%;
+          height: 100%;
+          width: ${frameSize}px;
+          height: ${frameSize}px;
+
+          fill: var(--green);
+        }
+
+        ._frame {
+          width: ${frameSize}px;
+          height: ${frameSize}px;
+          background-color: var(--black);
+          border: solid ${border ? borderSize : 0}px var(--green);
+        }
+      `}</style>
+      <style jsx>{staticStyles["_frame.overlay"]}</style>
+    </div>
   );
+}
 
-  if (_type === "icon") {
-    shadow = false;
-  }
+interface ButtonFrameProps extends BaseFrameProps {
+  _type: "button";
+  shadow?: boolean;
+  clickHandler: () => void;
+}
 
-  if (_type === "button") {
-    border = true;
-  }
+function ButtonFrame({
+  icon,
+  frameSize = 60,
+  shadow = false,
+  clickHandler = () => {},
+}: ButtonFrameProps) {
+  const color = "amber";
+  const iconSize = "60%";
 
   return (
     <div className="_container relative" onClick={clickHandler}>
@@ -89,7 +115,8 @@ export default function Frame({
         }
 
         ._container:hover {
-          ${_type === "button" && "--hovered: ; fill: var(--black);"}
+          --hovered: ;
+          fill: var(--black);
         }
 
         ._frame {
@@ -97,13 +124,7 @@ export default function Frame({
           height: ${frameSize}px;
           --bg: var(--hovered) var(--${color});
           background-color: var(--bg, var(--black));
-          border: solid ${border ? borderSize : 0}px var(--${color});
-        }
-
-        ._frame.overlay {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          border: solid 4px var(--${color});
         }
 
         ._frame.underlay {
@@ -114,6 +135,32 @@ export default function Frame({
           border: solid 1px var(--${color});
         }
       `}</style>
+      <style jsx>{staticStyles["_frame.overlay"]}</style>
     </div>
   );
 }
+
+export type FrameProps<P extends ButtonFrameProps | IconFrameProps> =
+  P["_type"] extends "button"
+    ? ButtonFrameProps
+    : P["_type"] extends "icon"
+    ? IconFrameProps
+    : never;
+
+export default function Frame<P extends ButtonFrameProps | IconFrameProps>(
+  props: FrameProps<P>
+) {
+  if (props["_type"] === "icon") {
+    return <IconFrame {...props} />;
+  }
+
+  if (props["_type"] === "button") {
+    return <ButtonFrame {...props} />;
+  }
+}
+
+const staticStyles = {
+  "_frame.overlay": `._frame.overlay {display: flex;
+  justify-content: center;
+  align-items: center;}`,
+};

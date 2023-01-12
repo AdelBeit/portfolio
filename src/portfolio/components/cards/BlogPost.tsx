@@ -1,5 +1,6 @@
 import React from "react";
 import { scale } from "../../lib/scale";
+import Baguette from "../Baguette";
 import Frame from "../IconFrame";
 
 interface AboutProps {
@@ -35,9 +36,7 @@ export default function About({
         <p>{title}</p>
       </div>
       <div className="_baguette absolute">
-        {buttons.map((buttonIcon, _index) => (
-          <Frame key={_index} icon={buttonIcon} _type="button" />
-        ))}
+        <Baguette crumbs={buttons} _type="button" />
       </div>
       <div className="_contentBox description absolute">
         <p>{description}</p>
