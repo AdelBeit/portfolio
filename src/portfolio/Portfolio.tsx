@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import About from "./components/sections/About";
 import ContentBox from "./components/ContentBox";
 import NavBox from "./components/NavBaguette";
+import Frame from "./components/IconFrame";
 
 const black = "#282828";
 const green = "#33FF00";
@@ -31,7 +32,7 @@ export function App() {
        <p className="inline-block">w: {width}</p> */}
       {/* <About width={width} /> */}
       <ContentBox>
-        {/* <p> buttons </p>
+        <p> buttons </p>
         <br />
         <Frame _type="button" icon="github" />
         <br />
@@ -41,9 +42,9 @@ export function App() {
         <br />
         <Frame _type="icon" border={false} icon="github" />
         <br />
-        <Frame _type="icon" icon="github" /> */}
-        <About />
-        <About />
+        <Frame _type="icon" icon="github" />
+        {/* <About />
+        <About /> */}
       </ContentBox>
       <NavBox>
         <p>nav</p>
