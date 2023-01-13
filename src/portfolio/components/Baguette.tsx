@@ -1,38 +1,29 @@
 import React from "react";
-import Frame, { FrameProps } from "./IconFrame";
+import Frame, {
+  ButtonFrameProps,
+  ButtonOrIcon,
+  IconFrameProps,
+} from "./IconFrame";
 
-interface BaseProps<P extends { _type: string }> {
-  _type: P["_type"];
-  crumbs: any;
-  frameProps?: Pick<
-    FrameProps,
-    "iconSize" | "frameSize" | "border" | "borderSize"
-  >;
-}
+type BaguetteProps<T extends ButtonOrIcon, K extends keyof T> =
+  | ({ crumbs: K["icon"][] } & IconFrameProps)
+  | ({
+      crumbs: {
+        [key: ButtonFrameProps["icon"]]: Pick<ButtonFrameProps, "clickHandler">;
+      };
+    } & ButtonFrameProps);
 
-interface IconBaguette extends BaseProps {
-  _type: "icon";
-  crumbs: string[];
-}
-
-interface ButtonBaguette extends BaseProps {
-  _type: "button";
-  crumbs: { [key: string]: Pick<FrameProps, "clickHandler"> };
-}
-
-type Props<F extends FrameProps> = F['_type'] extends 'string' ? {crumbs: string[]} & IconFrame
-
-export default function Baguette({ crumbs, {...frameProps} }: BaguetteProps) {
-  if (_type == "button") {
+export default function Baguette(props: BaguetteProps) {
+  if (props["_type"] == "button") {
     return (
       <>
-        {Object.keys(crumbs).map((crumbKey, _index) => {
+        {Object.keys(props.crumbs).map((crumbKey, _index) => {
           <Frame
             key={_index}
             icon={crumbKey}
-            _type={_type}
-            clickHandler={crumbs[crumbKey].clickHandler}
-            {...frameProps}
+            _type={props._type}
+            clickHandler={props.crumbs[crumbKey].clickHandler}
+            {...props}
           />;
         })}
       </>
@@ -41,8 +32,8 @@ export default function Baguette({ crumbs, {...frameProps} }: BaguetteProps) {
 
   return (
     <>
-      {crumbs.map((crumb, _index) => (
-        <Frame key={_index} icon={crumb} _type={_type} {...frameProps} />
+      {props.crumbs.map((crumb, _index) => (
+        <Frame key={_index} icon={crumb} _type={props._type} {...props} />
       ))}
     </>
   );

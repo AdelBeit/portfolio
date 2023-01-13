@@ -38,7 +38,7 @@ interface BaseFrameProps {
   frameSize?: number;
 }
 
-interface IconFrameProps extends BaseFrameProps {
+export interface IconFrameProps extends BaseFrameProps {
   _type: "icon";
   border?: boolean;
   borderSize?: number;
@@ -80,13 +80,14 @@ function IconFrame({
   );
 }
 
-interface ButtonFrameProps extends BaseFrameProps {
+export interface ButtonFrameProps extends BaseFrameProps {
   _type: "button";
   shadow?: boolean;
   clickHandler: () => void;
 }
 
 function ButtonFrame({
+  _type = "button",
   icon,
   frameSize = 60,
   shadow = false,
@@ -140,16 +141,15 @@ function ButtonFrame({
   );
 }
 
-export type FrameProps<P extends ButtonFrameProps | IconFrameProps> =
-  P["_type"] extends "button"
-    ? ButtonFrameProps
-    : P["_type"] extends "icon"
-    ? IconFrameProps
-    : never;
+export type ButtonOrIcon = ButtonFrameProps | IconFrameProps;
 
-export default function Frame<P extends ButtonFrameProps | IconFrameProps>(
-  props: FrameProps<P>
-) {
+// export type FrameProps<P extends ButtonOrIcon> = P["_type"] extends "button"
+//   ? ButtonFrameProps
+//   : P["_type"] extends "icon"
+//   ? IconFrameProps
+//   : never;
+
+export default function Frame(props: ButtonOrIcon) {
   if (props["_type"] === "icon") {
     return <IconFrame {...props} />;
   }
@@ -157,6 +157,22 @@ export default function Frame<P extends ButtonFrameProps | IconFrameProps>(
   if (props["_type"] === "button") {
     return <ButtonFrame {...props} />;
   }
+
+  return <div></div>;
+}
+
+export function Content(props) {
+  let p = {
+    icon: "github",
+    frameSize: 30,
+    border: true,
+    borderSize: 2,
+  } as IconFrameProps;
+  return (
+    <div>
+      <Frame {...p} _type="icon" />
+    </div>
+  );
 }
 
 const staticStyles = {
