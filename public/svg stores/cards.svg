@@ -67,24 +67,96 @@
 </symbol>
 
 <symbol id="product.active" viewBox="0 0 352 620" fill="none">
+ <!-- backdrop -->
  <path d="M354,30 H0 V371 H321 l33,-28Z" fill="#33FF00">
- <animate class="p0" attributeName="d" from="M354,30 H0 V371 H321 l33,-28Z" to="M354,30 H0 V500 H321 l33,-28Z" begin="click" fill="freeze" dur="0.25s" />
- <animate class="p1" attributeName="d" from="M354,30 H0 V500 H321 l33,-28Z" to="M354,30 H0 V371 H321 l33,-28Z" begin="click" fill="freeze" dur="0.25s" />
+ <animate class="p0" attributeName="d" from="M354,30 H0 V371 H321 l33,-28Z" to="M354,30 H0 V500 H321 l33,-28Z"
+ begin="click" fill="freeze" dur="0.25s" />
+ <animate class="p1" attributeName="d" from="M354,30 H0 V500 H321 l33,-28Z" to="M354,30 H0 V371 H321 l33,-28Z"
+ begin="click" fill="freeze" dur="0.25s" />
  </path>
+ <!-- dots -->
+ <!-- <rect x="129" y="60" width="5" height="5" fill="#282828" />
+ <rect x="150" y="60" width="5" height="5" fill="#282828" />
+ <rect x="140" y="60" width="5" height="5" fill="#282828" />
+ <rect x="172" y="60" width="5" height="5" fill="#282828" />
+ <rect x="183" y="60" width="5" height="5" fill="#282828" />
+ <rect x="193" y="60" width="5" height="5" fill="#282828" />
+ <rect x="216" y="60" width="5" height="5" fill="#282828" />
+ <rect x="236" y="60" width="5" height="5" fill="#282828" />
+ <rect x="226" y="60" width="5" height="5" fill="#282828" />
+ <rect x="269" y="60" width="5" height="5" fill="#282828" />
+ <rect x="258" y="60" width="5" height="5" fill="#282828" />
+ <rect x="293" y="60" width="5" height="5" fill="#282828" />
+ <rect x="303" y="60" width="5" height="5" fill="#282828" />
+ <rect x="315" y="60" width="5" height="5" fill="#282828" />
+ <rect x="117" y="70" width="5" height="5" fill="#282828" />
+ <rect x="150" y="70" width="5" height="5" fill="#282828" />
+ <rect x="162" y="70" width="5" height="5" fill="#282828" />
+ <rect x="172" y="70" width="5" height="5" fill="#282828" />
+ <rect x="183" y="70" width="5" height="5" fill="#282828" />
+ <rect x="193" y="70" width="5" height="5" fill="#282828" />
+ <rect x="203" y="70" width="5" height="5" fill="#282828" />
+ <rect x="236" y="70" width="5" height="5" fill="#282828" />
+ <rect x="248" y="70" width="5" height="5" fill="#282828" />
+ <rect x="269" y="70" width="5" height="5" fill="#282828" />
+ <rect x="269" y="70" width="5" height="5" fill="#282828" />
+ <rect x="279" y="70" width="5" height="5" fill="#282828" />
+ <rect x="302" y="70" width="5" height="5" fill="#282828" />
+ <rect x="315" y="70" width="5" height="5" fill="#282828" />
+ <rect x="325" y="70" width="5" height="5" fill="#282828" />
+ <rect x="336" y="70" width="5" height="5" fill="#282828" /> -->
+ <rect x="117" y="60" width="5" height="5" fill="#282828"/>
+ <rect x="138" y="60" width="5" height="5" fill="#282828"/>
+ <rect x="128" y="60" width="5" height="5" fill="#282828"/>
+ <rect x="160" y="60" width="5" height="5" fill="#282828"/>
+ <rect x="171" y="60" width="5" height="5" fill="#282828"/>
+ <rect x="181" y="60" width="5" height="5" fill="#282828"/>
+ <rect x="204" y="60" width="5" height="5" fill="#282828"/>
+ <rect x="224" y="60" width="5" height="5" fill="#282828"/>
+ <rect x="214" y="60" width="5" height="5" fill="#282828"/>
+ <rect x="257" y="60" width="5" height="5" fill="#282828"/>
+ <rect x="246" y="60" width="5" height="5" fill="#282828"/>
+ <rect x="281" y="60" width="5" height="5" fill="#282828"/>
+ <rect x="291" y="60" width="5" height="5" fill="#282828"/>
+ <rect x="303" y="60" width="5" height="5" fill="#282828"/>
+ <rect x="105" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="138" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="150" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="160" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="171" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="181" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="191" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="224" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="236" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="257" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="257" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="267" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="290" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="303" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="313" y="70" width="5" height="5" fill="#282828"/>
+ <rect x="324" y="70" width="5" height="5" fill="#282828"/>
+
+ <!-- body -->
  <path d="M344,27 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" fill="#282828" stroke="#33FF00" stroke-width="4">
- <animate class="p0" attributeName="d" from="M344,27 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" to="M344,404 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" begin="click" fill="freeze" dur="0.25s" />
- <animate class="p1" attributeName="d" from="M344,404 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" to="M344,27 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" begin="click" fill="freeze" dur="0.25s" />
+ <animate class="p0" attributeName="d" from="M344,27 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z"
+ to="M344,404 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" begin="click" fill="freeze" dur="0.25s" />
+ <animate class="p1" attributeName="d" from="M344,404 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z"
+ to="M344,27 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" begin="click" fill="freeze" dur="0.25s" />
  </path>
+ <!-- title head -->
  <path d="M354,8 L344,0 H12 L0,12 V74 h254 l18,-20 H354Z" fill="#33FF00">
- <animate class="p0" attributeName="d" from="M354,8 L344,0 H12 L0,12 V74 h254 l18,-20 H354Z" to="M354,8 L344,0 H12 L0,12 V74 h90 l18,-20 H354Z" begin="click" fill="freeze" dur="0.25s" />
- <animate class="p1" attributeName="d" from="M354,8 L344,0 H12 L0,12 V74 h90 l18,-20 H354Z" to="M354,8 L344,0 H12 L0,12 V74 h254 l18,-20 H354Z" begin="click" fill="freeze" dur="0.25s" />
+ <animate class="p0" attributeName="d" from="M354,8 L344,0 H12 L0,12 V74 h254 l18,-20 H354Z"
+ to="M354,8 L344,0 H12 L0,12 V74 h90 l18,-20 H354Z" begin="click" fill="freeze" dur="0.25s" />
+ <animate class="p1" attributeName="d" from="M354,8 L344,0 H12 L0,12 V74 h90 l18,-20 H354Z"
+ to="M354,8 L344,0 H12 L0,12 V74 h254 l18,-20 H354Z" begin="click" fill="freeze" dur="0.25s" />
  </path>
  <path d="M0,74 h254 l18,-20 H354" stroke="#282828" stroke-width="2">
- <animate class="p0" attributeName="d" from="M0,74 h254 l18,-20 H354" to="M0,74 h90 l18,-20 H354" begin="click" fill="freeze" dur="0.25s" />
- <animate class="p1" attributeName="d" from="M0,74 h90 l18,-20 H354" to="M0,74 h254 l18,-20 H354" begin="click" fill="freeze" dur="0.25s" />
+ <animate class="p0" attributeName="d" from="M0,74 h254 l18,-20 H354" to="M0,74 h90 l18,-20 H354" begin="click"
+ fill="freeze" dur="0.25s" />
+ <animate class="p1" attributeName="d" from="M0,74 h90 l18,-20 H354" to="M0,74 h254 l18,-20 H354" begin="click"
+ fill="freeze" dur="0.25s" />
  </path>
 </symbol>
-
 <symbol id="product.inactive" viewBox="0 0 356 609" fill="none">
 <path id="backdrop" d="M354 33H2V349.611L12.5 371H321.256L354 343.145V33Z" fill="#33FF00"/>
 <path id="body" d="M344.897 27H231.61L207.764 48H4.02344V595L11.8596 607H308.328L344.897 576V27Z" fill="#282828" stroke="#33FF00" stroke-width="4"/>

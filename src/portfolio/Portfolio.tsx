@@ -65,6 +65,13 @@ export function App() {
           width: 0;
           height: 0;
         }
+
+        @media only screen and (max-width: 780px) {
+          ._container {
+            flex-direction: row;
+            height: fit-content;
+          }
+        }
       `}</style>
     </div>
   );

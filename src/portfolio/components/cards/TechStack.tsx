@@ -59,16 +59,7 @@ export default function TechStack({
         <p>{title}</p>
       </div>
       <div className="_icons">
-        <Baguette
-          crumbs={icons}
-          _type="icon"
-          frameProps={{
-            iconSize: "66%",
-            frameSize: 45,
-            border: true,
-            borderSize: 2,
-          }}
-        />
+        <Baguette crumbs={icons} _type="icon" frameSize={45} />
       </div>
       <style jsx>{`
         ._card {

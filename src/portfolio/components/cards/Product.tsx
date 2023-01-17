@@ -29,16 +29,15 @@ export default function Product({
       parent = parent.parentElement;
     }
 
-    let animateElements: NodeListOf<SVGAnimateElement> = (
+    let animateElement: SVGAnimateElement = (
       parent.querySelector("#card_svg") as HTMLObjectElement
-    ).contentDocument.querySelectorAll(animationStage);
-    for (let element of Array.from(animateElements)) {
-      element.beginElement();
-    }
+    ).contentDocument.querySelector(animationStage);
+    animateElement.beginElement();
+    // for (let element of Array.from(animateElements)) {
+    // }
     setActive((prevState) => !prevState);
   };
 
-  const _name = "product." + (active ? "active" : "inactive");
   const buttons = new Map([
     ["info", { clickHandler: flipHandler }],
     ["github", { clickHandler: linkHandler(links["code"]) }],

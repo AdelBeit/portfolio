@@ -14,7 +14,6 @@ export default function Education({
   width = 0,
 }: EducationProps) {
   const _name = "education";
-  const buttons = [];
   const initialWidth = 352;
   const initialHeight = 252;
   const height = scale(initialHeight, initialWidth, width);

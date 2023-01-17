@@ -52,9 +52,6 @@ export default function Baguette<T extends ButtonOrIcon>(
           width: fit-content;
           top: 0;
           right: 0;
-           {
-            /* left: 85%; */
-          }
           margin: 10px auto;
         }
       `}</style>

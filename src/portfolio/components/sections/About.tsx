@@ -8,6 +8,7 @@ import BlogPostCard from "../cards/BlogPost";
 import { linkHandler } from "../../lib/linkHandler";
 import Baguette from "../Baguette";
 import Frame from "../IconFrame";
+import { LINKS } from "../../../../public/data";
 
 export default function About() {
   const links = { code: "", demo: "" };
@@ -29,9 +30,10 @@ export default function About() {
       {/* <TechStackCard width={352} /> */}
       {/* <TechStackCard width={352} /> */}
       {/* <ExperienceCard width={352} /> */}
-      {/* <ProductCard links={links} width={352} /> */}
-      {/* <ProductCard links={links} width={352} /> */}
-      <BlogPostCard width={379} />
+      <ProductCard links={links} width={352} />
+      <ProductCard links={links} width={352} />
+      {/* <BlogPostCard width={379} /> */}
+      {/* <AboutCard links={LINKS.ABOUTLINKS} width={379} /> */}
       <style jsx>{`
         ._section {
           height: 100%;

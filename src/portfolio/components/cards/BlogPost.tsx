@@ -1,23 +1,20 @@
 import React from "react";
 import { scale } from "../../lib/scale";
 import Baguette from "../Baguette";
-import Frame from "../IconFrame";
 
-interface AboutProps {
-  title?: string;
-  description?: string;
+interface PostProps {
+  content?: string;
   width: number;
 }
 
 export default function About({
-  title = "title",
-  description = "description",
+  content = "post title",
   width = 0,
-}: AboutProps) {
+}: PostProps) {
   const _name = "blog_post";
   const buttons = new Map([["info", { clickHandler: () => {} }]]);
-  const initialWidth = 379;
-  const initialHeight = 720;
+  const initialWidth = 357;
+  const initialHeight = 325;
   const height = scale(initialHeight, initialWidth, width);
 
   const scalingFactor = width / initialWidth;
@@ -32,14 +29,11 @@ export default function About({
           y="0"
         ></use>
       </svg>
-      <div className="_contentBox title absolute">
-        <p>{title}</p>
+      <div className="_contentBox absolute">
+        <p>{content}</p>
       </div>
       <div className="_baguette absolute">
         <Baguette crumbs={buttons} _type="button" />
-      </div>
-      <div className="_contentBox description absolute">
-        <p>{description}</p>
       </div>
       <style jsx>{`
         ._card {
@@ -56,34 +50,17 @@ export default function About({
           z-index: 1;
           display: flex;
           justify-content: flex-start;
-        }
-
-        ._contentBox.title {
-          width: 97.5%;
-          height: ${scalingFactor * 52}px;
-          margin-top: ${scalingFactor * 5}px;
-          margin-left: ${scalingFactor * 5}px;
-          padding: 5px 15px;
-
-          align-items: center;
-        }
-
-        ._contentBox.description {
-          width: 85%;
-          height: ${scalingFactor * 630}px;
-          margin-top: ${scalingFactor * 72}px;
-          margin-left: ${scalingFactor * 5}px;
-          padding: 0px 15px;
-
           align-items: flex-start;
+
+          width: 85%;
+          height: ${scalingFactor * 280}px;
+          margin-top: ${scalingFactor * 30}px;
+          margin-left: ${scalingFactor * 8}px;
+          padding: 5px 15px;
         }
 
         ._baguette {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-          padding: 0;
-          margin-top: ${scalingFactor * 120}px;
+          margin-top: ${scalingFactor * 65}px;
           margin-left: ${scalingFactor * 319}px;
         }
       `}</style>

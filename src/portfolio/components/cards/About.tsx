@@ -1,21 +1,28 @@
 import React from "react";
+import { linkHandler } from "../../lib/linkHandler";
 import { scale } from "../../lib/scale";
 import Baguette from "../Baguette";
-import Frame from "../IconFrame";
 
 interface AboutProps {
   title?: string;
   description?: string;
   width: number;
+  links: { linkedin: string; github: string; resume: string; email: string };
 }
 
 export default function About({
   title = "title",
   description = "description",
   width = 0,
+  links,
 }: AboutProps) {
   const _name = "about";
-  const buttons = ["linkedin", "github", "resume", "email"];
+  const buttons = new Map([
+    ["linkedin", { clickHandler: linkHandler(links["linkedin"]) }],
+    ["github", { clickHandler: linkHandler(links["github"]) }],
+    ["resume", { clickHandler: linkHandler(links["resume"]) }],
+    ["email", { clickHandler: linkHandler(links["email"]) }],
+  ]);
   const initialWidth = 379;
   const initialHeight = 720;
   const height = scale(initialHeight, initialWidth, width);

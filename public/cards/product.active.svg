@@ -1,43 +1,13 @@
 <svg width="352" height="620" viewBox="0 0 352 620" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- backdrop -->
   <path d="M354,30 H0 V371 H321 l33,-28Z" fill="#33FF00">
-    <animate class="p0" attributeName="d" from="M354,30 H0 V371 H321 l33,-28Z" to="M354,30 H0 V500 H321 l33,-28Z"
-      begin="click" fill="freeze" dur="0.25s" />
-    <animate class="p1" attributeName="d" from="M354,30 H0 V500 H321 l33,-28Z" to="M354,30 H0 V371 H321 l33,-28Z"
-      begin="click" fill="freeze" dur="0.25s" />
+    <animate id="backdrop_p0" class="p0" attributeName="d" from="M354,30 H0 V371 H321 l33,-28Z" to="M354,30 H0 V500 H321 l33,-28Z"
+      begin="hidden_trigger.click" fill="freeze" dur="0.25s" />
+    <animate id="backdrop_p1" class="p1" attributeName="d" from="M354,30 H0 V500 H321 l33,-28Z" to="M354,30 H0 V371 H321 l33,-28Z"
+      begin="hidden_trigger.click" fill="freeze" dur="0.25s" />
   </path>
   <!-- dots -->
-  <!-- <rect x="129" y="60" width="5" height="5" fill="#282828" />
-  <rect x="150" y="60" width="5" height="5" fill="#282828" />
-  <rect x="140" y="60" width="5" height="5" fill="#282828" />
-  <rect x="172" y="60" width="5" height="5" fill="#282828" />
-  <rect x="183" y="60" width="5" height="5" fill="#282828" />
-  <rect x="193" y="60" width="5" height="5" fill="#282828" />
-  <rect x="216" y="60" width="5" height="5" fill="#282828" />
-  <rect x="236" y="60" width="5" height="5" fill="#282828" />
-  <rect x="226" y="60" width="5" height="5" fill="#282828" />
-  <rect x="269" y="60" width="5" height="5" fill="#282828" />
-  <rect x="258" y="60" width="5" height="5" fill="#282828" />
-  <rect x="293" y="60" width="5" height="5" fill="#282828" />
-  <rect x="303" y="60" width="5" height="5" fill="#282828" />
-  <rect x="315" y="60" width="5" height="5" fill="#282828" />
-  <rect x="117" y="70" width="5" height="5" fill="#282828" />
-  <rect x="150" y="70" width="5" height="5" fill="#282828" />
-  <rect x="162" y="70" width="5" height="5" fill="#282828" />
-  <rect x="172" y="70" width="5" height="5" fill="#282828" />
-  <rect x="183" y="70" width="5" height="5" fill="#282828" />
-  <rect x="193" y="70" width="5" height="5" fill="#282828" />
-  <rect x="203" y="70" width="5" height="5" fill="#282828" />
-  <rect x="236" y="70" width="5" height="5" fill="#282828" />
-  <rect x="248" y="70" width="5" height="5" fill="#282828" />
-  <rect x="269" y="70" width="5" height="5" fill="#282828" />
-  <rect x="269" y="70" width="5" height="5" fill="#282828" />
-  <rect x="279" y="70" width="5" height="5" fill="#282828" />
-  <rect x="302" y="70" width="5" height="5" fill="#282828" />
-  <rect x="315" y="70" width="5" height="5" fill="#282828" />
-  <rect x="325" y="70" width="5" height="5" fill="#282828" />
-  <rect x="336" y="70" width="5" height="5" fill="#282828" /> -->
-  <rect x="117" y="60" width="5" height="5" fill="#282828"/>
+  <rect id="hidden_trigger" x="117" y="60" width="5" height="5" fill="#282828"/>
   <rect x="138" y="60" width="5" height="5" fill="#282828"/>
   <rect x="128" y="60" width="5" height="5" fill="#282828"/>
   <rect x="160" y="60" width="5" height="5" fill="#282828"/>
@@ -71,21 +41,21 @@
   <!--   body -->
   <path d="M344,27 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" fill="#282828" stroke="#33FF00" stroke-width="4">
     <animate class="p0" attributeName="d" from="M344,27 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z"
-      to="M344,404 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" begin="click" fill="freeze" dur="0.25s" />
+      to="M344,404 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" begin="backdrop_p0.begin" fill="freeze" dur="0.25s" />
     <animate class="p1" attributeName="d" from="M344,404 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z"
-      to="M344,27 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" begin="click" fill="freeze" dur="0.25s" />
+      to="M344,27 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" begin="backdrop_p1.begin" fill="freeze" dur="0.25s" />
   </path>
   <!--   title head -->
   <path d="M354,8 L344,0 H12 L0,12 V74 h254 l18,-20 H354Z" fill="#33FF00">
     <animate class="p0" attributeName="d" from="M354,8 L344,0 H12 L0,12 V74 h254 l18,-20 H354Z"
-      to="M354,8 L344,0 H12 L0,12 V74 h90 l18,-20 H354Z" begin="click" fill="freeze" dur="0.25s" />
+      to="M354,8 L344,0 H12 L0,12 V74 h90 l18,-20 H354Z" begin="backdrop_p0.begin" fill="freeze" dur="0.25s" />
     <animate class="p1" attributeName="d" from="M354,8 L344,0 H12 L0,12 V74 h90 l18,-20 H354Z"
-      to="M354,8 L344,0 H12 L0,12 V74 h254 l18,-20 H354Z" begin="click" fill="freeze" dur="0.25s" />
+      to="M354,8 L344,0 H12 L0,12 V74 h254 l18,-20 H354Z" begin="backdrop_p1.begin" fill="freeze" dur="0.25s" />
   </path>
   <path d="M0,74 h254 l18,-20 H354" stroke="#282828" stroke-width="2">
-    <animate class="p0" attributeName="d" from="M0,74 h254 l18,-20 H354" to="M0,74 h90 l18,-20 H354" begin="click"
+    <animate class="p0" attributeName="d" from="M0,74 h254 l18,-20 H354" to="M0,74 h90 l18,-20 H354" begin="backdrop_p0.begin"
       fill="freeze" dur="0.25s" />
-    <animate class="p1" attributeName="d" from="M0,74 h90 l18,-20 H354" to="M0,74 h254 l18,-20 H354" begin="click"
+    <animate class="p1" attributeName="d" from="M0,74 h90 l18,-20 H354" to="M0,74 h254 l18,-20 H354" begin="backdrop_p1.begin"
       fill="freeze" dur="0.25s" />
   </path>
 </svg>
