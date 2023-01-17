@@ -5,36 +5,59 @@ import Frame, {
   IconFrameProps,
 } from "./IconFrame";
 
-type BaguetteProps<T extends ButtonOrIcon, K extends keyof T> =
-  | ({ crumbs: K["icon"][] } & IconFrameProps)
+type BaguetteProps<T extends ButtonOrIcon> =
+  | ({ crumbs: T["icon"][] } & Omit<IconFrameProps, "icon">)
   | ({
-      crumbs: {
-        [key: ButtonFrameProps["icon"]]: Pick<ButtonFrameProps, "clickHandler">;
-      };
-    } & ButtonFrameProps);
+      crumbs: Map<
+        ButtonFrameProps["icon"],
+        Pick<ButtonFrameProps, "clickHandler">
+      >;
+    } & Omit<ButtonFrameProps, "clickHandler" | "icon">);
 
-export default function Baguette(props: BaguetteProps) {
-  if (props["_type"] == "button") {
+export default function Baguette<T extends ButtonOrIcon>(
+  props: BaguetteProps<T>
+) {
+  let content;
+  if (props["_type"] === "button") {
     return (
       <>
-        {Object.keys(props.crumbs).map((crumbKey, _index) => {
+        {Array.from(props.crumbs.keys()).map((crumbKey, _index) => (
           <Frame
+            {...props}
             key={_index}
             icon={crumbKey}
             _type={props._type}
-            clickHandler={props.crumbs[crumbKey].clickHandler}
-            {...props}
-          />;
-        })}
+            clickHandler={props.crumbs.get(crumbKey).clickHandler}
+          />
+        ))}
       </>
     );
   }
 
+  if (props["_type"] === "icon")
+    return (
+      <>
+        {props.crumbs.map((crumb, _index) => (
+          <Frame {...props} key={_index} icon={crumb} _type={props._type} />
+        ))}
+      </>
+    );
+
   return (
-    <>
-      {props.crumbs.map((crumb, _index) => (
-        <Frame key={_index} icon={crumb} _type={props._type} {...props} />
-      ))}
-    </>
+    <div className="_container fixed outline">
+      {content}
+      <style jsx>{`
+        ._container {
+          height: 98vh;
+          width: fit-content;
+          top: 0;
+          right: 0;
+           {
+            /* left: 85%; */
+          }
+          margin: 10px auto;
+        }
+      `}</style>
+    </div>
   );
 }

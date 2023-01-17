@@ -75,7 +75,9 @@ function IconFrame({
           border: solid ${border ? borderSize : 0}px var(--green);
         }
       `}</style>
-      <style jsx>{staticStyles["_frame.overlay"]}</style>
+      <style jsx>{`
+        ${staticStyles["_frame.overlay"]}
+      `}</style>
     </div>
   );
 }
@@ -83,7 +85,7 @@ function IconFrame({
 export interface ButtonFrameProps extends BaseFrameProps {
   _type: "button";
   shadow?: boolean;
-  clickHandler: () => void;
+  clickHandler: (e: any) => void;
 }
 
 function ButtonFrame({
@@ -91,13 +93,16 @@ function ButtonFrame({
   icon,
   frameSize = 60,
   shadow = false,
-  clickHandler = () => {},
+  clickHandler,
 }: ButtonFrameProps) {
   const color = "amber";
   const iconSize = "60%";
 
   return (
-    <div className="_container relative" onClick={clickHandler}>
+    <div
+      className="_container relative"
+      onClick={(e) => clickHandler.call(null, e)}
+    >
       {!!shadow && <div className={"_frame underlay absolute"}></div>}
       <div className="_frame overlay absolute">
         <Icon {...{ icon, color, size: iconSize }} />
@@ -136,7 +141,9 @@ function ButtonFrame({
           border: solid 1px var(--${color});
         }
       `}</style>
-      <style jsx>{staticStyles["_frame.overlay"]}</style>
+      <style jsx>{`
+        ${staticStyles["_frame.overlay"]}
+      `}</style>
     </div>
   );
 }
@@ -159,20 +166,6 @@ export default function Frame(props: ButtonOrIcon) {
   }
 
   return <div></div>;
-}
-
-export function Content(props) {
-  let p = {
-    icon: "github",
-    frameSize: 30,
-    border: true,
-    borderSize: 2,
-  } as IconFrameProps;
-  return (
-    <div>
-      <Frame {...p} _type="icon" />
-    </div>
-  );
 }
 
 const staticStyles = {

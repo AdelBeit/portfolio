@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { linkHandler } from "../../lib/linkHandler";
 import { scale } from "../../lib/scale";
 import Baguette from "../Baguette";
-import Frame from "../IconFrame";
 
 interface ProductProps {
   title?: string;
   description?: string[];
   width: number;
+  links: { code: string; demo: string };
 }
 
 export default function Product({
@@ -16,16 +17,34 @@ export default function Product({
     "m has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a",
     "m has been the industry's standard dummy text eveecimen book. It has survived not only five centuri",
   ],
+  links,
   width = 0,
 }: ProductProps) {
   const [active, setActive] = useState(false);
 
-  const clickHandler = (e: React.MouseEvent<HTMLElement>) => {
+  const flipHandler = (e: React.MouseEvent<HTMLElement>) => {
+    let animationStage = active ? ".p1" : ".p0";
+    let parent = (e.target as HTMLElement).parentElement;
+    while (!parent.classList.contains("_card")) {
+      parent = parent.parentElement;
+    }
+
+    let animateElements: NodeListOf<SVGAnimateElement> = (
+      parent.querySelector("#card_svg") as HTMLObjectElement
+    ).contentDocument.querySelectorAll(animationStage);
+    for (let element of Array.from(animateElements)) {
+      element.beginElement();
+    }
     setActive((prevState) => !prevState);
   };
 
   const _name = "product." + (active ? "active" : "inactive");
-  const buttons = ["info", "github", "link"];
+  const buttons = new Map([
+    ["info", { clickHandler: flipHandler }],
+    ["github", { clickHandler: linkHandler(links["code"]) }],
+    ["demo", { clickHandler: linkHandler(links["demo"]) }],
+  ]);
+
   const techStack = [
     "github",
     "node",
@@ -36,22 +55,21 @@ export default function Product({
     "docker",
     "node",
   ];
+
   const initialWidth = 352;
-  const initialHeight = 605;
+  const initialHeight = 620;
   const height = scale(initialHeight, initialWidth, width);
 
   const scalingFactor = width / initialWidth;
 
   return (
     <div className="_card relative" style={{ width: width, height: height }}>
-      <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
-        <use
-          href={`./svg stores/cards.svg#${_name}`}
-          xlinkHref={`./svg stores/cards.svg#${_name}`}
-          x="0"
-          y="0"
-        ></use>
-      </svg>
+      <object
+        className="_svg absolute"
+        id="card_svg"
+        data={"./cards/product.active.svg"}
+        type="image/svg+xml"
+      ></object>
       <div className="_contentBox title absolute">
         <p>{title}</p>
       </div>
@@ -59,16 +77,7 @@ export default function Product({
         <Baguette crumbs={buttons} _type="button" />
       </div>
       <div className="_baguette tech_stack absolute">
-        <Baguette
-          crumbs={techStack}
-          _type="icon"
-          frameProps={{
-            iconSize: "66%",
-            frameSize: 30,
-            border: true,
-            borderSize: 2,
-          }}
-        />
+        <Baguette crumbs={techStack} _type="icon" />
       </div>
       <div className="_contentBox description absolute">
         <ul>

@@ -66,47 +66,29 @@
 <path d="M336 100L336 486.897L300.998 517H8.86128L2 506.34V100H336Z" fill="#282828" stroke="#33FF00" stroke-width="4"/>
 </symbol>
 
-<symbol id="product.active" viewBox="0 0 356 624" fill="none">
-<path d="M354 48H2V440.466L12.5 461.855H321.256L354 434V48Z" fill="#33FF00"/>
-<path d="M101 69.2H101.42L101.714 68.9002L117.309 53H354H355V52V9.47692V9.06838L354.714 8.77671L347.381 1.29978L347.087 1H346.667H11.7778H11.3579L11.0638 1.29978L1.28607 11.269L1 11.5607V11.9692V68.2V69.2H2H101Z" fill="#33FF00" stroke="#282828" stroke-width="2"/>
-<path d="M344.897 378.5H231.61L207.764 399.814H4.02344V609.82L11.8596 622H308.328L344.897 590.536V378.5Z" fill="#282828" stroke="#33FF00" stroke-width="4"/>
-<rect x="184.07" y="70" width="5.05747" height="5" fill="#282828"/>
-<rect x="270.047" y="70" width="5.05747" height="5" fill="#282828"/>
-<rect x="336.805" y="70" width="5.05747" height="5" fill="#282828"/>
-<rect x="270.047" y="59" width="5.05747" height="5" fill="#282828"/>
-<rect x="184.07" y="59" width="5.05747" height="5" fill="#282828"/>
-<rect x="216.438" y="59" width="5.05747" height="5" fill="#282828"/>
-<rect x="204.297" y="70" width="5.05747" height="5" fill="#282828"/>
-<rect x="130.461" y="59" width="5.05747" height="5" fill="#282828"/>
-<rect x="258.922" y="59" width="5.05747" height="5" fill="#282828"/>
-<rect x="118.32" y="70" width="5.05747" height="5" fill="#282828"/>
-<rect x="236.664" y="70" width="5.05747" height="5" fill="#282828"/>
-<rect x="236.664" y="59" width="5.05747" height="5" fill="#282828"/>
-<rect x="172.938" y="70" width="5.05747" height="5" fill="#282828"/>
-<rect x="226.547" y="59" width="5.05747" height="5" fill="#282828"/>
-<rect x="325.68" y="70" width="5.05747" height="5" fill="#282828"/>
-<rect x="280.156" y="70" width="5.05747" height="5" fill="#282828"/>
-<rect x="172.938" y="59" width="5.05747" height="5" fill="#282828"/>
-<rect x="315.562" y="59" width="5.05747" height="5" fill="#282828"/>
-<rect x="248.805" y="70" width="5.05747" height="5" fill="#282828"/>
-<rect x="150.688" y="70" width="5.05747" height="5" fill="#282828"/>
-<rect x="303.422" y="70" width="5.05747" height="5" fill="#282828"/>
-<rect x="150.688" y="59" width="5.05747" height="5" fill="#282828"/>
-<rect x="303.422" y="59" width="5.05747" height="5" fill="#282828"/>
-<rect x="140.57" y="59" width="5.05747" height="5" fill="#282828"/>
-<rect x="293.312" y="59" width="5.05747" height="5" fill="#282828"/>
-<rect x="194.18" y="70" width="5.05747" height="5" fill="#282828"/>
-<rect x="194.18" y="59" width="5.05747" height="5" fill="#282828"/>
-<rect x="162.828" y="70" width="5.05747" height="5" fill="#282828"/>
-<rect x="315.562" y="70" width="5.05747" height="5" fill="#282828"/>
+<symbol id="product.active" viewBox="0 0 352 620" fill="none">
+ <path d="M354,30 H0 V371 H321 l33,-28Z" fill="#33FF00">
+ <animate class="p0" attributeName="d" from="M354,30 H0 V371 H321 l33,-28Z" to="M354,30 H0 V500 H321 l33,-28Z" begin="click" fill="freeze" dur="0.25s" />
+ <animate class="p1" attributeName="d" from="M354,30 H0 V500 H321 l33,-28Z" to="M354,30 H0 V371 H321 l33,-28Z" begin="click" fill="freeze" dur="0.25s" />
+ </path>
+ <path d="M344,27 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" fill="#282828" stroke="#33FF00" stroke-width="4">
+ <animate class="p0" attributeName="d" from="M344,27 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" to="M344,404 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" begin="click" fill="freeze" dur="0.25s" />
+ <animate class="p1" attributeName="d" from="M344,404 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" to="M344,27 H260 l-18,20 H2 V608 L10,618 H308 L344,586Z" begin="click" fill="freeze" dur="0.25s" />
+ </path>
+ <path d="M354,8 L344,0 H12 L0,12 V74 h254 l18,-20 H354Z" fill="#33FF00">
+ <animate class="p0" attributeName="d" from="M354,8 L344,0 H12 L0,12 V74 h254 l18,-20 H354Z" to="M354,8 L344,0 H12 L0,12 V74 h90 l18,-20 H354Z" begin="click" fill="freeze" dur="0.25s" />
+ <animate class="p1" attributeName="d" from="M354,8 L344,0 H12 L0,12 V74 h90 l18,-20 H354Z" to="M354,8 L344,0 H12 L0,12 V74 h254 l18,-20 H354Z" begin="click" fill="freeze" dur="0.25s" />
+ </path>
+ <path d="M0,74 h254 l18,-20 H354" stroke="#282828" stroke-width="2">
+ <animate class="p0" attributeName="d" from="M0,74 h254 l18,-20 H354" to="M0,74 h90 l18,-20 H354" begin="click" fill="freeze" dur="0.25s" />
+ <animate class="p1" attributeName="d" from="M0,74 h90 l18,-20 H354" to="M0,74 h254 l18,-20 H354" begin="click" fill="freeze" dur="0.25s" />
+ </path>
 </symbol>
 
 <symbol id="product.inactive" viewBox="0 0 356 609" fill="none">
-<g id="vectors">
 <path id="backdrop" d="M354 33H2V349.611L12.5 371H321.256L354 343.145V33Z" fill="#33FF00"/>
 <path id="body" d="M344.897 27H231.61L207.764 48H4.02344V595L11.8596 607H308.328L344.897 576V27Z" fill="#282828" stroke="#33FF00" stroke-width="4"/>
 <path id="title box" d="M252.851 74H253.312L253.611 73.6489L271.224 53H354H355V52V9.47692V9.06838L354.714 8.77671L347.381 1.29978L347.087 1H346.667H11.7778H11.3579L11.0639 1.29978L1.28607 11.269L1 11.5607V11.9692V73V74H2H252.851Z" fill="#33FF00" stroke="#282828" stroke-width="2"/>
-</g>
 </symbol>
 
 <symbol id="tech_stack" viewBox="0 0 352 466" fill="none">

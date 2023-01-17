@@ -14,8 +14,8 @@ export default function About({
   description = "description",
   width = 0,
 }: AboutProps) {
-  const _name = "about";
-  const buttons = ["linkedin", "github", "resume", "email"];
+  const _name = "blog_post";
+  const buttons = new Map([["info", { clickHandler: () => {} }]]);
   const initialWidth = 379;
   const initialHeight = 720;
   const height = scale(initialHeight, initialWidth, width);
