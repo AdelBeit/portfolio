@@ -13,15 +13,16 @@ export default function NavBaguette() {
     "node",
   ];
   return (
-    <div className="_container fixed outline">
+    <div id="nav_bar" className="_container fixed outline">
       <Baguette crumbs={techStack} _type="icon" />
       <style jsx>{`
         ._container {
           height: 98vh;
           width: fit-content;
           top: 0;
+          bottom: 0;
           right: 0;
-          left: 85%;
+          left: auto;
           margin: 10px auto;
 
           display: flex;
@@ -33,6 +34,11 @@ export default function NavBaguette() {
           ._container {
             flex-direction: row;
             height: fit-content;
+
+            top: auto;
+            bottom: 0;
+            right: 0;
+            left: 0;
           }
         }
       `}</style>

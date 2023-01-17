@@ -1,9 +1,5 @@
 import React from "react";
-import Frame, {
-  ButtonFrameProps,
-  ButtonOrIcon,
-  IconFrameProps,
-} from "./IconFrame";
+import Frame, { ButtonFrameProps, ButtonOrIcon, IconFrameProps } from "./Frame";
 
 type BaguetteProps<T extends ButtonOrIcon> =
   | ({ crumbs: T["icon"][] } & Omit<IconFrameProps, "icon">)

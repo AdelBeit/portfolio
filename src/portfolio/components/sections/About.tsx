@@ -7,7 +7,7 @@ import ProductCard from "../cards/Product";
 import BlogPostCard from "../cards/BlogPost";
 import { linkHandler } from "../../lib/linkHandler";
 import Baguette from "../Baguette";
-import Frame from "../IconFrame";
+import Frame from "../Frame";
 import { LINKS } from "../../../../public/data";
 
 export default function About() {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import About from "./components/sections/About";
 import ContentBox from "./components/ContentBox";
 import NavBox from "./components/NavBaguette";
-import Frame from "./components/IconFrame";
+import Frame from "./components/Frame";
 
 const black = "#282828";
 const green = "#33FF00";
@@ -46,17 +46,13 @@ export function App() {
         <About />
         <About />
       </ContentBox>
-      <NavBox>
-        <p>nav</p>
-      </NavBox>
+      <NavBox />
 
       <style jsx>{`
         ._container {
           height: 100%;
           overflow: scroll;
-          //   display: flex;
-          //   flex-direction: row;
-          //   justify-content: space-between;
+
           scrollbar-width: none; /* Firefox */
           -ms-overflow-style: none; /* Internet Explorer 10+ */
         }
@@ -64,13 +60,6 @@ export function App() {
           /* WebKit */
           width: 0;
           height: 0;
-        }
-
-        @media only screen and (max-width: 780px) {
-          ._container {
-            flex-direction: row;
-            height: fit-content;
-          }
         }
       `}</style>
     </div>

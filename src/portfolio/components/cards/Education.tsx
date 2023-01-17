@@ -1,6 +1,6 @@
 import React from "react";
 import { scale } from "../../lib/scale";
-import Frame from "../IconFrame";
+import Frame from "../Frame";
 
 interface EducationProps {
   title?: string;

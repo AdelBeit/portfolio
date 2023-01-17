@@ -1,4 +1,5 @@
 import React from "react";
+import { markActive } from "../lib/markActive";
 
 interface IconProps {
   icon: IconFrameProps["icon"];
@@ -101,7 +102,10 @@ function ButtonFrame({
   return (
     <div
       className="_container relative"
-      onClick={(e) => clickHandler.call(null, e)}
+      onClick={(e) => {
+        markActive(e);
+        clickHandler.call(null, e);
+      }}
     >
       {!!shadow && <div className={"_frame underlay absolute"}></div>}
       <div className="_frame overlay absolute">
@@ -120,7 +124,8 @@ function ButtonFrame({
           fill: var(--${color});
         }
 
-        ._container:hover {
+        ._container:hover,
+        ._container.active {
           --hovered: ;
           fill: var(--black);
         }

@@ -1,7 +1,7 @@
 import React from "react";
 import { scale } from "../../lib/scale";
 import Baguette from "../Baguette";
-import Frame from "../IconFrame";
+import Frame from "../Frame";
 
 interface TechStackProps {
   title?: string;

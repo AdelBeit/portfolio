@@ -7,7 +7,7 @@ interface PostProps {
   width: number;
 }
 
-export default function About({
+export default function BlogPost({
   content = "post title",
   width = 0,
 }: PostProps) {
