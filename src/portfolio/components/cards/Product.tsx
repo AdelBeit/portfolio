@@ -24,17 +24,20 @@ export default function Product({
 
   const flipHandler = (e: React.MouseEvent<HTMLElement>) => {
     let animationStage = active ? ".p1" : ".p0";
-    let parent = (e.target as HTMLElement).parentElement;
-    while (!parent.classList.contains("_card")) {
-      parent = parent.parentElement;
+    let current = e.target as HTMLElement;
+    while (!current.classList.contains("_card")) {
+      current = current.parentElement;
     }
 
     let animateElement: SVGAnimateElement = (
-      parent.querySelector("#card_svg") as HTMLObjectElement
+      current.querySelector("#card_svg") as HTMLObjectElement
     ).contentDocument.querySelector(animationStage);
     animateElement.beginElement();
-    // for (let element of Array.from(animateElements)) {
-    // }
+
+    let buttonElement = current.querySelector("._button.info");
+    if (!active) buttonElement.classList.add("active");
+    else buttonElement.classList.remove("active");
+
     setActive((prevState) => !prevState);
   };
 
@@ -62,7 +65,10 @@ export default function Product({
   const scalingFactor = width / initialWidth;
 
   return (
-    <div className="_card relative" style={{ width: width, height: height }}>
+    <div
+      className="_card _product relative"
+      style={{ width: width, height: height }}
+    >
       <object
         className="_svg absolute"
         id="card_svg"
