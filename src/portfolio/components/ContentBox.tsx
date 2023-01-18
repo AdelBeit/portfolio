@@ -19,14 +19,14 @@ export default function ContentBox({ children }: ContentBoxProps) {
 
           margin: 10px;
 
-          // overflow: scroll;
-          // scrollbar-width: none; /* Firefox */
-          // -ms-overflow-style: none; /* Internet Explorer 10+ */
+          overflow: scroll;
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* Internet Explorer 10+ */
         }
         ._container::-webkit-scrollbar {
-          // /* WebKit */
-          // width: 0;
-          // height: 0;
+          /* WebKit */
+          width: 0;
+          height: 0;
         }
       `}</style>
     </div>

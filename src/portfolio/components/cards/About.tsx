@@ -1,6 +1,6 @@
 import React from "react";
-import { linkHandler } from "../../lib/linkHandler";
-import { scale } from "../../lib/scale";
+import { linkHandler } from "../../utils/linkHandler";
+import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
 
 interface AboutProps {

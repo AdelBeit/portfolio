@@ -1,5 +1,5 @@
 import React from "react";
-import { scale } from "../../lib/scale";
+import { scale } from "../../utils/scale";
 import Frame from "../Frame";
 
 interface EducationProps {

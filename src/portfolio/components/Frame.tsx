@@ -1,5 +1,5 @@
 import React from "react";
-import { markActive } from "../lib/markActive";
+import { markActive } from "../utils/markActive";
 
 interface IconProps {
   icon: IconFrameProps["icon"];

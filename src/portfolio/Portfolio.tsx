@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import About from "./components/sections/About";
 import ContentBox from "./components/ContentBox";
 import NavBox from "./components/NavBaguette";
@@ -17,6 +17,7 @@ const _styles = {
 
 export function App() {
   const [width, setWidth] = useState(379);
+  const [isLandingView, setIsLandingView] = useState(true);
 
   return (
     <div className="_container relative highlight" style={_styles}>
@@ -45,14 +46,16 @@ export function App() {
         <Frame _type="icon" icon="github" /> */}
         <About />
         <About />
+        <About />
+        <About />
       </ContentBox>
-      <NavBox />
+      <NavBox showLanding={isLandingView} />
 
       <style jsx>{`
         ._container {
           height: 100%;
           overflow: scroll;
-
+          display: flex;
           scrollbar-width: none; /* Firefox */
           -ms-overflow-style: none; /* Internet Explorer 10+ */
         }

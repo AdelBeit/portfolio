@@ -1,3 +1,1 @@
-export const LINKS = {
-  ABOUTLINKS: { linkedin: "", github: "", resume: "", email: "" },
-};
+export const ABOUTLINKS = { linkedin: "", github: "", resume: "", email: "" };

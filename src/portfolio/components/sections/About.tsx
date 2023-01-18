@@ -5,10 +5,10 @@ import TechStackCard from "../cards/TechStack";
 import ExperienceCard from "../cards/Experience";
 import ProductCard from "../cards/Product";
 import BlogPostCard from "../cards/BlogPost";
-import { linkHandler } from "../../lib/linkHandler";
+import { linkHandler } from "../../utils/linkHandler";
 import Baguette from "../Baguette";
 import Frame from "../Frame";
-import { LINKS } from "../../../../public/data";
+import { ABOUTLINKS } from "../../../../public/data";
 
 export default function About() {
   const links = { code: "", demo: "" };
@@ -33,7 +33,7 @@ export default function About() {
       <ProductCard links={links} width={352} />
       <ProductCard links={links} width={352} />
       {/* <BlogPostCard width={379} /> */}
-      {/* <AboutCard links={LINKS.ABOUTLINKS} width={379} /> */}
+      {/* <AboutCard links={ABOUTLINKS} width={379} /> */}
       <style jsx>{`
         ._section {
           height: 100%;
