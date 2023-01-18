@@ -6,20 +6,20 @@ interface ContentBoxProps {
 
 export default function ContentBox({ children }: ContentBoxProps) {
   return (
-    <div className="_container">
+    <div id="_viewbox" className="_container">
       {children}
       <style jsx>{`
         ._container {
-          height: 100%;
-          width: 82%;
+          height: 98vh;
+          width: 82vw;
 
           display: flex;
           flex-direction: column;
           gap: 50px;
 
           margin: 10px;
-
-          overflow: scroll;
+          overflow: hidden;
+          overflow-y: scroll;
           scrollbar-width: none; /* Firefox */
           -ms-overflow-style: none; /* Internet Explorer 10+ */
         }
@@ -27,6 +27,12 @@ export default function ContentBox({ children }: ContentBoxProps) {
           /* WebKit */
           width: 0;
           height: 0;
+        }
+        @media only screen and (max-width: 780px) {
+          ._container {
+            width: 90vw;
+            margin: 0;
+          }
         }
       `}</style>
     </div>

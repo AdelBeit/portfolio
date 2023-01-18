@@ -40,7 +40,7 @@ export default function Baguette<T extends ButtonOrIcon>(
     );
 
   return (
-    <div className="_container fixed outline">
+    <div className="_container fixed">
       {content}
       <style jsx>{`
         ._container {

@@ -1,12 +1,12 @@
-export function markActive(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-   let current = e.target as HTMLDivElement;
+export function markActive(e: MouseEvent) {
+   let current = e.target as HTMLElement;
+
+   if (current.id.includes('_navbar')) return false;
+
+   while (!current.classList.contains('_button')) {
+      current = current.parentElement;
+   }
    let parent = current.parentElement;
-   while (parent.id !== "nav_bar") {
-      parent = parent.parentElement;
-   }
-   let activeElements = parent.querySelectorAll('._container.active');
-   for (let element of Array.from(activeElements)) {
-      element.classList.remove('active');
-   }
+   parent.querySelector('._button.active')?.classList.remove('active');
    current.classList.add('active');
 }

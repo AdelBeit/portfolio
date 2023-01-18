@@ -1,8 +1,9 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import About from "./components/sections/About";
 import ContentBox from "./components/ContentBox";
 import NavBox from "./components/NavBaguette";
 import Frame from "./components/Frame";
+import { markActive } from "./utils/markActive";
 
 const black = "#282828";
 const green = "#33FF00";
@@ -19,31 +20,28 @@ export function App() {
   const [width, setWidth] = useState(379);
   const [isLandingView, setIsLandingView] = useState(true);
 
+  // TODO: handle scroll on touch devices
+  const handleScroll = (e) => {
+    e.preventDefault();
+    document.querySelector("#_viewbox").scrollBy(0, e.deltaY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("wheel", handleScroll, { passive: false });
+
+    document.querySelector("#_navbar").addEventListener("click", markActive);
+
+    return () => {
+      window.removeEventListener("wheel", handleScroll);
+      document
+        .querySelector("#_navbar")
+        .removeEventListener("click", markActive);
+    };
+  }, []);
+
   return (
-    <div className="_container relative highlight" style={_styles}>
-      {/* <input
-         className="inline-block"
-         id="width"
-         type="range"
-         min="379"
-         max="1000"
-         value={width}
-         onChange={(e) => setWidth(parseInt(e.target.value))}
-       />
-       <p className="inline-block">w: {width}</p> */}
-      {/* <About width={width} /> */}
+    <div className="_container relative" style={_styles}>
       <ContentBox>
-        {/* <p> buttons </p>
-        <br />
-        <Frame _type="button" icon="github" />
-        <br />
-        <Frame _type="button" shadow={true} icon="github" />
-        <br />
-        <p> icons </p>
-        <br />
-        <Frame _type="icon" border={false} icon="github" />
-        <br />
-        <Frame _type="icon" icon="github" /> */}
         <About />
         <About />
         <About />
@@ -54,8 +52,10 @@ export function App() {
       <style jsx>{`
         ._container {
           height: 100%;
-          overflow: scroll;
+
+          overflow: hidden;
           display: flex;
+          justify-content: space-between;
           scrollbar-width: none; /* Firefox */
           -ms-overflow-style: none; /* Internet Explorer 10+ */
         }
@@ -63,6 +63,12 @@ export function App() {
           /* WebKit */
           width: 0;
           height: 0;
+        }
+        @media only screen and (max-width: 780px) {
+          ._container {
+            flex-direction: column;
+            align-items: center;
+          }
         }
       `}</style>
     </div>

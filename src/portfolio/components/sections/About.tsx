@@ -36,7 +36,6 @@ export default function About() {
       {/* <AboutCard links={ABOUTLINKS} width={379} /> */}
       <style jsx>{`
         ._section {
-          height: 100%;
           height: fit-content;
           width: 100%;
           display: flex;

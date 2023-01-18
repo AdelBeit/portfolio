@@ -1,5 +1,4 @@
 import React from "react";
-import { markActive } from "../utils/markActive";
 
 interface IconProps {
   icon: IconFrameProps["icon"];
@@ -101,9 +100,8 @@ function ButtonFrame({
 
   return (
     <div
-      className="_container relative"
+      className={`_container _button ${icon} relative`}
       onClick={(e) => {
-        markActive(e);
         clickHandler.call(null, e);
       }}
     >
@@ -125,7 +123,7 @@ function ButtonFrame({
         }
 
         ._container:hover,
-        ._container.active {
+        ._container._button.active {
           --hovered: ;
           fill: var(--black);
         }
@@ -154,12 +152,6 @@ function ButtonFrame({
 }
 
 export type ButtonOrIcon = ButtonFrameProps | IconFrameProps;
-
-// export type FrameProps<P extends ButtonOrIcon> = P["_type"] extends "button"
-//   ? ButtonFrameProps
-//   : P["_type"] extends "icon"
-//   ? IconFrameProps
-//   : never;
 
 export default function Frame(props: ButtonOrIcon) {
   if (props["_type"] === "icon") {

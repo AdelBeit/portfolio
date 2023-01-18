@@ -44,38 +44,25 @@ export default function NavBaguette({ showLanding }: NavProps) {
     ]);
 
   return (
-    <div id="nav_bar" className="_container outline">
+    <div id="_navbar" className="_container">
       <Baguette crumbs={buttons} shadow={true} _type="button" />
       <style jsx>{`
         ._container {
-          height: fit-content;
-          width: fit-content;
-           {
-            /* top: 0;
-          bottom: 0;
-          right: 0;
-          left: 83vw; */
-          }
-           {
-            /* margin: 2% 0; */
-          }
+          height: 80%;
+          margin-top: 30px;
+          flex-basis: 13%;
 
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          gap: ;
+          align-items: flex-start;
         }
         @media only screen and (max-width: 780px) {
           ._container {
             flex-direction: row;
             height: fit-content;
-
-             {
-              /* top: auto;
-            bottom: 0;
-            right: 0;
-            left: 0; */
-            }
+            width: 80%;
+            margin: 10px 0;
           }
         }
       `}</style>
