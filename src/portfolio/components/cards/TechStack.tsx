@@ -1,7 +1,6 @@
 import React from "react";
 import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
-import Frame from "../Frame";
 
 interface TechStackProps {
   title?: string;
@@ -46,7 +45,7 @@ export default function TechStack({
   const scalingFactor = width / initialWidth;
 
   return (
-    <div className="_card relative" style={{ width: width, height: height }}>
+    <div className="_card relative " style={{ width: width, height: height }}>
       <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
         <use
           href={`./svg stores/cards.svg#${_name}`}
@@ -65,11 +64,6 @@ export default function TechStack({
         ._card {
           width: ${width}px;
           height: ${height}px;
-        }
-
-        ._svg {
-          height: 100%;
-          width: 100%;
         }
 
         ._contentBox {

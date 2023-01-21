@@ -49,17 +49,12 @@ export default function Education({
           height: ${height}px;
         }
 
-        ._svg {
-          height: 100%;
-          width: 100%;
-         }
-         
-         ._svg.logo{
-         height: 40%;
-         width: 40%;
+        ._svg.logo {
+          height: 40%;
+          width: 40%;
 
-         margin-top: ${scalingFactor * 110}px;
-         margin-left: ${scalingFactor * 5}px;
+          margin-top: ${scalingFactor * 110}px;
+          margin-left: ${scalingFactor * 5}px;
         }
 
         ._contentBox {
@@ -75,10 +70,10 @@ export default function Education({
           margin-top: ${scalingFactor * 5}px;
           margin-left: ${scalingFactor * 5}px;
           padding: 5px 15px;
-          
+
           align-items: center;
-          
-          color: var(--black);          
+
+          color: var(--black);
         }
 
         ._contentBox.description {
@@ -89,7 +84,8 @@ export default function Education({
           padding: 0px;
 
           align-items: flex-start;
-        `}</style>
+        }
+      `}</style>
     </div>
   );
 }

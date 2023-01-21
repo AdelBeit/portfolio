@@ -2,45 +2,55 @@ import React from "react";
 import AboutCard from "../cards/About";
 import EducationCard from "../cards/Education";
 import TechStackCard from "../cards/TechStack";
-import ExperienceCard from "../cards/Experience";
-import ProductCard from "../cards/Product";
-import BlogPostCard from "../cards/BlogPost";
-import { linkHandler } from "../../utils/linkHandler";
-import Baguette from "../Baguette";
-import Frame from "../Frame";
 import { ABOUTLINKS } from "../../../../public/data";
 
 export default function About() {
-  const links = { code: "", demo: "" };
-  const buttons = new Map([
-    ["info", { clickHandler: linkHandler("") }],
-    ["github", { clickHandler: linkHandler("") }],
-    ["demo", { clickHandler: linkHandler("") }],
-  ]);
+  let width = 379;
 
   return (
-    <div className="_section">
-      {/* <Frame
-        icon={"github"}
-        _type={"button"}
-        clickHandler={buttons.get("info").clickHandler}
-      /> */}
-      {/* <Baguette _type="button" crumbs={buttons} /> */}
-      {/* <EducationCard width={352} /> */}
-      {/* <TechStackCard width={352} /> */}
-      {/* <TechStackCard width={352} /> */}
-      {/* <ExperienceCard width={352} /> */}
-      <ProductCard links={links} width={352} />
-      <ProductCard links={links} width={352} />
-      {/* <BlogPostCard width={379} /> */}
-      {/* <AboutCard links={ABOUTLINKS} width={379} /> */}
-      <style jsx>{`
+    <div className="_section" id="_about">
+      <AboutCard links={ABOUTLINKS} width={width} />
+      <div className="_container">
+        <EducationCard width={width} />
+        <TechStackCard width={width} />
+      </div>
+      <style jsx global>{`
         ._section {
           height: fit-content;
           width: 100%;
           display: flex;
           justify-content: space-around;
           gap: 20px;
+          flex-wrap: wrap;
+          padding: 10px;
+          scroll-snap-type: y none;
+          scroll-padding-top: 140px;
+          scroll-margin-top: 140px;
+          scroll-snap-align: center;
+        }
+
+        ._section:first-child {
+          margin-top: 25px;
+        }
+        ._section:last-child {
+          margin-bottom: 50px;
+        }
+
+        ._section ._card {
+          flex: 0 0 auto;
+        }
+      `}</style>
+
+      <style jsx>{`
+        ._container {
+          width: width;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        ._section {
+          align-items: center;
         }
       `}</style>
     </div>

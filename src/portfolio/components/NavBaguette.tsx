@@ -8,29 +8,38 @@ interface NavProps {
 }
 
 export default function NavBaguette({ showLanding }: NavProps) {
-  const [playMusic, setPlayMusic] = useState(true);
+  const [playMusic, setPlayMusic] = useState(false);
+
   function musicToggle() {
+    const musicElement = document.querySelector("#music") as SVGSymbolElement;
+    const animationElements = musicElement.querySelectorAll(
+      ".p0"
+    ) as NodeListOf<SVGAnimateElement>;
+    for (let element of Array.from(animationElements)) {
+      if (playMusic) element.beginElementAt(0);
+      else element.endElementAt(0);
+    }
+
     setPlayMusic((prev) => !prev);
   }
 
-  function scrollTo(eID: string) {
+  function scrollTo(eID: string, { yOffset = -20 } = {}) {
     return () => {
       const element = document.querySelector(`#${eID}`);
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest",
-      });
+      const viewBox = document.querySelector("#_viewbox");
+      const top =
+        element.getBoundingClientRect().top + viewBox.scrollTop + yOffset;
+      viewBox.scrollTo({ top: top, behavior: "smooth" });
     };
   }
 
   let buttons = new Map([
     ["music", { clickHandler: musicToggle }],
-    ["about", { clickHandler: scrollTo("_about") }],
-    ["products", { clickHandler: scrollTo("_products") }],
-    ["blog", { clickHandler: scrollTo("_blog") }],
+    ["info", { clickHandler: scrollTo("_about") }],
+    ["products", { clickHandler: scrollTo("_product") }],
+    ["blogpost", { clickHandler: scrollTo("_blogpost") }],
     ["experience", { clickHandler: scrollTo("_experience") }],
-    ["scrollUp", { clickHandler: scrollTo("_landing") }],
+    ["arrowup", { clickHandler: scrollTo("_landing") }],
   ]);
 
   if (showLanding)
@@ -40,7 +49,7 @@ export default function NavBaguette({ showLanding }: NavProps) {
       ["linkedin", { clickHandler: linkHandler(ABOUTLINKS["linkedin"]) }],
       ["email", { clickHandler: linkHandler(ABOUTLINKS["email"]) }],
       ["resume", { clickHandler: linkHandler(ABOUTLINKS["resume"]) }],
-      ["scrollDown", { clickHandler: scrollTo("_about") }],
+      ["arrowdown", { clickHandler: scrollTo("_about") }],
     ]);
 
   return (

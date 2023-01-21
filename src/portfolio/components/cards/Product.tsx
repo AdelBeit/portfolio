@@ -22,7 +22,7 @@ export default function Product({
 }: ProductProps) {
   const [active, setActive] = useState(false);
 
-  const flipHandler = (e: React.MouseEvent<HTMLElement>) => {
+  const expandHandler = (e: React.MouseEvent<HTMLElement>) => {
     let animationStage = active ? ".p1" : ".p0";
     let current = e.target as HTMLElement;
     while (!current.classList.contains("_card")) {
@@ -35,14 +35,13 @@ export default function Product({
     animateElement.beginElement();
 
     let buttonElement = current.querySelector("._button.info");
-    if (!active) buttonElement.classList.add("active");
-    else buttonElement.classList.remove("active");
+    buttonElement.classList.toggle("active");
 
     setActive((prevState) => !prevState);
   };
 
   const buttons = new Map([
-    ["info", { clickHandler: flipHandler }],
+    ["info", { clickHandler: expandHandler }],
     ["github", { clickHandler: linkHandler(links["code"]) }],
     ["demo", { clickHandler: linkHandler(links["demo"]) }],
   ]);
@@ -72,7 +71,7 @@ export default function Product({
       <object
         className="_svg absolute"
         id="card_svg"
-        data={"./cards/product.active.svg"}
+        data={"./cards/product.svg"}
         type="image/svg+xml"
       ></object>
       <div className="_contentBox title absolute">
@@ -95,11 +94,6 @@ export default function Product({
         ._card {
           width: ${width}px;
           height: ${height}px;
-        }
-
-        ._svg {
-          height: 100%;
-          width: 100%;
         }
 
         ._contentBox {

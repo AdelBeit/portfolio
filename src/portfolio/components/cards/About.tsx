@@ -54,11 +54,6 @@ export default function About({
           height: ${height}px;
         }
 
-        ._svg {
-          height: 100%;
-          width: 100%;
-        }
-
         ._contentBox {
           z-index: 1;
           display: flex;

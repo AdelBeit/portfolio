@@ -1,9 +1,13 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import About from "./components/sections/About";
 import ContentBox from "./components/ContentBox";
 import NavBox from "./components/NavBaguette";
-import Frame from "./components/Frame";
 import { markActive } from "./utils/markActive";
+import { scrollHandler } from "./utils/scrollHandler";
+import Product from "./components/sections/Product";
+import BlogPost from "./components/sections/BlogPost";
+import Experience from "./components/sections/Experience";
+import inlineSVG from "./utils/inlineSVG";
 
 const black = "#282828";
 const green = "#33FF00";
@@ -16,23 +20,32 @@ const _styles = {
   backgroundColor: black,
 };
 
-export function App() {
-  const [width, setWidth] = useState(379);
-  const [isLandingView, setIsLandingView] = useState(true);
+/*
+css cyberpunk buttons https://codepen.io/jh3y/full/BajVmOg
+glitch effect https://codemyui.com/horror-movie-like-glitch-effect/
+duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night%20sky
 
-  // TODO: handle scroll on touch devices
-  const handleScroll = (e) => {
-    e.preventDefault();
-    document.querySelector("#_viewbox").scrollBy(0, e.deltaY);
+*/
+
+export function App() {
+  const [width, setWidth] = useState(30);
+  const [isLandingView, setIsLandingView] = useState(false);
+
+  const resizeHandler = () => {
+    let newWidth = 20 + window.innerWidth / 4;
+    setWidth(newWidth);
   };
 
   useEffect(() => {
-    window.addEventListener("wheel", handleScroll, { passive: false });
+    window.addEventListener("resize", resizeHandler);
+
+    window.addEventListener("wheel", scrollHandler, { passive: false });
 
     document.querySelector("#_navbar").addEventListener("click", markActive);
 
     return () => {
-      window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("resize", resizeHandler);
+      window.removeEventListener("wheel", scrollHandler);
       document
         .querySelector("#_navbar")
         .removeEventListener("click", markActive);
@@ -43,9 +56,9 @@ export function App() {
     <div className="_container relative" style={_styles}>
       <ContentBox>
         <About />
-        <About />
-        <About />
-        <About />
+        <Product />
+        <BlogPost />
+        <Experience />
       </ContentBox>
       <NavBox showLanding={isLandingView} />
 
@@ -71,6 +84,17 @@ export function App() {
           }
         }
       `}</style>
+      <style jsx global>{`
+        ._svg {
+          width: 100%;
+          height: 100%;
+        }
+      `}</style>
+      <div
+        className="hide"
+        id="animated_inline_svg"
+        dangerouslySetInnerHTML={{ __html: inlineSVG }}
+      />
     </div>
   );
 }

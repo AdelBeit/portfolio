@@ -6,27 +6,28 @@ interface IconProps {
 }
 
 function Icon({ icon, size = "60%" }: IconProps) {
+  const animatedIcons = ["arrowup", "arrowdown", "music"];
+  const isAnimated = animatedIcons.some((e) => icon.includes(e));
+  const path = (isAnimated ? "./#" : "./svg stores/icons.svg#") + icon;
   return (
-    <div className="_container relative">
+    <div className={`_container _icon ${icon} relative`}>
       <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
-        <use
-          href={`./svg stores/icons.svg#${icon}`}
-          xlinkHref={`./svg stores/icons.svg#${icon}`}
-          x="0"
-          y="0"
-        ></use>
+        <use href={path} xlinkHref={path} x="0" y="0"></use>
       </svg>
       <style jsx>{`
         ._container {
           width: ${size};
           height: ${size};
-          fill: inherit;
         }
 
-        ._svg {
-          width: 100%;
-          height: 100%;
-          fill: inherit;
+        .arrowup {
+          width: 40px;
+          height: 40px;
+        }
+        .music {
+          width: 60px;
+          height: 60px;
+          top: 10px;
         }
       `}</style>
     </div>
@@ -106,6 +107,7 @@ function ButtonFrame({
       }}
     >
       {!!shadow && <div className={"_frame underlay absolute"}></div>}
+
       <div className="_frame overlay absolute">
         <Icon {...{ icon, color, size: iconSize }} />
       </div>
@@ -145,6 +147,16 @@ function ButtonFrame({
         }
       `}</style>
       <style jsx>{`
+        ._container.products,
+        ._container.arrowup,
+        ._container.arrowdown,
+        ._container.music {
+          --stroke: var(--hovered) var(--black);
+          stroke: var(--stroke, var(--${color}));
+          color: var(--stroke, var(--${color}));
+        }
+      `}</style>
+      <style jsx>{`
         ${staticStyles["_frame.overlay"]}
       `}</style>
     </div>
@@ -154,15 +166,16 @@ function ButtonFrame({
 export type ButtonOrIcon = ButtonFrameProps | IconFrameProps;
 
 export default function Frame(props: ButtonOrIcon) {
-  if (props["_type"] === "icon") {
-    return <IconFrame {...props} />;
-  }
+  const element =
+    props["_type"] === "icon" ? (
+      <IconFrame {...props} />
+    ) : props["_type"] === "button" ? (
+      <ButtonFrame {...props} />
+    ) : (
+      <></>
+    );
 
-  if (props["_type"] === "button") {
-    return <ButtonFrame {...props} />;
-  }
-
-  return <div></div>;
+  return element;
 }
 
 const staticStyles = {
