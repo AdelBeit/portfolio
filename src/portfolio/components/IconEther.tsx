@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Particle from "../utils/Particle";
 
 export type MouseObject = {
@@ -6,6 +6,30 @@ export type MouseObject = {
   y: number | null;
   radius: number;
 };
+
+export function SVGImage({ icon }: { icon?: string }) {
+  useEffect(() => {
+    const img = new Image(30, 30);
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
+    img.addEventListener(
+      "load",
+      () => {
+        ctx.drawImage(img, 0, 0);
+      },
+      false
+    );
+
+    img.src = "https://cdn.simpleicons.org/simpleicons/red";
+  }, []);
+  return (
+    <img
+      height="30"
+      width="30"
+      src="https://cdn.simpleicons.org/simpleicons/red"
+    />
+  );
+}
 
 export default function IconEther() {
   useEffect(() => {
@@ -100,8 +124,8 @@ export default function IconEther() {
       connect();
     };
 
-    init();
-    animate();
+    // init();
+    // animate();
 
     window.addEventListener("mousemove", trackMouse);
     window.addEventListener("resize", resizeHandler);

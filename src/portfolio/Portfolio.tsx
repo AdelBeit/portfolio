@@ -8,7 +8,7 @@ import Product from "./components/sections/Product";
 import BlogPost from "./components/sections/BlogPost";
 import Experience from "./components/sections/Experience";
 import inlineSVG from "./utils/inlineSVG";
-import IconEther from "./components/particleCloud";
+import IconEther, { SVGImage } from "./components/IconEther";
 
 const black = "#282828";
 const green = "#33FF00";
@@ -55,13 +55,14 @@ export function App() {
 
   return (
     <div className="_container relative" style={_styles}>
+      <SVGImage />
       <IconEther />
-      <ContentBox>
+      {/* <ContentBox>
         <About />
         <Product />
         <BlogPost />
         <Experience />
-      </ContentBox>
+      </ContentBox> */}
       <NavBox showLanding={isLandingView} />
 
       <style jsx>{`
