@@ -8,7 +8,6 @@ export default function IconEther() {
     const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    let start;
     let imgParticles: Particle[] = [];
     let dotParticles: Particle[] = [];
     let imgs: HTMLImageElement[] = [];
@@ -37,14 +36,20 @@ export default function IconEther() {
     };
 
     const init = () => {
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      const maxVelocity = 0.2;
       imgParticles = [];
       dotParticles = [];
-      for (let i = 0; i < imgs.length; i++) {
-        const size = Math.random() * 5 + 30;
-        const x = Math.random() * (innerWidth - size * 1.5) + size * 1.5;
-        const y = Math.random() * (innerHeight - size * 1.5) + size * 1.5;
-        const directionX = Math.random() * 0.2 - 0.1;
-        const directionY = Math.random() * 0.2 - 0.1;
+      const dotParticleCount = 50;
+      const n = imgs.length;
+      for (let i = 0; i < n + dotParticleCount; i++) {
+        let size = 1 + Math.random() * 2;
+        if (i < n) size = Math.random() * 5 + 30;
+        const x = size * 2 + Math.random() * (innerWidth - size * 4);
+        const y = size * 2 + Math.random() * (innerHeight - size * 4);
+        const directionX = Math.random() * maxVelocity - maxVelocity / 2;
+        const directionY = Math.random() * maxVelocity - maxVelocity / 2;
+        const img = i < n ? imgs[i] : null;
 
         const particle = {
           x: x,
@@ -52,28 +57,10 @@ export default function IconEther() {
           directionX: directionX,
           directionY: directionY,
           size: size,
-          img: imgs[i],
+          img: img,
         };
-
-        imgParticles.push(new Particle(particle));
-      }
-
-      for (let i = 0; i < 50; i++) {
-        const size = 1 + Math.random() * 2;
-        const x = Math.random() * (innerWidth - size) + size;
-        const y = Math.random() * (innerHeight - size) + size;
-        const directionX = Math.random() * 0.2 - 0.1;
-        const directionY = Math.random() * 0.2 - 0.1;
-
-        const particle = {
-          x: x,
-          y: y,
-          directionX: directionX,
-          directionY: directionY,
-          size: size,
-        };
-
-        dotParticles.push(new Particle(particle));
+        if (i < n) imgParticles.push(new Particle(particle));
+        else dotParticles.push(new Particle(particle));
       }
 
       requestAnimationFrame(animate);
@@ -94,21 +81,15 @@ export default function IconEther() {
             ctx.strokeStyle = `rgba(51, 255, 0, ${opacity})`;
             ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.moveTo(
-              pA.x + (pA.size - pA.size / 2),
-              pA.y + (pA.size - pA.size / 2)
-            );
-            ctx.lineTo(
-              pB.x + (pB.size - pB.size / 2),
-              pB.y + (pB.size - pB.size / 2)
-            );
+            ctx.moveTo(pA.x, pA.y);
+            ctx.lineTo(pB.x, pB.y);
             ctx.stroke();
           }
         }
       }
     };
 
-    const animate = (timestamp) => {
+    const animate = () => {
       requestAnimationFrame(animate);
       ctx.clearRect(0, 0, innerWidth, innerHeight);
 

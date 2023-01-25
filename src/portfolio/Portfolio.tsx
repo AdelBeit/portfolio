@@ -39,7 +39,6 @@ export function App() {
   };
 
   useEffect(() => {
-    preLoadImages();
     window.addEventListener("resize", resizeHandler);
     window.addEventListener("wheel", scrollHandler, { passive: false });
     document.querySelector("#_navbar").addEventListener("click", markActive);
@@ -50,6 +49,10 @@ export function App() {
         .querySelector("#_navbar")
         .removeEventListener("click", markActive);
     };
+  }, []);
+
+  useEffect(() => {
+    preLoadImages();
   }, []);
 
   return (
