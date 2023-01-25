@@ -1,21 +1,54 @@
-export default function preLoadImages() {
-   const images = [
-      "https://cdn.simpleicons.org/simpleicons/red",
-      "https://cdn.simpleicons.org/simpleicons/green",
-      "https://cdn.simpleicons.org/simpleicons/blue",
-      "https://cdn.simpleicons.org/simpleicons/red",
-      "https://cdn.simpleicons.org/simpleicons/green",
-      "https://cdn.simpleicons.org/simpleicons/blue",
-      "https://cdn.simpleicons.org/simpleicons/red",
-      "https://cdn.simpleicons.org/simpleicons/green",
-      "https://cdn.simpleicons.org/simpleicons/blue",
-      "https://cdn.simpleicons.org/simpleicons/red",
-      "https://cdn.simpleicons.org/simpleicons/green",
-      "https://cdn.simpleicons.org/simpleicons/blue",
-      "https://cdn.simpleicons.org/simpleicons/red",
-      "https://cdn.simpleicons.org/simpleicons/green",
-      "https://cdn.simpleicons.org/simpleicons/blue",
-   ];
+const cdn = (icon, color = "33FF00") => `https://cdn.simpleicons.org/${icon}/${color}`;
+
+const icons = [
+   "heroku",
+   "JavaScript",
+   "netlify",
+   "vercel",
+   "svelte",
+   "arduino",
+   "HTML5",
+   "CSS3",
+   "React",
+   "TypeScript",
+   "Webpack",
+   "Babel",
+   "Node.js",
+   "JSON",
+   "Git",
+   "github",
+   "gitlab",
+   "bitbucket",
+   "d3dotjs",
+   "threedotjs",
+   "Jest",
+   "Puppeteer",
+   "AmazonAWS",
+   "MicrosoftAzure",
+   "GoogleCloud",
+   "Kubernetes",
+   "nextdotjs",
+   "Socket.io",
+   "Docker",
+   "DigitalOcean",
+   "Figma",
+   "JAMstack",
+   "dotenv",
+   "MySQL",
+   "Express",
+   "Python",
+   "php",
+   "yarn",
+   "npm",
+   "pnpm",
+   "graphql",
+   "MongoDB",
+   "PostgreSQL",
+   "JIRA",
+];
+
+
+function preLoadImages(images) {
 
    const imagePromises = [];
 
@@ -39,3 +72,7 @@ export default function preLoadImages() {
       document.dispatchEvent(event);
    });
 }
+
+const defaultIcons = () => preLoadImages(icons.map(i => cdn(i)));
+
+export default defaultIcons;

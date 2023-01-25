@@ -40,31 +40,27 @@ export function App() {
 
   useEffect(() => {
     preLoadImages();
-    // window.addEventListener("DOMContentLoaded", preLoadImages);
-    // window.addEventListener("resize", resizeHandler);
-    // window.addEventListener("wheel", scrollHandler, { passive: false });
-    // document.querySelector("#_navbar").addEventListener("click", markActive);
+    window.addEventListener("resize", resizeHandler);
+    window.addEventListener("wheel", scrollHandler, { passive: false });
+    document.querySelector("#_navbar").addEventListener("click", markActive);
     return () => {
-      // window.removeEventListener("DOMContentLoaded", preLoadImages);
-      //   window.removeEventListener("resize", resizeHandler);
-      //   window.removeEventListener("wheel", scrollHandler);
-      //   document
-      //     .querySelector("#_navbar")
-      //     .removeEventListener("click", markActive);
+      window.removeEventListener("resize", resizeHandler);
+      window.removeEventListener("wheel", scrollHandler);
+      document
+        .querySelector("#_navbar")
+        .removeEventListener("click", markActive);
     };
   }, []);
 
   return (
     <div className="_container relative" style={_styles}>
-      {/* <SVGImage /> */}
       <IconEther />
-      <img src="https://cdn.simpleicons.org/simpleicons/red" />
-      {/* <ContentBox>
+      <ContentBox>
         <About />
         <Product />
         <BlogPost />
         <Experience />
-      </ContentBox> */}
+      </ContentBox>
       <NavBox showLanding={isLandingView} />
 
       <style jsx>{`

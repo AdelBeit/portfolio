@@ -1,12 +1,6 @@
 import React, { useEffect } from "react";
 import Particle from "../utils/Particle";
 
-export type MouseObject = {
-  x: number | null;
-  y: number | null;
-  radius: number;
-};
-
 export default function IconEther() {
   useEffect(() => {
     const canvas = document.querySelector("canvas");
@@ -14,8 +8,9 @@ export default function IconEther() {
     const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
-    let particles: Particle[] = [];
+    let start;
+    let imgParticles: Particle[] = [];
+    let dotParticles: Particle[] = [];
     let imgs: HTMLImageElement[] = [];
 
     let mouse = {
@@ -42,21 +37,14 @@ export default function IconEther() {
     };
 
     const init = () => {
-      particles = [];
-      const color = "#8c5523";
-      const makeOrigin = (n, size) => {
-        const x = Math.floor(Math.random() * n);
-        if (x < n / 2) return 0 - (size + 10);
-        return n + 10 + size;
-      };
+      imgParticles = [];
+      dotParticles = [];
       for (let i = 0; i < imgs.length; i++) {
         const size = Math.random() * 5 + 30;
-        let x = Math.random() * (innerWidth - size * 2 - size * 2) + size * 2;
-        x = makeOrigin(innerWidth, size);
-        let y = Math.random() * (innerHeight - size * 2 - size * 2) + size * 2;
-        // y = makeOrigin(innerHeight, size);
-        const directionX = Math.random() * 3 - 2.5;
-        const directionY = Math.random() * 3 - 2.5;
+        const x = Math.random() * (innerWidth - size * 1.5) + size * 1.5;
+        const y = Math.random() * (innerHeight - size * 1.5) + size * 1.5;
+        const directionX = Math.random() * 0.2 - 0.1;
+        const directionY = Math.random() * 0.2 - 0.1;
 
         const particle = {
           x: x,
@@ -64,15 +52,34 @@ export default function IconEther() {
           directionX: directionX,
           directionY: directionY,
           size: size,
-          color: color,
           img: imgs[i],
         };
 
-        particles.push(new Particle(particle));
+        imgParticles.push(new Particle(particle));
       }
+
+      for (let i = 0; i < 50; i++) {
+        const size = 1 + Math.random() * 2;
+        const x = Math.random() * (innerWidth - size) + size;
+        const y = Math.random() * (innerHeight - size) + size;
+        const directionX = Math.random() * 0.2 - 0.1;
+        const directionY = Math.random() * 0.2 - 0.1;
+
+        const particle = {
+          x: x,
+          y: y,
+          directionX: directionX,
+          directionY: directionY,
+          size: size,
+        };
+
+        dotParticles.push(new Particle(particle));
+      }
+
+      requestAnimationFrame(animate);
     };
 
-    const connect = () => {
+    const connect = (particles: Particle[]) => {
       let opacity = 1;
       for (let a = 0; a < particles.length; a++) {
         for (let b = a; b < particles.length; b++) {
@@ -83,32 +90,50 @@ export default function IconEther() {
           const distance = dx * dx + dy * dy;
 
           if (distance < (canvas.width * canvas.height) / 49) {
-            opacity = 1 - distance / 20000;
-            ctx.strokeStyle = "rgba(140,85,31," + opacity + ")";
-            ctx.lineWidth = 5;
+            opacity = 1 - distance / 10000;
+            ctx.strokeStyle = `rgba(51, 255, 0, ${opacity})`;
+            ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.moveTo(pA.x + (pA.size - 15), pA.y + (pA.size - 15));
-            ctx.lineTo(pB.x + (pB.size - 15), pB.y + (pB.size - 15));
+            ctx.moveTo(
+              pA.x + (pA.size - pA.size / 2),
+              pA.y + (pA.size - pA.size / 2)
+            );
+            ctx.lineTo(
+              pB.x + (pB.size - pB.size / 2),
+              pB.y + (pB.size - pB.size / 2)
+            );
             ctx.stroke();
           }
         }
       }
     };
 
-    const animate = () => {
+    const animate = (timestamp) => {
       requestAnimationFrame(animate);
       ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+      animateImgParticles();
+      animateDotParticles();
+    };
+
+    const animateImgParticles = () => {
       const canvasDimensions = { width: canvas.width, height: canvas.height };
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update(canvasDimensions, mouse, ctx);
+      for (let i = 0; i < imgParticles.length; i++) {
+        imgParticles[i].update(canvasDimensions, ctx);
       }
-      connect();
+      connect(imgParticles);
+    };
+
+    const animateDotParticles = () => {
+      const canvasDimensions = { width: canvas.width, height: canvas.height };
+      for (let i = 0; i < dotParticles.length; i++) {
+        dotParticles[i].update(canvasDimensions, ctx);
+      }
     };
 
     document.addEventListener("imagesPreloaded", (e: CustomEvent) => {
       imgs = e.detail;
       init();
-      animate();
     });
 
     window.addEventListener("mousemove", trackMouse);
@@ -124,7 +149,6 @@ export default function IconEther() {
       document.removeEventListener("imagesPreloaded", (e: CustomEvent) => {
         imgs = e.detail;
         init();
-        animate();
       });
     };
   }, []);
@@ -150,22 +174,4 @@ export default function IconEther() {
       `}</style>
     </div>
   );
-}
-
-export function SVGImage({ icon }: { icon?: string }) {
-  useEffect(() => {
-    const canvas = document.querySelector("canvas");
-    const ctx = canvas.getContext("2d");
-    const img = new Image(30, 30);
-    img.addEventListener(
-      "load",
-      () => {
-        ctx.drawImage(img, 0, 0, 30, 30);
-      },
-      false
-    );
-
-    img.src = "https://cdn.simpleicons.org/simpleicons/red";
-  }, []);
-  return <div></div>;
 }
