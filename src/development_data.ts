@@ -4,7 +4,7 @@ export const SiteData = {
   linkedin: "linkedin.com/in/adel-beitvashahi",
   email: "adelbeitvashahi@gmail.com",
   city: "Seattle, WA",
-  phone: "(812)  360 - 6898",
+  phone: "(812) 360 - 6898",
   site: "adelbeit.com",
   role: "Frontend Engineer",
   description:
@@ -27,7 +27,7 @@ export const SiteData = {
       time: { year: "2022", month: "mar" },
       description: [
         "Designed and implemented a progressive webapp with offline caching capabilities, that enables 10+ concurrent users in a room to jam out with virtual instruments using ToneJS.",
-        "Authored a real time Web Socket API to host many users in a room, using Docker for continous delivery to Digital Ocean.",
+        "Authored a real-time Web Socket API to host many users in a room, using Docker for continuous delivery to Digital Ocean.",
       ],
       url: {
         demo: "https://dnk.adelbeit.com/home?roomID=1",
@@ -44,23 +44,23 @@ export const SiteData = {
       time: { year: "2022", month: "mar" },
       description: [
         "Designed and implemented a responsive JAM stack lead generation portal for an auto mechanic shop that generated a 150% increase in revenue within 2 months.",
-        "Designed the website in Figma and ensured client is satisfied with the design before implementation.",
+        "Designed the website in Figma and ensured the client was satisfied with the design before implementation.",
       ],
     },
   ],
   experience: [
     {
-      company: "Cox Communications",
+      company: "Cox Communications (Capgemini)",
       role: "Scrum Master",
       time: "2020 - 2021",
       duties: [
-        "Authored a tool that standardized the list of release changes by streamlining their delivery to respective stakeholders, eliminating the task from project manager's to do list.",
-        "Kept developers on track by ensuring all business requirements were well defined and formatted on JIRA for a multimillion dollar project.",
+        "Authored a tool that standardized the list of release changes by streamlining their delivery to respective stakeholders, eliminating the task from the project manager's to-do list.",
+        "Kept developers on track by ensuring all business requirements were well defined and formatted on JIRA for a multimillion-dollar project.",
       ],
       url: { demo: "", github: "" },
     },
     {
-      company: "TMobile",
+      company: "TMobile (Capgemini)",
       role: "Quality Engineer",
       time: "2019 - 2020",
       duties: [
@@ -83,7 +83,7 @@ export const SiteData = {
       "Database Concepts",
       "Principles of Machine Learning",
       "Intro to Artificial Intelligence",
-      "Fundementals of Computing",
+      "Fundamentals of Computing",
       "Autonomous Robotics",
     ],
     year: { start: "Fall 2015", end: "May 2019" },
@@ -94,7 +94,7 @@ export const SiteData = {
     title: "TMobile Rock star award",
     city: "Seattle, WA",
     award:
-      "TMobile Rockstar award; Recognized for being an SME and leading envrionment readiness functional testing efforts for QLAB07 among a team of 5.",
+      "TMobile Rockstar award; Recognized for being an SME and leading environment readiness functional testing efforts for QLAB07 among a team of 5.",
   },
   techStack: {
     languages: [
@@ -111,7 +111,7 @@ export const SiteData = {
       "HTML",
       "CSS",
     ],
-    tools: ["Git", "JIRA", "Figma"],
+    tools: ["Git", "JIRA", "Figma", "Vercel", "AWS", "Netlify", "Docker"],
   },
   urls: {
     linkedin: "https://www.linkedin.com/in/adel-beitvashahi/",
