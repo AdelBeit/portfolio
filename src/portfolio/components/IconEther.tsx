@@ -7,30 +7,6 @@ export type MouseObject = {
   radius: number;
 };
 
-export function SVGImage({ icon }: { icon?: string }) {
-  useEffect(() => {
-    const img = new Image(30, 30);
-    const canvas = document.querySelector("canvas");
-    const ctx = canvas.getContext("2d");
-    img.addEventListener(
-      "load",
-      () => {
-        ctx.drawImage(img, 0, 0);
-      },
-      false
-    );
-
-    img.src = "https://cdn.simpleicons.org/simpleicons/red";
-  }, []);
-  return (
-    <img
-      height="30"
-      width="30"
-      src="https://cdn.simpleicons.org/simpleicons/red"
-    />
-  );
-}
-
 export default function IconEther() {
   useEffect(() => {
     const canvas = document.querySelector("canvas");
@@ -40,6 +16,7 @@ export default function IconEther() {
     canvas.height = window.innerHeight;
 
     let particles: Particle[] = [];
+    let imgs: HTMLImageElement[] = [];
 
     let mouse = {
       x: null,
@@ -66,17 +43,20 @@ export default function IconEther() {
 
     const init = () => {
       particles = [];
-      const particleCount = 50;
-
       const color = "#8c5523";
-      for (let i = 0; i < particleCount; i++) {
-        const size = Math.random() * 5 + 1;
-        console.log("innerwidth:", innerWidth);
-        const x = Math.random() * (innerWidth - size * 2 - size * 2) + size * 2;
-        const y =
-          Math.random() * (innerHeight - size * 2 - size * 2) + size * 2;
-        const directionX = Math.random() * 5 - 2.5;
-        const directionY = Math.random() * 5 - 2.5;
+      const makeOrigin = (n, size) => {
+        const x = Math.floor(Math.random() * n);
+        if (x < n / 2) return 0 - (size + 10);
+        return n + 10 + size;
+      };
+      for (let i = 0; i < imgs.length; i++) {
+        const size = Math.random() * 5 + 30;
+        let x = Math.random() * (innerWidth - size * 2 - size * 2) + size * 2;
+        x = makeOrigin(innerWidth, size);
+        let y = Math.random() * (innerHeight - size * 2 - size * 2) + size * 2;
+        // y = makeOrigin(innerHeight, size);
+        const directionX = Math.random() * 3 - 2.5;
+        const directionY = Math.random() * 3 - 2.5;
 
         const particle = {
           x: x,
@@ -85,6 +65,7 @@ export default function IconEther() {
           directionY: directionY,
           size: size,
           color: color,
+          img: imgs[i],
         };
 
         particles.push(new Particle(particle));
@@ -104,10 +85,10 @@ export default function IconEther() {
           if (distance < (canvas.width * canvas.height) / 49) {
             opacity = 1 - distance / 20000;
             ctx.strokeStyle = "rgba(140,85,31," + opacity + ")";
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 5;
             ctx.beginPath();
-            ctx.moveTo(pA.x, pA.y);
-            ctx.lineTo(pB.x, pB.y);
+            ctx.moveTo(pA.x + (pA.size - 15), pA.y + (pA.size - 15));
+            ctx.lineTo(pB.x + (pB.size - 15), pB.y + (pB.size - 15));
             ctx.stroke();
           }
         }
@@ -124,8 +105,11 @@ export default function IconEther() {
       connect();
     };
 
-    // init();
-    // animate();
+    document.addEventListener("imagesPreloaded", (e: CustomEvent) => {
+      imgs = e.detail;
+      init();
+      animate();
+    });
 
     window.addEventListener("mousemove", trackMouse);
     window.addEventListener("resize", resizeHandler);
@@ -136,8 +120,12 @@ export default function IconEther() {
       window.removeEventListener("mouseout", (e) =>
         trackMouse(e, { track: false })
       );
-
       window.removeEventListener("resize", resizeHandler);
+      document.removeEventListener("imagesPreloaded", (e: CustomEvent) => {
+        imgs = e.detail;
+        init();
+        animate();
+      });
     };
   }, []);
 
@@ -157,8 +145,27 @@ export default function IconEther() {
           width: 100%;
           height: 100%;
           background: radial-gradient(#ffc38c, #ff0b40);
+          background: black;
         }
       `}</style>
     </div>
   );
+}
+
+export function SVGImage({ icon }: { icon?: string }) {
+  useEffect(() => {
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
+    const img = new Image(30, 30);
+    img.addEventListener(
+      "load",
+      () => {
+        ctx.drawImage(img, 0, 0, 30, 30);
+      },
+      false
+    );
+
+    img.src = "https://cdn.simpleicons.org/simpleicons/red";
+  }, []);
+  return <div></div>;
 }

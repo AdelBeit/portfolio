@@ -8,7 +8,8 @@ import Product from "./components/sections/Product";
 import BlogPost from "./components/sections/BlogPost";
 import Experience from "./components/sections/Experience";
 import inlineSVG from "./utils/inlineSVG";
-import IconEther, { SVGImage } from "./components/IconEther";
+import IconEther from "./components/IconEther";
+import preLoadImages from "./utils/preLoadImages";
 
 const black = "#282828";
 const green = "#33FF00";
@@ -38,25 +39,26 @@ export function App() {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", resizeHandler);
-
-    window.addEventListener("wheel", scrollHandler, { passive: false });
-
-    document.querySelector("#_navbar").addEventListener("click", markActive);
-
+    preLoadImages();
+    // window.addEventListener("DOMContentLoaded", preLoadImages);
+    // window.addEventListener("resize", resizeHandler);
+    // window.addEventListener("wheel", scrollHandler, { passive: false });
+    // document.querySelector("#_navbar").addEventListener("click", markActive);
     return () => {
-      window.removeEventListener("resize", resizeHandler);
-      window.removeEventListener("wheel", scrollHandler);
-      document
-        .querySelector("#_navbar")
-        .removeEventListener("click", markActive);
+      // window.removeEventListener("DOMContentLoaded", preLoadImages);
+      //   window.removeEventListener("resize", resizeHandler);
+      //   window.removeEventListener("wheel", scrollHandler);
+      //   document
+      //     .querySelector("#_navbar")
+      //     .removeEventListener("click", markActive);
     };
   }, []);
 
   return (
     <div className="_container relative" style={_styles}>
-      <SVGImage />
+      {/* <SVGImage /> */}
       <IconEther />
+      <img src="https://cdn.simpleicons.org/simpleicons/red" />
       {/* <ContentBox>
         <About />
         <Product />

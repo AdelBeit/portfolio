@@ -7,6 +7,7 @@ export default class Particle {
   directionY: number;
   size: number;
   color: string;
+  img: HTMLImageElement;
 
   constructor({
     x,
@@ -15,6 +16,7 @@ export default class Particle {
     directionY,
     size,
     color,
+    img
   }: {
     x: number;
     y: number;
@@ -22,6 +24,7 @@ export default class Particle {
     directionY: number;
     size: number;
     color: string;
+    img: HTMLImageElement;
   }) {
     this.x = x;
     this.y = y;
@@ -29,13 +32,17 @@ export default class Particle {
     this.directionY = directionY;
     this.size = size;
     this.color = color;
+    this.img = img;
   }
 
   draw(ctx: CanvasRenderingContext2D) {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-    ctx.fillStyle = this.color || "#9c5523";
-    ctx.fill();
+    if (this.img) ctx.drawImage(this.img, this.x, this.y, this.size, this.size);
+    else {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+      ctx.fillStyle = this.color || "#9c5523";
+      ctx.fill();
+    }
   }
 
   update(
@@ -44,12 +51,18 @@ export default class Particle {
     ctx: CanvasRenderingContext2D,
     { deterMouse = false } = {}
   ) {
-    // boundary detection
-    if (this.x > canvas.width || this.x < 0) {
-      this.directionX *= -1;
+    // boundary collision
+    if (this.x > canvas.width - this.size / 2) {
+      this.directionX = -Math.abs(this.directionX);
     }
-    if (this.y > canvas.height || this.y < 0) {
-      this.directionY *= -1;
+    if (this.x < -this.size / 2) {
+      this.directionX = Math.abs(this.directionX);
+    }
+    if (this.y > canvas.height - this.size / 2) {
+      this.directionY = -Math.abs(this.directionY);
+    }
+    if (this.y < -this.size / 4) {
+      this.directionY = Math.abs(this.directionY);
     }
 
     const dx = mouse.x - this.x;
@@ -59,8 +72,8 @@ export default class Particle {
     // move particles away from mouse
     if (distance < mouse.radius + this.size && deterMouse) {
       if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
-        this.x += 10;
       }
+      this.x += 10;
       if (mouse.x > this.x && this.x > this.size * 10) {
         this.x -= 10;
       }
@@ -71,8 +84,8 @@ export default class Particle {
         this.y -= 10;
       }
     }
-    this.x += this.directionX;
-    this.y += this.directionY;
+    this.x = this.x + this.directionX;
+    this.y = this.y + this.directionY;
     this.draw(ctx);
   }
 }
