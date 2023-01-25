@@ -29,6 +29,14 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 
 */
 
+// TODO: make landing page
+// TODO: finish tech stack card with appropriate icons
+// TODO: change font sizes for everything
+// TODO: set info as active after scrolling down from landing page
+// TODO: custom scrolling, view one section at a time, and scroll snapping to sections
+// TODO: scrolling glitch effect
+// TODO: change card sizes for tablet and phone screens, tablet should have 2 cards, phone should have bigger card
+
 export function App() {
   const [width, setWidth] = useState(30);
   const [isLandingView, setIsLandingView] = useState(false);
