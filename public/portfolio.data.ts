@@ -2,9 +2,12 @@ export const ABOUT = {
   TITLE: "ABOUT",
   CONTENT:
     "Curious with a natural tendency to identify and solve problems, I enjoy building and tinkering with things. Coding is my favorite creative outlet, but I also enjoy other forms of creativity such as art, cooking, music, dancing, and photography. In my spare time, I love exploring new things, whether it be trying out new foods, finding new music or tv shows, traveling to new places, making new connections, or discovering new hobbies. I’m a lifelong learner that’s passionate about learning, creating, and connecting. I’m always eager for new opportunities to better myself and the world around me.",
+  LINKS: {
+    LINKEDIN: "", GITHUB: "", RESUME: "", EMAIL: ""
+  }
 };
+
 export const TECHSTACK = {
-  TITLE: "TECH STACK",
   ICONS: [
     "TypeScript",
     "JavaScript",
@@ -13,6 +16,7 @@ export const TECHSTACK = {
     "Node.js",
     "Express",
     "Socket.io",
+    'tonejs',
     "HTML5",
     "CSS3",
     "bootstrap",
@@ -73,7 +77,61 @@ export const PRODUCTS = [
       "Authored a real-time Web Socket API to host many users in a virtual jam session, using Docker for continuous delivery to Digital Ocean.",
     ],
     STACK: [
-      "next.js, react, ToneJS, Socket.io, Docker, Digital Ocean, Figma, Git",
+      "next.js", "react", "tonejs", "Socket.io", "Docker", "DigitalOcean", "Figma", "Git", "github", "css3", "html5", "npm", "yarn", "typescript", "javascript", "node.js",
     ],
+    LINKS: {
+      VIDEO: '',
+      CODE: 'https://github.com/adelbeit/dnk',
+      DEMO: 'https://dnk.adelbeit.com/',
+    }
+  },
+  {
+    TITLE: "AUTO REPAIR SHOP WEBSITE",
+    CONTENT: [
+      "Designed and implemented a responsive JAM stack lead generation portal for an auto mechanic shop that generated a 150% increase in revenue within 2 months.",
+      "Designed the website in Figma and ensured the client was satisfied with the design before implementation."
+    ],
+    STACK: [
+      "next.js", "react", "Figma", "Git", "github", "css3", "html5", "npm", "yarn", "typescript", "javascript", "vercel"
+    ],
+    LINKS: {
+      VIDEO: '',
+      CODE: 'https://github.com/AdelBeit/Client_IdealAuto',
+      DEMO: 'https://www.idealauto.co/',
+    }
   },
 ];
+
+export const EXPERIENCE = [
+  {
+    TITLE: "COX COMMUNICATIONS",
+    CONTENT: [
+      "Authored a tool that standardized the list of release changes by streamlining their delivery to respective stakeholders, eliminating the task from the project manager's to-do list.",
+      "Kept developers on track by ensuring all business requirements were well defined and formatted on JIRA for a multimillion-dollar project."
+    ],
+    ROLE: "Scrum Master",
+    DATE: "2020-2021",
+  },
+  {
+    TITLE: "TMOBILE",
+    CONTENT: [
+      "Spearheaded the design, and execution of test cases by mentoring diverse teams of quality engineers resulting in 100% test coverage of projects collectively worth upwards of $100 million.",
+      "Built and automated UI tests using Tricentis Tosca for several projects worth $10+ million.",
+      "Created and maintained Oracle MySQL scripts for test data gathering which reduced testing workload by 50%."
+    ],
+    ROLE: "QUALITY ENGINEER",
+    DATE: "2019-2020",
+  },
+]
+
+export const BLOGPOSTS = [
+  { TITLE: "TITLE", LINK: "" },
+  { TITLE: "TITLE", LINK: "" },
+]
+
+export const LANDING = {
+  NAME: 'Adel Beitvashahi',
+  ROLE: "Software Engineer",
+  CONTENT: "I write code that’s",
+  KEYWRODS: ["efficient", "fast", "accessible", "extensible", "optimized", "bug free"],
+}

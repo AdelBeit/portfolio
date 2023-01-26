@@ -4,17 +4,17 @@ import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
 
 interface AboutProps {
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
   width: number;
-  links: { linkedin: string; github: string; resume: string; email: string };
+  links: { LINKEDIN: string; GITHUB: string; RESUME: string; EMAIL: string };
 }
 
 export default function About({
-  title = "title",
-  description = "description",
-  width = 0,
+  title,
+  description,
   links,
+  width = 0,
 }: AboutProps) {
   const _name = "about";
   const buttons = new Map([

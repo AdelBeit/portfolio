@@ -1,18 +1,17 @@
 import React from "react";
+import { linkHandler } from "../../utils/linkHandler";
 import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
 
 interface PostProps {
-  content?: string;
+  title: string;
+  link: string;
   width: number;
 }
 
-export default function BlogPost({
-  content = "post title",
-  width = 0,
-}: PostProps) {
+export default function BlogPost({ title, link, width = 0 }: PostProps) {
   const _name = "blog_post";
-  const buttons = new Map([["info", { clickHandler: () => {} }]]);
+  const buttons = new Map([["info", { clickHandler: linkHandler(link) }]]);
   const initialWidth = 357;
   const initialHeight = 325;
   const height = scale(initialHeight, initialWidth, width);
@@ -30,7 +29,7 @@ export default function BlogPost({
         ></use>
       </svg>
       <div className="_contentBox absolute">
-        <p>{content}</p>
+        <p>{title}</p>
       </div>
       <div className="_baguette absolute">
         <Baguette crumbs={buttons} _type="button" />

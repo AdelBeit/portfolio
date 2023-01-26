@@ -4,20 +4,18 @@ import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
 
 interface ProductProps {
-  title?: string;
-  description?: string[];
+  title: string;
+  description: string[];
+  techStack: string[];
+  links: { CODE: string; DEMO: string; VIDEO: string };
   width: number;
-  links: { code: string; demo: string };
 }
 
 export default function Product({
-  title = "title",
-  description = [
-    "m has been the industry's standard dummy text eve galley of type and scrambled it to make a type specimen book. It has survived not only five centuri",
-    "m has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a",
-    "m has been the industry's standard dummy text eveecimen book. It has survived not only five centuri",
-  ],
+  title,
+  description,
   links,
+  techStack: stack,
   width = 0,
 }: ProductProps) {
   const [active, setActive] = useState(false);
@@ -48,13 +46,11 @@ export default function Product({
 
   const techStack = [
     "github",
-    "node",
-    "js",
+    "javascript",
     "react",
     "typescript",
     "git",
     "docker",
-    "node",
   ];
 
   const initialWidth = 352;

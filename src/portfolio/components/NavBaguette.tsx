@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ABOUTLINKS } from "../../../public/data";
+import { ABOUT } from "../../../public/portfolio.data";
 import { linkHandler } from "../utils/linkHandler";
 import Baguette from "./Baguette";
 
@@ -42,15 +42,17 @@ export default function NavBaguette({ showLanding }: NavProps) {
     ["arrowup", { clickHandler: scrollTo("_landing") }],
   ]);
 
-  if (showLanding)
+  if (showLanding) {
+    const links = { ...ABOUT.LINKS };
     buttons = new Map([
       ["music", { clickHandler: musicToggle }],
-      ["github", { clickHandler: linkHandler(ABOUTLINKS["github"]) }],
-      ["linkedin", { clickHandler: linkHandler(ABOUTLINKS["linkedin"]) }],
-      ["email", { clickHandler: linkHandler(ABOUTLINKS["email"]) }],
-      ["resume", { clickHandler: linkHandler(ABOUTLINKS["resume"]) }],
+      ["github", { clickHandler: linkHandler(links.GITHUB) }],
+      ["linkedin", { clickHandler: linkHandler(links.LINKEDIN) }],
+      ["email", { clickHandler: linkHandler(links.EMAIL) }],
+      ["resume", { clickHandler: linkHandler(links.RESUME) }],
       ["arrowdown", { clickHandler: scrollTo("_about") }],
     ]);
+  }
 
   return (
     <div id="_navbar" className="_container">

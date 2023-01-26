@@ -3,15 +3,16 @@ import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
 
 interface TechStackProps {
-  title?: string;
+  icons: string[];
   width: number;
 }
 
 export default function TechStack({
-  title = "tech stack",
+  icons: iconnames,
   width = 0,
 }: TechStackProps) {
   const _name = "tech_stack";
+  const title = "TECH STACK";
   const icons = [
     "github",
     "github",

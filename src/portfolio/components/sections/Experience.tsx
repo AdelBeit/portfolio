@@ -1,4 +1,5 @@
 import React from "react";
+import { EXPERIENCE } from "../../../../public/portfolio.data";
 import ExperienceCard from "../cards/Experience";
 
 export default function Experience() {
@@ -6,8 +7,15 @@ export default function Experience() {
 
   return (
     <div className="_section" id="_experience">
-      <ExperienceCard width={width} />
-      <ExperienceCard width={width} />
+      {EXPERIENCE.map((e) => (
+        <ExperienceCard
+          companyName={e.TITLE}
+          duties={e.CONTENT}
+          role={e.ROLE}
+          date={e.DATE}
+          width={width}
+        />
+      ))}
     </div>
   );
 }

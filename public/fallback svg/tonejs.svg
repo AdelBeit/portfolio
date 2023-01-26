@@ -1,5 +1,6 @@
-<svg width="200" height="200" viewBox="0 0 200 200" color="#20dabe" fill="#f431d4" xmlns="http://www.w3.org/2000/svg">
+<svg width="200" height="200" viewBox="0 0 200 200" color="#33FF00" fill="none" role="img"
+  xmlns="http://www.w3.org/2000/svg">
   <title>ToneJS</title>
-<rect x="0" y="0" width="200" height="200" fill="currentColor"/>
-<path d="M0 0V91L99 39V160L200 107V0H0z" stroke="currentColor" stroke-width="5"/>
+  <path d="M0 200V91L99 39V160L200 107V200H0z" fill="currentColor" />
+  <path d="M0 0V91L99 39V160L200 107V0H0z" stroke="currentColor" stroke-width="10" />
 </svg>

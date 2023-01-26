@@ -3,14 +3,14 @@ import { scale } from "../../utils/scale";
 import Frame from "../Frame";
 
 interface EducationProps {
-  title?: string;
-  description?: string;
+  title: string;
+  degree: string;
   width: number;
 }
 
 export default function Education({
-  title = "university",
-  description = "BS in BS",
+  title,
+  degree,
   width = 0,
 }: EducationProps) {
   const _name = "education";
@@ -40,8 +40,8 @@ export default function Education({
       <div className="_contentBox title absolute">
         <p>{title}</p>
       </div>
-      <div className="_contentBox description absolute">
-        <p>{description}</p>
+      <div className="_contentBox degree absolute">
+        <p>{degree}</p>
       </div>
       <style jsx>{`
         ._card {
@@ -76,7 +76,7 @@ export default function Education({
           color: var(--black);
         }
 
-        ._contentBox.description {
+        ._contentBox.degree {
           width: 50%;
           height: ${scalingFactor * 55}px;
           margin-top: ${scalingFactor * 135}px;

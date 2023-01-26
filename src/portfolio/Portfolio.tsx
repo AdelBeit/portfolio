@@ -31,8 +31,15 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 
 // TODO: make landing page
 // TODO: finish tech stack card with appropriate icons
+// TODO: download all icons from simpleicons, cleanup icons store, move everything around, move resume around
+// TODO: animate keyword changes with a glitch effect
 // TODO: change font sizes for everything
+// TODO: add music, and music controls
+// TODO: passive scrolling on product icons
 // TODO: set info as active after scrolling down from landing page
+// TODO: determine blogpost hosting, probably dev.to or medium
+// TODO: add blog posts
+// optional
 // TODO: custom scrolling, view one section at a time, and scroll snapping to sections
 // TODO: scrolling glitch effect
 // TODO: change card sizes for tablet and phone screens, tablet should have 2 cards, phone should have bigger card

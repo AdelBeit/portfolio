@@ -2,17 +2,26 @@ import React from "react";
 import AboutCard from "../cards/About";
 import EducationCard from "../cards/Education";
 import TechStackCard from "../cards/TechStack";
-import { ABOUTLINKS } from "../../../../public/data";
+import { ABOUT, EDUCATION, TECHSTACK } from "../../../../public/portfolio.data";
 
 export default function About() {
   let width = 379;
 
   return (
     <div className="_section" id="_about">
-      <AboutCard links={ABOUTLINKS} width={width} />
+      <AboutCard
+        title={ABOUT.TITLE}
+        description={ABOUT.CONTENT}
+        links={ABOUT.LINKS}
+        width={width}
+      />
       <div className="_container">
-        <EducationCard width={width} />
-        <TechStackCard width={width} />
+        <EducationCard
+          title={EDUCATION.TITLE}
+          degree={EDUCATION.DEGREE}
+          width={width}
+        />
+        <TechStackCard icons={TECHSTACK.ICONS} width={width} />
       </div>
       <style jsx global>{`
         ._section {

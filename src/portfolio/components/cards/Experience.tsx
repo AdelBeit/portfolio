@@ -2,22 +2,18 @@ import React from "react";
 import { scale } from "../../utils/scale";
 
 interface ExperienceProps {
-  companyName?: string;
-  role?: string;
-  date?: string;
-  duties?: string[];
+  companyName: string;
+  role: string;
+  date: string;
+  duties: string[];
   width: number;
 }
 
 export default function Experience({
-  companyName = "company",
-  duties = [
-    "m has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuri",
-    "m has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a ga",
-    "m has beenecimen book. It has survived not only five centuri",
-  ],
-  date = "10/19-11/20",
-  role = "software engineer",
+  companyName,
+  duties,
+  date,
+  role,
   width = 0,
 }: ExperienceProps) {
   const _name = "experience";
