@@ -7,8 +7,13 @@ export default function BlogPost() {
 
   return (
     <div className="_section" id="_blogpost">
-      {BLOGPOSTS.map((p) => (
-        <BlogPostCard title={p.TITLE} link={p.LINK} width={width} />
+      {BLOGPOSTS.map((p, _index) => (
+        <BlogPostCard
+          key={_index}
+          title={p.TITLE}
+          link={p.LINK}
+          width={width}
+        />
       ))}
     </div>
   );

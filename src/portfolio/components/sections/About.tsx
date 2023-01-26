@@ -38,9 +38,6 @@ export default function About() {
           scroll-snap-align: center;
         }
 
-        ._section:first-child {
-          margin-top: 25px;
-        }
         ._section:last-child {
           margin-bottom: 50px;
         }

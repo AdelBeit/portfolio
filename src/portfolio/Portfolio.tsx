@@ -10,6 +10,8 @@ import Experience from "./components/sections/Experience";
 import inlineSVG from "./utils/inlineSVG";
 import IconEther from "./components/IconEther";
 import preLoadImages from "./utils/preLoadImages";
+import Landing from "./components/sections/Landing";
+import { LANDING } from "../../public/portfolio.data";
 
 const black = "#282828";
 const green = "#33FF00";
@@ -74,6 +76,12 @@ export function App() {
     <div className="_container relative" style={_styles}>
       <IconEther />
       <ContentBox>
+        <Landing
+          title={LANDING.NAME}
+          content={LANDING.CONTENT}
+          role={LANDING.ROLE}
+          keywords={LANDING.KEYWORDS}
+        />
         <About />
         <Product />
         <BlogPost />
@@ -84,6 +92,8 @@ export function App() {
       <style jsx>{`
         ._container {
           height: 100%;
+
+          font-family: Roboto;
 
           overflow: hidden;
           display: flex;
@@ -107,6 +117,9 @@ export function App() {
         ._svg {
           width: 100%;
           height: 100%;
+        }
+        p {
+          white-space: pre-line;
         }
       `}</style>
       <div

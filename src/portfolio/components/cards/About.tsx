@@ -3,19 +3,14 @@ import { linkHandler } from "../../utils/linkHandler";
 import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
 
-interface AboutProps {
+interface Props {
   title: string;
   description: string;
   width: number;
   links: { LINKEDIN: string; GITHUB: string; RESUME: string; EMAIL: string };
 }
 
-export default function About({
-  title,
-  description,
-  links,
-  width = 0,
-}: AboutProps) {
+export default function About({ title, description, links, width = 0 }: Props) {
   const _name = "about";
   const buttons = new Map([
     ["linkedin", { clickHandler: linkHandler(links["linkedin"]) }],
@@ -39,13 +34,13 @@ export default function About({
           y="0"
         ></use>
       </svg>
-      <div className="_contentBox title absolute">
+      <div className="_contentBox title absolute small">
         <p>{title}</p>
       </div>
       <div className="_baguette absolute">
         <Baguette crumbs={buttons} _type="button" />
       </div>
-      <div className="_contentBox description absolute">
+      <div className="_contentBox description absolute extra-small">
         <p>{description}</p>
       </div>
       <style jsx>{`
@@ -71,7 +66,7 @@ export default function About({
         }
 
         ._contentBox.description {
-          width: 85%;
+          width: 82%;
           height: ${scalingFactor * 630}px;
           margin-top: ${scalingFactor * 72}px;
           margin-left: ${scalingFactor * 5}px;

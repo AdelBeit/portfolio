@@ -2,15 +2,12 @@ import React from "react";
 import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
 
-interface TechStackProps {
+interface Props {
   icons: string[];
   width: number;
 }
 
-export default function TechStack({
-  icons: iconnames,
-  width = 0,
-}: TechStackProps) {
+export default function TechStack({ icons: iconnames, width = 0 }: Props) {
   const _name = "tech_stack";
   const title = "TECH STACK";
   const icons = [

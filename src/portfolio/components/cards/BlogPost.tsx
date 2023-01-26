@@ -3,13 +3,13 @@ import { linkHandler } from "../../utils/linkHandler";
 import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
 
-interface PostProps {
+interface Props {
   title: string;
   link: string;
   width: number;
 }
 
-export default function BlogPost({ title, link, width = 0 }: PostProps) {
+export default function BlogPost({ title, link, width = 0 }: Props) {
   const _name = "blog_post";
   const buttons = new Map([["info", { clickHandler: linkHandler(link) }]]);
   const initialWidth = 357;

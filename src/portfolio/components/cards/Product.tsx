@@ -3,7 +3,7 @@ import { linkHandler } from "../../utils/linkHandler";
 import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
 
-interface ProductProps {
+interface Props {
   title: string;
   description: string[];
   techStack: string[];
@@ -17,7 +17,7 @@ export default function Product({
   links,
   techStack: stack,
   width = 0,
-}: ProductProps) {
+}: Props) {
   const [active, setActive] = useState(false);
 
   const expandHandler = (e: React.MouseEvent<HTMLElement>) => {

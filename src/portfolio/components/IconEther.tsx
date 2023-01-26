@@ -40,7 +40,7 @@ export default function IconEther() {
       const maxVelocity = 0.2;
       imgParticles = [];
       dotParticles = [];
-      const dotParticleCount = 50;
+      const dotParticleCount = 20;
       const n = imgs.length;
       for (let i = 0; i < n + dotParticleCount; i++) {
         let size = 1 + Math.random() * 2;
@@ -94,7 +94,7 @@ export default function IconEther() {
       ctx.clearRect(0, 0, innerWidth, innerHeight);
 
       animateImgParticles();
-      animateDotParticles();
+      // animateDotParticles();
     };
 
     const animateImgParticles = () => {
@@ -102,7 +102,7 @@ export default function IconEther() {
       for (let i = 0; i < imgParticles.length; i++) {
         imgParticles[i].update(canvasDimensions, ctx);
       }
-      connect(imgParticles);
+      // connect(imgParticles);
     };
 
     const animateDotParticles = () => {
@@ -110,6 +110,7 @@ export default function IconEther() {
       for (let i = 0; i < dotParticles.length; i++) {
         dotParticles[i].update(canvasDimensions, ctx);
       }
+      connect(dotParticles);
     };
 
     document.addEventListener("imagesPreloaded", (e: CustomEvent) => {

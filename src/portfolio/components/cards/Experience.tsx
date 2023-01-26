@@ -1,7 +1,7 @@
 import React from "react";
 import { scale } from "../../utils/scale";
 
-interface ExperienceProps {
+interface Props {
   companyName: string;
   role: string;
   date: string;
@@ -15,7 +15,7 @@ export default function Experience({
   date,
   role,
   width = 0,
-}: ExperienceProps) {
+}: Props) {
   const _name = "experience";
   const initialWidth = 352;
   const initialHeight = 518;

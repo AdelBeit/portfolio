@@ -1,11 +1,11 @@
 import React from "react";
 
-interface IconProps {
+interface Props {
   icon: string;
   size?: string;
 }
 
-export default function Icon({ icon, size = "60%" }: IconProps) {
+export default function Icon({ icon, size = "60%" }: Props) {
   const animatedIcons = ["arrowup", "arrowdown", "music"];
   const isAnimated = animatedIcons.some((e) => icon.includes(e));
   const path = (isAnimated ? "./#" : "./svg stores/icons.svg#") + icon;

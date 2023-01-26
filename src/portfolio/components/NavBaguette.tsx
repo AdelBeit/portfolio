@@ -3,11 +3,11 @@ import { ABOUT } from "../../../public/portfolio.data";
 import { linkHandler } from "../utils/linkHandler";
 import Baguette from "./Baguette";
 
-interface NavProps {
+interface Props {
   showLanding: boolean;
 }
 
-export default function NavBaguette({ showLanding }: NavProps) {
+export default function NavBaguette({ showLanding }: Props) {
   const [playMusic, setPlayMusic] = useState(false);
 
   function musicToggle() {

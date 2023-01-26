@@ -2,17 +2,13 @@ import React from "react";
 import { scale } from "../../utils/scale";
 import Frame from "../Frame";
 
-interface EducationProps {
+interface Props {
   title: string;
   degree: string;
   width: number;
 }
 
-export default function Education({
-  title,
-  degree,
-  width = 0,
-}: EducationProps) {
+export default function Education({ title, degree, width = 0 }: Props) {
   const _name = "education";
   const initialWidth = 352;
   const initialHeight = 252;
@@ -37,10 +33,10 @@ export default function Education({
           y="0"
         ></use>
       </svg>
-      <div className="_contentBox title absolute">
+      <div className="_contentBox title absolute small">
         <p>{title}</p>
       </div>
-      <div className="_contentBox degree absolute">
+      <div className="_contentBox degree absolute extra-small">
         <p>{degree}</p>
       </div>
       <style jsx>{`

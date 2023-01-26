@@ -1,10 +1,10 @@
 import React from "react";
 
-interface ContentBoxProps {
+interface Props {
   children: React.ReactNode;
 }
 
-export default function ContentBox({ children }: ContentBoxProps) {
+export default function ContentBox({ children }: Props) {
   return (
     <div id="_viewbox" className="_container">
       {children}

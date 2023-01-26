@@ -7,8 +7,9 @@ export default function Product() {
 
   return (
     <div className="_section" id="_product">
-      {PRODUCTS.map((p) => (
+      {PRODUCTS.map((p, _index) => (
         <ProductCard
+          key={_index}
           title={p.TITLE}
           description={p.CONTENT}
           links={p.LINKS}

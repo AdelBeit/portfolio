@@ -1,7 +1,14 @@
+export const LANDING = {
+  NAME: 'Adel Beitvashahi',
+  ROLE: "Software Engineer",
+  CONTENT: "I write code that's",
+  KEYWORDS: ["efficient", "fast", "accessible", "extensible", "optimized", "bug free"],
+}
+
 export const ABOUT = {
   TITLE: "ABOUT",
   CONTENT:
-    "Curious with a natural tendency to identify and solve problems, I enjoy building and tinkering with things. Coding is my favorite creative outlet, but I also enjoy other forms of creativity such as art, cooking, music, dancing, and photography. In my spare time, I love exploring new things, whether it be trying out new foods, finding new music or tv shows, traveling to new places, making new connections, or discovering new hobbies. I’m a lifelong learner that’s passionate about learning, creating, and connecting. I’m always eager for new opportunities to better myself and the world around me.",
+    "Curious with a natural tendency to identify and solve problems, I enjoy building and tinkering with things. Coding is my favorite medium, but I dabble in mediums such as art, cooking, music, dancing, and photography. \n\nIn my spare time, I love exploring new things, whether it be trying out new foods, finding new music or tv shows, traveling to new places, making new connections, or discovering new hobbies. \n\nI'm a lifelong learner who's passionate about creating and connecting; Perpetually eager for new opportunities to better myself and the world around me.",
   LINKS: {
     LINKEDIN: "", GITHUB: "", RESUME: "", EMAIL: ""
   }
@@ -128,10 +135,3 @@ export const BLOGPOSTS = [
   { TITLE: "TITLE", LINK: "" },
   { TITLE: "TITLE", LINK: "" },
 ]
-
-export const LANDING = {
-  NAME: 'Adel Beitvashahi',
-  ROLE: "Software Engineer",
-  CONTENT: "I write code that’s",
-  KEYWRODS: ["efficient", "fast", "accessible", "extensible", "optimized", "bug free"],
-}

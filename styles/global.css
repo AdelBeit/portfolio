@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:bold");
 
 html {
   height: 100%;
@@ -50,10 +50,40 @@ a:hover {
 .hide {
   display: none;
 }
+.extra-large {
+  font-size: var(--extra-large);
+}
+.large {
+  font-size: var(--large);
+}
+.medium {
+  font-size: var(--medium);
+}
+.small {
+  font-size: var(--small);
+}
+.extra-small {
+  font-size: var(--extra-small);
+}
 
 /* global vars */
 :root {
   --black: #282828;
   --green: #33ff00;
   --amber: #ffb000;
+  --extra-large: 70px;
+  --large: 60px;
+  --medium: 45px;
+  --small: 30px;
+  --extra-small: 20px;
+}
+
+@media only screen and (max-width: 780px) {
+  :root {
+    --extra-large: 40px;
+    --large: 32px;
+    --medium: 25px;
+    --small: 20px;
+    --extra-small: 15px;
+  }
 }

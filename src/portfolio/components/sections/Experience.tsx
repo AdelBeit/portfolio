@@ -7,8 +7,9 @@ export default function Experience() {
 
   return (
     <div className="_section" id="_experience">
-      {EXPERIENCE.map((e) => (
+      {EXPERIENCE.map((e, _index) => (
         <ExperienceCard
+          key={_index}
           companyName={e.TITLE}
           duties={e.CONTENT}
           role={e.ROLE}
