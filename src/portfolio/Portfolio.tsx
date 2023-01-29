@@ -78,8 +78,8 @@ export function App() {
       <ContentBox>
         <Landing
           title={LANDING.NAME}
-          content={LANDING.CONTENT}
           role={LANDING.ROLE}
+          content={LANDING.EXTRAS}
           keywords={LANDING.KEYWORDS}
         />
         <About />
@@ -94,6 +94,7 @@ export function App() {
           height: 100%;
 
           font-family: Roboto;
+          font-weight: bold;
 
           overflow: hidden;
           display: flex;

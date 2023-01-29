@@ -90,7 +90,7 @@ export default function IconEther() {
     };
 
     const animate = () => {
-      requestAnimationFrame(animate);
+      // requestAnimationFrame(animate);
       ctx.clearRect(0, 0, innerWidth, innerHeight);
 
       animateImgParticles();
