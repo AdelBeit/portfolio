@@ -1,5 +1,5 @@
 export const LANDING = {
-  NAME: "Adel Beitvashahi",
+  NAME: "Adele Beitvashahi",
   ROLE: "Software Engineer",
   CONTENT: "I write code that's",
   KEYWORDS: [
