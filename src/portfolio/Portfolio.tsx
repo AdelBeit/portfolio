@@ -13,17 +13,6 @@ import preLoadImages from "./utils/preLoadImages";
 import Landing from "./components/sections/Landing";
 import { LANDING } from "../../public/portfolio.data";
 
-const black = "#282828";
-const green = "#33FF00";
-const yellow = "#FFB000";
-
-const _styles = {
-  width: "100%",
-  height: "100%",
-  color: green,
-  backgroundColor: black,
-};
-
 /*
 css cyberpunk buttons https://codepen.io/jh3y/full/BajVmOg
 glitch effect https://codemyui.com/horror-movie-like-glitch-effect/
@@ -37,7 +26,6 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: change font sizes for everything
 // TODO: add music, and music controls
 // TODO: passive scrolling on product icons
-// TODO: set info as active after scrolling down from landing page
 // TODO: determine blogpost hosting, probably dev.to or medium
 // TODO: add blog posts
 // optional
@@ -86,7 +74,7 @@ export function App() {
   }, []);
 
   return (
-    <div className="_container relative" style={_styles}>
+    <div className="_container relative">
       <IconEther />
       {/* <div id="_background_blur" className="blurred-background absolute"></div> */}
       <ContentBox handleIntersection={handleIntersection}>
@@ -105,6 +93,12 @@ export function App() {
       <style jsx>{`
         ._container {
           height: 100%;
+          width: 100%;
+          color: var(--green);
+          background-color: var(--black);
+
+          padding: 0;
+          margin: 0;
 
           font-family: Roboto;
           font-weight: bold;
@@ -124,11 +118,7 @@ export function App() {
         #_background_blur {
           z-index: 50;
         }
-        @media only screen and (min-width: 780px) {
-          ._container {
-            padding-top: 3vh;
-          }
-        }
+
         @media only screen and (max-width: 780px) {
           ._container {
             flex-direction: column;
