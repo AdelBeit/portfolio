@@ -37,7 +37,7 @@ export default function NavBaguette({ showLanding }: Props) {
 
   let buttons = new Map([
     ["music", { clickHandler: musicToggle }],
-    ["info", { clickHandler: scrollTo("_about") }],
+    ["info", { clickHandler: scrollTo("_about"), classes: "active" }],
     ["products", { clickHandler: scrollTo("_product") }],
     ["blogpost", { clickHandler: scrollTo("_blogpost") }],
     ["experience", { clickHandler: scrollTo("_experience") }],
@@ -76,6 +76,8 @@ export default function NavBaguette({ showLanding }: Props) {
             height: fit-content;
             width: 80%;
             margin: 10px 0;
+            position: absolute;
+            bottom: 0;
           }
         }
       `}</style>

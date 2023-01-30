@@ -20,10 +20,10 @@ export default function Baguette<T extends ButtonOrIcon>(
         {Array.from(props.crumbs.keys()).map((crumbKey, _index) => (
           <Frame
             {...props}
+            {...props.crumbs.get(crumbKey)}
             key={_index}
             icon={crumbKey}
             _type={props._type}
-            clickHandler={props.crumbs.get(crumbKey).clickHandler}
           />
         ))}
       </>

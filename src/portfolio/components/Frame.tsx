@@ -1,3 +1,4 @@
+import cs from "classnames";
 import React from "react";
 import Icon from "./Icon";
 
@@ -54,6 +55,7 @@ export interface ButtonFrameProps extends BaseFrameProps {
   _type: "button";
   shadow?: boolean;
   clickHandler: (e: any) => void;
+  classes?: string | string[];
 }
 
 function ButtonFrame({
@@ -62,15 +64,14 @@ function ButtonFrame({
   frameSize = 60,
   shadow = false,
   clickHandler,
+  classes = "",
 }: ButtonFrameProps) {
   const color = "amber";
   const iconSize = "60%";
 
   return (
     <div
-      className={`_container _button ${icon} relative ${
-        icon === "info" ? "active" : ""
-      }`}
+      className={cs(`_container _button ${icon} relative`, classes)}
       onClick={(e) => {
         clickHandler.call(null, e);
       }}
