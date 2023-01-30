@@ -31,7 +31,6 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 
 */
 
-// TODO: make landing page
 // TODO: finish tech stack card with appropriate icons
 // TODO: download all icons from simpleicons, cleanup icons store, move everything around, move resume around
 // TODO: animate keyword changes with a glitch effect
@@ -47,13 +46,27 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: change card sizes for tablet and phone screens, tablet should have 2 cards, phone should have bigger card
 
 export function App() {
-  const [width, setWidth] = useState(30);
-  const [isLandingView, setIsLandingView] = useState(false);
+  const [width, setWidth] = useState(0);
+  const [isLandingView, setIsLandingView] = useState(true);
 
   const resizeHandler = () => {
     let newWidth = 20 + window.innerWidth / 4;
-    setWidth(newWidth);
+    setWidth(window.innerWidth);
   };
+
+  const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setIsLandingView(true);
+      } else {
+        setIsLandingView(false);
+      }
+    });
+  };
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", resizeHandler);
@@ -75,20 +88,20 @@ export function App() {
   return (
     <div className="_container relative" style={_styles}>
       <IconEther />
-      <ContentBox>
+      <div id="_background_blur" className="blurred-background absolute"></div>
+      <ContentBox handleIntersection={handleIntersection}>
         <Landing
           title={LANDING.NAME}
           role={LANDING.ROLE}
           content={LANDING.EXTRAS}
           keywords={LANDING.KEYWORDS}
         />
-        <About />
+        <About width={width} />
         <Product />
         <BlogPost />
         <Experience />
       </ContentBox>
       <NavBox showLanding={isLandingView} />
-
       <style jsx>{`
         ._container {
           height: 100%;
@@ -107,6 +120,17 @@ export function App() {
           width: 0;
           height: 0;
         }
+
+        #_background_blur {
+          z-index: 5;
+          width: 100%;
+          height: 100%;
+        }
+        @media only screen and (min-width: 780px) {
+          ._container {
+            padding-top: 3vh;
+          }
+        }
         @media only screen and (max-width: 780px) {
           ._container {
             flex-direction: column;
@@ -121,6 +145,31 @@ export function App() {
         }
         p {
           white-space: pre-line;
+        }
+
+        ._contentBox {
+          display: flex;
+        }
+
+        #_about,
+        #_products,
+        #_blogpost,
+        #_experience {
+          flex-direction: row;
+          gap: 20px;
+        }
+        @media only screen and (max-width: 1100px) {
+          #_about,
+          #_product,
+          #_blogpost,
+          #_experience {
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+          }
+          #_about > div {
+            gap: 80px;
+          }
         }
       `}</style>
       <div
