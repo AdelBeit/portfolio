@@ -32,6 +32,7 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: custom scrolling, view one section at a time, and scroll snapping to sections
 // TODO: scrolling glitch effect
 // TODO: change card sizes for tablet and phone screens, tablet should have 2 cards, phone should have bigger card
+// TODO: intersection observer for changing highlighted nav button after scrolling to a different section
 
 export function App() {
   const [width, setWidth] = useState(0);
