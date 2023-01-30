@@ -33,7 +33,7 @@ export default function Landing({ title, role, content, keywords }: Props) {
         }
 
         ._contentBox.title {
-          margin-top: 3vh;
+          margin-top: 10vh;
         }
         ._contentBox.content {
           padding: 15px;
