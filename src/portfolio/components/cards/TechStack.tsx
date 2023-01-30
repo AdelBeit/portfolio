@@ -65,8 +65,6 @@ export default function TechStack({ icons: iconnames, width = 0 }: Props) {
         }
 
         ._contentBox {
-          z-index: 1;
-          display: flex;
           justify-content: flex-start;
         }
 

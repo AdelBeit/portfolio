@@ -90,11 +90,10 @@ export default function Product({
         ._card {
           width: ${width}px;
           height: ${height}px;
+          font-size: var(--medium);
         }
 
         ._contentBox {
-          z-index: 1;
-          display: flex;
           justify-content: flex-start;
         }
 
@@ -107,6 +106,8 @@ export default function Product({
 
           align-items: center;
           color: var(--black);
+
+          font-size: 0.8em;
         }
 
         ._contentBox.description {
@@ -117,6 +118,8 @@ export default function Product({
           padding: 0px 15px;
 
           align-items: flex-start;
+
+          font-size: 0.5em;
         }
 
         ._baguette {
@@ -128,7 +131,7 @@ export default function Product({
 
         ._baguette.buttons {
           margin-top: ${scalingFactor * 89}px;
-          margin-left: ${scalingFactor * 312}px;
+          margin-left: ${scalingFactor * 320}px;
         }
 
         ._baguette.tech_stack {

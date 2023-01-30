@@ -54,8 +54,6 @@ export default function Education({ title, degree, width = 0 }: Props) {
         }
 
         ._contentBox {
-          z-index: 1;
-          display: flex;
           justify-content: flex-start;
           color: var(--green);
         }

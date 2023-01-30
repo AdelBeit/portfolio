@@ -55,7 +55,7 @@ export default function NavBaguette({ showLanding }: Props) {
   }
 
   return (
-    <div id="_navbar" className="_container">
+    <div id="_navbar" className="_container z-index-10">
       <Baguette crumbs={buttons} shadow={true} _type="button" />
       <style jsx>{`
         ._container {

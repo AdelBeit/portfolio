@@ -9,19 +9,16 @@ interface Props {
 
 export default function Landing({ title, role, content, keywords }: Props) {
   return (
-    <div className="_section" id="_landing">
-      <div className="_container">
+    <div id="_landing" className="_section">
+      <div className="_container relative">
         <div className="_contentBox title extra-large">
-          <p>{title}</p>
+          <span>{title}</span>
         </div>
         <div className="_contentBox role medium">
-          <p>{role}</p>
+          <span>{role}</span>
         </div>
-        <div className="_contentBox content small outline-neon">
-          <p>{content}</p>
-        </div>
-        <div className="_contentBox keywords extra-small">
-          <p>{keywords}</p>
+        <div className="_contentBox content extra-small outline-neon">
+          <span>{content}</span>
         </div>
       </div>
       <style jsx>{`
@@ -30,33 +27,32 @@ export default function Landing({ title, role, content, keywords }: Props) {
           height: 90vh;
           padding-left: 7%;
 
-          z-index: 1;
           display: flex;
           flex-direction: column;
-          gap: 20px;
-        }
-
-        ._contentBox {
-          z-index: 1;
-          display: flex;
+          gap: 10vh;
         }
 
         ._contentBox.title {
-        }
-        ._contentBox.role {
+          margin-top: 3vh;
         }
         ._contentBox.content {
-          border: ;
-        }
-        ._contentBox.keywords {
+          padding: 15px;
+          margin-left: -15px;
         }
         @media only screen and (max-width: 1400px) {
           ._container {
             padding-left: 5%;
           }
-
+        }
+        @media only screen and (max-width: 780px) {
           ._contentBox.title {
-            margin: -20px 0;
+            margin-top: 8vh;
+            margin-bottom: -2vh;
+          }
+        }
+        @media only screen and (max-width: 600px) {
+          ._container {
+            margin-bottom: 8vh;
           }
         }
       `}</style>

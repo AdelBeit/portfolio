@@ -41,8 +41,6 @@ export default function BlogPost({ title, link, width = 0 }: Props) {
         }
 
         ._contentBox {
-          z-index: 1;
-          display: flex;
           justify-content: flex-start;
           align-items: flex-start;
 

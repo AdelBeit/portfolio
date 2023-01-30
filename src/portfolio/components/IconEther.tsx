@@ -153,6 +153,7 @@ export default function IconEther() {
           background: radial-gradient(#ffc38c, #ff0b40);
           background: black;
           background: var(--black);
+          z-index: 0;
         }
       `}</style>
     </div>

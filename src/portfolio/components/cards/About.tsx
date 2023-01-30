@@ -9,6 +9,7 @@ interface Props {
   width: number;
   links: { LINKEDIN: string; GITHUB: string; RESUME: string; EMAIL: string };
 }
+// TODO: modularize svg so height can be adjusted better
 
 export default function About({ title, description, links, width = 0 }: Props) {
   const _name = "about";
@@ -50,8 +51,6 @@ export default function About({ title, description, links, width = 0 }: Props) {
         }
 
         ._contentBox {
-          z-index: 1;
-          display: flex;
           justify-content: flex-start;
         }
 
@@ -81,7 +80,7 @@ export default function About({ title, description, links, width = 0 }: Props) {
           gap: 15px;
           padding: 0;
           margin-top: ${scalingFactor * 120}px;
-          margin-left: ${scalingFactor * 319}px;
+          margin-left: ${scalingFactor * 322}px;
         }
       `}</style>
     </div>

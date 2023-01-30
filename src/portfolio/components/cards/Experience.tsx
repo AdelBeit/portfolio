@@ -56,8 +56,6 @@ export default function Experience({
         }
 
         ._contentBox {
-          z-index: 1;
-          display: flex;
           justify-content: center;
           align-items: center;
         }
