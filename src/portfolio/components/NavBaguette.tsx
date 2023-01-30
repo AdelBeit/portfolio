@@ -7,6 +7,8 @@ interface Props {
   showLanding: boolean;
 }
 
+// TODO: make the navbar 'dormant' further to the right of the screen, when hovered over, move icons to the left and expand gap between them
+
 export default function NavBaguette({ showLanding }: Props) {
   const [playMusic, setPlayMusic] = useState(false);
 
