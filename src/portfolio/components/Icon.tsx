@@ -20,7 +20,8 @@ export default function Icon({ icon, size = "60%" }: Props) {
           height: ${size};
         }
 
-        .arrowup {
+        .arrowup,
+        .arrowdown {
           width: 40px;
           height: 40px;
         }
