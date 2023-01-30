@@ -68,7 +68,9 @@ function ButtonFrame({
 
   return (
     <div
-      className={`_container _button ${icon} relative`}
+      className={`_container _button ${icon} relative ${
+        icon === "info" ? "active" : ""
+      }`}
       onClick={(e) => {
         clickHandler.call(null, e);
       }}
