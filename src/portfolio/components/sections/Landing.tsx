@@ -38,6 +38,7 @@ export default function Landing({ title, role, content, keywords }: Props) {
         ._contentBox.content {
           padding: 15px;
           margin-left: -15px;
+          background: rgba(40, 40, 40, 0.5);
         }
         @media only screen and (max-width: 1400px) {
           ._container {
