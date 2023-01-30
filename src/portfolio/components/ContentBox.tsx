@@ -34,7 +34,7 @@ export default function ContentBox({ handleIntersection, children }: Props) {
           flex-direction: column;
           gap: 50px;
 
-          margin: 10px;
+          margin: 0 10px;
           overflow: hidden;
           overflow-y: scroll;
           scrollbar-width: none; /* Firefox */
@@ -49,6 +49,10 @@ export default function ContentBox({ handleIntersection, children }: Props) {
           ._container {
             width: 90vw;
             margin: 0;
+          }
+          ._container:after {
+            content: "";
+            margin-bottom: 3vh;
           }
         }
       `}</style>
