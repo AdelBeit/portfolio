@@ -73,17 +73,24 @@ a:hover {
   box-shadow: inset 0 0 10px 0 var(--green), 0 0 10px 0 var(--green);
 }
 .blurred-background {
+  height: 110%;
+  width: 100%;
+  top: -10%;
+  left: 0;
+  right: 0;
   background-color: var(--black);
-  background: linear-gradient(rgba(40, 40, 40, 0.6), rgba(40, 40, 40, 0.9)),
+  background: linear-gradient(rgba(57, 251, 9, 0.02), rgba(51, 255, 0, 0.005)),
     repeating-linear-gradient(
       0,
       transparent,
       transparent 2px,
-      var(--black) 3px,
-      var(--black) 3px
+      rgba(40, 40, 40, 0.4) 5px,
+      rgba(40, 40, 40, 0.4) 5px
     );
   background-size: cover;
   background-position: center;
+  transform: translateY(0);
+  animation: CTR-Monitor 0.2s linear infinite;
 }
 .transparent-text {
   color: transparent;
@@ -123,5 +130,12 @@ a:hover {
     --medium: 35px;
     --small: 22px;
     --extra-small: 15px;
+  }
+}
+
+/* animations */
+@keyframes CTR-Monitor {
+  to {
+    transform: translateY(10px);
   }
 }
