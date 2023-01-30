@@ -90,7 +90,7 @@ export default function IconEther() {
     };
 
     const animate = () => {
-      // requestAnimationFrame(animate);
+      requestAnimationFrame(animate);
       ctx.clearRect(0, 0, innerWidth, innerHeight);
 
       animateImgParticles();
@@ -138,11 +138,15 @@ export default function IconEther() {
   return (
     <div className="_container">
       <canvas></canvas>
+      <div className="blurred-background absolute"></div>
       <style jsx>{`
         ._container {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
+        }
+        .blurred-background {
+          z-index: 1;
         }
         canvas {
           position: absolute;
@@ -153,6 +157,7 @@ export default function IconEther() {
           background: radial-gradient(#ffc38c, #ff0b40);
           background: black;
           background: var(--black);
+          opacity: 0.4;
           z-index: 0;
         }
       `}</style>

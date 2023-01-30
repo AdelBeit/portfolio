@@ -88,7 +88,7 @@ export function App() {
   return (
     <div className="_container relative" style={_styles}>
       <IconEther />
-      <div id="_background_blur" className="blurred-background absolute"></div>
+      {/* <div id="_background_blur" className="blurred-background absolute"></div> */}
       <ContentBox handleIntersection={handleIntersection}>
         <Landing
           title={LANDING.NAME}
@@ -122,9 +122,7 @@ export function App() {
         }
 
         #_background_blur {
-          z-index: 5;
-          width: 100%;
-          height: 100%;
+          z-index: 50;
         }
         @media only screen and (min-width: 780px) {
           ._container {
