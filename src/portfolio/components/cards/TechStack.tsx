@@ -64,7 +64,7 @@ export default function TechStack({ icons, width = 0 }: Props) {
           width: 85%;
           height: 75%;
 
-          margin-top: ${scalingFactor * 105}px;
+          margin-top: ${scalingFactor * 98}px;
           margin-left: ${scalingFactor * 23}px;
 
           overflow: hidden;
