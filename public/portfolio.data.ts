@@ -11,7 +11,7 @@ export const LANDING = {
     "bug free",
   ],
   EXTRAS:
-    "As a highly skilled Software Developer, Adele is proficient in creating optimized, scalable, and error-free code. However, his abilities extend beyond just writing code. Throughout his career, he has had a chance to fill the shoes of various roles in Software Development Life Cycle (SDLC); such as Quality Engineering, Project Management, and UX/UI Design. This diverse range of experiences has provided Adele a with comprehensive understanding of SDLC, making him a more well-rounded Engineer who brings a unique perspective to the field.",
+    "Adele is proficient in creating optimized, scalable, and error-free code. However, his abilities extend beyond just writing code. Throughout his career, he has had a chance to fill the shoes of various roles in Software Development Life Cycle (SDLC); such as Quality Engineering, Project Management, and UX/UI Design. This diverse range of experiences has provided Adele a with comprehensive understanding of SDLC, making him a more well-rounded Engineer who brings a unique perspective to the field.",
 };
 
 export const ABOUT = {
