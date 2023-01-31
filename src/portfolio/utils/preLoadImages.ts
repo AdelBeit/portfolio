@@ -1,11 +1,10 @@
 const cdn = (icon, color = "33FF00") => {
-   const fallbackIcons = ['tonejs'];
+   const fallbackIcons = ["tonejs"];
    if (fallbackIcons.includes(icon)) {
-      return `./fallback svg/${icon}.svg`
+      return `./fallback svg/${icon}.svg`;
    }
    return `https://cdn.simpleicons.org/${icon}/${color}`;
-}
-
+};
 
 const icons = [
    "TypeScript",
@@ -21,10 +20,10 @@ const icons = [
    "Git",
    "yarn",
    "npm",
-   // "pnpm",
+   "pnpm",
    "github",
-   // "gitlab",
-   // "bitbucket",
+   "gitlab",
+   "bitbucket",
    "Docker",
    "Figma",
    "DigitalOcean",
@@ -32,15 +31,15 @@ const icons = [
    // "three.js",
    // "Jest",
    // "playwright",
-   "Puppeteer",
+   // "Puppeteer",
    "MySQL",
-   "graphql",
+   // "graphql",
    "MongoDB",
    "PostgreSQL",
    "heroku",
    "netlify",
    "vercel",
-   // "svelte",
+   "svelte",
    // "JSON",
    // "Webpack",
    // "Babel",
@@ -50,14 +49,14 @@ const icons = [
    // "Kubernetes",
    // "JAMstack",
    // ".env",
-   // "Python",
-   // "android",
-   // "androidstudio",
-   // "swift",
+   "Python",
+   "android",
+   "androidstudio",
+   "swift",
    "visualstudiocode",
-   // "mui",
-   // "JIRA",
-   // "arduino",
+   "mui",
+   "JIRA",
+   "arduino",
    // "php",
    // "tonejs",
 ];
