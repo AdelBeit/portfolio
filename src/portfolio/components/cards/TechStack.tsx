@@ -7,35 +7,11 @@ interface Props {
   width: number;
 }
 
-export default function TechStack({ icons: iconnames, width = 0 }: Props) {
+// TODO: do a glitch animation at some other point
+
+export default function TechStack({ icons, width = 0 }: Props) {
   const _name = "tech_stack";
   const title = "TECH STACK";
-  const icons = [
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-    "github",
-  ];
   const initialWidth = 352;
   const initialHeight = 466;
   const height = scale(initialHeight, initialWidth, width);
@@ -43,7 +19,10 @@ export default function TechStack({ icons: iconnames, width = 0 }: Props) {
   const scalingFactor = width / initialWidth;
 
   return (
-    <div className="_card relative " style={{ width: width, height: height }}>
+    <div
+      className={"_card relative " + _name}
+      style={{ width: width, height: height }}
+    >
       <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
         <use
           href={`./svg stores/cards.svg#${_name}`}
@@ -55,8 +34,10 @@ export default function TechStack({ icons: iconnames, width = 0 }: Props) {
       <div className="_contentBox title absolute">
         <p>{title}</p>
       </div>
-      <div className="_icons">
-        <Baguette crumbs={icons} _type="icon" frameSize={45} />
+      <div className="_container relative">
+        <div className="_icons hide-scroll-bar absolute passive-scroll">
+          <Baguette crumbs={[...icons, ...icons]} _type="icon" frameSize={45} />
+        </div>
       </div>
       <style jsx>{`
         ._card {
@@ -79,14 +60,24 @@ export default function TechStack({ icons: iconnames, width = 0 }: Props) {
           align-items: center;
         }
 
+        ._container {
+          width: 85%;
+          height: 75%;
+
+          margin-top: ${scalingFactor * 105}px;
+          margin-left: ${scalingFactor * 23}px;
+
+          overflow: hidden;
+        }
+
         ._icons {
+          width: 100%;
+          height: 100%;
+
           display: grid;
           grid-template-columns: repeat(5, 30px);
-          grid-template-rows: repeat(4, 30px);
+          grid-template-rows: repeat(20, 30px);
           grid-gap: 33px;
-
-          margin-top: ${scalingFactor * 115}px;
-          margin-left: ${scalingFactor * 23}px;
         }
       `}</style>
     </div>
