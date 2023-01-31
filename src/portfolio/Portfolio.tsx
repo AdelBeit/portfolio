@@ -8,7 +8,7 @@ import Product from "./components/sections/Product";
 import BlogPost from "./components/sections/BlogPost";
 import Experience from "./components/sections/Experience";
 import inlineSVG from "./utils/inlineSVG";
-import IconEther from "./components/IconEther";
+import IconEther, { etherIcons } from "./components/IconEther";
 import preLoadImages from "./utils/preLoadImages";
 import Landing from "./components/sections/Landing";
 import { LANDING } from "../../public/portfolio.data";
@@ -21,9 +21,10 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 */
 
 // TODO: finish tech stack card with appropriate icons
-// TODO: download all icons from simpleicons, cleanup icons store, move everything around, move resume around
-// TODO: animate keyword changes with a glitch effect
 // TODO: change font sizes for everything
+// TODO: restructure folders, move portfolio to top level, resume to a folder
+// TODO: download all icons from simpleicons, cleanup icons store
+// TODO: animate keyword changes with a glitch effect
 // TODO: add music, and music controls
 // TODO: passive scrolling on product icons
 // TODO: determine blogpost hosting, probably dev.to or medium
@@ -71,7 +72,7 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    preLoadImages();
+    preLoadImages(etherIcons, "EtherIconsLoaded");
   }, []);
 
   return (

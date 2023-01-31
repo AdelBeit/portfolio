@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
+import { ETHERICONS } from "../../../public/portfolio.data";
 import Particle from "../utils/Particle";
+import { simpleIconsCDN } from "../utils/preLoadImages";
 
 // TODO: use particlejs instead for animating the particles. there is a bug with variable dx,dy after screen resize events
+
+export const etherIcons = ETHERICONS.map((i) => simpleIconsCDN(i));
 
 export default function IconEther() {
   useEffect(() => {
@@ -114,7 +118,7 @@ export default function IconEther() {
       connect(dotParticles);
     };
 
-    document.addEventListener("imagesPreloaded", (e: CustomEvent) => {
+    document.addEventListener("EtherIconsLoaded", (e: CustomEvent) => {
       imgs = e.detail;
       init();
     });
@@ -129,7 +133,7 @@ export default function IconEther() {
         trackMouse(e, { track: false })
       );
       window.removeEventListener("resize", resizeHandler);
-      document.removeEventListener("imagesPreloaded", (e: CustomEvent) => {
+      document.removeEventListener("EtherIconsLoaded", (e: CustomEvent) => {
         imgs = e.detail;
         init();
       });
