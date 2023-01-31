@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import Particle from "../utils/Particle";
 
+// TODO: use particlejs instead for animating the particles. there is a bug with variable dx,dy after screen resize events
+
 export default function IconEther() {
   useEffect(() => {
     const canvas = document.querySelector("canvas");
@@ -37,7 +39,6 @@ export default function IconEther() {
 
     const init = () => {
       ctx.clearRect(0, 0, innerWidth, innerHeight);
-      const maxVelocity = 0.2;
       imgParticles = [];
       dotParticles = [];
       const dotParticleCount = 20;
@@ -47,8 +48,8 @@ export default function IconEther() {
         if (i < n) size = Math.random() * 5 + 30;
         const x = size * 2 + Math.random() * (innerWidth - size * 4);
         const y = size * 2 + Math.random() * (innerHeight - size * 4);
-        const directionX = Math.random() * maxVelocity - maxVelocity / 2;
-        const directionY = Math.random() * maxVelocity - maxVelocity / 2;
+        const directionX = (Math.random() * 2 - 1) / 10;
+        const directionY = (Math.random() * 2 - 1) / 10;
         const img = i < n ? imgs[i] : null;
 
         const particle = {
