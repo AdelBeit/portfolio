@@ -40,6 +40,11 @@ export default function Landing({ title, role, content, keywords }: Props) {
           margin-left: -15px;
           background: rgba(40, 40, 40, 0.5);
         }
+        @media only screen and (min-height: 800px) {
+          ._container {
+            gap: 15vh;
+          }
+        }
         @media only screen and (max-width: 1400px) {
           ._container {
             padding-left: 5%;
