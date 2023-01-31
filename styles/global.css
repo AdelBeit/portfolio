@@ -48,8 +48,11 @@ a:hover {
 .highlight {
   background: whitesmoke;
 }
-.hide {
+.none {
   display: none;
+}
+.hide {
+  visibility: hidden;
 }
 .extra-large {
   font-size: var(--extra-large);
