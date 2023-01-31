@@ -1,7 +1,63 @@
 import React, { useEffect } from "react";
 import Particle from "../utils/Particle";
+import { simpleIconsCDN } from "../utils/preLoadImages";
 
 // TODO: use particlejs instead for animating the particles. there is a bug with variable dx,dy after screen resize events
+
+export const etherIcons = [
+  "TypeScript",
+  "JavaScript",
+  "next.js",
+  "React",
+  "Node.js",
+  "Express",
+  "Socket.io",
+  "HTML5",
+  "CSS3",
+  "bootstrap",
+  "Git",
+  "yarn",
+  "npm",
+  "pnpm",
+  "github",
+  "gitlab",
+  "bitbucket",
+  "Docker",
+  "Figma",
+  "DigitalOcean",
+  // "d3.js",
+  // "three.js",
+  // "Jest",
+  // "playwright",
+  // "Puppeteer",
+  "MySQL",
+  // "graphql",
+  "MongoDB",
+  "PostgreSQL",
+  "heroku",
+  "netlify",
+  "vercel",
+  "svelte",
+  // "JSON",
+  // "Webpack",
+  // "Babel",
+  "AmazonAWS",
+  "MicrosoftAzure",
+  "GoogleCloud",
+  // "Kubernetes",
+  // "JAMstack",
+  // ".env",
+  "Python",
+  "android",
+  "androidstudio",
+  "swift",
+  "visualstudiocode",
+  "mui",
+  "JIRA",
+  "arduino",
+  // "php",
+  // "tonejs",
+].map((i) => simpleIconsCDN(i));
 
 export default function IconEther() {
   useEffect(() => {
@@ -114,7 +170,7 @@ export default function IconEther() {
       connect(dotParticles);
     };
 
-    document.addEventListener("imagesPreloaded", (e: CustomEvent) => {
+    document.addEventListener("EtherIconsLoaded", (e: CustomEvent) => {
       imgs = e.detail;
       init();
     });
@@ -129,7 +185,7 @@ export default function IconEther() {
         trackMouse(e, { track: false })
       );
       window.removeEventListener("resize", resizeHandler);
-      document.removeEventListener("imagesPreloaded", (e: CustomEvent) => {
+      document.removeEventListener("EtherIconsLoaded", (e: CustomEvent) => {
         imgs = e.detail;
         init();
       });
