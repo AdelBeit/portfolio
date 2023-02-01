@@ -92,7 +92,7 @@ export const EDUCATION = {
 
 export const PRODUCTS = [
   {
-    TITLE: "DRUM & KEYS",
+    TITLE: "Virtual Jamroom",
     CONTENT: [
       "Designed and implemented a progressive webapp with offline caching capabilities, that enables 10+ concurrent users in a room to jam out with virtual instruments using ToneJS.",
       "Authored a real-time Web Socket API to host many users in a virtual jam session, using Docker for continuous delivery to Digital Ocean.",
@@ -117,12 +117,12 @@ export const PRODUCTS = [
     ],
     LINKS: {
       VIDEO: "",
-      CODE: "https://github.com/adelbeit/dnk",
-      DEMO: "https://dnk.adelbeit.com/",
+      CODE: "https://github.com/adelbeit/virtual-jamroom",
+      DEMO: "https://jam.adelbeit.com/",
     },
   },
   {
-    TITLE: "AUTO REPAIR SHOP WEBSITE",
+    TITLE: "Lead Generation Site",
     CONTENT: [
       "Designed and implemented a responsive JAM stack lead generation portal for an auto mechanic shop that generated a 150% increase in revenue within 2 months.",
       "Designed the website in Figma and ensured the client was satisfied with the design before implementation.",
