@@ -4,13 +4,13 @@ import Typer from "../../utils/Typer";
 interface Props {
   title: string;
   role: string;
-  content: string;
+  description: string;
   keywords: string[];
 }
 
-export default function Landing({ title, role, content, keywords }: Props) {
+export default function Landing({ title, role, description, keywords }: Props) {
   useEffect(() => {
-    const typer = new Typer("._contentBox.content span", content);
+    const typer = new Typer("._contentBox.description span", description);
     return () => typer.destroy();
   }, []);
   return (
@@ -22,7 +22,7 @@ export default function Landing({ title, role, content, keywords }: Props) {
         <div className="_contentBox role medium">
           <span>{role}</span>
         </div>
-        <div className="_contentBox content extra-small outline-neon">
+        <div className="_contentBox description extra-small thin-font outline-neon">
           <span></span>
         </div>
       </div>
@@ -40,7 +40,7 @@ export default function Landing({ title, role, content, keywords }: Props) {
         ._contentBox.title {
           margin-top: 10vh;
         }
-        ._contentBox.content {
+        ._contentBox.description {
           padding: 15px;
           margin-left: -15px;
           background: rgba(40, 40, 40, 0.5);

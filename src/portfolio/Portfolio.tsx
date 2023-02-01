@@ -20,7 +20,6 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 
 */
 
-// TODO: finish tech stack card with appropriate icons
 // TODO: change font sizes for everything
 // TODO: restructure folders, move portfolio to top level, resume to a folder
 // TODO: download all icons from simpleicons, cleanup icons store
@@ -83,7 +82,7 @@ export function App() {
         <Landing
           title={LANDING.NAME}
           role={LANDING.ROLE}
-          content={LANDING.EXTRAS}
+          description={LANDING.EXTRAS}
           keywords={LANDING.KEYWORDS}
         />
         <About width={width} />
