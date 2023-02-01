@@ -104,7 +104,6 @@ a:hover {
   font-size: var(--extra-small);
 }
 .outline-neon {
-  font-weight: 100;
   border: var(--green) 0.125em solid;
   /* text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--green); */
   box-shadow: inset 0 0 8px 0 var(--green), 0 0 8px 0 var(--green);
@@ -148,6 +147,9 @@ a:hover {
 .passive-scroll {
   transform: translateY(0%);
   animation: Passive-YScroll 20s linear infinite;
+}
+.thin-font {
+  font-weight: 200;
 }
 
 /* animations */
