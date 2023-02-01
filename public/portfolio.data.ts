@@ -166,7 +166,7 @@ export const EXPERIENCE = [
       "Built and automated UI tests using Tricentis Tosca for several projects worth $10+ million.",
       "Created and maintained Oracle MySQL scripts for test data gathering which reduced testing workload by 50%.",
     ],
-    ROLE: "QUALITY ENGINEER",
+    ROLE: "Quality Engineer",
     DATE: "2019-2020",
   },
 ];
