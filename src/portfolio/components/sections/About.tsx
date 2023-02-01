@@ -54,7 +54,7 @@ export default function About({ width = 379 }: Props) {
 
       <style jsx>{`
         ._container {
-          width: width;
+          width: ${width};
           display: flex;
           flex-direction: column;
           gap: 30px;

@@ -1,6 +1,5 @@
 import React from "react";
 import { scale } from "../../utils/scale";
-import Frame from "../Frame";
 
 interface Props {
   title: string;
@@ -36,10 +35,10 @@ export default function Education({ title, degree, width = 0 }: Props) {
           y="0"
         ></use>
       </svg>
-      <div className="_contentBox title absolute small">
+      <div className="_contentBox title absolute">
         <p>{title}</p>
       </div>
-      <div className="_contentBox degree absolute extra-small">
+      <div className="_contentBox degree absolute small">
         <p>{degree}</p>
       </div>
       <style jsx>{`
@@ -76,7 +75,7 @@ export default function Education({ title, degree, width = 0 }: Props) {
         ._contentBox.degree {
           width: 50%;
           height: ${scalingFactor * 55}px;
-          margin-top: ${scalingFactor * 135}px;
+          margin-top: ${scalingFactor * 125}px;
           margin-left: ${scalingFactor * 143}px;
           padding: 0px;
 

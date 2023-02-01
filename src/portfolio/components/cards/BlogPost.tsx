@@ -20,7 +20,7 @@ export default function BlogPost({ title, link, width = 0 }: Props) {
 
   return (
     <div
-      className={"_card relative " + _name}
+      className={"_card relative none " + _name}
       style={{ width: width, height: height }}
     >
       <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
@@ -31,7 +31,7 @@ export default function BlogPost({ title, link, width = 0 }: Props) {
           y="0"
         ></use>
       </svg>
-      <div className="_contentBox absolute">
+      <div className="_contentBox title absolute">
         <p>{title}</p>
       </div>
       <div className="_baguette absolute">
@@ -52,6 +52,7 @@ export default function BlogPost({ title, link, width = 0 }: Props) {
           margin-top: ${scalingFactor * 30}px;
           margin-left: ${scalingFactor * 8}px;
           padding: 5px 15px;
+          font-size: 18px;
         }
 
         ._baguette {

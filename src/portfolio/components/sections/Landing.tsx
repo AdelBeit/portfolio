@@ -19,10 +19,10 @@ export default function Landing({ title, role, description, keywords }: Props) {
         <div className="_contentBox title extra-large">
           <span>{title}</span>
         </div>
-        <div className="_contentBox role medium">
+        <div className="_contentBox role large">
           <span>{role}</span>
         </div>
-        <div className="_contentBox description extra-small thin-font outline-neon">
+        <div className="_contentBox description thin-font small outline-neon">
           <span></span>
         </div>
       </div>

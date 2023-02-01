@@ -36,7 +36,7 @@ export default function Experience({
           y="0"
         ></use>
       </svg>
-      <div className="_contentBox company_name absolute">
+      <div className="_contentBox company small absolute">
         <p>{companyName}</p>
       </div>
       <div className="_contentBox date absolute">
@@ -63,7 +63,7 @@ export default function Experience({
           align-items: center;
         }
 
-        ._contentBox.company_name {
+        ._contentBox.company {
           width: 97%;
           height: ${scalingFactor * 48}px;
           margin-top: ${scalingFactor * 5}px;
@@ -79,6 +79,8 @@ export default function Experience({
           margin-left: ${scalingFactor * 5}px;
           padding: 0;
           justify-content: center;
+          font-weight: bold;
+          font-size: var(--small);
         }
 
         ._contentBox.role {
@@ -91,6 +93,8 @@ export default function Experience({
           padding-right: 15px;
           color: var(--black);
           justify-content: flex-end;
+          font-weight: bold;
+          font-size: var(--small);
         }
 
         ._contentBox.duties {

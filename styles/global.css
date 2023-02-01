@@ -10,28 +10,28 @@
   --amber: #ffb000;
   --amber: rgb(255, 176, 0);
   --extra-large: 70px;
-  --large: 60px;
-  --medium: 45px;
-  --small: 30px;
-  --extra-small: 20px;
+  --large: 45px;
+  --medium: 25px;
+  --small: 18px;
+  --extra-small: 15px;
 }
 
 @media only screen and (max-width: 780px) {
   :root {
     --extra-large: 60px;
-    --large: 40px;
-    --medium: 35px;
-    --small: 22px;
-    --extra-small: 15px;
+    --large: 35px;
+    --medium: 22px;
+    --small: 15px;
+    --extra-small: 12px;
   }
 }
 @media only screen and (max-width: 600px) {
   :root {
     --extra-large: 50px;
-    --large: 40px;
-    --medium: 35px;
-    --small: 22px;
-    --extra-small: 15px;
+    --large: 35px;
+    --medium: 22px;
+    --small: 15px;
+    --extra-small: 12px;
   }
 }
 
@@ -58,6 +58,16 @@ div#__next {
 a:focus,
 a:hover {
   text-decoration: none !important;
+}
+
+._card .title {
+  font-size: var(--medium);
+}
+
+._card .description,
+._card .duties {
+  font-size: var(--small);
+  font-weight: 200;
 }
 
 /* utils */

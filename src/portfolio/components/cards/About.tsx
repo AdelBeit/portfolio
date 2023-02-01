@@ -38,13 +38,13 @@ export default function About({ title, description, links, width = 0 }: Props) {
           y="0"
         ></use>
       </svg>
-      <div className="_contentBox title absolute small">
+      <div className="_contentBox title absolute">
         <p>{title}</p>
       </div>
       <div className="_baguette absolute">
         <Baguette crumbs={buttons} _type="button" />
       </div>
-      <div className="_contentBox description absolute extra-small">
+      <div className="_contentBox description absolute">
         <p>{description}</p>
       </div>
       <style jsx>{`

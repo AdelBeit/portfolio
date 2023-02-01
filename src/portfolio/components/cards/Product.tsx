@@ -90,7 +90,6 @@ export default function Product({
         ._card {
           width: ${width}px;
           height: ${height}px;
-          font-size: var(--medium);
         }
 
         ._contentBox {
@@ -99,15 +98,12 @@ export default function Product({
 
         ._contentBox.title {
           width: 97.5%;
-          height: ${scalingFactor * 52}px;
-          margin-top: ${scalingFactor * 5}px;
+          margin-top: ${scalingFactor * -10}px;
           margin-left: ${scalingFactor * 5}px;
           padding: 5px 15px;
 
           align-items: center;
           color: var(--black);
-
-          font-size: 0.8em;
         }
 
         ._contentBox.description {
@@ -118,8 +114,6 @@ export default function Product({
           padding: 0px 15px;
 
           align-items: flex-start;
-
-          font-size: 0.5em;
         }
 
         ._baguette {
