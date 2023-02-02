@@ -2,6 +2,7 @@ import React from "react";
 import { linkHandler } from "../../utils/linkHandler";
 import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
+import { TypeWriter } from "../TyperWriter";
 
 interface Props {
   title: string;
@@ -45,7 +46,9 @@ export default function About({ title, description, links, width = 0 }: Props) {
         <Baguette crumbs={buttons} _type="button" />
       </div>
       <div className="_contentBox description absolute">
-        <p>{description}</p>
+        <p>
+          <TypeWriter content={description} />
+        </p>
       </div>
       <style jsx>{`
         ._card {

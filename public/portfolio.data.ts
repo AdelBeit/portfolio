@@ -16,7 +16,9 @@ export const LANDING = {
 
 export const ABOUT = {
   TITLE: "ABOUT",
-  CONTENT:
+  CONTENT1:
+    "Adele is not just a highly capable and effective software engineer, but also possesses strong soft skills that set him apart in his field. \n\nThroughout his career, he has had the opportunity to play various roles in the software development life cycle (SDLC), including Quality Engineering, Project Management, and UX/UI Design. This diverse range of experiences has provided Adele with a comprehensive understanding of the SDLC and equipped him with unique perspectives and insights. \n\nHis combination of technical expertise and interpersonal skills make Adele a valuable asset to any team.",
+  CONTENT2:
     "Curious with a natural tendency to identify and solve problems, I enjoy building and tinkering with things. Coding is my favorite medium, but I dabble in mediums such as art, cooking, music, dancing, and photography. \n\nIn my spare time, I love exploring new things, whether it be trying out new foods, finding new music or tv shows, traveling to new places, making new connections, or discovering new hobbies. \n\nI'm a lifelong learner who's passionate about creating and connecting; Perpetually eager for new opportunities to better myself and the world around me.",
   LINKS: {
     LINKEDIN: "",

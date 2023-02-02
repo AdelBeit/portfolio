@@ -1,8 +1,11 @@
 import React from "react";
 import { EXPERIENCE } from "../../../../public/portfolio.data";
+import { BaseSectionProps } from "../../types";
 import ExperienceCard from "../cards/Experience";
 
-export default function Experience() {
+interface Props extends BaseSectionProps {}
+
+export default function Experience({}: Props) {
   let width = 379;
 
   return (

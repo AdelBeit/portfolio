@@ -1,8 +1,11 @@
 import React from "react";
 import { BLOGPOSTS } from "../../../../public/portfolio.data";
+import { BaseSectionProps } from "../../types";
 import BlogPostCard from "../cards/BlogPost";
 
-export default function BlogPost() {
+interface Props extends BaseSectionProps {}
+
+export default function BlogPost({}: Props) {
   let width = 379;
 
   return (

@@ -3,8 +3,9 @@ import AboutCard from "../cards/About";
 import EducationCard from "../cards/Education";
 import TechStackCard from "../cards/TechStack";
 import { ABOUT, EDUCATION, TECHSTACK } from "../../../../public/portfolio.data";
+import { BaseSectionProps } from "../../types";
 
-interface Props {
+interface Props extends BaseSectionProps {
   width: number;
 }
 
@@ -14,7 +15,7 @@ export default function About({ width = 379 }: Props) {
     <div className="_section" id="_about">
       <AboutCard
         title={ABOUT.TITLE}
-        description={ABOUT.CONTENT}
+        description={ABOUT.CONTENT1}
         links={ABOUT.LINKS}
         width={width >= 1100 ? 419 : 379}
       />

@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
-import Typer from "../../utils/Typer";
+import React from "react";
+import { BaseSectionProps } from "../../types";
+import { TypeWriter } from "../TyperWriter";
 
-interface Props {
+interface Props extends BaseSectionProps {
   title: string;
   role: string;
   description: string;
@@ -9,10 +10,6 @@ interface Props {
 }
 
 export default function Landing({ title, role, description, keywords }: Props) {
-  useEffect(() => {
-    const typer = new Typer("._contentBox.description span", description);
-    return () => typer.destroy();
-  }, []);
   return (
     <div id="_landing" className="_section">
       <div className="_container relative">
@@ -22,8 +19,10 @@ export default function Landing({ title, role, description, keywords }: Props) {
         <div className="_contentBox role large">
           <span>{role}</span>
         </div>
-        <div className="_contentBox description thin-font small outline-neon">
-          <span></span>
+        <div className="_contentBox description thin-font small">
+          <span>
+            <TypeWriter content={description} />
+          </span>
         </div>
       </div>
       <style jsx>{`
@@ -43,7 +42,7 @@ export default function Landing({ title, role, description, keywords }: Props) {
         ._contentBox.description {
           padding: 15px;
           margin-left: -15px;
-          background: rgba(40, 40, 40, 0.5);
+          background-color: rgba(40, 40, 40, 0.5);
           max-width: 800px;
         }
 

@@ -1,8 +1,11 @@
 import React from "react";
 import { PRODUCTS } from "../../../../public/portfolio.data";
+import { BaseSectionProps } from "../../types";
 import ProductCard from "../cards/Product";
 
-export default function Product() {
+interface Props extends BaseSectionProps {}
+
+export default function Product({}: Props) {
   let width = 379;
 
   return (
