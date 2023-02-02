@@ -39,7 +39,7 @@ export default function NavBaguette({ showLanding }: Props) {
     ["music", { clickHandler: musicToggle }],
     ["info", { clickHandler: scrollTo("_about"), classes: "active _about" }],
     ["products", { clickHandler: scrollTo("_product"), classes: "_product" }],
-    ["blogpost", { clickHandler: scrollTo("_blogpost"), classes: "_blogpost" }],
+    // ["blogpost", { clickHandler: scrollTo("_blogpost"), classes: "_blogpost" }],
     [
       "experience",
       { clickHandler: scrollTo("_experience"), classes: "_experience" },

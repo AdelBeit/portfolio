@@ -10,7 +10,7 @@ export default function ContentBox({ handleIntersection, children }: Props) {
     const intersectionObserverOptions = {
       root: document.querySelector("#_viewbox"),
       rootMargin: "0px",
-      threshold: 0.1,
+      threshold: 0.25,
     };
 
     const observer = new IntersectionObserver(
