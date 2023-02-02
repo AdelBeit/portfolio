@@ -1,30 +1,33 @@
 export default class Typer {
   inputText: string;
   outputText: string = "";
-  element: HTMLElement;
+  element: HTMLSpanElement;
   typerCursor: number = 0;
   cursorCharacter: string = ".";
   typeDelay: number = 10;
   sentenceDelay: number = 400;
-  scrambleDuration: number = 400;
+  cursorBlinkDelay: number = 400;
   timeout: NodeJS.Timeout;
   typerInterval: NodeJS.Timer;
-  scramblerInterval: NodeJS.Timer;
+  cursorBlinkInterval: NodeJS.Timer;
 
-  constructor(selector, text) {
-    this.element = document.querySelector(selector);
+  constructor(element: HTMLSpanElement, text: string) {
+    this.element = element;
     this.inputText = text;
+  }
+
+  start() {
     this.typerInterval = setInterval(() => {
       this.type();
     }, this.typeDelay);
-    this.scramblerInterval = setInterval(() => {
-      this.scramble();
-    }, this.scrambleDuration);
+    this.cursorBlinkInterval = setInterval(() => {
+      this.blinkingCursor();
+    }, this.cursorBlinkDelay);
   }
 
   type() {
     if (this.typerCursor >= this.inputText.length) {
-      clearInterval(this.typerInterval);
+      this.stop();
       return;
     }
 
@@ -44,7 +47,7 @@ export default class Typer {
     this.typerCursor++;
   }
 
-  scramble() {
+  blinkingCursor() {
     this.element.innerHTML =
       this.outputText.slice(0, this.typerCursor) + this.insertCursor();
     return;
@@ -62,8 +65,8 @@ export default class Typer {
     return this.cursorCharacter;
   }
 
-  destroy() {
+  stop() {
     clearInterval(this.typerInterval);
-    clearInterval(this.scramblerInterval);
+    clearInterval(this.cursorBlinkInterval);
   }
 }
