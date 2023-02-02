@@ -10,9 +10,26 @@ export function TypeWriter({ content }: { content: string }) {
       const content = parent.querySelector("._content_").textContent;
       const target: HTMLSpanElement = parent.querySelector("._insert_");
       const typer = new Typer(target, content);
-      typer.start();
 
-      return () => typer.stop();
+      const handleIntersection = (entries) =>
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) typer.start();
+        });
+
+      const options = {
+        root: document.querySelector("#_viewbox"),
+        rootMargin: "0px",
+        threshold: 1.0,
+      };
+
+      const observer = new IntersectionObserver(handleIntersection, options);
+
+      observer.observe(parent);
+
+      return () => {
+        typer.stop();
+        observer.disconnect();
+      };
     }
   }, [ref.current]);
   return (

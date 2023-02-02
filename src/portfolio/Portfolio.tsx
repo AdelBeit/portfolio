@@ -21,19 +21,17 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 
 */
 
-// TODO: restructure folders, move portfolio to top level, resume to a folder
-// TODO: add video/pic demos for products
 // TODO: redo landing page description to be a short sentence with changing keywords
 // TODO: animate keyword changes with a glitch effect
 // TODO: download all icons from simpleicons, cleanup icons store
 // TODO: add music, and music controls
-// TODO: passive scrolling on product icons
 // TODO: determine blogpost hosting, probably dev.to or medium
 // TODO: add blog posts
 // optional
 // TODO: custom scrolling, view one section at a time, and scroll snapping to sections
 // TODO: scrolling glitch effect
 // TODO: change card sizes for tablet and phone screens, tablet should have 2 cards, phone should have bigger card
+// TODO: add a footer to view source code for portfolio on github
 
 export function App() {
   const [width, setWidth] = useState(0);
