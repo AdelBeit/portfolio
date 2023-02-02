@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import About from "./components/sections/About";
 import ContentBox from "./components/ContentBox";
 import NavBox from "./components/NavBaguette";
-import { setActiveNavButton, markActive } from "./utils/setActiveNavButton";
+import setActiveNavButton from "./utils/setActiveNavButton";
 import { scrollHandler } from "./utils/scrollHandler";
 import Product from "./components/sections/Product";
 import BlogPost from "./components/sections/BlogPost";
@@ -21,11 +21,11 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 
 */
 
-// TODO: *BUG* reimplement intersection observer
 // TODO: restructure folders, move portfolio to top level, resume to a folder
 // TODO: add video/pic demos for products
-// TODO: download all icons from simpleicons, cleanup icons store
+// TODO: redo landing page description to be a short sentence with changing keywords
 // TODO: animate keyword changes with a glitch effect
+// TODO: download all icons from simpleicons, cleanup icons store
 // TODO: add music, and music controls
 // TODO: passive scrolling on product icons
 // TODO: determine blogpost hosting, probably dev.to or medium
@@ -63,13 +63,9 @@ export function App() {
   useEffect(() => {
     window.addEventListener("resize", resizeHandler);
     window.addEventListener("wheel", scrollHandler, { passive: false });
-    document.querySelector("#_navbar").addEventListener("click", markActive);
     return () => {
       window.removeEventListener("resize", resizeHandler);
       window.removeEventListener("wheel", scrollHandler);
-      document
-        .querySelector("#_navbar")
-        .removeEventListener("click", markActive);
     };
   }, []);
 
