@@ -10,7 +10,7 @@ export default function ContentBox({ handleIntersection, children }: Props) {
     const intersectionObserverOptions = {
       root: document.querySelector("#_viewbox"),
       rootMargin: "0px",
-      threshold: 0.8,
+      threshold: 0.1,
     };
 
     const observer = new IntersectionObserver(
@@ -18,8 +18,12 @@ export default function ContentBox({ handleIntersection, children }: Props) {
       intersectionObserverOptions
     );
 
-    const target = document.querySelector("#_landing");
-    observer.observe(target);
+    const sections = document.querySelectorAll("._section");
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   return (

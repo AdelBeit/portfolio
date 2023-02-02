@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import About from "./components/sections/About";
 import ContentBox from "./components/ContentBox";
 import NavBox from "./components/NavBaguette";
-import { markActive } from "./utils/markActive";
+import { setActiveNavButton, markActive } from "./utils/setActiveNavButton";
 import { scrollHandler } from "./utils/scrollHandler";
 import Product from "./components/sections/Product";
 import BlogPost from "./components/sections/BlogPost";
@@ -12,6 +12,7 @@ import IconEther, { etherIcons } from "./components/IconEther";
 import preLoadImages from "./utils/preLoadImages";
 import Landing from "./components/sections/Landing";
 import { LANDING } from "../../public/portfolio.data";
+import { SECTIONS } from "./types";
 
 /*
 css cyberpunk buttons https://codepen.io/jh3y/full/BajVmOg
@@ -20,6 +21,7 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 
 */
 
+// TODO: *BUG* reimplement intersection observer
 // TODO: restructure folders, move portfolio to top level, resume to a folder
 // TODO: add video/pic demos for products
 // TODO: download all icons from simpleicons, cleanup icons store
@@ -32,11 +34,10 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: custom scrolling, view one section at a time, and scroll snapping to sections
 // TODO: scrolling glitch effect
 // TODO: change card sizes for tablet and phone screens, tablet should have 2 cards, phone should have bigger card
-// TODO: intersection observer for changing highlighted nav button after scrolling to a different section
 
 export function App() {
   const [width, setWidth] = useState(0);
-  const [isLandingView, setIsLandingView] = useState(true);
+  const [currentSection, setCurrentSection] = useState("_landing");
 
   const resizeHandler = () => {
     let newWidth = 20 + window.innerWidth / 4;
@@ -44,14 +45,16 @@ export function App() {
   };
 
   const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        setIsLandingView(true);
-      } else {
-        setIsLandingView(false);
+    entries.forEach((section) => {
+      if (section.isIntersecting) {
+        setCurrentSection(section.target.id);
       }
     });
   };
+
+  useEffect(() => {
+    setActiveNavButton(currentSection as unknown as SECTIONS);
+  }, [currentSection]);
 
   useEffect(() => {
     setWidth(window.innerWidth);
@@ -77,20 +80,20 @@ export function App() {
   return (
     <div className="_container relative">
       <IconEther />
-      {/* <div id="_background_blur" className="blurred-background absolute"></div> */}
       <ContentBox handleIntersection={handleIntersection}>
         <Landing
           title={LANDING.NAME}
           role={LANDING.ROLE}
           description={LANDING.EXTRAS}
           keywords={LANDING.KEYWORDS}
+          isInView={currentSection === "_landing"}
         />
-        <About width={width} />
-        <Product />
-        <BlogPost />
-        <Experience />
+        <About width={width} isInView={currentSection === "_about"} />
+        <Product isInView={currentSection === "_product"} />
+        <BlogPost isInView={currentSection === "_blogpost"} />
+        <Experience isInView={currentSection === "_experience"} />
       </ContentBox>
-      <NavBox showLanding={isLandingView} />
+      <NavBox showLanding={currentSection === "_landing"} />
       <style jsx>{`
         ._container {
           height: 100%;
