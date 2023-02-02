@@ -37,10 +37,13 @@ export default function NavBaguette({ showLanding }: Props) {
 
   let buttons = new Map([
     ["music", { clickHandler: musicToggle }],
-    ["info", { clickHandler: scrollTo("_about"), classes: "active" }],
-    ["products", { clickHandler: scrollTo("_product") }],
-    ["blogpost", { clickHandler: scrollTo("_blogpost") }],
-    ["experience", { clickHandler: scrollTo("_experience") }],
+    ["info", { clickHandler: scrollTo("_about"), classes: "active _about" }],
+    ["products", { clickHandler: scrollTo("_product"), classes: "_product" }],
+    ["blogpost", { clickHandler: scrollTo("_blogpost"), classes: "_blogpost" }],
+    [
+      "experience",
+      { clickHandler: scrollTo("_experience"), classes: "_experience" },
+    ],
     ["arrowup", { clickHandler: scrollTo("_landing") }],
   ]);
 
