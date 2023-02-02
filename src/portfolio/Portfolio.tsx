@@ -20,8 +20,8 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 
 */
 
-// TODO: change font sizes for everything
 // TODO: restructure folders, move portfolio to top level, resume to a folder
+// TODO: add video/pic demos for products
 // TODO: download all icons from simpleicons, cleanup icons store
 // TODO: animate keyword changes with a glitch effect
 // TODO: add music, and music controls
