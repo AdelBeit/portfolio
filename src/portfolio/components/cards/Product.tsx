@@ -1,3 +1,4 @@
+import cs from "classnames";
 import React, { useState } from "react";
 import { linkHandler } from "../../utils/linkHandler";
 import { scale } from "../../utils/scale";
@@ -11,6 +12,10 @@ interface Props {
   width: number;
 }
 
+// TODO: fix tech stack to import from data
+// TODO: passive scroll on tech stack
+// TODO: modularize the card svg components to adjust height and slide down amount
+
 export default function Product({
   title,
   description,
@@ -19,6 +24,24 @@ export default function Product({
   width = 0,
 }: Props) {
   const [active, setActive] = useState(false);
+
+  const getMediaType = (filePath: string) => {
+    const imageFormats = ["jpeg", "jpg", "png", "gif", "bmp", "webp"];
+    const videoFormats = ["mp4", "avi", "mov", "wmv", "mkv"];
+    const s = filePath.split(".");
+    const fileType = s[s.length - 1];
+    console.log(fileType, filePath);
+    if (imageFormats.includes(fileType.toLowerCase())) {
+      return ["image", fileType];
+    }
+    if (videoFormats.includes(fileType.toLowerCase())) {
+      return ["video", fileType];
+    }
+    if (fileType === "") return ["", ""];
+    throw new Error("file type unknown");
+  };
+
+  const media = getMediaType(links.VIDEO);
 
   const expandHandler = (e: React.MouseEvent<HTMLElement>) => {
     let animationStage = active ? ".p1" : ".p0";
@@ -79,7 +102,14 @@ export default function Product({
       <div className="_baguette tech_stack absolute">
         <Baguette crumbs={techStack} _type="icon" />
       </div>
-      <div className="_contentBox description absolute">
+      <div className={cs("_contentBox demo absolute", !active && "hide")}>
+        {media[0] === "image" ? (
+          <img src={links.VIDEO} />
+        ) : media[0] === "video" ? (
+          <video src={links.VIDEO} controls />
+        ) : null}
+      </div>
+      <div className="_contentBox hide-scroll-bar description absolute">
         <ul>
           {description.map((desc, _index) => (
             <li key={_index}>{desc}</li>
@@ -108,12 +138,43 @@ export default function Product({
 
         ._contentBox.description {
           width: 85%;
-          height: ${scalingFactor * 630}px;
+          height: ${scalingFactor * 530}px;
           margin-top: ${scalingFactor * 72}px;
           margin-left: ${scalingFactor * 5}px;
           padding: 0px 15px;
+          padding-top: 20px;
 
           align-items: flex-start;
+
+          overflow-y: hidden;
+        }
+
+        ._contentBox.description ul {
+          margin-top: ${active ? scalingFactor * 350 : 0}px;
+          transition: margin-top 0.18s ease-in-out;
+        }
+
+        ._contentBox.demo {
+          width: 83%;
+          height: 300px;
+
+          margin-left: 23px;
+          margin-top: ${scalingFactor * 102}px;
+          opacity: ${active ? 1 : 0};
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          transition: opacity 0.2s;
+        }
+
+        ._contentBox.demo img,
+        ._contentBox.demo video {
+          width: 100%;
+          height: auto;
+          align-self: flex-end;
         }
 
         ._baguette {

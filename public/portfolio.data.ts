@@ -118,7 +118,7 @@ export const PRODUCTS = [
       "node.js",
     ],
     LINKS: {
-      VIDEO: "",
+      VIDEO: "./product resources/jamroom.png",
       CODE: "https://github.com/adelbeit/virtual-jamroom",
       DEMO: "https://jam.adelbeit.com/",
     },
