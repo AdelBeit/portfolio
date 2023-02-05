@@ -21,7 +21,7 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 
 */
 
-// TODO: download all icons from simpleicons, cleanup icons store
+// TODO: fix all links to external sites 'linkedin','github','resume',etc...
 // TODO: add music, and music controls
 // TODO: determine blogpost hosting, probably dev.to or medium
 // TODO: add blog posts
@@ -32,6 +32,7 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: add a footer to view source code for portfolio on github
 // TODO: make icon ether svg icons glitch in and out of existence at random spots
 // TODO: use css clamp() for responsive font sizes
+// TODO: download all icons from simpleicons, cleanup icons store
 
 export function App() {
   const [width, setWidth] = useState(0);
