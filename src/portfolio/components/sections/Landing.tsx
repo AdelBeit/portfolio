@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { BaseSectionProps } from "../../types";
+import GlitchyText from "../GlitchyText";
 import { TypeWriter } from "../TyperWriter";
 
 interface Props extends BaseSectionProps {
@@ -10,6 +11,9 @@ interface Props extends BaseSectionProps {
 }
 
 export default function Landing({ title, role, description, keywords }: Props) {
+  const [index, setIndex] = useState<number>(0);
+  const words = keywords;
+
   return (
     <div id="_landing" className="_section">
       <div className="_container relative">
@@ -21,7 +25,23 @@ export default function Landing({ title, role, description, keywords }: Props) {
         </div>
         <div className="_contentBox description thin-font small">
           <span>
-            <TypeWriter content={description} />
+            <TypeWriter
+              content={description}
+              cb={() => {
+                setIndex(1);
+              }}
+            />
+            {index == 1 && (
+              <TypeWriter
+                content={words[0]}
+                extraStyles={"_CG_word _CG_layer _CG_glitch"}
+                cb={({ parent }) => {
+                  parent.classList.add("none");
+                  setIndex(2);
+                }}
+              />
+            )}
+            {index == 2 && <GlitchyText text={words} />}
           </span>
         </div>
       </div>
