@@ -25,12 +25,16 @@ export default function Landing({ title, role, description, keywords }: Props) {
         </div>
         <div className="_contentBox description thin-font small">
           <span>
-            <TypeWriter
-              content={description}
-              cb={() => {
-                setIndex(1);
-              }}
-            />
+            {index == 0 ? (
+              <TypeWriter
+                content={description}
+                cb={() => {
+                  setIndex(1);
+                }}
+              />
+            ) : (
+              <span>{description}</span>
+            )}
             {index == 1 && (
               <TypeWriter
                 content={words[0]}
