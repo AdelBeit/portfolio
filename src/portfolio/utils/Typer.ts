@@ -10,10 +10,15 @@ export default class Typer {
   timeout: NodeJS.Timeout;
   typerInterval: NodeJS.Timer;
   cursorBlinkInterval: NodeJS.Timer;
+  doneTyping: Promise<boolean>;
+  doneTypingResolve: (value?: boolean | PromiseLike<boolean>) => void;
 
   constructor(element: HTMLSpanElement, text: string) {
     this.element = element;
     this.inputText = text;
+    this.doneTyping = new Promise<boolean>((res) => {
+      this.doneTypingResolve = res;
+    });
   }
 
   start() {
@@ -23,11 +28,13 @@ export default class Typer {
     this.cursorBlinkInterval = setInterval(() => {
       this.blinkingCursor();
     }, this.cursorBlinkDelay);
+    return this.doneTyping;
   }
 
   type() {
     if (this.typerCursor >= this.inputText.length) {
-      this.stop();
+      this.stopTyping();
+      this.doneTypingResolve(true);
       return;
     }
 
@@ -66,7 +73,15 @@ export default class Typer {
   }
 
   stop() {
-    clearInterval(this.typerInterval);
+    this.stopTyping();
+    this.stopBlinking();
+  }
+
+  stopBlinking() {
     clearInterval(this.cursorBlinkInterval);
+  }
+
+  stopTyping() {
+    clearInterval(this.typerInterval);
   }
 }
