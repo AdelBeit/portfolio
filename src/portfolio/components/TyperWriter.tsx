@@ -1,41 +1,57 @@
+import cs from "classnames";
 import { useEffect, useRef } from "react";
 import Typer from "../utils/Typer";
 
-export function TypeWriter({ content }: { content: string }) {
+type cbOptionalArgs = { parent?: HTMLSpanElement; typer?: Typer };
+
+interface Props {
+  content: string;
+  extraStyles?: string;
+  cb?: (args?: cbOptionalArgs) => void;
+}
+
+export function TypeWriter({
+  content,
+  extraStyles = "",
+  cb = ({}) => {},
+}: Props) {
   const ref = useRef<null | HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (ref.current) {
-      const parent = ref.current;
-      const content = parent.querySelector("._content_").textContent;
-      const target: HTMLSpanElement = parent.querySelector("._insert_");
-      const typer = new Typer(target, content);
+    if (!ref.current) return;
 
-      const handleIntersection = (entries) =>
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) typer.start();
-        });
+    const parent = ref.current;
+    const target: HTMLSpanElement = parent.querySelector("._insert_");
+    const typer = new Typer(target, content);
 
-      const options = {
-        root: document.querySelector("#_viewbox"),
-        rootMargin: "0px",
-        threshold: 1.0,
-      };
+    const handleIntersection = (entries) => {
+      return entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          typer.start().then((res) => {
+            typer.stop();
+            cb.call(this, { parent: parent, typer: typer });
+          });
+        }
+      });
+    };
 
-      const observer = new IntersectionObserver(handleIntersection, options);
+    const options = {
+      root: document.querySelector("#_viewbox"),
+      rootMargin: "0px",
+      threshold: 1.0,
+    };
+    const observer = new IntersectionObserver(handleIntersection, options);
+    observer.observe(parent);
 
-      observer.observe(parent);
-
-      return () => {
-        typer.stop();
-        observer.disconnect();
-      };
-    }
+    return () => {
+      typer.stop();
+      observer.disconnect();
+    };
   }, [ref.current]);
+
   return (
     <span ref={ref}>
-      <span className="none _content_">{content}</span>
-      <span className="_insert_"></span>
+      <span className={cs("_insert_", extraStyles)}></span>
     </span>
   );
 }
