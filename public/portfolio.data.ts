@@ -1,13 +1,14 @@
 export const LANDING = {
   NAME: "Adele Beitvashahi",
   ROLE: "Software Engineer",
-  CONTENT: "I write code that's",
+  CONTENT: "I have a knack for developing software that's",
   KEYWORDS: [
     "accessible",
     "light weight",
     "scalable",
     "fast",
     "secure",
+    "beautiful",
     "extendable",
     "optimized",
     "well documented",
