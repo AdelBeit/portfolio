@@ -30,7 +30,6 @@ export default function Product({
     const videoFormats = ["mp4", "avi", "mov", "wmv", "mkv"];
     const s = filePath.split(".");
     const fileType = s[s.length - 1];
-    console.log(fileType, filePath);
     if (imageFormats.includes(fileType.toLowerCase())) {
       return ["image", fileType];
     }
