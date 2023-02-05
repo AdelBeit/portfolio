@@ -6,7 +6,7 @@ export default class Typer {
   cursorCharacter: string = ".";
   typeDelay: number = 10;
   sentenceDelay: number = 400;
-  cursorBlinkDelay: number = 400;
+  cursorBlinkDelay: number = 800;
   timeout: NodeJS.Timeout;
   typerInterval: NodeJS.Timer;
   cursorBlinkInterval: NodeJS.Timer;
