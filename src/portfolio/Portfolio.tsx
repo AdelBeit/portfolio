@@ -18,7 +18,6 @@ import { SECTIONS } from "./types";
 css cyberpunk buttons https://codepen.io/jh3y/full/BajVmOg
 glitch effect https://codemyui.com/horror-movie-like-glitch-effect/
 duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night%20sky
-
 */
 
 // TODO: fix all links to external sites 'linkedin','github','resume',etc...
