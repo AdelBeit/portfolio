@@ -19,6 +19,7 @@ export const LANDING = {
     "efficient",
     "100% organic grassfed NON GMO",
     "future proof",
+    "not gonna let you down",
     "well tested",
     "versatile",
     "reliable",

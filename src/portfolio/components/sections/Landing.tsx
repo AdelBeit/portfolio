@@ -28,7 +28,8 @@ export default function Landing({ title, role, description, keywords }: Props) {
             {index == 0 ? (
               <TypeWriter
                 content={description}
-                cb={() => {
+                cb={({ typer }) => {
+                  typer.stop();
                   setIndex(1);
                 }}
               />
@@ -39,8 +40,9 @@ export default function Landing({ title, role, description, keywords }: Props) {
               <TypeWriter
                 content={words[0]}
                 extraStyles={"_CG_word _CG_layer _CG_glitch"}
-                cb={({ parent }) => {
+                cb={({ parent, typer }) => {
                   parent.classList.add("none");
+                  typer.stop();
                   setIndex(2);
                 }}
               />

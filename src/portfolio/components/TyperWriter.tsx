@@ -28,7 +28,6 @@ export function TypeWriter({
       return entries.forEach((entry) => {
         if (entry.isIntersecting) {
           typer.start().then((res) => {
-            typer.stop();
             cb.call(this, { parent: parent, typer: typer });
           });
         }
