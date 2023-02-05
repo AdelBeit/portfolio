@@ -21,8 +21,6 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 
 */
 
-// TODO: redo landing page description to be a short sentence with changing keywords
-// TODO: animate keyword changes with a glitch effect
 // TODO: download all icons from simpleicons, cleanup icons store
 // TODO: add music, and music controls
 // TODO: determine blogpost hosting, probably dev.to or medium
@@ -32,6 +30,8 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: scrolling glitch effect
 // TODO: change card sizes for tablet and phone screens, tablet should have 2 cards, phone should have bigger card
 // TODO: add a footer to view source code for portfolio on github
+// TODO: make icon ether svg icons glitch in and out of existence at random spots
+// TODO: use css clamp() for responsive font sizes
 
 export function App() {
   const [width, setWidth] = useState(0);
@@ -78,7 +78,7 @@ export function App() {
         <Landing
           title={LANDING.NAME}
           role={LANDING.ROLE}
-          description={LANDING.EXTRAS}
+          description={LANDING.CONTENT}
           keywords={LANDING.KEYWORDS}
           isInView={currentSection === "_landing"}
         />
