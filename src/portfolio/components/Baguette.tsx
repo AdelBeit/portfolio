@@ -1,4 +1,5 @@
 import React from "react";
+import { useWidth } from "../store/WidthStore";
 import Frame, { ButtonFrameProps, ButtonOrIcon, IconFrameProps } from "./Frame";
 
 type BaguetteProps<T extends ButtonOrIcon> =
@@ -14,12 +15,23 @@ export default function Baguette<T extends ButtonOrIcon>(
   props: BaguetteProps<T>
 ) {
   let content;
+
+  const windowWidth = useWidth((state) => state.width);
+  let frameSize = props.frameSize || 60;
+  frameSize =
+    windowWidth <= 480
+      ? frameSize - 20
+      : windowWidth <= 600
+      ? frameSize - 10
+      : 60;
+
   if (props["_type"] === "button") {
     return (
       <>
         {Array.from(props.crumbs.keys()).map((crumbKey, _index) => (
           <Frame
             {...props}
+            {...{ frameSize: frameSize }}
             {...props.crumbs.get(crumbKey)}
             key={_index}
             icon={crumbKey}
@@ -34,7 +46,13 @@ export default function Baguette<T extends ButtonOrIcon>(
     return (
       <>
         {props.crumbs.map((crumb, _index) => (
-          <Frame {...props} key={_index} icon={crumb} _type={props._type} />
+          <Frame
+            {...props}
+            {...frameSize}
+            key={_index}
+            icon={crumb}
+            _type={props._type}
+          />
         ))}
       </>
     );

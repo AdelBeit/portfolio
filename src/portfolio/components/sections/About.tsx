@@ -4,13 +4,14 @@ import EducationCard from "../cards/Education";
 import TechStackCard from "../cards/TechStack";
 import { ABOUT, EDUCATION, TECHSTACK } from "../../../../public/portfolio.data";
 import { BaseSectionProps } from "../../types";
-import { useWidth } from "../../context/WidthContext";
+import { useWidth } from "../../store/WidthStore";
 
 interface Props extends BaseSectionProps {}
 
 export default function About(props: Props) {
   let staticWidth = 379;
-  const { width: windowWidth } = useWidth();
+  const windowWidth = useWidth((state) => state.width);
+
   let width = staticWidth;
   if (windowWidth >= 1100) {
     width = 419;

@@ -1,6 +1,6 @@
 import React from "react";
 import { PRODUCTS } from "../../../../public/portfolio.data";
-import { useWidth } from "../../context/WidthContext";
+import { useWidth } from "../../store/WidthStore";
 import { BaseSectionProps } from "../../types";
 import ProductCard from "../cards/Product";
 
@@ -8,7 +8,7 @@ interface Props extends BaseSectionProps {}
 
 export default function Product({}: Props) {
   let width = 379;
-  const { width: windowWidth } = useWidth();
+  const windowWidth = useWidth((state) => state.width);
   if (windowWidth <= 480) {
     width = windowWidth - 100;
   }

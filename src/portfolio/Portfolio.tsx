@@ -13,7 +13,7 @@ import preLoadImages from "./utils/preLoadImages";
 import Landing from "./components/sections/Landing";
 import { LANDING } from "../../public/portfolio.data";
 import { SECTIONS } from "./types";
-import { WidthProvider } from "./context/WidthContext";
+import { useWidth } from "./store/WidthStore";
 
 /*
 css cyberpunk buttons https://codepen.io/jh3y/full/BajVmOg
@@ -37,7 +37,7 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: make the background shake to the beat
 
 export function App() {
-  const [width, setWidth] = useState(0);
+  const { setWidth } = useWidth();
   const [currentSection, setCurrentSection] = useState("_landing");
 
   const resizeHandler = () => {
@@ -75,20 +75,19 @@ export function App() {
 
   return (
     <div className="_container relative">
+      <IconEther />
       <ContentBox handleIntersection={handleIntersection}>
-        <WidthProvider width={width}>
-          <Landing
-            title={LANDING.NAME}
-            role={LANDING.ROLE}
-            description={LANDING.CONTENT}
-            keywords={LANDING.KEYWORDS}
-            isInView={currentSection === "_landing"}
-          />
-          <About isInView={currentSection === "_about"} />
-          <Product isInView={currentSection === "_product"} />
-          {/* <BlogPost isInView={currentSection === "_blogpost"} /> */}
-          <Experience isInView={currentSection === "_experience"} />
-        </WidthProvider>
+        <Landing
+          title={LANDING.NAME}
+          role={LANDING.ROLE}
+          description={LANDING.CONTENT}
+          keywords={LANDING.KEYWORDS}
+          isInView={currentSection === "_landing"}
+        />
+        <About isInView={currentSection === "_about"} />
+        <Product isInView={currentSection === "_product"} />
+        {/* <BlogPost isInView={currentSection === "_blogpost"} /> */}
+        <Experience isInView={currentSection === "_experience"} />
       </ContentBox>
       <NavBox showLanding={currentSection === "_landing"} />
       <style jsx>{`
@@ -159,8 +158,6 @@ export function App() {
           #_about > div {
             gap: 80px;
           }
-        }
-        @media only screen and (max-width: 500px) {
         }
       `}</style>
       <div
