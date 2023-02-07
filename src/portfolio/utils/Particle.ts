@@ -1,34 +1,38 @@
 export default class Particle {
   x: number;
   y: number;
-  directionX: number;
-  directionY: number;
+  dX: number;
+  dY: number;
   size: number;
   maxSize: number;
   img: HTMLImageElement | null;
+  tStep: number;
+  t: number;
 
   constructor({
     x,
     y,
-    directionX,
-    directionY,
+    dX,
+    dY,
     size,
     img = null,
   }: {
     x: number;
     y: number;
-    directionX: number;
-    directionY: number;
+    dX: number;
+    dY: number;
     size: number;
     img?: HTMLImageElement;
   }) {
     this.x = x;
     this.y = y;
-    this.directionX = directionX;
-    this.directionY = directionY;
+    this.dX = dX;
+    this.dY = dY;
     this.size = size;
     this.maxSize = size;
     this.img = img;
+    this.tStep = Math.random() * 0.01 + 0.01;
+    this.t = Math.random() * 100;
   }
 
   draw(ctx: CanvasRenderingContext2D) {
@@ -47,7 +51,6 @@ export default class Particle {
       ctx.fill();
     }
   }
-
   // TODO: a more interesting collission algo
   avoidCollision(pB: Particle) {
     const distance = ((pB.x - this.x) ** 2 + (pB.y - this.y) ** 2) ** 0.5;
@@ -60,26 +63,32 @@ export default class Particle {
   }
 
   flipX() {
-    this.directionX *= -1;
+    this.dX *= -1;
   }
   flipY() {
-    this.directionY *= -1;
+    this.dY *= -1;
   }
 
-  update(
-    canvas: { width: number; height: number },
-    ctx: CanvasRenderingContext2D
-  ) {
+  update(ctx: CanvasRenderingContext2D) {
+    // random movement pattern
     // boundary collision
-    if (this.x > canvas.width - this.size / 2 || this.x < this.size / 2) {
-      this.directionX *= -1;
+    if (this.x > ctx.canvas.width - this.size / 2 || this.x < this.size / 2) {
+      this.dX *= -1;
     }
-    if (this.y > canvas.height - this.size / 2 || this.y < this.size / 2) {
-      this.directionY *= -1;
+    if (this.y > ctx.canvas.height - this.size / 2 || this.y < this.size / 2) {
+      this.dY *= -1;
     }
+    this.x += this.dX;
+    this.y += this.dY;
 
-    this.x = this.x + this.directionX;
-    this.y = this.y + this.directionY;
+    // figure 8 pattern
+    this.t += this.tStep;
+
+    // this.x =
+    //   ctx.canvas.width * 0.425 * Math.sin(this.t / 2) + ctx.canvas.width * 0.5;
+    // this.y =
+    //   ctx.canvas.height * 0.2 * Math.sin(this.t) + ctx.canvas.height * 0.5;
+
     if (!this.img) this.flicker();
     this.draw(ctx);
   }
