@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BaseSectionProps } from "../../types";
 import GlitchyText from "../GlitchyText";
+import IconEther from "../IconEther";
 import { TypeWriter } from "../TyperWriter";
 
 interface Props extends BaseSectionProps {
@@ -15,7 +16,8 @@ export default function Landing({ title, role, description, keywords }: Props) {
   const words = keywords;
 
   return (
-    <div id="_landing" className="_section">
+    <div id="_landing" className="_section relative">
+      <IconEther />
       <div className="_container relative">
         <div className="_contentBox title extra-large">
           <span>{title}</span>
@@ -55,7 +57,7 @@ export default function Landing({ title, role, description, keywords }: Props) {
         ._container {
           width: 100vw;
           height: 90vh;
-          padding-left: 7%;
+          padding-left: 10%;
 
           display: flex;
           flex-direction: column;
@@ -75,11 +77,6 @@ export default function Landing({ title, role, description, keywords }: Props) {
         @media only screen and (min-height: 800px) {
           ._container {
             gap: 15vh;
-          }
-        }
-        @media only screen and (min-width: 1401px) {
-          ._container {
-            padding-left: 10%;
           }
         }
         @media only screen and (max-width: 1400px) {
