@@ -77,10 +77,20 @@ export default function NavBaguette({ showLanding }: Props) {
           ._container {
             flex-direction: row;
             height: fit-content;
-            width: 80%;
+            width: 85%;
             margin: 10px 0;
             position: absolute;
             bottom: 0;
+          }
+        }
+        @media only screen and (max-width: 600px) {
+          ._container {
+            width: 90%;
+          }
+        }
+        @media only screen and (max-width: 400px) {
+          ._container {
+            width: 100%;
           }
         }
       `}</style>

@@ -30,6 +30,16 @@ export default function Icon({ icon, size = "60%" }: Props) {
           height: 60px;
           top: 10px;
         }
+        @media only screen and (max-width: 600px) {
+          .music {
+            top: 8px;
+          }
+        }
+        @media only screen and (max-width: 480px) {
+          .music {
+            top: 6px;
+          }
+        }
       `}</style>
     </div>
   );
