@@ -13,6 +13,7 @@ import preLoadImages from "./utils/preLoadImages";
 import Landing from "./components/sections/Landing";
 import { LANDING } from "../../public/portfolio.data";
 import { SECTIONS } from "./types";
+import { WidthProvider } from "./context/WidthContext";
 
 /*
 css cyberpunk buttons https://codepen.io/jh3y/full/BajVmOg
@@ -33,13 +34,13 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: make icon ether svg icons glitch in and out of existence at random spots
 // TODO: use css clamp() for responsive font sizes
 // TODO: download all icons from simpleicons, cleanup icons store
+// TODO: make the background shake to the beat
 
 export function App() {
   const [width, setWidth] = useState(0);
   const [currentSection, setCurrentSection] = useState("_landing");
 
   const resizeHandler = () => {
-    let newWidth = 20 + window.innerWidth / 4;
     setWidth(window.innerWidth);
   };
 
@@ -74,19 +75,20 @@ export function App() {
 
   return (
     <div className="_container relative">
-      <IconEther />
       <ContentBox handleIntersection={handleIntersection}>
-        <Landing
-          title={LANDING.NAME}
-          role={LANDING.ROLE}
-          description={LANDING.CONTENT}
-          keywords={LANDING.KEYWORDS}
-          isInView={currentSection === "_landing"}
-        />
-        <About width={width} isInView={currentSection === "_about"} />
-        <Product isInView={currentSection === "_product"} />
-        {/* <BlogPost isInView={currentSection === "_blogpost"} /> */}
-        <Experience isInView={currentSection === "_experience"} />
+        <WidthProvider width={width}>
+          <Landing
+            title={LANDING.NAME}
+            role={LANDING.ROLE}
+            description={LANDING.CONTENT}
+            keywords={LANDING.KEYWORDS}
+            isInView={currentSection === "_landing"}
+          />
+          <About isInView={currentSection === "_about"} />
+          <Product isInView={currentSection === "_product"} />
+          {/* <BlogPost isInView={currentSection === "_blogpost"} /> */}
+          <Experience isInView={currentSection === "_experience"} />
+        </WidthProvider>
       </ContentBox>
       <NavBox showLanding={currentSection === "_landing"} />
       <style jsx>{`
@@ -157,6 +159,8 @@ export function App() {
           #_about > div {
             gap: 80px;
           }
+        }
+        @media only screen and (max-width: 500px) {
         }
       `}</style>
       <div

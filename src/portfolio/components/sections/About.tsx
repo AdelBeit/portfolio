@@ -4,20 +4,29 @@ import EducationCard from "../cards/Education";
 import TechStackCard from "../cards/TechStack";
 import { ABOUT, EDUCATION, TECHSTACK } from "../../../../public/portfolio.data";
 import { BaseSectionProps } from "../../types";
+import { useWidth } from "../../context/WidthContext";
 
-interface Props extends BaseSectionProps {
-  width: number;
-}
+interface Props extends BaseSectionProps {}
 
-export default function About({ width = 379 }: Props) {
-  const staticWidth = 379;
+export default function About(props: Props) {
+  let staticWidth = 379;
+  const { width: windowWidth } = useWidth();
+  let width = staticWidth;
+  if (windowWidth >= 1100) {
+    width = 419;
+  }
+  if (windowWidth <= 480) {
+    width = windowWidth - 100;
+    staticWidth = width;
+  }
+
   return (
     <div className="_section" id="_about">
       <AboutCard
         title={ABOUT.TITLE}
         description={ABOUT.CONTENT1}
         links={ABOUT.LINKS}
-        width={width >= 1100 ? 419 : 379}
+        width={width}
       />
       <div className="_container">
         <EducationCard
