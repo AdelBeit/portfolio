@@ -17,6 +17,8 @@ export default function IconEther() {
     let imgParticles: Particle[] = [];
     let dotParticles: Particle[] = [];
     let imgs: HTMLImageElement[] = [];
+    const maxImgs = canvas.width <= 500 ? 10 : canvas.width <= 700 ? 18 : 30;
+    const imgSize = canvas.width <= 500 ? 12 : canvas.width <= 700 ? 20 : 27;
 
     let mouse = {
       x: null,
@@ -46,22 +48,23 @@ export default function IconEther() {
       imgParticles = [];
       dotParticles = [];
       const dotParticleCount = 20;
-      const n = imgs.length;
+      const n = Math.min(imgs.length, maxImgs);
       for (let i = 0; i < n + dotParticleCount; i++) {
         let size = 1 + Math.random() * 2;
-        if (i < n) size = Math.random() * 5 + 30;
+        if (i < n) size = (Math.random() * imgSize) / 2.5 + imgSize;
         const x = size * 2 + Math.random() * (innerWidth - size * 4);
         const y = size * 2 + Math.random() * (innerHeight - size * 4);
-        const directionX = (Math.random() * 2 - 1) / 10;
-        const directionY = (Math.random() * 2 - 1) / 10;
+        const dX = (Math.random() * 2 - 1) / 10;
+        const dY = (Math.random() * 2 - 1) / 10;
         const img = i < n ? imgs[i] : null;
 
         const particle = {
           x: x,
           y: y,
-          directionX: directionX,
-          directionY: directionY,
-          size: size,
+          dX: dX,
+          dY: dY,
+          size:
+            size / (canvas.width <= 500 ? 1.2 : canvas.width <= 700 ? 1.1 : 1),
           img: img,
         };
         if (i < n) imgParticles.push(new Particle(particle));
@@ -103,17 +106,17 @@ export default function IconEther() {
     };
 
     const animateImgParticles = () => {
-      const canvasDimensions = { width: canvas.width, height: canvas.height };
-      for (let i = 0; i < imgParticles.length; i++) {
-        imgParticles[i].update(canvasDimensions, ctx);
+      const n = Math.min(imgParticles.length, maxImgs);
+      for (let i = 0; i < n; i++) {
+        // for (let i = 0; i < 1; i++) {
+        imgParticles[i].update(ctx);
       }
       // connect(imgParticles);
     };
 
     const animateDotParticles = () => {
-      const canvasDimensions = { width: canvas.width, height: canvas.height };
       for (let i = 0; i < dotParticles.length; i++) {
-        dotParticles[i].update(canvasDimensions, ctx);
+        dotParticles[i].update(ctx);
       }
       connect(dotParticles);
     };
@@ -149,9 +152,6 @@ export default function IconEther() {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
-        }
-        .blurred-background {
-          z-index: 1;
         }
         canvas {
           position: absolute;
