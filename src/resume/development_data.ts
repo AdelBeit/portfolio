@@ -21,7 +21,7 @@ export const SiteData = {
   },
   products: [
     {
-      title: "Drum & Keys",
+      title: "Jamroom",
       language:
         "NextJS, React, ToneJS, Socket.io, Docker, Digital Ocean, Figma, Git",
       time: { year: "2022", month: "mar" },
@@ -31,7 +31,7 @@ export const SiteData = {
       ],
       url: {
         demo: "https://jam.adelbeit.com/home?roomID=1",
-        github: "https://github.com/AdelBeit/virtual-jamroom",
+        github: "https://github.com/AdelBeit/jamroom",
       },
     },
     {
