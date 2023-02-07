@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { BaseSectionProps } from "../../types";
 import GlitchyText from "../GlitchyText";
-import IconEther from "../IconEther";
 import { TypeWriter } from "../TyperWriter";
 
 interface Props extends BaseSectionProps {
@@ -17,7 +16,6 @@ export default function Landing({ title, role, description, keywords }: Props) {
 
   return (
     <div id="_landing" className="_section relative">
-      <IconEther />
       <div className="_container relative">
         <div className="_contentBox title extra-large">
           <span>{title}</span>
