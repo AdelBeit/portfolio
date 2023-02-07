@@ -27,7 +27,10 @@ export default function ContentBox({ handleIntersection, children }: Props) {
   }, []);
 
   return (
-    <div id="_viewbox" className="_container hide-scroll-bar z-index-10">
+    <div
+      id="_viewbox"
+      className="_container relative hide-scroll-bar z-index-10"
+    >
       {children}
       <style jsx>{`
         ._container {
@@ -44,7 +47,7 @@ export default function ContentBox({ handleIntersection, children }: Props) {
         }
         @media only screen and (max-width: 780px) {
           ._container {
-            width: 90vw;
+            width: 100vw;
             margin: 0;
           }
           ._container:after {
