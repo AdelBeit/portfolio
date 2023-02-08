@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ABOUT } from "../../../public/portfolio.data";
+import { useWidth } from "../store/WidthStore";
 import { linkHandler } from "../utils/linkHandler";
 import Baguette from "./Baguette";
 
@@ -11,6 +12,17 @@ interface Props {
 
 export default function NavBaguette({ showLanding }: Props) {
   const [playMusic, setPlayMusic] = useState(false);
+
+  const windowWidth = useWidth((state) => state.width);
+  let frameSize = 60;
+  frameSize =
+    windowWidth <= 340
+      ? frameSize - 25
+      : windowWidth <= 380
+      ? frameSize - 20
+      : windowWidth <= 600
+      ? frameSize - 10
+      : frameSize;
 
   function musicToggle() {
     const musicElement = document.querySelector("#music") as SVGSymbolElement;
@@ -61,7 +73,12 @@ export default function NavBaguette({ showLanding }: Props) {
 
   return (
     <div id="_navbar" className="_container z-index-10">
-      <Baguette crumbs={buttons} shadow={true} _type="button" />
+      <Baguette
+        crumbs={buttons}
+        shadow={true}
+        _type="button"
+        {...{ frameSize }}
+      />
       <style jsx>{`
         ._container {
           height: 80%;

@@ -1,4 +1,5 @@
 import React from "react";
+import { useWidth } from "../../store/WidthStore";
 import { linkHandler } from "../../utils/linkHandler";
 import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
@@ -26,6 +27,10 @@ export default function About({ title, description, links, width = 0 }: Props) {
 
   const scalingFactor = width / initialWidth;
 
+  const windowWidth = useWidth((state) => state.width);
+  let frameSize = 60;
+  frameSize = windowWidth <= 480 ? frameSize * scalingFactor : frameSize;
+
   return (
     <div
       className={"_card relative " + _name}
@@ -40,15 +45,13 @@ export default function About({ title, description, links, width = 0 }: Props) {
         ></use>
       </svg>
       <div className="_contentBox title absolute">
-        <p>{title}</p>
+        <span>{title}</span>
       </div>
       <div className="_baguette absolute">
-        <Baguette crumbs={buttons} _type="button" />
+        <Baguette crumbs={buttons} _type="button" {...{ frameSize }} />
       </div>
-      <div className="_contentBox description absolute">
-        <p>
-          <TypeWriter content={description} />
-        </p>
+      <div className="_contentBox description hide-scroll-bar absolute">
+        <TypeWriter content={description} />
       </div>
       <style jsx>{`
         ._card {
@@ -75,17 +78,18 @@ export default function About({ title, description, links, width = 0 }: Props) {
           height: ${scalingFactor * 630}px;
           margin-top: ${scalingFactor * 72}px;
           margin-left: ${scalingFactor * 5}px;
-          padding: 0px 15px;
+          padding: ${scalingFactor * 10}px 15px 30px ${scalingFactor * 15}px;
 
           align-items: flex-start;
+          overflow-y: scroll;
         }
 
         ._baguette {
           display: flex;
           flex-direction: column;
-          gap: 15px;
+          gap: 10px;
           padding: 0;
-          margin-top: ${scalingFactor * 120}px;
+          margin-top: ${scalingFactor * 110}px;
           margin-left: ${scalingFactor * 322}px;
         }
       `}</style>

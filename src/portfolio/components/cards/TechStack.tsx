@@ -1,4 +1,5 @@
 import React from "react";
+import { useWidth } from "../../store/WidthStore";
 import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
 
@@ -18,6 +19,15 @@ export default function TechStack({ icons, width = 0 }: Props) {
 
   const scalingFactor = width / initialWidth;
 
+  const windowWidth = useWidth((state) => state.width);
+  let frameSize = 45;
+  let gridGap = 20;
+  if (windowWidth <= 480) {
+    gridGap = 15 * scalingFactor;
+    frameSize *= scalingFactor;
+  }
+  const gridRepeatHeight = (gridGap + frameSize) * 8;
+
   return (
     <div
       className={"_card relative " + _name}
@@ -32,11 +42,15 @@ export default function TechStack({ icons, width = 0 }: Props) {
         ></use>
       </svg>
       <div className="_contentBox title absolute">
-        <p>{title}</p>
+        <span>{title}</span>
       </div>
       <div className="_container relative">
         <div className="_icons hide-scroll-bar absolute passive-scroll">
-          <Baguette crumbs={[...icons, ...icons]} _type="icon" frameSize={45} />
+          <Baguette
+            crumbs={[...icons, ...icons]}
+            _type="icon"
+            {...{ frameSize }}
+          />
         </div>
       </div>
       <style jsx>{`
@@ -75,9 +89,15 @@ export default function TechStack({ icons, width = 0 }: Props) {
           height: 100%;
 
           display: grid;
-          grid-template-columns: repeat(5, 30px);
-          grid-template-rows: repeat(20, 30px);
-          grid-gap: 33px;
+          grid-template-columns: repeat(5, ${frameSize}px);
+          grid-template-rows: repeat(20, ${frameSize}px);
+          grid-gap: ${gridGap}px;
+        }
+
+        @keyframes Passive-YScroll {
+          100% {
+            transform: translateY(-${gridRepeatHeight}px);
+          }
         }
       `}</style>
     </div>

@@ -1,5 +1,6 @@
 import cs from "classnames";
 import React, { useState } from "react";
+import { useWidth } from "../../store/WidthStore";
 import { linkHandler } from "../../utils/linkHandler";
 import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
@@ -81,6 +82,18 @@ export default function Product({
 
   const scalingFactor = width / initialWidth;
 
+  const windowWidth = useWidth((state) => state.width);
+  let techStackFrameSize = 30;
+  let techStackMarginLeft = -14;
+  if (windowWidth <= 400) {
+    techStackFrameSize *= scalingFactor;
+    techStackMarginLeft = -8;
+  }
+
+  let ButtonFrameSize = 60;
+  ButtonFrameSize =
+    windowWidth <= 480 ? ButtonFrameSize * scalingFactor : ButtonFrameSize;
+
   return (
     <div
       className="_card _product relative"
@@ -93,13 +106,21 @@ export default function Product({
         type="image/svg+xml"
       ></object>
       <div className="_contentBox title absolute">
-        <p>{title}</p>
+        <span>{title}</span>
       </div>
       <div className="_baguette buttons absolute">
-        <Baguette crumbs={buttons} _type="button" />
+        <Baguette
+          crumbs={buttons}
+          _type="button"
+          {...{ frameSize: ButtonFrameSize }}
+        />
       </div>
       <div className="_baguette tech_stack absolute">
-        <Baguette crumbs={techStack} _type="icon" />
+        <Baguette
+          crumbs={techStack}
+          _type="icon"
+          {...{ frameSize: techStackFrameSize }}
+        />
       </div>
       <div className={cs("_contentBox demo absolute", !active && "hide")}>
         {media[0] === "image" ? (
@@ -127,7 +148,7 @@ export default function Product({
 
         ._contentBox.title {
           width: 97.5%;
-          margin-top: ${scalingFactor * -10}px;
+          margin-top: ${scalingFactor * 10}px;
           margin-left: ${scalingFactor * 5}px;
           padding: 5px 15px;
 
@@ -190,7 +211,7 @@ export default function Product({
 
         ._baguette.tech_stack {
           margin-top: ${scalingFactor * 110}px;
-          margin-left: ${scalingFactor * -11}px;
+          margin-left: ${techStackMarginLeft}px;
         }
 
         ul {

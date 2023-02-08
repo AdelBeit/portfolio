@@ -1,4 +1,5 @@
 import React from "react";
+import { useWidth } from "../../store/WidthStore";
 import { linkHandler } from "../../utils/linkHandler";
 import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
@@ -18,6 +19,10 @@ export default function BlogPost({ title, link, width = 0 }: Props) {
 
   const scalingFactor = width / initialWidth;
 
+  const windowWidth = useWidth((state) => state.width);
+  let frameSize = 60;
+  frameSize = windowWidth <= 480 ? frameSize * scalingFactor : frameSize;
+
   return (
     <div
       className={"_card relative none " + _name}
@@ -32,7 +37,7 @@ export default function BlogPost({ title, link, width = 0 }: Props) {
         ></use>
       </svg>
       <div className="_contentBox title absolute">
-        <p>{title}</p>
+        <span>{title}</span>
       </div>
       <div className="_baguette absolute">
         <Baguette crumbs={buttons} _type="button" />
