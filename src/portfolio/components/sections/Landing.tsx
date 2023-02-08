@@ -25,29 +25,35 @@ export default function Landing({ title, role, description, keywords }: Props) {
         </div>
         <div className="_contentBox description thin-font small">
           <span>
-            {index == 0 ? (
-              <TypeWriter
-                content={description}
-                cb={({ typer }) => {
-                  typer.stop();
-                  setIndex(1);
-                }}
-              />
-            ) : (
-              <span>{description}</span>
-            )}
+            <span className="bio">
+              {index == 0 ? (
+                <TypeWriter
+                  content={description}
+                  cb={({ typer }) => {
+                    typer.stop();
+                    setIndex(1);
+                  }}
+                />
+              ) : (
+                <>{description}</>
+              )}
+            </span>
             {index == 1 && (
-              <TypeWriter
-                content={words[0]}
-                extraStyles={"_CG_word _CG_layer _CG_glitch"}
-                cb={({ parent, typer }) => {
-                  parent.classList.add("none");
-                  typer.stop();
-                  setIndex(2);
-                }}
-              />
+              <span className="keyword">
+                <TypeWriter
+                  content={words[0]}
+                  extraStyles={"_CG_word _CG_layer _CG_glitch"}
+                  cb={({ target, typer }) => {
+                    target.classList.add("none");
+                    typer.stop();
+                    setIndex(2);
+                  }}
+                />
+              </span>
             )}
-            {index == 2 && <GlitchyText text={words} />}
+            <span className="keyword">
+              {index == 2 && <GlitchyText text={words} />}
+            </span>
           </span>
         </div>
       </div>
@@ -72,6 +78,12 @@ export default function Landing({ title, role, description, keywords }: Props) {
           max-width: 800px;
         }
 
+        ._contentBox .keyword,
+        ._contentBox .bio {
+          margin-top: 10px;
+          display: inline-block;
+        }
+
         @media only screen and (min-height: 800px) {
           ._container {
             gap: 15vh;
@@ -91,6 +103,10 @@ export default function Landing({ title, role, description, keywords }: Props) {
         @media only screen and (max-width: 600px) {
           ._container {
             margin-bottom: 8vh;
+          }
+          ._contentBox .keyword,
+          ._contentBox .bio {
+            display: block;
           }
         }
       `}</style>
