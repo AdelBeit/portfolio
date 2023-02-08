@@ -2,7 +2,7 @@ import cs from "classnames";
 import { useEffect, useRef } from "react";
 import Typer from "../utils/Typer";
 
-type cbOptionalArgs = { parent?: HTMLSpanElement; typer?: Typer };
+type cbOptionalArgs = { target?: HTMLSpanElement; typer?: Typer };
 
 interface Props {
   content: string;
@@ -20,15 +20,19 @@ export function TypeWriter({
   useEffect(() => {
     if (!ref.current) return;
 
-    const parent = ref.current;
-    const target: HTMLSpanElement = parent.querySelector("._insert_");
+    const target: HTMLSpanElement = ref.current;
+    const parent = target.parentElement;
     const typer = new Typer(target, content);
 
     const handleIntersection = (entries) => {
       return entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          const interval = setInterval(() => {
+            parent.scrollBy(0, target.scrollHeight);
+          }, 300);
           typer.start().then((res) => {
-            cb.call(this, { parent: parent, typer: typer });
+            clearInterval(interval);
+            cb.call(this, { target: target, typer: typer });
           });
         }
       });
@@ -40,7 +44,7 @@ export function TypeWriter({
       threshold: 1.0,
     };
     const observer = new IntersectionObserver(handleIntersection, options);
-    observer.observe(parent);
+    observer.observe(target);
 
     return () => {
       typer.stop();
@@ -48,9 +52,5 @@ export function TypeWriter({
     };
   }, [ref.current]);
 
-  return (
-    <span ref={ref}>
-      <span className={cs("_insert_", extraStyles)}></span>
-    </span>
-  );
+  return <span ref={ref} className={cs(extraStyles)}></span>;
 }
