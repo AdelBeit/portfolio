@@ -36,10 +36,10 @@ export default function Education({ title, degree, width = 0 }: Props) {
         ></use>
       </svg>
       <div className="_contentBox title absolute">
-        <p>{title}</p>
+        <span>{title}</span>
       </div>
       <div className="_contentBox degree absolute small">
-        <p>{degree}</p>
+        <span>{degree}</span>
       </div>
       <style jsx>{`
         ._card {
@@ -80,6 +80,11 @@ export default function Education({ title, degree, width = 0 }: Props) {
           padding: 0px;
 
           align-items: flex-start;
+        }
+        @media only screen and (max-width: 350px) {
+          ._contentBox.degree {
+            --small: clamp(10px, 11px, 12px);
+          }
         }
       `}</style>
     </div>

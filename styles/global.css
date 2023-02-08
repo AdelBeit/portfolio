@@ -11,28 +11,21 @@
   --amber: #ffb000;
   --amber: rgb(255, 176, 0);
   --extra-large: 70px;
-  --large: 45px;
+  --large: 40px;
   --medium: 25px;
   --small: 18px;
   --extra-small: 15px;
+  --xx-small: 15px;
 }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 410px) {
   :root {
-    --extra-large: 60px;
-    --large: 35px;
-    --medium: 22px;
-    --small: 15px;
-    --extra-small: 12px;
-  }
-}
-@media only screen and (max-width: 600px) {
-  :root {
-    --extra-large: 50px;
-    --large: 35px;
-    --medium: 22px;
-    --small: 15px;
-    --extra-small: 12px;
+    --extra-large: clamp(50px, 15vw, 70px);
+    --large: clamp(30px, 10vw, 40px);
+    --medium: clamp(12px, 5vw, 25px);
+    --small: clamp(10px, 5vw, 15px);
+    --extra-small: clamp(10px, 12px, 13px);
+    --xx-small: clamp(10px, 2vw, 12px);
   }
 }
 
@@ -69,6 +62,11 @@ a:hover {
 ._card .duties {
   font-size: var(--small);
   font-weight: 200;
+}
+
+span {
+  display: block;
+  white-space: pre-line;
 }
 
 /* utils */
@@ -113,6 +111,9 @@ a:hover {
 }
 .extra-small {
   font-size: var(--extra-small);
+}
+.xx-small {
+  font-size: var(--xx-small);
 }
 .outline-neon {
   border: var(--green) 0.125em solid;
@@ -178,6 +179,6 @@ a:hover {
 
 @keyframes Passive-YScroll {
   100% {
-    transform: translateY(-504px);
+    transform: translateY(-520px);
   }
 }

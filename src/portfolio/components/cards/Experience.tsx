@@ -37,13 +37,13 @@ export default function Experience({
         ></use>
       </svg>
       <div className="_contentBox company small absolute">
-        <p>{companyName}</p>
+        <span>{companyName}</span>
       </div>
-      <div className="_contentBox date absolute">
-        <p>{date}</p>
+      <div className="_contentBox date xx-small absolute">
+        <span>{date}</span>
       </div>
-      <div className="_contentBox role absolute">
-        <p>{role}</p>
+      <div className="_contentBox role small absolute">
+        <span>{role}</span>
       </div>
       <div className="_contentBox duties absolute">
         <ul>
@@ -80,7 +80,6 @@ export default function Experience({
           padding: 0;
           justify-content: center;
           font-weight: bold;
-          font-size: var(--small);
         }
 
         ._contentBox.role {
@@ -94,7 +93,6 @@ export default function Experience({
           color: var(--black);
           justify-content: flex-end;
           font-weight: bold;
-          font-size: var(--small);
         }
 
         ._contentBox.duties {
@@ -104,6 +102,15 @@ export default function Experience({
           margin-left: ${scalingFactor * 5}px;
           align-items: flex-start;
           justify-content: flex-start;
+        }
+
+        @media only screen and (max-width: 340px) {
+          ._contentBox.duties {
+            font-size: var(--extra-small);
+          }
+          ._contentBox.date {
+            font-weight: 100;
+          }
         }
 
         ul {
