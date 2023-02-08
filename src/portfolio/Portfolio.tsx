@@ -22,12 +22,12 @@ glitch effect https://codemyui.com/horror-movie-like-glitch-effect/
 duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night%20sky
 */
 
-// TODO: fix all links to external sites 'linkedin','github','resume',etc...
 // TODO: add music, and music controls
 // TODO: determine blogpost hosting, probably dev.to or medium
 // TODO: add blog posts
 // TODO: favicon, title
 // TODO: add a footer to view source code for portfolio on github
+// TODO: add media for projects
 // optional
 // TODO: custom scrolling, view one section at a time, and scroll snapping to sections
 // TODO: scrolling glitch effect

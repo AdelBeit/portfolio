@@ -40,10 +40,10 @@ export const ABOUT = {
   CONTENT2:
     "Curious with a natural tendency to identify and solve problems, I enjoy building and tinkering with things. Coding is my favorite medium, but I dabble in mediums such as art, cooking, music, dancing, and photography. \n\nIn my spare time, I love exploring new things, whether it be trying out new foods, finding new music or tv shows, traveling to new places, making new connections, or discovering new hobbies. \n\nI'm a lifelong learner who's passionate about creating and connecting; Perpetually eager for new opportunities to better myself and the world around me.",
   LINKS: {
-    LINKEDIN: "",
-    GITHUB: "",
-    RESUME: "",
-    EMAIL: "",
+    LINKEDIN: "https://linkedin.com/in/adel-beitvashahi",
+    GITHUB: "https://github.com/adelbeit",
+    RESUME: "https://adelbeit.com/developer",
+    EMAIL: "adelbeitvashahi@gmail.com",
   },
 };
 
