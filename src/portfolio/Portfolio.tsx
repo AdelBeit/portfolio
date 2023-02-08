@@ -27,15 +27,14 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: determine blogpost hosting, probably dev.to or medium
 // TODO: add blog posts
 // TODO: favicon, title
+// TODO: add a footer to view source code for portfolio on github
 // optional
 // TODO: custom scrolling, view one section at a time, and scroll snapping to sections
 // TODO: scrolling glitch effect
-// TODO: change card sizes for tablet and phone screens, tablet should have 2 cards, phone should have bigger card
-// TODO: add a footer to view source code for portfolio on github
 // TODO: make icon ether svg icons glitch in and out of existence at random spots
-// TODO: use css clamp() for responsive font sizes
 // TODO: download all icons from simpleicons, cleanup icons store
-// TODO: make the background shake to the beat
+// TODO: make the background react to the beat
+// TODO: change card sizes for tablet and phone screens, tablet should have 2 cards, phone should have bigger card
 
 export function App() {
   const { setWidth } = useWidth();
