@@ -43,6 +43,12 @@ function IconFrame({
           background-color: var(--black);
           border: solid ${border ? borderSize : 0}px var(--green);
         }
+
+        @media only screen and (max-width: 480px) {
+          ._frame {
+            border-width: 1px;
+          }
+        }
       `}</style>
       <style jsx>{`
         ${staticStyles["_frame.overlay"]}
@@ -114,6 +120,12 @@ function ButtonFrame({
           top: 4px;
           left: 4px;
           border: solid 1px var(--${color});
+        }
+
+        @media only screen and (max-width: 480px) {
+          ._frame {
+            border-width: 2px;
+          }
         }
       `}</style>
       <style jsx>{`
