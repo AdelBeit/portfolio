@@ -39,6 +39,7 @@ usage:
   position: absolute;
   width: 110%;
   z-index: -1;
+  font-weight: bold;
 }
 
 ._CG_layer::before {
