@@ -11,15 +11,16 @@ interface Props {
   width: number;
   links: { LINKEDIN: string; GITHUB: string; RESUME: string; EMAIL: string };
 }
+
 // TODO: modularize svg so height can be adjusted better
 
 export default function About({ title, description, links, width = 0 }: Props) {
   const _name = "about";
   const buttons = new Map([
-    ["linkedin", { clickHandler: linkHandler(links["linkedin"]) }],
-    ["github", { clickHandler: linkHandler(links["github"]) }],
-    ["resume", { clickHandler: linkHandler(links["resume"]) }],
-    ["email", { clickHandler: linkHandler(links["email"]) }],
+    ["github", { clickHandler: linkHandler(links.GITHUB) }],
+    ["linkedin", { clickHandler: linkHandler(links.LINKEDIN) }],
+    ["email", { clickHandler: linkHandler(links.EMAIL) }],
+    ["resume", { clickHandler: linkHandler(links.RESUME) }],
   ]);
   const initialWidth = 379;
   const initialHeight = 720;
