@@ -132,7 +132,8 @@ function ButtonFrame({
         ._container.products,
         ._container.arrowup,
         ._container.arrowdown,
-        ._container.music {
+        ._container.music,
+        ._container.resume {
           --stroke: var(--hovered) var(--black);
           stroke: var(--stroke, var(--${color}));
           color: var(--stroke, var(--${color}));

@@ -35,6 +35,7 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: download all icons from simpleicons, cleanup icons store
 // TODO: make the background react to the beat
 // TODO: change card sizes for tablet and phone screens, tablet should have 2 cards, phone should have bigger card
+// TODO: change icon for product 'info'
 
 export function App() {
   const { setWidth } = useWidth();
