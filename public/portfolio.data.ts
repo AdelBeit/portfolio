@@ -43,7 +43,7 @@ export const ABOUT = {
     LINKEDIN: "https://linkedin.com/in/adel-beitvashahi",
     GITHUB: "https://github.com/adelbeit",
     RESUME: "https://adelbeit.com/developer",
-    EMAIL: "adelbeitvashahi@gmail.com",
+    EMAIL: "mailto:adelbeitvashahi@gmail.com",
   },
 };
 
