@@ -11,10 +11,12 @@ import inlineSVG from "./utils/inlineSVG";
 import IconEther, { etherIcons } from "./components/IconEther";
 import preLoadImages from "./utils/preLoadImages";
 import Landing from "./components/sections/Landing";
-import { LANDING } from "../../public/portfolio.data";
+import { LANDING, SONGS } from "../../public/portfolio.data";
 import { SECTIONS } from "./types";
 import { useWidth } from "./store/WidthStore";
 import Layout from "./Layout";
+import Sound from "react-sound";
+import { useMusic } from "./store/MusicStore";
 
 /*
 css cyberpunk buttons https://codepen.io/jh3y/full/BajVmOg
@@ -23,6 +25,9 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 */
 
 // TODO: add music, and music controls
+// TODO: update icons
+// TODO: download all icons from simpleicons, cleanup icons store
+// TODO: make the navbar change more visible, maybe glitch effect
 // TODO: determine blogpost hosting, probably dev.to or medium
 // TODO: add blog posts
 // TODO: favicon, title
@@ -32,14 +37,18 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: custom scrolling, view one section at a time, and scroll snapping to sections
 // TODO: scrolling glitch effect
 // TODO: make icon ether svg icons glitch in and out of existence at random spots
-// TODO: download all icons from simpleicons, cleanup icons store
 // TODO: make the background react to the beat
 // TODO: change card sizes for tablet and phone screens, tablet should have 2 cards, phone should have bigger card
-// TODO: change icon for product 'info'
 
 export function App() {
   const { setWidth } = useWidth();
   const [currentSection, setCurrentSection] = useState("_landing");
+  const player = useMusic((state) => ({
+    songs: state.songs,
+    songIndex: state.songIndex,
+    playing: state.playing,
+    next: state.next,
+  }));
 
   const resizeHandler = () => {
     setWidth(window.innerWidth);
@@ -92,6 +101,14 @@ export function App() {
           <Experience isInView={currentSection === "_experience"} />
         </ContentBox>
         <NavBox showLanding={currentSection === "_landing"} />
+        <Sound
+          url={"/mp3/" + player.songs[player.songIndex]}
+          playStatus={
+            (player.playing && Sound.status.PLAYING) || Sound.status.PAUSED
+          }
+          volume={20}
+          onFinishedPlaying={player.next}
+        />
         <style jsx>{`
           ._container {
             height: 100%;

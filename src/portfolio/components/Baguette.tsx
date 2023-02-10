@@ -4,10 +4,7 @@ import Frame, { ButtonFrameProps, ButtonOrIcon, IconFrameProps } from "./Frame";
 type BaguetteProps<T extends ButtonOrIcon> =
   | ({ crumbs: T["icon"][] } & Omit<IconFrameProps, "icon">)
   | ({
-      crumbs: Map<
-        ButtonFrameProps["icon"],
-        Pick<ButtonFrameProps, "clickHandler">
-      >;
+      crumbs: Map<string, Pick<ButtonFrameProps, "clickHandler" | "icon">>;
     } & Omit<ButtonFrameProps, "clickHandler" | "icon">);
 
 export default function Baguette<T extends ButtonOrIcon>(
@@ -23,7 +20,6 @@ export default function Baguette<T extends ButtonOrIcon>(
             {...props}
             {...props.crumbs.get(crumbKey)}
             key={_index}
-            icon={crumbKey}
             _type={props._type}
           />
         ))}

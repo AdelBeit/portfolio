@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function Icon({ icon, size = "60%" }: Props) {
-  const animatedIcons = ["arrowup", "arrowdown", "music"];
+  const animatedIcons = ["arrowup", "arrowdown", "music_vis"];
   const isAnimated = animatedIcons.some((e) => icon.includes(e));
   const path = (isAnimated ? "./#" : "./svg stores/icons.svg#") + icon;
   return (
@@ -25,18 +25,18 @@ export default function Icon({ icon, size = "60%" }: Props) {
           width: 40px;
           height: 40px;
         }
-        .music {
+        .music_vis {
           width: 60px;
           height: 60px;
           top: 10px;
         }
         @media only screen and (max-width: 600px) {
-          .music {
+          .music_vis {
             top: 8px;
           }
         }
         @media only screen and (max-width: 480px) {
-          .music {
+          .music_vis {
             top: 6px;
           }
         }

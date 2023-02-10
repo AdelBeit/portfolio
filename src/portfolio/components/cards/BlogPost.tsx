@@ -12,7 +12,9 @@ interface Props {
 
 export default function BlogPost({ title, link, width = 0 }: Props) {
   const _name = "blog_post";
-  const buttons = new Map([["info", { clickHandler: linkHandler(link) }]]);
+  const buttons = new Map([
+    ["info", { icon: "info", clickHandler: linkHandler(link) }],
+  ]);
   const initialWidth = 357;
   const initialHeight = 325;
   const height = scale(initialHeight, initialWidth, width);

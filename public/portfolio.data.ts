@@ -196,3 +196,5 @@ export const BLOGPOSTS = [
   { TITLE: "TITLE", LINK: "" },
   { TITLE: "TITLE", LINK: "" },
 ];
+
+export const SONGS = ["mercenary.mp3", "spoiler.mp3", "star eater.mp3"];

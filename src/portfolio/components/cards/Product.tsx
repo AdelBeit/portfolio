@@ -62,9 +62,9 @@ export default function Product({
   };
 
   const buttons = new Map([
-    ["info", { clickHandler: expandHandler }],
-    ["github", { clickHandler: linkHandler(links["code"]) }],
-    ["demo", { clickHandler: linkHandler(links["demo"]) }],
+    ["info", { icon: "info", clickHandler: expandHandler }],
+    ["github", { icon: "github", clickHandler: linkHandler(links["code"]) }],
+    ["demo", { icon: "demo", clickHandler: linkHandler(links["demo"]) }],
   ]);
 
   const techStack = [

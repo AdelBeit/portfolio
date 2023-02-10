@@ -26,7 +26,7 @@ export default `
       </use>
    </symbol>
 
-   <symbol id="music" viewBox="0 0 130 60" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="7">
+   <symbol id="music_vis" viewBox="0 0 130 60" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="7">
       <g id="stroke_target" transform="rotate(180 65 30)">
       <rect x='10' y='4' rx="0.5" width="7" height="10">
          <animate class="p0" attributeName="height" values="10;30;50;10" repeatCount="indefinite" begin="0s" dur="1s" />

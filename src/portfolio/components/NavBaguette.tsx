@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ABOUT } from "../../../public/portfolio.data";
+import { useMusic } from "../store/MusicStore";
 import { useWidth } from "../store/WidthStore";
 import { linkHandler } from "../utils/linkHandler";
 import Baguette from "./Baguette";
@@ -11,8 +12,11 @@ interface Props {
 // TODO: make the navbar 'dormant' further to the right of the screen, when hovered over, move icons to the left and expand gap between them
 
 export default function NavBaguette({ showLanding }: Props) {
-  const [playMusic, setPlayMusic] = useState(false);
-
+  const player = useMusic((state) => ({
+    playing: state.playing,
+    toggle: state.toggle,
+  }));
+  const musicIcon = player.playing ? "music_vis" : "music_icon";
   const windowWidth = useWidth((state) => state.width);
   let frameSize = 60;
   frameSize =
@@ -25,16 +29,16 @@ export default function NavBaguette({ showLanding }: Props) {
       : frameSize;
 
   function musicToggle() {
-    const musicElement = document.querySelector("#music") as SVGSymbolElement;
-    const animationElements = musicElement.querySelectorAll(
-      ".p0"
-    ) as NodeListOf<SVGAnimateElement>;
-    for (let element of Array.from(animationElements)) {
-      if (playMusic) element.beginElementAt(0);
-      else element.endElementAt(0);
-    }
+    // const musicElement = document.querySelector("#music") as SVGSymbolElement;
+    // const animationElements = musicElement.querySelectorAll(
+    //   ".p0"
+    // ) as NodeListOf<SVGAnimateElement>;
+    // for (let element of Array.from(animationElements)) {
+    //   if (player.playing) element.beginElementAt(0);
+    //   else element.endElementAt(0);
+    // }
 
-    setPlayMusic((prev) => !prev);
+    player.toggle();
   }
 
   function scrollTo(eID: string, { yOffset = -20 } = {}) {
@@ -48,26 +52,47 @@ export default function NavBaguette({ showLanding }: Props) {
   }
 
   let buttons = new Map([
-    ["music", { clickHandler: musicToggle }],
-    ["info", { clickHandler: scrollTo("_about"), classes: "active _about" }],
-    ["products", { clickHandler: scrollTo("_product"), classes: "_product" }],
-    // ["blogpost", { clickHandler: scrollTo("_blogpost"), classes: "_blogpost" }],
+    ["music", { icon: musicIcon, clickHandler: musicToggle }],
+    [
+      "info",
+      {
+        icon: "info",
+        clickHandler: scrollTo("_about"),
+        classes: "active _about",
+      },
+    ],
+    [
+      "products",
+      {
+        icon: "products",
+        clickHandler: scrollTo("_product"),
+        classes: "_product",
+      },
+    ],
+    // ["blogpost", { icon: 'blogpost',clickHandler: scrollTo("_blogpost"), classes: "_blogpost" }],
     [
       "experience",
-      { clickHandler: scrollTo("_experience"), classes: "_experience" },
+      {
+        icon: "experience",
+        clickHandler: scrollTo("_experience"),
+        classes: "_experience",
+      },
     ],
-    ["arrowup", { clickHandler: scrollTo("_landing") }],
+    ["arrowup", { icon: "arrowup", clickHandler: scrollTo("_landing") }],
   ]);
 
   if (showLanding) {
     const links = { ...ABOUT.LINKS };
     buttons = new Map([
-      ["music", { clickHandler: musicToggle }],
-      ["github", { clickHandler: linkHandler(links.GITHUB) }],
-      ["linkedin", { clickHandler: linkHandler(links.LINKEDIN) }],
-      ["email", { clickHandler: linkHandler(links.EMAIL) }],
-      ["resume", { clickHandler: linkHandler(links.RESUME) }],
-      ["arrowdown", { clickHandler: scrollTo("_about") }],
+      ["music", { icon: musicIcon, clickHandler: musicToggle }],
+      ["github", { icon: "github", clickHandler: linkHandler(links.GITHUB) }],
+      [
+        "linkedin",
+        { icon: "linkedin", clickHandler: linkHandler(links.LINKEDIN) },
+      ],
+      ["email", { icon: "email", clickHandler: linkHandler(links.EMAIL) }],
+      ["resume", { icon: "resume", clickHandler: linkHandler(links.RESUME) }],
+      ["arrowdown", { icon: "arrowdown", clickHandler: scrollTo("_about") }],
     ]);
   }
 

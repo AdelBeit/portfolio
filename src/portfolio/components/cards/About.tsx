@@ -17,10 +17,13 @@ interface Props {
 export default function About({ title, description, links, width = 0 }: Props) {
   const _name = "about";
   const buttons = new Map([
-    ["github", { clickHandler: linkHandler(links.GITHUB) }],
-    ["linkedin", { clickHandler: linkHandler(links.LINKEDIN) }],
-    ["email", { clickHandler: linkHandler(links.EMAIL) }],
-    ["resume", { clickHandler: linkHandler(links.RESUME) }],
+    ["github", { icon: "github", clickHandler: linkHandler(links.GITHUB) }],
+    [
+      "linkedin",
+      { icon: "linkedin", clickHandler: linkHandler(links.LINKEDIN) },
+    ],
+    ["email", { icon: "email", clickHandler: linkHandler(links.EMAIL) }],
+    ["resume", { icon: "resume", clickHandler: linkHandler(links.RESUME) }],
   ]);
   const initialWidth = 379;
   const initialHeight = 720;
