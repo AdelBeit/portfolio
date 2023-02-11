@@ -24,21 +24,26 @@ glitch effect https://codemyui.com/horror-movie-like-glitch-effect/
 duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night%20sky
 */
 
-// TODO: add music, and music controls
 // TODO: update icons
 // TODO: download all icons from simpleicons, cleanup icons store
-// TODO: make the navbar change more visible, maybe glitch effect
+// TODO: add a contact button in navbaguette that shows contact info so its always available
+// TODO: make demos for projects, add them
+// TODO: make product titles hyperlinks
+// TODO: add warning for music
 // TODO: determine blogpost hosting, probably dev.to or medium
 // TODO: add blog posts
 // TODO: favicon, title
 // TODO: add a footer to view source code for portfolio on github
-// TODO: add media for projects
 // optional
+// TODO: make ether cloud blur and move in the direction of scroll
+// TODO: make the navbar change more visible, maybe glitch effect
 // TODO: custom scrolling, view one section at a time, and scroll snapping to sections
 // TODO: scrolling glitch effect
 // TODO: make icon ether svg icons glitch in and out of existence at random spots
 // TODO: make the background react to the beat
-// TODO: change card sizes for tablet and phone screens, tablet should have 2 cards, phone should have bigger card
+// TODO: add background blur for music
+// bugs:
+// TODO: navbar change broken
 
 export function App() {
   const { setWidth } = useWidth();
