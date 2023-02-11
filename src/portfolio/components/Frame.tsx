@@ -98,6 +98,7 @@ function ButtonFrame({
           // initialize vars to false
           --hovered: initial;
           fill: var(--${color});
+          cursor: pointer;
         }
 
         ._container:hover,
@@ -133,6 +134,7 @@ function ButtonFrame({
         ._container.arrowup,
         ._container.arrowdown,
         ._container.music_vis,
+        ._container.music,
         ._container.resume {
           --stroke: var(--hovered) var(--black);
           stroke: var(--stroke, var(--${color}));

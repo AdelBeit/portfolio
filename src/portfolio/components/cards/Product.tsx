@@ -75,7 +75,7 @@ export default function Product({
     "git",
     "docker",
   ];
-
+  const _name = "product";
   const initialWidth = 352;
   const initialHeight = 620;
   const height = scale(initialHeight, initialWidth, width);
@@ -102,7 +102,7 @@ export default function Product({
       <object
         className="_svg absolute"
         id="card_svg"
-        data={"./cards/product.svg"}
+        data={"./svgs/cards/animated/product.svg"}
         type="image/svg+xml"
       ></object>
       <div className="_contentBox title absolute">

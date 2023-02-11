@@ -1,0 +1,29 @@
+<svg viewBox="0 0 130 60" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="7"
+    xmlns="http://www.w3.org/2000/svg">
+    <g id="stroke_target" transform="rotate(180 65 30)">
+        <rect x='10' y='4' rx="0.5" width="7" height="10">
+            <animate class="p0" attributeName="height" values="10;30;50;10" repeatCount="indefinite" begin="0s"
+                dur="1s" />
+        </rect>
+        <rect x='30' y='4' rx="0.5" width="7" height="30">
+            <animate class="p0" attributeName="height" values="30;10;20;30" repeatCount="indefinite" begin="0s"
+                dur="1s" />
+        </rect>
+        <rect x='50' y='4' rx="0.5" width="7" height="13">
+            <animate class="p0" attributeName="height" values="13;19;34;13" repeatCount="indefinite" begin="0s"
+                dur="1s" />
+        </rect>
+        <rect x='70' y='4' rx="0.5" width="7" height="30">
+            <animate class="p0" attributeName="height" values="30;10;50;30" repeatCount="indefinite" begin="0s"
+                dur="1s" />
+        </rect>
+        <rect x='90' y='4' rx="0.5" width="7" height="20">
+            <animate class="p0" attributeName="height" values="20;40;10;20" repeatCount="indefinite" begin="0s"
+                dur="1s" />
+        </rect>
+        <rect x='110' y='4' rx="0.5" width="7" height="10">
+            <animate class="p0" attributeName="height" values="10;50;20;10" repeatCount="indefinite" begin="0s"
+                dur="1s" />
+        </rect>
+    </g>
+</svg>

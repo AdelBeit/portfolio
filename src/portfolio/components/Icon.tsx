@@ -8,7 +8,7 @@ interface Props {
 export default function Icon({ icon, size = "60%" }: Props) {
   const animatedIcons = ["arrowup", "arrowdown", "music_vis"];
   const isAnimated = animatedIcons.some((e) => icon.includes(e));
-  const path = (isAnimated ? "./#" : "./svg stores/icons.svg#") + icon;
+  const path = (isAnimated ? "./#_inline_" : "./svg stores/icons.svg#") + icon;
   return (
     <div className={`_container _icon ${icon} relative`}>
       <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
@@ -44,3 +44,24 @@ export default function Icon({ icon, size = "60%" }: Props) {
     </div>
   );
 }
+
+/**
+ * svg management
+ * # interactive:
+ * - - nav bar icons
+ * - - about card actions icons
+ * - - product card actions
+ * # # <symbol> + <use> <-- iconstore
+ * # static:
+ * - - product card techs
+ * - - tech stack grid
+ * # # <symbol> + <use> <-- iconstore
+ * - - icon ether
+ * # # <img> <-- simpleicons
+ * # animated:
+ * - nav bar icons:
+ * - - music_vis
+ * - - arrowdown/up
+ * - product card
+ * # <object> <-- svg file
+ */

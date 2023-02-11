@@ -62,7 +62,7 @@ const icons = [
 
 const links = icons.map((i) => cdn(i));
 console.log(links);
-const folderName = "downloadedImgs";
+const folderName = "downloaded Imgs";
 
 if (!fs.existsSync(folderName)) {
   fs.mkdirSync(folderName);

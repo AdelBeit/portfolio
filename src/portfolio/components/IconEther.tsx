@@ -159,8 +159,6 @@ export default function IconEther() {
           left: 0;
           width: 100%;
           height: 100%;
-          background: radial-gradient(#ffc38c, #ff0b40);
-          background: black;
           background: var(--black);
           opacity: 0.4;
           z-index: 0;

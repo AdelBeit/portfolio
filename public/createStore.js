@@ -4,7 +4,7 @@ const path = require("path");
 // format the file name for naming the symbols in the icon store so that you can later reference them
 const formatFileName = (name) => {
   // edit the name as needed
-  return name.replace(/icon-/g, "").replace(/\s/g, "_").replace(/.svg/g, "");
+  return name.replace(/.svg/g, "");
 };
 
 // Replace the 'svg' tag with a 'symbol' tag and modify the attributes
@@ -25,8 +25,8 @@ const replaceSvgWithSymbol = (svgString, fileName) => {
   svgString = svgString.replace(/ +/g, " ");
 
   // get rid of fill and stroke
-  // svgString = svgString.replace(/ fill=".+?"/g, "");
-  // svgString = svgString.replace(/ stroke=".+?"/g, "");
+  svgString = svgString.replace(/ fill="(?!none)[^"]+"/g, "");
+  svgString = svgString.replace(/ stroke="(?!none)[^"]+"/g, "");
 
   return svgString.replace(/<\/svg>/g, "</symbol>");
 };
@@ -56,116 +56,4 @@ const createStore = (storeName, folderPath, includeViewer = false) => {
   }
 };
 
-function createViewer(storeName, svgFiles) {
-  // Create a new HTML file with all the symbols being used for demonstration purposes
-  let symbolViewer = `<style>
-.shell {
-  width: 300px;
-  height: 300px;
-  position: relative;
-  margin: 20px;
-  border: 2px solid red;
-}
-
-.icon {
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  height: 60%;
-}
-
-.frame {
-  display: block;
-  position: relative;
-  top: 49.5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-}
-</style>
-<body>
-<p>make sure there are at least 2 svg files in your icon store folder to view them here</p>
-<div class="container">
-  <div class="shell">
-    <svg class="frame" xmlns="http://www.w3.org/2000/svg">
-      <use
-        href="/symbols.svg#${
-          svgFiles.length > 1
-            ? formatFileName(svgFiles[0])
-            : "icon store is empty"
-        }"
-        xlink:href="/symbols.svg#${
-          svgFiles.length > 1
-            ? formatFileName(svgFiles[0])
-            : "icon store is empty"
-        }"
-        x="0"
-        y="0"
-        style="fill: black; stroke: yellow"
-      ></use>
-    </svg>
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg">
-      <use
-        href="/symbols.svg#${
-          svgFiles.length > 1
-            ? formatFileName(svgFiles[1])
-            : "not enough icons in store"
-        }"
-        xlink:href="/symbols.svg#${
-          svgFiles.length > 1
-            ? formatFileName(svgFiles[1])
-            : "not enough icons in store"
-        }"
-        x="0"
-        y="0"
-        style="fill: yellow"
-      ></use>
-    </svg>
-  </div>
-  <div class="shell">
-    <svg class="frame" xmlns="http://www.w3.org/2000/svg">
-      <use
-        href="/symbols.svg#${
-          svgFiles.length > 1
-            ? formatFileName(svgFiles[0])
-            : "icon store is empty"
-        }"
-       xlink:href="/symbols.svg#${
-         svgFiles.length > 1
-           ? formatFileName(svgFiles[0])
-           : "icon store is empty"
-       }"
-        x="0"
-        y="0"
-        style="fill: yellow; stroke: yellow"
-      ></use>
-    </svg>
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg">
-      <use
-        href="/symbols.svg#${
-          svgFiles.length > 1
-            ? formatFileName(svgFiles[1])
-            : "not enough icons in store"
-        }"
-        xlink:href="/symbols.svg#${
-          svgFiles.length > 1
-            ? formatFileName(svgFiles[1])
-            : "not enough icons in store"
-        }"
-        x="0"
-        y="0"
-        style="fill: black"
-      ></use>
-    </svg>
-  </div>
-</div>
-</body>`;
-
-  fs.writeFileSync(path.join("./svg stores", storeName), symbolViewer);
-}
-
-createStore("cards.svg", "./cards");
+createStore("icons.svg", "./svgs/icons/static/");
