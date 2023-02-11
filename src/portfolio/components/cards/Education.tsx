@@ -53,6 +53,9 @@ export default function Education({ title, degree, width = 0 }: Props) {
 
           margin-top: ${scalingFactor * 110}px;
           margin-left: ${scalingFactor * 5}px;
+
+          fill: var(--green);
+          stroke: var(--green);
         }
 
         ._contentBox {
