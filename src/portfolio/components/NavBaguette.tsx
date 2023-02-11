@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ABOUT } from "../../../public/portfolio.data";
 import { useMusic } from "../store/MusicStore";
 import { useWidth } from "../store/WidthStore";
@@ -28,19 +28,6 @@ export default function NavBaguette({ showLanding }: Props) {
       ? frameSize - 10
       : frameSize;
 
-  function musicToggle() {
-    // const musicElement = document.querySelector("#music") as SVGSymbolElement;
-    // const animationElements = musicElement.querySelectorAll(
-    //   ".p0"
-    // ) as NodeListOf<SVGAnimateElement>;
-    // for (let element of Array.from(animationElements)) {
-    //   if (player.playing) element.beginElementAt(0);
-    //   else element.endElementAt(0);
-    // }
-
-    player.toggle();
-  }
-
   function scrollTo(eID: string, { yOffset = -20 } = {}) {
     return () => {
       const element = document.querySelector(`#${eID}`);
@@ -52,7 +39,7 @@ export default function NavBaguette({ showLanding }: Props) {
   }
 
   let buttons = new Map([
-    ["music", { icon: musicIcon, clickHandler: musicToggle }],
+    ["music", { icon: musicIcon, clickHandler: player.toggle }],
     [
       "info",
       {
@@ -84,7 +71,7 @@ export default function NavBaguette({ showLanding }: Props) {
   if (showLanding) {
     const links = { ...ABOUT.LINKS };
     buttons = new Map([
-      ["music", { icon: musicIcon, clickHandler: musicToggle }],
+      ["music", { icon: musicIcon, clickHandler: player.toggle }],
       ["github", { icon: "github", clickHandler: linkHandler(links.GITHUB) }],
       [
         "linkedin",
