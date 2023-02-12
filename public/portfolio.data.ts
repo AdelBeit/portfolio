@@ -139,7 +139,7 @@ export const PRODUCTS = [
     LINKS: {
       VIDEO: "",
       CODE: "https://github.com/adelbeit/jamroom",
-      DEMO: "https://jam.adelbeit.com/",
+      LINK: "https://jam.adelbeit.com/",
     },
   },
   {
@@ -165,7 +165,7 @@ export const PRODUCTS = [
     LINKS: {
       VIDEO: "",
       CODE: "https://github.com/AdelBeit/Client_IdealAuto",
-      DEMO: "https://www.idealauto.co/",
+      LINK: "https://www.idealauto.co/",
     },
   },
 ];

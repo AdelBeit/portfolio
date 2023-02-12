@@ -49,12 +49,8 @@ div#__next {
   box-sizing: border-box;
 }
 
-a:focus,
-a:hover {
-  text-decoration: none !important;
-}
-
-._card .title {
+._card .title,
+._card .company {
   font-size: var(--medium);
 }
 

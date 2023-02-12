@@ -4,12 +4,13 @@ import { useWidth } from "../../store/WidthStore";
 import { linkHandler } from "../../utils/linkHandler";
 import { scale } from "../../utils/scale";
 import Baguette from "../Baguette";
+import Icon from "../Icon";
 
 interface Props {
   title: string;
   description: string[];
   techStack: string[];
-  links: { CODE: string; DEMO: string; VIDEO: string };
+  links: { CODE: string; LINK: string; VIDEO: string };
   width: number;
 }
 
@@ -64,7 +65,7 @@ export default function Product({
   const buttons = new Map([
     ["info", { icon: "info", clickHandler: expandHandler }],
     ["github", { icon: "github", clickHandler: linkHandler(links["code"]) }],
-    ["demo", { icon: "demo", clickHandler: linkHandler(links["demo"]) }],
+    // ["link", { icon: "link", clickHandler: linkHandler(links.LINK) }],
   ]);
 
   const techStack = [
@@ -105,9 +106,14 @@ export default function Product({
         data={"./svgs/cards/animated/product.svg"}
         type="image/svg+xml"
       ></object>
-      <div className="_contentBox title absolute">
-        <span>{title}</span>
-      </div>
+      <a href={links.LINK}>
+        <div className="_contentBox title absolute">
+          <span className="icon">
+            <Icon icon="link" />
+          </span>
+          <span className="text">{title}</span>
+        </div>
+      </a>
       <div className="_baguette buttons absolute">
         <Baguette
           crumbs={buttons}
@@ -142,18 +148,39 @@ export default function Product({
           height: ${height}px;
         }
 
+        a {
+          color: var(--black);
+          cursor: pointer;
+          text-decoration: underline;
+        }
+
+        a:focus,
+        a:hover {
+          color: var(--amber);
+          text-decoration: none;
+          fill: var(--amber);
+        }
+
         ._contentBox {
           justify-content: flex-start;
         }
 
         ._contentBox.title {
           width: 97.5%;
-          margin-top: ${scalingFactor * 10}px;
-          margin-left: ${scalingFactor * 5}px;
+          margin-top: ${scalingFactor * 5}px;
+          margin-left: ${scalingFactor * 0.01}px;
           padding: 5px 15px;
 
           align-items: center;
-          color: var(--black);
+          text-decoration: inherit;
+        }
+
+        ._contentBox.title .icon {
+          width: 1em;
+          height: 1em;
+          margin-top: 0.4em;
+          margin-left: -0.15em;
+          margin-right: -0.15em;
         }
 
         ._contentBox.description {
@@ -201,7 +228,7 @@ export default function Product({
           display: flex;
           flex-direction: column;
           padding: 0;
-          gap: 6px;
+          gap: 10px;
         }
 
         ._baguette.buttons {

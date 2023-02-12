@@ -25,10 +25,8 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 */
 
 // TODO: update icons
-// TODO: download all icons from simpleicons, cleanup icons store
 // TODO: add a contact button in navbaguette that shows contact info so its always available
 // TODO: make demos for projects, add them
-// TODO: make product titles hyperlinks
 // TODO: add warning for music
 // TODO: determine blogpost hosting, probably dev.to or medium
 // TODO: add blog posts
