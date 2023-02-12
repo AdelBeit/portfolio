@@ -65,6 +65,11 @@ export default function GlitchyText({ text, link = "" }: Props) {
             color: inherit;
             cursor: pointer;
           }
+
+          a:focus,
+          a:hover {
+            text-decoration: none;
+          }
         `}
       </style>
     </span>
