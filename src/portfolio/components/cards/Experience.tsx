@@ -36,7 +36,7 @@ export default function Experience({
           y="0"
         ></use>
       </svg>
-      <div className="_contentBox company medium absolute">
+      <div className="_contentBox company absolute">
         <span>{companyName}</span>
       </div>
       <div className="_contentBox date xx-small absolute">
