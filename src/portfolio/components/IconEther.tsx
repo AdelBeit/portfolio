@@ -20,26 +20,9 @@ export default function IconEther() {
     const maxImgs = canvas.width <= 500 ? 10 : canvas.width <= 700 ? 18 : 30;
     const imgSize = canvas.width <= 500 ? 12 : canvas.width <= 700 ? 20 : 27;
 
-    let mouse = {
-      x: null,
-      y: null,
-      radius: (canvas.height * canvas.width) / 80 ** 2,
-    };
-
-    const trackMouse = (e: MouseEvent, { track = true } = {}) => {
-      if (track) {
-        mouse.x = e.x;
-        mouse.y = e.y;
-      } else {
-        mouse.x = undefined;
-        mouse.y = undefined;
-      }
-    };
-
     const resizeHandler = () => {
       canvas.width = innerWidth;
       canvas.height = innerHeight;
-      mouse.radius = (canvas.height * canvas.height) / 80 ** 2;
       init();
     };
 
@@ -126,15 +109,9 @@ export default function IconEther() {
       init();
     });
 
-    window.addEventListener("mousemove", trackMouse);
     window.addEventListener("resize", resizeHandler);
-    window.addEventListener("mouseout", (e) => trackMouse(e, { track: false }));
 
     return () => {
-      window.removeEventListener("mousemove", trackMouse);
-      window.removeEventListener("mouseout", (e) =>
-        trackMouse(e, { track: false })
-      );
       window.removeEventListener("resize", resizeHandler);
       document.removeEventListener("EtherIconsLoaded", (e: CustomEvent) => {
         imgs = e.detail;
