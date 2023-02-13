@@ -14,7 +14,7 @@ export default function Product({}: Props) {
   }
 
   return (
-    <div className="_section" id="_product">
+    <div className="_section" id="_products">
       {PRODUCTS.map((p, _index) => (
         <ProductCard
           key={_index}
