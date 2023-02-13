@@ -64,8 +64,7 @@ export default function Product({
 
   const buttons = new Map([
     ["info", { icon: "info", clickHandler: expandHandler }],
-    ["github", { icon: "github", clickHandler: linkHandler(links["code"]) }],
-    // ["link", { icon: "link", clickHandler: linkHandler(links.LINK) }],
+    ["github", { icon: "code", clickHandler: linkHandler(links.CODE) }],
   ]);
 
   const techStack = [
@@ -125,7 +124,7 @@ export default function Product({
         <Baguette
           crumbs={techStack}
           _type="icon"
-          {...{ frameSize: techStackFrameSize }}
+          {...{ frameSize: techStackFrameSize, borderSize: 0 }}
         />
       </div>
       <div className={cs("_contentBox demo absolute", !active && "hide")}>
@@ -239,6 +238,8 @@ export default function Product({
         ._baguette.tech_stack {
           margin-top: ${scalingFactor * 110}px;
           margin-left: ${techStackMarginLeft}px;
+          border: 2px solid var(--green);
+          background-color: var(--black);
         }
 
         ul {
