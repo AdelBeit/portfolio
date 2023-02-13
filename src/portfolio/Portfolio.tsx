@@ -99,8 +99,8 @@ export function App() {
             keywords={LANDING.KEYWORDS}
             isInView={currentSection === "_landing"}
           />
-          <About isInView={currentSection === "_about"} />
           <Product isInView={currentSection === "_product"} />
+          <About isInView={currentSection === "_about"} />
           {/* <BlogPost isInView={currentSection === "_blogpost"} /> */}
           <Experience isInView={currentSection === "_experience"} />
         </ContentBox>
