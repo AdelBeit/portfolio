@@ -24,8 +24,9 @@ glitch effect https://codemyui.com/horror-movie-like-glitch-effect/
 duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night%20sky
 */
 
-// TODO: update icons
+// TODO: update products icon
 // TODO: make demos for projects, add them
+// TODO: product card revision, make demo show first, flip to see info
 // TODO: add warning for music
 // TODO: add a contact button in navbaguette that shows contact info so its always available
 // TODO: determine blogpost hosting, probably dev.to or medium

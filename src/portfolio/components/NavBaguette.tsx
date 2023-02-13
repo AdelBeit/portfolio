@@ -43,7 +43,7 @@ export default function NavBaguette({ showLanding }: Props) {
     [
       "info",
       {
-        icon: "info",
+        icon: "person",
         clickHandler: scrollTo("_about"),
         classes: "active _about",
       },
@@ -51,7 +51,7 @@ export default function NavBaguette({ showLanding }: Props) {
     [
       "products",
       {
-        icon: "products",
+        icon: "code",
         clickHandler: scrollTo("_product"),
         classes: "_product",
       },
