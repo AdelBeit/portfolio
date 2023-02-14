@@ -85,9 +85,11 @@ export default function Product({
   const windowWidth = useWidth((state) => state.width);
   let techStackFrameSize = 30;
   let techStackMarginLeft = -14;
+  let techStackGap = 10;
   if (windowWidth <= 400) {
     techStackFrameSize *= scalingFactor;
     techStackMarginLeft = -8;
+    techStackGap = 3;
   }
 
   let ButtonFrameSize = 60;
@@ -227,7 +229,7 @@ export default function Product({
           display: flex;
           flex-direction: column;
           padding: 0;
-          gap: 10px;
+          gap: ${techStackGap}px;
         }
 
         ._baguette.buttons {

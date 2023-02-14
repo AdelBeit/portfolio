@@ -46,7 +46,7 @@ function IconFrame({
 
         @media only screen and (max-width: 480px) {
           ._frame {
-            border-width: 1px;
+            border-width: ${borderSize === 0 ? borderSize : 1}px;
           }
         }
       `}</style>
