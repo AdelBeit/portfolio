@@ -43,7 +43,7 @@ export default function NavBaguette({ showLanding }: Props) {
     [
       "products",
       {
-        icon: "code",
+        icon: "products",
         clickHandler: scrollTo("_products"),
         classes: "_products",
       },
