@@ -18,7 +18,7 @@ export default function IconEther() {
     let dotParticles: Particle[] = [];
     let imgs: HTMLImageElement[] = [];
     const maxImgs = canvas.width <= 500 ? 10 : canvas.width <= 700 ? 18 : 30;
-    const imgSize = canvas.width <= 500 ? 12 : canvas.width <= 700 ? 20 : 27;
+    const imgSize = canvas.width <= 500 ? 20 : canvas.width <= 700 ? 27 : 30;
 
     const resizeHandler = () => {
       canvas.width = innerWidth;
