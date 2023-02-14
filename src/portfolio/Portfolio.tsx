@@ -170,7 +170,7 @@ export function App() {
           }
           @media only screen and (max-width: 1100px) {
             #_about,
-            #_product,
+            #_products,
             #_blogpost,
             #_experience {
               flex-direction: column;
