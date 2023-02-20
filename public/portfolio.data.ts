@@ -9,6 +9,7 @@ export const LANDING = {
     "fast",
     "secure",
     "responsive",
+    "thoughtfully written",
     "extendable",
     "optimized",
     "well documented",
