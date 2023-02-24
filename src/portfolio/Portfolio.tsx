@@ -28,6 +28,7 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: replace lead generator project with portfolio project
 // TODO: make demos for projects, add them
 // TODO: product card revision, make demo show first, flip to see info
+// TODO: cloud ether doesn't show on firefox
 // TODO: add warning for music
 // TODO: add a contact button in navbaguette that shows contact info so its always available
 // TODO: determine blogpost hosting, probably dev.to or medium
