@@ -31,7 +31,7 @@ const replaceSvgWithSymbol = (svgString, fileName) => {
   return svgString.replace(/<\/svg>/g, "</symbol>");
 };
 
-const createStore = (storeName, folderPath, includeViewer = false) => {
+const createStore = (storeName, folderPath) => {
   // Read all the SVG files in the specified folder
   let svgFiles = fs
     .readdirSync(folderPath)
@@ -47,13 +47,6 @@ const createStore = (storeName, folderPath, includeViewer = false) => {
 
   // Write the new SVG file
   fs.writeFileSync(path.join("./svg stores", storeName), symbolsSvg);
-
-  if (includeViewer) {
-    createViewer(
-      storeName.replace(/.svg/g, "") + "_viewer.html",
-      svgFiles.slice(0, 2)
-    );
-  }
 };
 
 createStore("icons.svg", "./svgs/icons/static/");
