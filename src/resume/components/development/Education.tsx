@@ -11,8 +11,8 @@ function Education() {
   return (
     <Section title="Education">
       <TripleHeaderCard
-        headers={[education.city, education.school, year]}
-        content={[education.degree, courses]}
+        headers={[education.city, education.school, ""]}
+        content={[education.degree]}
         classes={{
           header: [styles.header],
           subtitle: [],
