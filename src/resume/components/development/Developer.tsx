@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SiteData } from "../../development_data";
 import { DevContext } from "../../hooks/use_site_context";
 import Layout from "../Layout";
@@ -9,14 +9,27 @@ import { Employment } from "./Employment";
 import { Education } from "./Education";
 import { Skills } from "./Skills";
 import { Extras } from "./Extras";
+import cs from "classnames";
 
 function App() {
+  const keypress = (e: KeyboardEvent) => {
+    if (e.key === "d") {
+      e.preventDefault();
+      document.querySelector("#_page").classList.toggle(styles.print_view);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("keydown", keypress);
+    return () => {
+      document.removeEventListener("keydown", keypress);
+    };
+  }, []);
   return (
     <>
       {SiteData && (
         <DevContext.Provider value={{ ...SiteData }}>
           <Layout>
-            <div className={styles.container}>
+            <div id="_page" className={cs(styles.container)}>
               <div className={styles.subcontainer}>
                 <TitleSection />
                 <Products />

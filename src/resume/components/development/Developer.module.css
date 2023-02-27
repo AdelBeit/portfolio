@@ -49,3 +49,18 @@
 .container a:active {
   color: rgb(44, 44, 241);
 }
+
+.print_view {
+  width: 21cm;
+  height: 29.7cm;
+
+  background: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  border: red 2px solid;
+  /* page[size="A4"][layout="portrait"] {
+    width: 29.7cm;
+    height: 21cm;  
+  } */
+}
