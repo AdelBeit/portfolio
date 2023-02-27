@@ -6,7 +6,7 @@
   --font-size-card-body: var(--font-size-section-header);
   --font-size-card-subtitle: calc(var(--font-size-section-header) + 1px);
 
-  --main-padding: 50px;
+  --main-padding: 35px;
 
   --color-background: linear-gradient(147deg, #f9fcff 0%, #e7edf3 74%);
   --color-background: white;
@@ -63,4 +63,17 @@
     width: 29.7cm;
     height: 21cm;  
   } */
+}
+
+@media print {
+  .print_view {
+    width: inherit;
+    height: inherit;
+
+    background: inherit;
+    display: inherit;
+    margin: inherit;
+    margin-bottom: inherit;
+    border: inherit;
+  }
 }

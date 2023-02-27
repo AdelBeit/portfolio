@@ -7,8 +7,8 @@ export const SiteData = {
   phone: "(812) 360 - 6898",
   portfolio: "adelbeit.com",
   role: "Frontend Engineer",
-  description:
-    "Frontend Engineer with a passion for creating software that solves everyday problems. Demonstrated proficiency and ownership of the full software development lifecycle to solve complex business problems like lead generation. A curious and consistent frontend developer that is quick to adapt and master the latest technology.",
+  objective:
+    "After earning my BS in CS in 2019, I worked as a Scrum Master and Quality Engineer. Exposing me to various aspects of the SDLC process, and allowing me to develop a comprehensive understanding of it as a developer. Meanwhile, I also honed my design skills through working on side projects which can be found on my Github",
   products: [
     {
       title: "Jamroom",
@@ -75,7 +75,7 @@ export const SiteData = {
   ],
   education: {
     city: "Bloomington, IN",
-    degree: "Bachelor of Science in Computer Science, May 2019. GPA: 3.2",
+    degree: "Bachelor of Science in Computer Science, GPA: 3.2",
     school: "Indiana University",
     courses: [
       "Data Structures",

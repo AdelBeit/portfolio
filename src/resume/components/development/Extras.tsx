@@ -4,7 +4,7 @@ import { Card } from "../Card";
 import { Section } from "./Section";
 
 function Extras() {
-  const { achievements, linkedin } = useDev();
+  const { achievements, linkedin, objective } = useDev();
   const links = (
     <>
       <span>
@@ -16,6 +16,9 @@ function Extras() {
     <>
       <Section title="Awards">
         <Card content={[achievements.award]} />
+      </Section>
+      <Section title="Objective">
+        <Card content={objective} />
       </Section>
     </>
   );
