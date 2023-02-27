@@ -147,7 +147,6 @@ export const PRODUCTS = [
     TITLE: "Lead Generation Site",
     CONTENT: [
       "Designed and implemented a responsive JAM stack lead generation portal for an auto mechanic shop that generated a 150% increase in revenue within 2 months.",
-      "Designed the website in Figma and ensured the client was satisfied with the design before implementation.",
     ],
     STACK: [
       "next.js",
