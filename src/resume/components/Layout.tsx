@@ -7,7 +7,7 @@ interface LayoutProps {
 }
 
 export default function Layout({ children, title = "Adele" }: LayoutProps) {
-  const favicon = "/icons/code.png";
+  const favicon = "/favicon.png";
   return (
     <>
       <Head>
