@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import cs from "classnames";
 import React from "react";
 import styles from "./Section.module.css";
 
@@ -10,7 +10,7 @@ interface SectionProps {
 
 function Section({ title = "", children, classes = "" }: SectionProps) {
   return (
-    <div className={classNames(styles.container, classes)}>
+    <div className={cs(styles.container, classes)}>
       <div className={styles.title}>{title}</div>
       <hr />
       <div className={styles.body}>{children}</div>
