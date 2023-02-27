@@ -36,7 +36,10 @@
 }
 
 .container .city,
-.container .phone,
 .container .email {
   font-weight: 100;
+}
+
+.container span {
+  display: inline-block;
 }
