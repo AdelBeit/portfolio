@@ -5,25 +5,15 @@ export const SiteData = {
   email: "adelbeitvashahi@gmail.com",
   city: "Seattle, WA",
   phone: "(812) 360 - 6898",
-  site: "adelbeit.com",
+  portfolio: "adelbeit.com",
   role: "Frontend Engineer",
   description:
     "Frontend Engineer with a passion for creating software that solves everyday problems. Demonstrated proficiency and ownership of the full software development lifecycle to solve complex business problems like lead generation. A curious and consistent frontend developer that is quick to adapt and master the latest technology.",
-  imgPaths: {
-    icons: {
-      city: "./icons/location.png",
-      phone: "./icons/phone.png",
-      email: "./icons/email.png",
-      linkedin: "./icons/linkedin.png",
-      github: "./icons/github.png",
-      favicon: "./icons/star.png.",
-    },
-  },
   products: [
     {
       title: "Jamroom",
       language:
-        "NextJS, React, ToneJS, Socket.io, Docker, Digital Ocean, Figma, Git",
+        "NextJS, Typescript, React, ToneJS, Socket.io, Docker, Digital Ocean",
       time: { year: "2022", month: "mar" },
       description: [
         "Designed and implemented a progressive webapp with offline caching capabilities, that enables 10+ concurrent users in a room to jam out with virtual instruments using ToneJS.",
@@ -35,16 +25,27 @@ export const SiteData = {
       },
     },
     {
-      title: "Auto Repair Shop Website",
+      title: "Portfolio",
+      url: {
+        demo: "https://adelbeit.com/",
+        github: "https://github.com/AdelBeit/portfolio",
+      },
+      language: "NextJS, React, Typescript, Figma",
+      time: { year: "2023", month: "feb" },
+      description: [
+        "Designed and implemented a responsive, and interactive landing page using NextJS, ReactJS and Typescript. The code and design both follow atomic design principles and the content is centralized in one file, making this a template that can be easily modified and extended.",
+      ],
+    },
+    {
+      title: "Lead Generation Site",
       url: {
         demo: "https://www.idealauto.co/",
         github: "https://github.com/AdelBeit/Client_IdealAuto",
       },
-      language: "NextJS, React, Figma, Git",
+      language: "NextJS, React, Figma",
       time: { year: "2022", month: "mar" },
       description: [
         "Designed and implemented a responsive JAM stack lead generation portal for an auto mechanic shop that generated a 150% increase in revenue within 2 months.",
-        "Designed the website in Figma and ensured the client was satisfied with the design before implementation.",
       ],
     },
   ],
@@ -55,7 +56,8 @@ export const SiteData = {
       time: "2020 - 2021",
       duties: [
         "Authored a tool that standardized the list of release changes by streamlining their delivery to respective stakeholders, eliminating the task from the project manager's to-do list.",
-        "Kept developers on track by ensuring all business requirements were well defined and formatted on JIRA for a multimillion-dollar project.",
+        "Facilitated Scrum meetings, managed project tasks, and tracked progress for multimillion-dollar projects using Agile methodology.",
+        "Communicated project status to stakeholders, including teams, clients, and executive management, and removed impediments to project success.",
       ],
       url: { demo: "", github: "" },
     },
@@ -94,7 +96,7 @@ export const SiteData = {
     title: "TMobile Rock star award",
     city: "Seattle, WA",
     award:
-      "TMobile Rockstar award; Recognized for being an SME and leading environment readiness functional testing efforts for QLAB07 among a team of 5.",
+      "TMobile Rockstar award; Recognized for being an SME and leading environment readiness functional testing efforts.",
   },
   techStack: {
     languages: [
@@ -105,10 +107,9 @@ export const SiteData = {
       "NodeJS",
       "ExpressJS",
       "Python",
-      "Java",
       "MongoDB",
       "PostgreSQL",
-      "HTML",
+      "HTML/CSS",
       "CSS",
     ],
     tools: ["Git", "JIRA", "Figma", "Vercel", "AWS", "Netlify", "Docker"],
@@ -117,5 +118,6 @@ export const SiteData = {
     linkedin: "https://www.linkedin.com/in/adel-beitvashahi/",
     github: "https://github.com/AdelBeit",
     email: "mailto:adelbeitvashahi@email.com",
+    portfolio: "https://adelbeit.com",
   },
 };
