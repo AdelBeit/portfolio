@@ -27,7 +27,7 @@ const Products = () => {
           <Card
             key={nanoid()}
             header={header}
-            subtitle={subtitle}
+            subtitle={""}
             content={product.description}
             classes={{
               header: [card_styles.header, styles.card_header],
