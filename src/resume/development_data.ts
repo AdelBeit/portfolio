@@ -8,7 +8,7 @@ export const SiteData = {
   portfolio: "adelbeit.com",
   role: "Frontend Engineer",
   objective:
-    "After earning my BS in CS in 2019, I worked as a Scrum Master and Quality Engineer. Exposing me to various aspects of the SDLC process, and allowing me to develop a comprehensive understanding of it as a developer. Meanwhile, I also honed my design skills through working on side projects which can be found on my Github",
+    "After earning my BS in CS in 2019, I worked as a Scrum Master and Quality Engineer. Exposing me to various aspects of the SDLC process, and allowing me to develop a comprehensive understanding of it as a developer. Meanwhile, I also honed my development and design skills through working on side projects which can be found on my Github.",
   products: [
     {
       title: "Jamroom",
