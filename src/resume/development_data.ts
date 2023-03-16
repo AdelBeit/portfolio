@@ -56,8 +56,7 @@ export const SiteData = {
       time: "2020 - 2021",
       duties: [
         "Authored a tool that standardized the list of release changes by streamlining their delivery to respective stakeholders, eliminating the task from the project manager's to-do list.",
-        "Facilitated Scrum meetings, managed project tasks, and tracked progress for multimillion-dollar projects using Agile methodology.",
-        "Communicated project status to stakeholders, including teams, clients, and executive management, and removed impediments to project success.",
+        "Kept developers on track by ensuring all business requirements were well defined and formatted on JIRA for a multimillion-dollar project.",
       ],
       url: { demo: "", github: "" },
     },
