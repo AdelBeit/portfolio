@@ -108,7 +108,7 @@ export const SiteData = {
       "Python",
       "MongoDB",
       "PostgreSQL",
-      "HTML/CSS",
+      "HTML",
       "CSS",
     ],
     tools: ["Git", "JIRA", "Figma", "Vercel", "AWS", "Netlify", "Docker"],
