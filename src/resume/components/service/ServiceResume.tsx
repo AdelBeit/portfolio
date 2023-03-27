@@ -5,7 +5,7 @@ import Layout from "../Layout";
 import { Header } from "./Header";
 import { Achievements, Body, Education, Experience, Skills } from "./Body";
 import { ServiceContext } from "../../hooks/use_site_context";
-import { SiteData } from "../../service_data";
+import { SiteData } from "../../service.data";
 
 function App() {
   return (

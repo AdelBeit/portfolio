@@ -1,6 +1,6 @@
 import { Context, createContext, useContext } from "react";
-import { SiteData as DevelopmentData } from "../development_data";
-import { SiteData as ServiceData } from "../service_data";
+import { SiteData as DevelopmentData } from "../development.data";
+import { SiteData as ServiceData } from "../service.data";
 
 function createUseSite<T>(SiteContext: Context<T>) {
   return () => {

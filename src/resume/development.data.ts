@@ -20,7 +20,7 @@ export const SiteData = {
         "Authored a real-time Web Socket API to host many users in a room, using Docker for continuous delivery to Digital Ocean.",
       ],
       url: {
-        demo: "https://jam.adelbeit.com/home?roomID=1",
+        demo: "https://jam.adelbeit.com/",
         github: "https://github.com/AdelBeit/jamroom",
       },
     },

@@ -15,6 +15,7 @@
   --color-font-card-subtitle: #5d5d5d;
 
   --card-justify-content: space-between;
+  --print-view: initial;
 
   font-family: Tahoma, Calibri, Cambria, "Times New Roman", Arial;
 
@@ -75,5 +76,8 @@
     margin: inherit;
     margin-bottom: inherit;
     border: inherit;
+  }
+  .container {
+    --print-view: ;
   }
 }
