@@ -3,7 +3,7 @@ import { useDev } from "../../hooks/use_site_context";
 import styles from "./TitleSection.module.css";
 
 function TitleSection() {
-  const { name, city, portfolio, email, github } = useDev();
+  const { name, city, portfolio, email, phone, github } = useDev();
 
   return (
     <div className={styles.container}>
@@ -17,7 +17,7 @@ function TitleSection() {
         <h1>{name}</h1>
       </div>
       <div className={styles.right}>
-        <h4 className={styles.email}>{email}</h4>
+        <h4 className={styles.phone}>{phone}</h4>
         <h4 className={styles.github}>
           <a href={"https://" + github}>{github}</a>
         </h4>

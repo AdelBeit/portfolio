@@ -36,7 +36,8 @@
 }
 
 .container .city,
-.container .email {
+.container .email,
+.container .phone {
   font-weight: 100;
 }
 
