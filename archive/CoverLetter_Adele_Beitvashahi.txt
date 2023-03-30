@@ -1,0 +1,14 @@
+Dear Hiring Manager,
+
+I am writing to express my interest in the Frontend Engineer position at Navan. With a Bachelor's degree in Computer Science from Indiana University Bloomington and experience working as a Technical Consultant for major clients such as T-Mobile and Cox Communications, I am confident that I possess the skills and knowledge necessary to excel in this role.
+
+During my time at Capgemini, I had the opportunity to lead a team of quality engineers in testing T-Mobile's customer-facing products worth millions of dollars each. This involved analyzing code changes, identifying affected customer journeys, developing end-to-end tests, and reporting on test status. After than I moved on to work on upgrading the billing system for Cox Communications, which was worth over 100 million dollars, by managing the development team's JIRA board, ensuring project milestones were met, and making sure developers had clear runway by clearing blockers through conducting meetings with stakeholders.
+
+In my pursuit to become a Frontend Developer, I've been honing my development skills by working on personal projects using ReactJS, Typescript, and NextJS. My two projects that I'm most proud of are; Jamroom, a web app that allows users to jam out online using virtual instruments, and my portfolio site. Both projects were designed from scratch to be responsive and accessible, with a mobile first design and the end user in mind. The code for Jamroom can be found on my GitHub page here: https://github.com/adelbeit/jamroom, and the demo is available at https://jam.adelbeit.com. My portfolio site can be accessed here: https://adelbeit.com.
+
+As a highly analytical problem solver with a passion for using code to create solutions, I am confident that I would be a valuable addition to your team at Navan. I thrive in challenging environments and am always eager to learn new technologies. Additionally, I have a natural inclination towards taking ownership and leadership, always seeing things through to completion.
+
+Thanks for your consideration, and I look forward to the opportunity to discuss how I can contribute to Navan!
+
+Sincerely,
+Adele Beitvashahi
