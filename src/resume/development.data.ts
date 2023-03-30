@@ -8,7 +8,7 @@ export const SiteData = {
   portfolio: "adelbeit.com",
   role: "Frontend Engineer",
   objective:
-    "I have a Bachelor's degree in CS, and 2 years of corporate work experience, collaborating and leading people on multimillion dollar projects. On my downtime I work on my side projects which can be found on my Github. Although my experience is mainly in Javscript and React, I'm always looking to expand my skillset so I have no problem picking up other technologies as long as the job gets done!",
+    "I have a Bachelor's degree in CS, and 2 years of corporate work experience, collaborating and leading people on multimillion dollar projects. On my downtime I work on my side projects which can be found on my Github. Although my experience is mainly in Typescript and React, I'm always looking to expand my skillset so I have no problem picking up other technologies as long as the job gets done!",
   products: [
     {
       title: "Jamroom",
