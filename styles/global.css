@@ -155,6 +155,10 @@ span {
 .passive-scroll {
   transform: translateY(0%);
   animation: Passive-YScroll 20s linear infinite;
+  animation-play-state: running;
+}
+.passive-scroll:hover {
+  animation-play-state: paused;
 }
 .thin-font {
   font-weight: 200;

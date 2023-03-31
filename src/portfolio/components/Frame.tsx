@@ -1,5 +1,6 @@
 import cs from "classnames";
 import React from "react";
+import { ICON_MAPPINGS } from "../../../public/svgs/icons/mapping";
 import Icon from "./Icon";
 
 interface BaseFrameProps {
@@ -35,6 +36,20 @@ function IconFrame({
           height: ${frameSize}px;
 
           fill: var(--green);
+        }
+
+        ._container:hover::after {
+          content: "${ICON_MAPPINGS[icon]}";
+          width: fit-content;
+          position: absolute;
+          font-size: 12px;
+          top: 50%;
+          left: 0;
+          padding: 5px;
+          background-color: var(--black);
+          border: 1px solid var(--green);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          z-index: 1;
         }
 
         ._frame {
