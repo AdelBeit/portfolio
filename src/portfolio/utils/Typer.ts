@@ -34,6 +34,8 @@ export default class Typer {
   type() {
     if (this.typerCursor >= this.inputText.length) {
       this.stopTyping();
+      this.stopBlinking();
+      this.element.innerHTML = this.outputText + ".";
       this.doneTypingResolve(true);
       return;
     }
