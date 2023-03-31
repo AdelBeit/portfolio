@@ -134,7 +134,9 @@ export default function Product({
           <img src={links.VIDEO} />
         ) : media[0] === "video" ? (
           <video src={links.VIDEO} controls />
-        ) : null}
+        ) : (
+          <span className="_error">Showcase video coming soon!</span>
+        )}
       </div>
       <div className="_contentBox hide-scroll-bar description absolute">
         <ul>
@@ -223,6 +225,14 @@ export default function Product({
           width: 100%;
           height: auto;
           align-self: flex-end;
+        }
+
+        ._contentBox.demo ._error {
+          background-color: var(--green);
+          border: 2px solid var(--black);
+          background-color: var(--black);
+          padding: 10px;
+          margin: 10px;
         }
 
         ._baguette {
