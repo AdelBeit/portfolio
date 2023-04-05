@@ -8,7 +8,7 @@ export const SiteData = {
   portfolio: "adelbeit.com",
   role: "Frontend Engineer",
   objective:
-    "I have a Bachelor's degree in CS, and 2 years of corporate work experience, collaborating and leading people on multimillion dollar projects. On my downtime I work on my side projects which can be found on my Github. Although my experience is mainly in Typescript and React, I'm always looking to expand my skillset so I have no problem picking up other technologies as long as the job gets done!",
+    "I have a Bachelor's degree in CS, and 2 years of corporate work experience, collaborating and leading people on multimillion dollar projects. On my downtime I work on my side projects which can be found on my Github. Although my experience is mainly in Typescript and React, I'm always looking to expand my skill set so I have no problem picking up other technologies as long as the job gets done!",
   products: [
     {
       title: "Jamroom",
@@ -94,8 +94,9 @@ export const SiteData = {
     role: "Software Engineer",
     title: "TMobile Rock star award",
     city: "Seattle, WA",
-    award:
-      "TMobile Rockstar award; Recognized for being an SME and leading environment readiness functional testing efforts.",
+    award: [
+      "Won 2nd place at #hackSEA hackathon for designing a fully functioning Figma prototype with in under 24 hours! Collaborated with 7 team members to go from problem statement to solution.",
+      "TMobile Rockstar award; Recognized for being an SME and leading environment readiness functional testing efforts."]
   },
   techStack: {
     languages: [

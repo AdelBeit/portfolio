@@ -15,7 +15,7 @@ function Extras() {
   return (
     <>
       <Section title="Awards">
-        <Card content={[achievements.award]} />
+        <Card content={achievements.award} />
       </Section>
       <Section title="Objective">
         <Card content={objective} />
