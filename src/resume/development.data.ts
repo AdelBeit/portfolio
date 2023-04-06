@@ -95,8 +95,9 @@ export const SiteData = {
     title: "TMobile Rock star award",
     city: "Seattle, WA",
     award: [
-      "Won 2nd place at #hackSEA hackathon for designing a fully functioning Figma prototype with in under 24 hours! Collaborated with 7 team members to go from problem statement to solution.",
-      "TMobile Rockstar award; Recognized for being an SME and leading environment readiness functional testing efforts."]
+      "Won 2nd place at #hackSEA hackathon for designing a fully functioning Figma prototype under 18 hours! Collaborated with 7 team members to go from problem statement to a solution.",
+      "TMobile Rockstar award; Recognized for being an SME and leading environment readiness functional testing efforts.",
+    ],
   },
   techStack: {
     languages: [
