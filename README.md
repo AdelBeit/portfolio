@@ -20,3 +20,9 @@ Check it out!
 [Adelbeit.com](https://adelbeit.com)
 
 The design process took a considerable time and effort, the design went through multiple iterations. My creative process is documented in the [Figma file](https://www.figma.com/file/JUEctQmR08xNzqwN9ilOFN/Portfolio-website?node-id=0%3A1&t=MYN0w9hptbceplVJ-1)
+
+Planned features:
+---
+- Spotify activity tracker
+- Blog
+
