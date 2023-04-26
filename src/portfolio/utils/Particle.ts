@@ -51,7 +51,7 @@ export default class Particle {
       ctx.fill();
     }
   }
-  // TODO: a more interesting collission algo
+  // TODO: a more interesting collision algo
   avoidCollision(pB: Particle) {
     const distance = ((pB.x - this.x) ** 2 + (pB.y - this.y) ** 2) ** 0.5;
     if (distance <= (this.size * 3) / 4 + (pB.size * 3) / 4) {
