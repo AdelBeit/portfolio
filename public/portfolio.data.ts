@@ -1,6 +1,6 @@
 export const LANDING = {
   NAME: "Adele Beitvashahi",
-  ROLE: "Software Engineer",
+  ROLE: "Frontend Engineer",
   CONTENT: "I have a passion for developing software that's",
   KEYWORDS: [
     "accessible",
