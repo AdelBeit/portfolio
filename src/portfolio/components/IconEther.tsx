@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ETHERICONS } from "../../../public/portfolio.data";
+import { ETHERICONS } from "../../data/portfolio.data";
 import Particle from "../utils/Particle";
 import { simpleIconsCDN } from "../utils/preLoadImages";
 

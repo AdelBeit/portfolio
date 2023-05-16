@@ -1,5 +1,5 @@
 import React from "react";
-import { ABOUT } from "../../../public/portfolio.data";
+import { ABOUT } from "../../data/portfolio.data";
 import { useMusic } from "../store/MusicStore";
 import { useWidth } from "../store/WidthStore";
 import { linkHandler } from "../utils/linkHandler";

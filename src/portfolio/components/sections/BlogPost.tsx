@@ -1,5 +1,5 @@
 import React from "react";
-import { BLOGPOSTS } from "../../../../public/portfolio.data";
+import { BLOGPOSTS } from "../../../data/portfolio.data";
 import { useWidth } from "../../store/WidthStore";
 import { BaseSectionProps } from "../../types";
 import BlogPostCard from "../cards/BlogPost";

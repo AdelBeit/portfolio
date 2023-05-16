@@ -1,5 +1,5 @@
 import React from "react";
-import { EXPERIENCE } from "../../../../public/portfolio.data";
+import { EXPERIENCE } from "../../../data/portfolio.data";
 import { useWidth } from "../../store/WidthStore";
 import { BaseSectionProps } from "../../types";
 import ExperienceCard from "../cards/Experience";

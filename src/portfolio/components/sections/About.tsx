@@ -2,7 +2,7 @@ import React from "react";
 import AboutCard from "../cards/About";
 import EducationCard from "../cards/Education";
 import TechStackCard from "../cards/TechStack";
-import { ABOUT, EDUCATION, TECHSTACK } from "../../../../public/portfolio.data";
+import { ABOUT, EDUCATION, TECHSTACK } from "../../../data/portfolio.data";
 import { BaseSectionProps } from "../../types";
 import { useWidth } from "../../store/WidthStore";
 

@@ -8,14 +8,18 @@ import Product from "./components/sections/Product";
 import BlogPost from "./components/sections/BlogPost";
 import Experience from "./components/sections/Experience";
 import inlineSVG from "./utils/inlineSVG";
-import IconEther, { etherIcons } from "./components/IconEther";
+import { etherIcons } from "./components/IconEther";
+import { ETHERICONS } from "../data/portfolio.data";
+import * as LocalEther from "./components/IconEther";
+import { IconEther } from 'react-icon-ether';
+import { IconEther as ClockEther } from "clockapp";
 import preLoadImages from "./utils/preLoadImages";
 import Landing from "./components/sections/Landing";
-import { LANDING, SONGS } from "../../public/portfolio.data";
+import { LANDING, SONGS } from "../data/portfolio.data";
 import { SECTIONS } from "./types";
 import { useWidth } from "./store/WidthStore";
 import Layout from "./Layout";
-import Sound from "react-sound";
+// import Sound from "react-sound";
 import { useMusic } from "./store/MusicStore";
 
 /*
@@ -91,8 +95,12 @@ export function App() {
 
   return (
     <Layout>
-      <div className="_container relative">
-        <IconEther />
+      <div id="ether_container" className="_container relative">
+        {/* @ts-ignore */}
+        {/* <LocalEther.default /> */}
+        {/* <IconEther icons={["d3.js", "d3.js", "d3.js", "d3.js"]} width={200} height={200} fullScreen={true} /> */}
+        <ClockEther icons={["d3.js", "d3.js", "d3.js", "d3.js"]} containerID="ether_container" />
+
         <ContentBox handleIntersection={handleIntersection}>
           <Landing
             title={LANDING.NAME}
@@ -107,14 +115,14 @@ export function App() {
           <Experience isInView={currentSection === "_experience"} />
         </ContentBox>
         <NavBox showLanding={currentSection === "_landing"} />
-        <Sound
+        {/* <Sound
           url={"/mp3/" + player.songs[player.songIndex]}
           playStatus={
             (player.playing && Sound.status.PLAYING) || Sound.status.PAUSED
           }
           volume={20}
           onFinishedPlaying={player.next}
-        />
+        /> */}
         <style jsx>{`
           ._container {
             height: 100%;

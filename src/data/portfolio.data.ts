@@ -1,4 +1,4 @@
-export const LANDING = {
+const LANDING = {
   NAME: "Adele Beitvashahi",
   ROLE: "Frontend Engineer",
   CONTENT: "I have a passion for developing software that's",
@@ -34,7 +34,7 @@ export const LANDING = {
     "Adele is proficient in creating optimized, scalable, and error-free code. However, his abilities extend beyond just writing code. Throughout his career, he has had a chance to fill the shoes of various roles in Software Development Life Cycle (SDLC); such as Quality Engineering, Project Management, and UX/UI Design. This diverse range of experiences has provided Adele a with comprehensive understanding of SDLC, making him a more well-rounded Engineer who brings a unique perspective to the field.",
 };
 
-export const ABOUT = {
+const ABOUT = {
   TITLE: "ABOUT",
   CONTENT1:
     "Not only is Adele a highly capable and effective software engineer, but he also possesses strong soft skills that set him apart from his peers in his field. \n\nThroughout his career, he has had the opportunity to play various roles in the software development life cycle (SDLC), including Quality Engineering, Project Management, and UX/UI Design. This diverse range of experiences has provided Adele with a comprehensive understanding of SDLC and equipped him with a unique perspective. \n\nHis combination of technical expertise and interpersonal skills make Adele a valuable asset to any team",
@@ -48,7 +48,7 @@ export const ABOUT = {
   },
 };
 
-export const ETHERICONS = [
+const ETHERICONS = [
   "typescript",
   "javascript",
   "nextdotjs",
@@ -69,6 +69,7 @@ export const ETHERICONS = [
   "netlify",
   "vercel",
   "svelte",
+  "d3dotjs",
   "python",
   "mysql",
   "digitalocean",
@@ -88,8 +89,7 @@ export const ETHERICONS = [
   "mui",
   "jira",
   "arduino",
-  "php",
-  // "d3dotjs",
+  // "php",
   // "threedotjs",
   // "jest",
   // "playwright",
@@ -103,16 +103,39 @@ export const ETHERICONS = [
   // "tonejs",
 ];
 
-export const TECHSTACK = {
+const TECHSTACK = {
   ICONS: ETHERICONS,
 };
 
-export const EDUCATION = {
+const EDUCATION = {
   TITLE: "Indiana University Bloomington",
   DEGREE: "Bachelor of Science, Computer Science",
 };
 
-export const PRODUCTS = [
+const PRODUCTS = [
+  {
+    TITLE: "Icon Ether",
+    CONTENT: [
+      "Animated component that randomly spawns image/shaped particles that move about and bounce off the screen. Designed in Figma",
+    ],
+    STACK: [
+      "react",
+      "typescript",
+      "Figma",
+      "github",
+      "css3",
+      "html5",
+      "javascript",
+      "node.js",
+      "yarn",
+      "npm",
+    ],
+    LINKS: {
+      VIDEO: "",
+      CODE: "https://github.com/adelbeit/react-icon-ether",
+      LINK: "https://www.npmjs.com/package/react-icon-ether",
+    },
+  },
   {
     TITLE: "Jamroom",
     CONTENT: [
@@ -144,33 +167,57 @@ export const PRODUCTS = [
     },
   },
   {
-    TITLE: "Lead Generation Site",
+    TITLE: "Portfolio",
     CONTENT: [
-      "Designed and implemented a responsive JAM stack lead generation portal for an auto mechanic shop that generated a 150% increase in revenue within 2 months.",
+      "Visually appealing performance optimized portfolio built with Nextjs and typescript. Designed in Figma",
     ],
     STACK: [
       "next.js",
       "react",
+      "typescript",
       "Figma",
-      "Git",
       "github",
       "css3",
       "html5",
+      "javascript",
+      "node.js",
       "npm",
       "yarn",
-      "typescript",
-      "javascript",
-      "vercel",
     ],
     LINKS: {
       VIDEO: "",
-      CODE: "https://github.com/AdelBeit/Client_IdealAuto",
-      LINK: "https://www.idealauto.co/",
+      CODE: "https://github.com/adelbeit/portfolio",
+      LINK: "https://adelbeit.com/",
     },
   },
+  // {
+  //   TITLE: "Lead Generation Site",
+  //   CONTENT: [
+  //     "Designed and implemented a responsive JAM stack lead generation portal for an auto mechanic shop that generated a 150% increase in revenue within 2 months.",
+  //   ],
+  //   STACK: [
+  //     "next.js",
+  //     "react",
+  //     "Figma",
+  //     "Git",
+  //     "github",
+  //     "css3",
+  //     "html5",
+  //     "npm",
+  //     "yarn",
+  //     "typescript",
+  //     "javascript",
+  //     "vercel",
+  //   ],
+  //   LINKS: {
+  //     VIDEO: "",
+  //     CODE: "https://github.com/AdelBeit/Client_IdealAuto",
+  //     LINK: "https://www.idealauto.co/",
+  //   },
+  // },
 ];
 
-export const EXPERIENCE = [
+const EXPERIENCE = [
   {
     TITLE: "COX COMMUNICATIONS",
     CONTENT: [
@@ -192,9 +239,21 @@ export const EXPERIENCE = [
   },
 ];
 
-export const BLOGPOSTS = [
+const BLOGPOSTS = [
   { TITLE: "TITLE", LINK: "" },
   { TITLE: "TITLE", LINK: "" },
 ];
 
-export const SONGS = ["mercenary.mp3", "spoiler.mp3", "star eater.mp3"];
+const SONGS = ["mercenary.mp3", "spoiler.mp3", "star eater.mp3"];
+
+export {
+  LANDING,
+  ABOUT,
+  EDUCATION,
+  PRODUCTS,
+  EXPERIENCE,
+  BLOGPOSTS,
+  SONGS,
+  TECHSTACK,
+  ETHERICONS,
+};

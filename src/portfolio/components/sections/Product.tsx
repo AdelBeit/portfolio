@@ -1,5 +1,5 @@
 import React from "react";
-import { PRODUCTS } from "../../../../public/portfolio.data";
+import { PRODUCTS } from "../../../data/portfolio.data";
 import { useWidth } from "../../store/WidthStore";
 import { BaseSectionProps } from "../../types";
 import ProductCard from "../cards/Product";
