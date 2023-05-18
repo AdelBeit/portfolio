@@ -8,18 +8,14 @@ import Product from "./components/sections/Product";
 import BlogPost from "./components/sections/BlogPost";
 import Experience from "./components/sections/Experience";
 import inlineSVG from "./utils/inlineSVG";
-import { etherIcons } from "./components/IconEther";
 import { ETHERICONS } from "../data/portfolio.data";
-import * as LocalEther from "./components/IconEther";
 import { IconEther } from 'react-icon-ether';
-import { IconEther as ClockEther } from "clockapp";
-import preLoadImages from "./utils/preLoadImages";
 import Landing from "./components/sections/Landing";
 import { LANDING, SONGS } from "../data/portfolio.data";
 import { SECTIONS } from "./types";
 import { useWidth } from "./store/WidthStore";
 import Layout from "./Layout";
-// import Sound from "react-sound";
+import Sound from "react-sound";
 import { useMusic } from "./store/MusicStore";
 
 /*
@@ -29,6 +25,7 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 */
 
 // TODO: fix jamroom
+// TODO: update how navbar active changes, and observer code
 // TODO: replace lead generator project with portfolio project
 // TODO: make demos for projects, add them
 // TODO: product card revision, make demo show first, flip to see info
@@ -89,17 +86,10 @@ export function App() {
     };
   }, []);
 
-  useEffect(() => {
-    preLoadImages(etherIcons, "EtherIconsLoaded");
-  }, []);
-
   return (
     <Layout>
       <div id="ether_container" className="_container relative">
-        {/* @ts-ignore */}
-        {/* <LocalEther.default /> */}
-        {/* <IconEther icons={["d3.js", "d3.js", "d3.js", "d3.js"]} width={200} height={200} fullScreen={true} /> */}
-        <ClockEther icons={["d3.js", "d3.js", "d3.js", "d3.js"]} containerID="ether_container" />
+        <IconEther icons={ETHERICONS} />
 
         <ContentBox handleIntersection={handleIntersection}>
           <Landing
@@ -115,14 +105,14 @@ export function App() {
           <Experience isInView={currentSection === "_experience"} />
         </ContentBox>
         <NavBox showLanding={currentSection === "_landing"} />
-        {/* <Sound
+        <Sound
           url={"/mp3/" + player.songs[player.songIndex]}
           playStatus={
             (player.playing && Sound.status.PLAYING) || Sound.status.PAUSED
           }
           volume={20}
           onFinishedPlaying={player.next}
-        /> */}
+        />
         <style jsx>{`
           ._container {
             height: 100%;
