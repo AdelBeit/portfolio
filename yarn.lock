@@ -1529,10 +1529,10 @@ react-dom@18.1.0:
     loose-envify "^1.1.0"
     scheduler "^0.22.0"
 
-react-icon-ether@^1.0.12:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/react-icon-ether/-/react-icon-ether-1.0.13.tgz#f4680e99174e07a789dd49bd53b1ce6f16cf1c7c"
-  integrity sha512-9uOL6usBysc+H71B27PeO9PP5alTXR4ApBtVm1+7/dcOz2qcs5HI2FI9k2P9Ft4q1lfuY29jRypYLha6kdR5Uw==
+react-icon-ether@^x:
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/react-icon-ether/-/react-icon-ether-1.0.14.tgz#594ff54cfca5373600b4a7e716776a34bb54c9d4"
+  integrity sha512-dQxWfW62HFUYE+eS0dzJdQbOzi+h3035pvKz3oI/Vw9z8xN+nBN9j+qnbE/LygoFcnPg724P9Oa4beyhSoSJ1g==
 
 react-is@^16.13.1:
   version "16.13.1"
