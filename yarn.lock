@@ -1530,9 +1530,9 @@ react-dom@18.1.0:
     scheduler "^0.22.0"
 
 react-icon-ether@^x:
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/react-icon-ether/-/react-icon-ether-1.0.14.tgz#594ff54cfca5373600b4a7e716776a34bb54c9d4"
-  integrity sha512-dQxWfW62HFUYE+eS0dzJdQbOzi+h3035pvKz3oI/Vw9z8xN+nBN9j+qnbE/LygoFcnPg724P9Oa4beyhSoSJ1g==
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/react-icon-ether/-/react-icon-ether-1.0.16.tgz#8eda82d51139f9a4540e61842e6224b73ad71595"
+  integrity sha512-FHqJu8qGfmpIFYPkgxSbVXAIDtvCG7Sv97GBdk/w+zO00s/FfpOgUAEmKFJ5qc7MXztUhA3yW6xg3DmECRp4Gw==
 
 react-is@^16.13.1:
   version "16.13.1"
