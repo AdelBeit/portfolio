@@ -26,10 +26,7 @@ export default function BlogPost({ title, link, width = 0 }: Props) {
   frameSize = windowWidth <= 480 ? frameSize * scalingFactor : frameSize;
 
   return (
-    <div
-      className={"_card relative none " + _name}
-      style={{ width: width, height: height }}
-    >
+    <div className={"_card relative none " + _name}>
       <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
         <use
           href={`./svg stores/cards.svg#${_name}`}

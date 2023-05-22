@@ -24,10 +24,7 @@ export default function Experience({
   const scalingFactor = width / initialWidth;
 
   return (
-    <div
-      className={"_card relative " + _name}
-      style={{ width: width, height: height }}
-    >
+    <div className={"_card relative " + _name}>
       <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
         <use
           href={`./svg stores/cards.svg#${_name}`}

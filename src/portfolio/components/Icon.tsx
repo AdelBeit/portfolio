@@ -7,10 +7,10 @@ interface Props {
 
 export default function Icon({ icon, size = "60%" }: Props) {
   const animatedIcons = ["arrowup", "arrowdown", "music_vis"];
-  const isAnimated = animatedIcons.some((e) => icon.includes(e));
-  const path = (isAnimated ? "./#_inline_" : "./svg stores/icons.svg#") + icon;
+  const isAnimated = animatedIcons.some((e) => icon.toLowerCase().includes(e));
+  const path = (isAnimated ? "./#_inline_" : "./svg stores/icons.svg#") + icon.toLowerCase();
   return (
-    <div className={`_container _icon ${icon} relative`}>
+    <div className={`_container _icon ${icon.toLowerCase()} relative`}>
       <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
         <use href={path} xlinkHref={path} x="0" y="0"></use>
       </svg>

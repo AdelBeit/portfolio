@@ -6,7 +6,7 @@ import { ABOUT, EDUCATION, TECHSTACK } from "../../../data/portfolio.data";
 import { BaseSectionProps } from "../../types";
 import { useWidth } from "../../store/WidthStore";
 
-interface Props extends BaseSectionProps {}
+interface Props extends BaseSectionProps { }
 
 export default function About(props: Props) {
   let staticWidth = 379;
@@ -44,7 +44,6 @@ export default function About(props: Props) {
 
           display: flex;
           justify-content: space-around;
-          gap: 20px;
           flex-wrap: wrap;
           padding: 10px;
 

@@ -67,15 +67,6 @@ export default function Product({
     ["github", { icon: "code", clickHandler: linkHandler(links.CODE) }],
   ]);
 
-  const techStack = [
-    "github",
-    "javascript",
-    "react",
-    "typescript",
-    "git",
-    "docker",
-  ];
-  const _name = "product";
   const initialWidth = 352;
   const initialHeight = 620;
   const height = scale(initialHeight, initialWidth, width);
@@ -97,10 +88,7 @@ export default function Product({
     windowWidth <= 480 ? ButtonFrameSize * scalingFactor : ButtonFrameSize;
 
   return (
-    <div
-      className="_card _product relative"
-      style={{ width: width, height: height }}
-    >
+    <div className="_card _product relative">
       <object
         className="_svg absolute"
         id="card_svg"
@@ -124,7 +112,7 @@ export default function Product({
       </div>
       <div className="_baguette tech_stack absolute">
         <Baguette
-          crumbs={techStack}
+          crumbs={stack}
           _type="icon"
           {...{ frameSize: techStackFrameSize, borderSize: 0 }}
         />

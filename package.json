@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,6 +8,14 @@
     "start": "next start",
     "lint": "next lint",
     "merge": "git switch main && git merge dev && git push && git switch dev"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": false,
+    "bracketSpacing": true,
+    "bracketSameLine": true
   },
   "dependencies": {
     "@types/node": "^17.0.31",

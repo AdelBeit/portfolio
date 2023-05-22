@@ -168,6 +168,7 @@ export function App() {
           #_experience {
             flex-direction: row;
             gap: 20px;
+            row-gap: 50px;
           }
           @media only screen and (max-width: 1100px) {
             #_about,
@@ -177,6 +178,7 @@ export function App() {
               flex-direction: column;
               align-items: center;
               gap: 80px;
+              row-gap: 80px;
             }
             #_about > div {
               gap: 80px;
@@ -192,3 +194,4 @@ export function App() {
     </Layout>
   );
 }
+
