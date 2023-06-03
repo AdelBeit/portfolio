@@ -12,9 +12,10 @@
   "prettier": {
     "trailingComma": "es5",
     "tabWidth": 2,
+    "useTabs": false,
     "semi": true,
     "singleQuote": false,
-    "bracketSpacing": true,
+    "bracketSpacing": false,
     "bracketSameLine": true
   },
   "dependencies": {

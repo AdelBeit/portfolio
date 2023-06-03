@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import About from "./components/sections/About";
 import ContentBox from "./components/ContentBox";
 import NavBox from "./components/NavBaguette";
 import setActiveNavButton from "./utils/setActiveNavButton";
-import { scrollHandler } from "./utils/scrollHandler";
+import {scrollHandler} from "./utils/scrollHandler";
 import Product from "./components/sections/Product";
 import BlogPost from "./components/sections/BlogPost";
 import Experience from "./components/sections/Experience";
 import inlineSVG from "./utils/inlineSVG";
-import { ETHERICONS } from "../data/portfolio.data";
-import { IconEther } from 'react-icon-ether';
+import {ETHERICONS} from "../data/portfolio.data";
+// import { IconEther } from 'react-icon-ether';
+import {IconEther} from "./example/IconEther";
 import Landing from "./components/sections/Landing";
-import { LANDING, SONGS } from "../data/portfolio.data";
-import { SECTIONS } from "./types";
-import { useWidth } from "./store/WidthStore";
+import {LANDING, SONGS} from "../data/portfolio.data";
+import {SECTIONS} from "./types";
+import {useWidth} from "./store/WidthStore";
 import Layout from "./Layout";
 import Sound from "react-sound";
-import { useMusic } from "./store/MusicStore";
+import {useMusic} from "./store/MusicStore";
 
 /*
 css cyberpunk buttons https://codepen.io/jh3y/full/BajVmOg
@@ -48,7 +49,7 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: navbar change broken
 
 export function App() {
-  const { setWidth } = useWidth();
+  const {setWidth} = useWidth();
   const [currentSection, setCurrentSection] = useState("_landing");
   const player = useMusic((state) => ({
     songs: state.songs,
@@ -79,7 +80,7 @@ export function App() {
 
   useEffect(() => {
     window.addEventListener("resize", resizeHandler);
-    window.addEventListener("wheel", scrollHandler, { passive: false });
+    window.addEventListener("wheel", scrollHandler, {passive: false});
     return () => {
       window.removeEventListener("resize", resizeHandler);
       window.removeEventListener("wheel", scrollHandler);
@@ -91,7 +92,7 @@ export function App() {
       <div id="ether_container" className="_container relative">
         <IconEther icons={ETHERICONS} />
 
-        <ContentBox handleIntersection={handleIntersection}>
+        {/* <ContentBox handleIntersection={handleIntersection}>
           <Landing
             title={LANDING.NAME}
             role={LANDING.ROLE}
@@ -101,7 +102,7 @@ export function App() {
           />
           <Product isInView={currentSection === "_product"} />
           <About isInView={currentSection === "_about"} />
-          {/* <BlogPost isInView={currentSection === "_blogpost"} /> */}
+          <BlogPost isInView={currentSection === "_blogpost"} />
           <Experience isInView={currentSection === "_experience"} />
         </ContentBox>
         <NavBox showLanding={currentSection === "_landing"} />
@@ -112,7 +113,7 @@ export function App() {
           }
           volume={20}
           onFinishedPlaying={player.next}
-        />
+        /> */}
         <style jsx>{`
           ._container {
             height: 100%;
@@ -188,10 +189,9 @@ export function App() {
         <div
           className="hide"
           id="animated_inline_svg"
-          dangerouslySetInnerHTML={{ __html: inlineSVG }}
+          dangerouslySetInnerHTML={{__html: inlineSVG}}
         />
       </div>
     </Layout>
   );
 }
-
