@@ -54,26 +54,27 @@ const ETHERICONS = [
   "nextdotjs",
   "react",
   "nodedotjs",
-  "express",
   "socketdotio",
   "html5",
   "css3",
-  "git",
   "github",
   "figma",
   "yarn",
   "npm",
+  "auth0",
   "docker",
-  "amazonaws",
-  "graphql",
   "netlify",
   "vercel",
-  "svelte",
+  "amazonaws",
   "d3dotjs",
   "python",
+  "svelte",
+  "graphql",
+  "express",
   "mysql",
   "digitalocean",
   "mongodb",
+  "git",
   "postgresql",
   "microsoftazure",
   "googlecloud",
@@ -116,7 +117,8 @@ const PRODUCTS = [
   {
     TITLE: "Icon Ether",
     CONTENT: [
-      "Animated component that randomly spawns image/shaped particles that move about and bounce off the screen. Designed in Figma",
+      "Animated component that spawns image/shaped particles with random x,y coords that move about and bounce off the screen. Designed in Figma",
+      "Fetches icons from SimpleIcons provided a valid name. Features automatic fallback to local images.",
     ],
     STACK: ["react", "typescript", "Figma", "github", "yarn", "npm"],
     LINKS: {
@@ -128,8 +130,8 @@ const PRODUCTS = [
   {
     TITLE: "Jamroom",
     CONTENT: [
-      "Designed and implemented a progressive webapp with offline caching capabilities, that enables 10+ concurrent users in a room to jam out with virtual instruments using ToneJS.",
-      "Authored a real-time Web Socket API to host many users in a virtual jam session, using Docker for continuous delivery to Digital Ocean.",
+      "Progressive webapp that let's 10+ concurrent users jam out together with virtual instruments. Features offline caching.",
+      "Powered by a real-time Web Socket API to host many users in a virtual jam session, using Docker for continuous delivery to Digital Ocean.",
     ],
     STACK: [
       "nextdotjs",
@@ -149,24 +151,37 @@ const PRODUCTS = [
     },
   },
   {
-    TITLE: "Portfolio",
+    TITLE: "Bord",
     CONTENT: [
-      "Cyberpunk-themed portfolio template site designed in Figma. Built with Nextjs and Typescript.",
+      "Responsive to-watch list for movies and shows. With Hotkey support!",
+      "Features Google SSO powered by Auth0, and a forward proxy server layer for cloaking API tokens.",
     ],
-    STACK: [
-      "nextdotjs",
-      "react",
-      "typescript",
-      "javascript",
-      "figma",
-      "github",
-    ],
+    STACK: ["react", "bootstrap", "auth0", "airtable", "netlify", "github"],
     LINKS: {
       VIDEO: "",
-      CODE: "https://github.com/adelbeit/portfolio",
-      LINK: "https://adelbeit.com/",
+      CODE: "https://github.com/adelbeit/bord",
+      LINK: "https://bord.adelbeit.com/",
     },
   },
+  // {
+  //   TITLE: "Portfolio",
+  //   CONTENT: [
+  //     "Cyberpunk-themed portfolio template site designed in Figma. Built with Nextjs and Typescript.",
+  //   ],
+  //   STACK: [
+  //     "nextdotjs",
+  //     "react",
+  //     "typescript",
+  //     "javascript",
+  //     "figma",
+  //     "github",
+  //   ],
+  //   LINKS: {
+  //     VIDEO: "",
+  //     CODE: "https://github.com/adelbeit/portfolio",
+  //     LINK: "https://adelbeit.com/",
+  //   },
+  // },
   // {
   //   TITLE: "Lead Generation Site",
   //   CONTENT: [
@@ -214,8 +229,8 @@ const EXPERIENCE = [
 ];
 
 const BLOGPOSTS = [
-  { TITLE: "TITLE", LINK: "" },
-  { TITLE: "TITLE", LINK: "" },
+  {TITLE: "TITLE", LINK: ""},
+  {TITLE: "TITLE", LINK: ""},
 ];
 
 const SONGS = ["mercenary.mp3", "spoiler.mp3", "star eater.mp3"];

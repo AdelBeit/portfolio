@@ -14,7 +14,6 @@ interface Props {
   width: number;
 }
 
-// TODO: fix tech stack to import from data
 // TODO: passive scroll on tech stack
 // TODO: modularize the card svg components to adjust height and slide down amount
 
@@ -93,8 +92,7 @@ export default function Product({
         className="_svg absolute"
         id="card_svg"
         data={"./svgs/cards/animated/product.svg"}
-        type="image/svg+xml"
-      ></object>
+        type="image/svg+xml"></object>
       <a href={links.LINK}>
         <div className="_contentBox title absolute">
           <span className="icon">
@@ -107,14 +105,14 @@ export default function Product({
         <Baguette
           crumbs={buttons}
           _type="button"
-          {...{ frameSize: ButtonFrameSize }}
+          {...{frameSize: ButtonFrameSize}}
         />
       </div>
       <div className="_baguette tech_stack absolute">
         <Baguette
           crumbs={stack}
           _type="icon"
-          {...{ frameSize: techStackFrameSize, borderSize: 0 }}
+          {...{frameSize: techStackFrameSize, borderSize: 0}}
         />
       </div>
       <div className={cs("_contentBox demo absolute", !active && "hide")}>
@@ -126,7 +124,7 @@ export default function Product({
           <span className="_error">Showcase video coming soon!</span>
         )}
       </div>
-      <div className="_contentBox hide-scroll-bar description absolute">
+      <div className="_contentBox hide-scroll-bar description disable-selection absolute">
         <ul>
           {description.map((desc, _index) => (
             <li key={_index}>{desc}</li>
@@ -147,8 +145,8 @@ export default function Product({
 
         a:focus,
         a:hover {
-          color: var(--amber);
           text-decoration: none;
+          color: var(--amber);
           fill: var(--amber);
         }
 

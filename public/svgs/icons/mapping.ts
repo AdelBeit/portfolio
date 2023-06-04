@@ -13,6 +13,7 @@ export const ICON_MAPPINGS = {
   dotenv: ".Env",
   express: "Express.js",
   figma: "Figma",
+  tonejs: "ToneJS",
   git: "Git",
   github: "GitHub",
   gitlab: "GitLab",

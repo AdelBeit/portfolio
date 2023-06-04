@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { BaseSectionProps } from "../../types";
-import GlitchyText from "../GlitchyText";
-import { TypeWriter } from "../TyperWriter";
+import React, {useState} from "react";
+import {BaseSectionProps} from "../../types";
+import GlitchText from "../GlitchText";
+import {TypeWriter} from "../TyperWriter";
 
 interface Props extends BaseSectionProps {
   title: string;
@@ -10,7 +10,7 @@ interface Props extends BaseSectionProps {
   keywords: string[];
 }
 
-export default function Landing({ title, role, description, keywords }: Props) {
+export default function Landing({title, role, description, keywords}: Props) {
   const [index, setIndex] = useState<number>(0);
   const words = keywords;
 
@@ -29,7 +29,7 @@ export default function Landing({ title, role, description, keywords }: Props) {
               {index == 0 ? (
                 <TypeWriter
                   content={description}
-                  cb={({ typer }) => {
+                  cb={({typer}) => {
                     typer.stop();
                     setIndex(1);
                   }}
@@ -43,7 +43,7 @@ export default function Landing({ title, role, description, keywords }: Props) {
                 <TypeWriter
                   content={words[0]}
                   extraStyles={"_CG_word _CG_layer _CG_glitch"}
-                  cb={({ target, typer }) => {
+                  cb={({target, typer}) => {
                     target.classList.add("none");
                     typer.stop();
                     setIndex(2);
@@ -52,7 +52,7 @@ export default function Landing({ title, role, description, keywords }: Props) {
               </span>
             )}
             <span className="keyword">
-              {index == 2 && <GlitchyText text={words} />}
+              {index == 2 && <GlitchText text={words} />}
             </span>
           </span>
         </div>

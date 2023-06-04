@@ -21,6 +21,7 @@ function IconFrame({
   borderSize = 2,
 }: IconFrameProps) {
   const iconSize = "66%";
+  icon = icon.toUpperCase();
 
   return (
     <div className="_container relative">
@@ -39,7 +40,7 @@ function IconFrame({
         }
 
         ._container:hover::after {
-          content: "${ICON_MAPPINGS[icon]}";
+          content: "${ICON_MAPPINGS[icon.toLowerCase()]}";
           width: fit-content;
           position: absolute;
           font-size: 12px;

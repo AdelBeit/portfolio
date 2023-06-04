@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 
 interface Props {
   text: string[];
   link?: string;
 }
 
-export default function GlitchyText({ text, link = "" }: Props) {
+export default function GlitchText({text, link = ""}: Props) {
   const [index, setIndex] = useState<number>(0);
   const ref = useRef<null | HTMLDivElement>(null);
   const nextWordDelay = 2500;
@@ -45,8 +45,7 @@ export default function GlitchyText({ text, link = "" }: Props) {
       <div
         ref={ref}
         className="_word _CG_word _CG_layer _CG_glitch"
-        data-text={text[index]}
-      >
+        data-text={text[index]}>
         <span>
           {link !== "" ? (
             <a href={link} target="_blank">
