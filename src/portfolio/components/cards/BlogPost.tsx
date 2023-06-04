@@ -21,7 +21,7 @@ export default function BlogPost({ title, link, width = 0 }: Props) {
 
   const scalingFactor = width / initialWidth;
 
-  const windowWidth = useWidth((state) => state.width);
+  const windowWidth = useWidth().width;
   let frameSize = 60;
   frameSize = windowWidth <= 480 ? frameSize * scalingFactor : frameSize;
 

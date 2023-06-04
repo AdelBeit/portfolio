@@ -8,7 +8,7 @@ interface Props extends BaseSectionProps {}
 
 export default function BlogPost({}: Props) {
   let width = 379;
-  const windowWidth = useWidth((state) => state.width);
+  const windowWidth = useWidth().width;
   if (windowWidth <= 480) {
     width = windowWidth - 100;
   }

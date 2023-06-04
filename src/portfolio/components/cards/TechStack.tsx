@@ -19,7 +19,7 @@ export default function TechStack({ icons, width = 0 }: Props) {
 
   const scalingFactor = width / initialWidth;
 
-  const windowWidth = useWidth((state) => state.width);
+  const windowWidth = useWidth().width;
   let frameSize = 45;
   let gridGap = 20;
   if (windowWidth <= 480) {

@@ -17,7 +17,7 @@ export default function NavBaguette({ showLanding }: Props) {
     toggle: state.toggle,
   }));
   const musicIcon = player.playing ? "music_vis" : "music_icon";
-  const windowWidth = useWidth((state) => state.width);
+  const windowWidth = useWidth().width;
   let frameSize = 60;
   frameSize =
     windowWidth <= 340

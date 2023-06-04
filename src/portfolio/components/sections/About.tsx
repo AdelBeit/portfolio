@@ -10,7 +10,7 @@ interface Props extends BaseSectionProps { }
 
 export default function About(props: Props) {
   let staticWidth = 379;
-  const windowWidth = useWidth((state) => state.width);
+  const windowWidth = useWidth().width;
 
   let width = staticWidth;
   if (windowWidth >= 1100) {

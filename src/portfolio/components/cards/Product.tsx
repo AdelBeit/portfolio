@@ -73,7 +73,7 @@ export default function Product({
 
   const scalingFactor = width / initialWidth;
 
-  const windowWidth = useWidth((state) => state.width);
+  const windowWidth = useWidth().width;
   let techStackFrameSize = 30;
   let techStackMarginLeft = -14;
   let techStackGap = 10;

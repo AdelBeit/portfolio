@@ -9,12 +9,11 @@ import BlogPost from "./components/sections/BlogPost";
 import Experience from "./components/sections/Experience";
 import inlineSVG from "./utils/inlineSVG";
 import {ETHERICONS} from "../data/portfolio.data";
-// import { IconEther } from 'react-icon-ether';
-import {IconEther} from "./example/IconEther";
+import {IconEther} from "react-icon-ether";
 import Landing from "./components/sections/Landing";
 import {LANDING, SONGS} from "../data/portfolio.data";
 import {SECTIONS} from "./types";
-import {useWidth} from "./store/WidthStore";
+import {WidthProvider} from "./store/WidthStore";
 import Layout from "./Layout";
 import Sound from "react-sound";
 import {useMusic} from "./store/MusicStore";
@@ -49,7 +48,6 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: navbar change broken
 
 export function App() {
-  const {setWidth} = useWidth();
   const [currentSection, setCurrentSection] = useState("_landing");
   const player = useMusic((state) => ({
     songs: state.songs,
@@ -57,10 +55,6 @@ export function App() {
     playing: state.playing,
     next: state.next,
   }));
-
-  const resizeHandler = () => {
-    setWidth(window.innerWidth);
-  };
 
   const handleIntersection = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((section) => {
@@ -75,14 +69,8 @@ export function App() {
   }, [currentSection]);
 
   useEffect(() => {
-    setWidth(window.innerWidth);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("resize", resizeHandler);
     window.addEventListener("wheel", scrollHandler, {passive: false});
     return () => {
-      window.removeEventListener("resize", resizeHandler);
       window.removeEventListener("wheel", scrollHandler);
     };
   }, []);
@@ -91,21 +79,22 @@ export function App() {
     <Layout>
       <div id="ether_container" className="_container relative">
         <IconEther icons={ETHERICONS} />
-
-        {/* <ContentBox handleIntersection={handleIntersection}>
-          <Landing
-            title={LANDING.NAME}
-            role={LANDING.ROLE}
-            description={LANDING.CONTENT}
-            keywords={LANDING.KEYWORDS}
-            isInView={currentSection === "_landing"}
-          />
-          <Product isInView={currentSection === "_product"} />
-          <About isInView={currentSection === "_about"} />
-          <BlogPost isInView={currentSection === "_blogpost"} />
-          <Experience isInView={currentSection === "_experience"} />
-        </ContentBox>
-        <NavBox showLanding={currentSection === "_landing"} />
+        <WidthProvider>
+          <ContentBox handleIntersection={handleIntersection}>
+            <Landing
+              title={LANDING.NAME}
+              role={LANDING.ROLE}
+              description={LANDING.CONTENT}
+              keywords={LANDING.KEYWORDS}
+              isInView={currentSection === "_landing"}
+            />
+            <Product isInView={currentSection === "_product"} />
+            <About isInView={currentSection === "_about"} />
+            <BlogPost isInView={currentSection === "_blogpost"} />
+            <Experience isInView={currentSection === "_experience"} />
+          </ContentBox>
+          <NavBox showLanding={currentSection === "_landing"} />
+        </WidthProvider>
         <Sound
           url={"/mp3/" + player.songs[player.songIndex]}
           playStatus={
@@ -113,7 +102,7 @@ export function App() {
           }
           volume={20}
           onFinishedPlaying={player.next}
-        /> */}
+        />
         <style jsx>{`
           ._container {
             height: 100%;
