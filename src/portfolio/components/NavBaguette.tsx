@@ -39,7 +39,7 @@ export default function NavBaguette({ showLanding }: Props) {
   }
 
   let buttons = new Map([
-    ["music", { icon: musicIcon, clickHandler: player.toggle }],
+    ["music", {icon: musicIcon, clickHandler: player.toggle}],
     [
       "products",
       {
@@ -57,15 +57,15 @@ export default function NavBaguette({ showLanding }: Props) {
       },
     ],
     // ["blogpost", { icon: 'blogpost',clickHandler: scrollTo("_blogpost"), classes: "_blogpost" }],
-    [
-      "experience",
-      {
-        icon: "experience",
-        clickHandler: scrollTo("_experience"),
-        classes: "_experience",
-      },
-    ],
-    ["arrowup", { icon: "arrowup", clickHandler: scrollTo("_landing") }],
+    // [
+    //   "experience",
+    //   {
+    //     icon: "experience",
+    //     clickHandler: scrollTo("_experience"),
+    //     classes: "_experience",
+    //   },
+    // ],
+    ["arrowup", {icon: "arrowup", clickHandler: scrollTo("_landing")}],
   ]);
 
   if (showLanding) {
