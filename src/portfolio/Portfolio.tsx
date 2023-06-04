@@ -88,8 +88,8 @@ export function App() {
             />
             <Product isInView={currentSection === "_product"} />
             <About isInView={currentSection === "_about"} />
-            <BlogPost isInView={currentSection === "_blogpost"} />
-            <Experience isInView={currentSection === "_experience"} />
+            {/* <BlogPost isInView={currentSection === "_blogpost"} /> */}
+            {/* <Experience isInView={currentSection === "_experience"} /> */}
           </ContentBox>
           <NavBox showLanding={currentSection === "_landing"} />
         </WidthProvider>
