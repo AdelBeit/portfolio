@@ -17,6 +17,7 @@ import {WidthProvider} from "./store/WidthStore";
 import Layout from "./Layout";
 import Sound from "react-sound";
 import {useMusic} from "./store/MusicStore";
+import TableOfContent from "./components/TableOfContents";
 
 /*
 css cyberpunk buttons https://codepen.io/jh3y/full/BajVmOg
@@ -92,6 +93,7 @@ export function App() {
             {/* <Experience isInView={currentSection === "_experience"} /> */}
           </ContentBox>
           <NavBox showLanding={currentSection === "_landing"} />
+          <TableOfContent />
         </WidthProvider>
         <Sound
           url={"/mp3/" + player.songs[player.songIndex]}
