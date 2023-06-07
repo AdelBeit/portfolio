@@ -1,8 +1,7 @@
 import React from "react";
-import { useWidth } from "../../store/WidthStore";
-import { linkHandler } from "../../utils/linkHandler";
-import { scale } from "../../utils/scale";
-import Baguette from "../Baguette";
+import {useWidth} from "../../store/WidthStore";
+import {scale} from "../../utils/scale";
+import {Button as ButtonFrame} from "../frames/Button";
 
 interface Props {
   title: string;
@@ -10,11 +9,8 @@ interface Props {
   width: number;
 }
 
-export default function BlogPost({ title, link, width = 0 }: Props) {
+export default function BlogPost({title, link, width = 0}: Props) {
   const _name = "blog_post";
-  const buttons = new Map([
-    ["info", { icon: "info", clickHandler: linkHandler(link) }],
-  ]);
   const initialWidth = 357;
   const initialHeight = 325;
   const height = scale(initialHeight, initialWidth, width);
@@ -32,14 +28,15 @@ export default function BlogPost({ title, link, width = 0 }: Props) {
           href={`./svg stores/cards.svg#${_name}`}
           xlinkHref={`./svg stores/cards.svg#${_name}`}
           x="0"
-          y="0"
-        ></use>
+          y="0"></use>
       </svg>
       <div className="_contentBox title absolute">
         <span>{title}</span>
       </div>
       <div className="_baguette absolute">
-        <Baguette crumbs={buttons} _type="button" />
+        <a href={link} target="_blank">
+          <ButtonFrame icon="info" />
+        </a>
       </div>
       <style jsx>{`
         ._card {

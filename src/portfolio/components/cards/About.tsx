@@ -1,30 +1,20 @@
 import React from "react";
-import { useWidth } from "../../store/WidthStore";
-import { linkHandler } from "../../utils/linkHandler";
-import { scale } from "../../utils/scale";
-import Baguette from "../Baguette";
-import { TypeWriter } from "../TyperWriter";
+import {useWidth} from "../../store/WidthStore";
+import {scale} from "../../utils/scale";
+import {Button as ButtonFrame} from "../frames/Button";
+import {TypeWriter} from "../TyperWriter";
 
 interface Props {
   title: string;
   description: string;
   width: number;
-  links: { LINKEDIN: string; GITHUB: string; RESUME: string; EMAIL: string };
+  links: {LINKEDIN: string; GITHUB: string; RESUME: string; EMAIL: string};
 }
 
 // TODO: modularize svg so height can be adjusted better
 
-export default function About({ title, description, links, width = 0 }: Props) {
+export default function About({title, description, links, width = 0}: Props) {
   const _name = "about";
-  const buttons = new Map([
-    ["github", { icon: "github", clickHandler: linkHandler(links.GITHUB) }],
-    [
-      "linkedin",
-      { icon: "linkedin", clickHandler: linkHandler(links.LINKEDIN) },
-    ],
-    ["email", { icon: "email", clickHandler: linkHandler(links.EMAIL) }],
-    ["resume", { icon: "resume", clickHandler: linkHandler(links.RESUME) }],
-  ]);
   const initialWidth = 379;
   const initialHeight = 720;
   const height = scale(initialHeight, initialWidth, width);
@@ -42,14 +32,17 @@ export default function About({ title, description, links, width = 0 }: Props) {
           href={`./svg stores/cards.svg#${_name}`}
           xlinkHref={`./svg stores/cards.svg#${_name}`}
           x="0"
-          y="0"
-        ></use>
+          y="0"></use>
       </svg>
       <div className="_contentBox title absolute">
         <span>{title}</span>
       </div>
       <div className="_baguette absolute">
-        <Baguette crumbs={buttons} _type="button" {...{ frameSize }} />
+        {["github", "linkedin", "email", "resume"].map((icon, _i) => (
+          <a href={links[icon.toUpperCase()]} key={_i} target="_blank">
+            <ButtonFrame shadow={true} icon={icon} frameSize={frameSize} />
+          </a>
+        ))}
       </div>
       <div className="_contentBox description hide-scroll-bar absolute">
         <TypeWriter content={description} />

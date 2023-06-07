@@ -1,36 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 interface Props {
-  handleIntersection: (entries?: IntersectionObserverEntry[]) => void;
   children: React.ReactNode;
 }
 
-export default function ContentBox({ handleIntersection, children }: Props) {
-  useEffect(() => {
-    const intersectionObserverOptions = {
-      root: document.querySelector("#_viewbox"),
-      rootMargin: "0px",
-      threshold: 0.25,
-    };
-
-    const observer = new IntersectionObserver(
-      handleIntersection,
-      intersectionObserverOptions
-    );
-
-    const sections = document.querySelectorAll("._section");
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
+export default function ContentBox({children}: Props) {
   return (
     <div
       id="_viewbox"
-      className="_container relative hide-scroll-bar z-index-10"
-    >
+      className="_container relative hide-scroll-bar z-index-10">
       {children}
       <style jsx>{`
         ._container {

@@ -1,12 +1,10 @@
 import React from "react";
 import { EXPERIENCE } from "../../../data/portfolio.data";
 import { useWidth } from "../../store/WidthStore";
-import { BaseSectionProps } from "../../types";
+
 import ExperienceCard from "../cards/Experience";
 
-interface Props extends BaseSectionProps {}
-
-export default function Experience({}: Props) {
+export default function Experience() {
   let width = 379;
   const windowWidth = useWidth().width;
   if (windowWidth <= 480) {

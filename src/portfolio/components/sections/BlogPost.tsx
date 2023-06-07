@@ -1,12 +1,9 @@
 import React from "react";
 import { BLOGPOSTS } from "../../../data/portfolio.data";
-import { useWidth } from "../../store/WidthStore";
-import { BaseSectionProps } from "../../types";
+import {useWidth} from "../../store/WidthStore";
 import BlogPostCard from "../cards/BlogPost";
 
-interface Props extends BaseSectionProps {}
-
-export default function BlogPost({}: Props) {
+export default function BlogPost() {
   let width = 379;
   const windowWidth = useWidth().width;
   if (windowWidth <= 480) {

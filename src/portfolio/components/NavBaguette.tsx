@@ -1,9 +1,10 @@
+import cs from "classnames";
 import React from "react";
-import { ABOUT } from "../../data/portfolio.data";
-import { useMusic } from "../store/MusicStore";
-import { useWidth } from "../store/WidthStore";
-import { linkHandler } from "../utils/linkHandler";
-import Baguette from "./Baguette";
+import {ABOUT} from "../../data/portfolio.data";
+import {useSectionObserver} from "../hooks/useSectionObserver";
+import {useMusic} from "../store/MusicStore";
+import {useWidth} from "../store/WidthStore";
+import {Button as ButtonFrame} from "./frames/Button";
 
 interface Props {
   showLanding: boolean;
@@ -11,7 +12,8 @@ interface Props {
 
 // TODO: make the navbar 'dormant' further to the right of the screen, when hovered over, move icons to the left and expand gap between them
 
-export default function NavBaguette({ showLanding }: Props) {
+export default function NavBaguette({showLanding}: Props) {
+  const {activeSection} = useSectionObserver();
   const player = useMusic((state) => ({
     playing: state.playing,
     toggle: state.toggle,
@@ -28,69 +30,66 @@ export default function NavBaguette({ showLanding }: Props) {
       ? frameSize - 10
       : frameSize;
 
-  function scrollTo(eID: string, { yOffset = -20 } = {}) {
-    return () => {
-      const element = document.querySelector(`#${eID}`);
-      const viewBox = document.querySelector("#_viewbox");
-      const top =
-        element.getBoundingClientRect().top + viewBox.scrollTop + yOffset;
-      viewBox.scrollTo({ top: top, behavior: "smooth" });
-    };
+  function scrollTo(
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    eID: string,
+    {yOffset = -20} = {}
+  ) {
+    e.preventDefault();
+    const element = document.querySelector(`#${eID}`);
+    const viewBox = document.querySelector("#_viewbox");
+    const top =
+      element.getBoundingClientRect().top + viewBox.scrollTop + yOffset;
+    viewBox.scrollTo({top: top, behavior: "smooth"});
   }
 
-  let buttons = new Map([
-    ["music", {icon: musicIcon, clickHandler: player.toggle}],
-    [
-      "products",
-      {
-        icon: "products",
-        clickHandler: scrollTo("_products"),
-        classes: "_products",
-      },
-    ],
-    [
-      "info",
-      {
-        icon: "person",
-        clickHandler: scrollTo("_about"),
-        classes: "active _about",
-      },
-    ],
-    // ["blogpost", { icon: 'blogpost',clickHandler: scrollTo("_blogpost"), classes: "_blogpost" }],
-    // [
-    //   "experience",
-    //   {
-    //     icon: "experience",
-    //     clickHandler: scrollTo("_experience"),
-    //     classes: "_experience",
-    //   },
-    // ],
-    ["arrowup", {icon: "arrowup", clickHandler: scrollTo("_landing")}],
-  ]);
+  let buttons = (
+    <>
+      <a href="#" onClick={player.toggle}>
+        <ButtonFrame shadow={true} icon={musicIcon} />
+      </a>
+      <a href="#_products" onClick={(e) => scrollTo(e, "_products")}>
+        <ButtonFrame
+          shadow={true}
+          icon={"products"}
+          classes={cs("_products", activeSection === "_products" && "active")}
+        />
+      </a>
+      <a href="#_about" onClick={(e) => scrollTo(e, "_about")}>
+        <ButtonFrame
+          shadow={true}
+          icon={"person"}
+          classes={cs("_about", activeSection === "_about" && "active")}
+        />
+      </a>
+      <a href="#_landing" onClick={(e) => scrollTo(e, "_landing")}>
+        <ButtonFrame shadow={true} icon="arrowup" />
+      </a>
+    </>
+  );
 
   if (showLanding) {
-    const links = { ...ABOUT.LINKS };
-    buttons = new Map([
-      ["music", { icon: musicIcon, clickHandler: player.toggle }],
-      ["github", { icon: "github", clickHandler: linkHandler(links.GITHUB) }],
-      [
-        "linkedin",
-        { icon: "linkedin", clickHandler: linkHandler(links.LINKEDIN) },
-      ],
-      ["email", { icon: "email", clickHandler: linkHandler(links.EMAIL) }],
-      ["resume", { icon: "resume", clickHandler: linkHandler(links.RESUME) }],
-      ["arrowdown", { icon: "arrowdown", clickHandler: scrollTo("_products") }],
-    ]);
+    const links = {...ABOUT.LINKS};
+    buttons = (
+      <>
+        <a href="#" onClick={player.toggle}>
+          <ButtonFrame shadow={true} icon={musicIcon} />
+        </a>
+        {["github", "linkedin", "email", "resume"].map((icon, _i) => (
+          <a href={links[icon.toUpperCase()]} key={_i} target="_blank">
+            <ButtonFrame shadow={true} icon={icon} />
+          </a>
+        ))}
+        <a href="#_products" onClick={(e) => scrollTo(e, "_products")}>
+          <ButtonFrame shadow={true} icon="arrowdown" />
+        </a>
+      </>
+    );
   }
 
   return (
     <div id="_navbar" className="_container z-index-10">
-      <Baguette
-        crumbs={buttons}
-        shadow={true}
-        _type="button"
-        {...{ frameSize }}
-      />
+      {buttons}
       <style jsx>{`
         ._container {
           height: 80%;
