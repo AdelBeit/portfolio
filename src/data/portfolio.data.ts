@@ -43,7 +43,7 @@ const ABOUT = {
   LINKS: {
     LINKEDIN: "https://linkedin.com/in/adel-beitvashahi",
     GITHUB: "https://github.com/adelbeit",
-    RESUME: "https://adelbeit.com/developer",
+    RESUME: "/Adele_Beitvashahi.pdf",
     EMAIL: "mailto:adelbeitvashahi@gmail.com",
   },
 };
