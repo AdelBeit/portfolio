@@ -28,12 +28,12 @@ export default function About() {
         width={width}
       />
       <div className="_container">
+        <TechStackCard icons={TECHSTACK.ICONS} width={staticWidth} />
         <EducationCard
           title={EDUCATION.TITLE}
           degree={EDUCATION.DEGREE}
           width={staticWidth}
         />
-        <TechStackCard icons={TECHSTACK.ICONS} width={staticWidth} />
       </div>
       <style jsx global>{`
         ._section {
