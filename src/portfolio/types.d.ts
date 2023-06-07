@@ -1,5 +1,4 @@
-export interface BaseSectionProps {
-  isInView: boolean;
+export interface BaseFrameProps {
+  icon: string;
+  frameSize?: number;
 }
-
-export type SECTIONS = ["info", "products", "blogpost", "experience"];

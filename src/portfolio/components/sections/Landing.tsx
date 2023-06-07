@@ -1,9 +1,8 @@
 import React, {useState} from "react";
-import {BaseSectionProps} from "../../types";
 import GlitchText from "../GlitchText";
 import {TypeWriter} from "../TyperWriter";
 
-interface Props extends BaseSectionProps {
+interface Props {
   title: string;
   role: string;
   description: string;

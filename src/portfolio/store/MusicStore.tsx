@@ -14,7 +14,7 @@ interface Action {
 
 type MusicStore = State & Action;
 
-export const useMusic = create<MusicStore>()((set) => ({
+const useMusic = create<MusicStore>()((set) => ({
   playing: false,
   toggle: () =>
     set((state) => ({
@@ -22,9 +22,11 @@ export const useMusic = create<MusicStore>()((set) => ({
     })),
   songIndex: 0,
   songs: ["mercenary.mp3", "spoiler.mp3", "star eater.mp3"],
-  setSongs: (songList) => set({ songs: songList }),
+  setSongs: (songList) => set({songs: songList}),
   next: () =>
     set((state) => ({
       songIndex: (state.songIndex + 1) % state.songs.length,
     })),
 }));
+
+export {useMusic};

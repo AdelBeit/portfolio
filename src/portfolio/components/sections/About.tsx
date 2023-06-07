@@ -3,12 +3,10 @@ import AboutCard from "../cards/About";
 import EducationCard from "../cards/Education";
 import TechStackCard from "../cards/TechStack";
 import { ABOUT, EDUCATION, TECHSTACK } from "../../../data/portfolio.data";
-import { BaseSectionProps } from "../../types";
-import { useWidth } from "../../store/WidthStore";
 
-interface Props extends BaseSectionProps { }
+import {useWidth} from "../../store/WidthStore";
 
-export default function About(props: Props) {
+export default function About() {
   let staticWidth = 379;
   const windowWidth = useWidth().width;
 
@@ -30,12 +28,12 @@ export default function About(props: Props) {
         width={width}
       />
       <div className="_container">
+        <TechStackCard icons={TECHSTACK.ICONS} width={staticWidth} />
         <EducationCard
           title={EDUCATION.TITLE}
           degree={EDUCATION.DEGREE}
           width={staticWidth}
         />
-        <TechStackCard icons={TECHSTACK.ICONS} width={staticWidth} />
       </div>
       <style jsx global>{`
         ._section {

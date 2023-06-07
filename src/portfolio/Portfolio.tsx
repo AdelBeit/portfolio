@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import About from "./components/sections/About";
 import ContentBox from "./components/ContentBox";
 import NavBox from "./components/NavBaguette";
-import setActiveNavButton from "./utils/setActiveNavButton";
 import {scrollHandler} from "./utils/scrollHandler";
 import Product from "./components/sections/Product";
 import BlogPost from "./components/sections/BlogPost";
@@ -12,11 +11,11 @@ import {ETHERICONS} from "../data/portfolio.data";
 import {IconEther} from "react-icon-ether";
 import Landing from "./components/sections/Landing";
 import {LANDING, SONGS} from "../data/portfolio.data";
-import {SECTIONS} from "./types";
 import {WidthProvider} from "./store/WidthStore";
 import Layout from "./Layout";
 import Sound from "react-sound";
 import {useMusic} from "./store/MusicStore";
+import {useSectionObserver} from "./hooks/useSectionObserver";
 
 /*
 css cyberpunk buttons https://codepen.io/jh3y/full/BajVmOg
@@ -46,7 +45,7 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: navbar change broken
 
 export function App() {
-  const [currentSection, setCurrentSection] = useState("_landing");
+  const {activeSection} = useSectionObserver();
   const player = useMusic((state) => ({
     songs: state.songs,
     songIndex: state.songIndex,
@@ -54,19 +53,8 @@ export function App() {
     next: state.next,
   }));
 
-  const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((section) => {
-      if (section.isIntersecting) {
-        setCurrentSection(section.target.id);
-      }
-    });
-  };
-
   useEffect(() => {
-    setActiveNavButton(currentSection as unknown as SECTIONS);
-  }, [currentSection]);
-
-  useEffect(() => {
+    console.log(activeSection);
     window.addEventListener("wheel", scrollHandler, {passive: false});
     return () => {
       window.removeEventListener("wheel", scrollHandler);
@@ -78,20 +66,19 @@ export function App() {
       <div id="ether_container" className="_container relative">
         <IconEther icons={ETHERICONS} />
         <WidthProvider>
-          <ContentBox handleIntersection={handleIntersection}>
+          <ContentBox>
             <Landing
               title={LANDING.NAME}
               role={LANDING.ROLE}
               description={LANDING.CONTENT}
               keywords={LANDING.KEYWORDS}
-              isInView={currentSection === "_landing"}
             />
-            <Product isInView={currentSection === "_product"} />
-            <About isInView={currentSection === "_about"} />
-            {/* <BlogPost isInView={currentSection === "_blogpost"} /> */}
-            {/* <Experience isInView={currentSection === "_experience"} /> */}
+            <Product />
+            <About />
+            {/* <BlogPost  /> */}
+            {/* <Experience  /> */}
           </ContentBox>
-          <NavBox showLanding={currentSection === "_landing"} />
+          <NavBox showLanding={activeSection === "_landing"} />
         </WidthProvider>
         <Sound
           url={"/mp3/" + player.songs[player.songIndex]}

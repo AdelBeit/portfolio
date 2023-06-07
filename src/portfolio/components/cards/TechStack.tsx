@@ -1,7 +1,7 @@
 import React from "react";
 import { useWidth } from "../../store/WidthStore";
 import { scale } from "../../utils/scale";
-import Baguette from "../Baguette";
+import {Icon} from "../frames/Icon";
 
 interface Props {
   icons: string[];
@@ -10,7 +10,7 @@ interface Props {
 
 // TODO: do a glitch animation at some other point
 
-export default function TechStack({ icons, width = 0 }: Props) {
+export default function TechStack({icons, width = 0}: Props) {
   const _name = "tech_stack";
   const title = "TECH STACK";
   const initialWidth = 352;
@@ -35,19 +35,16 @@ export default function TechStack({ icons, width = 0 }: Props) {
           href={`./svg stores/cards.svg#${_name}`}
           xlinkHref={`./svg stores/cards.svg#${_name}`}
           x="0"
-          y="0"
-        ></use>
+          y="0"></use>
       </svg>
       <div className="_contentBox title absolute">
         <span>{title}</span>
       </div>
       <div className="_container relative">
         <div className="_icons hide-scroll-bar absolute passive-scroll">
-          <Baguette
-            crumbs={[...icons, ...icons]}
-            _type="icon"
-            {...{ frameSize }}
-          />
+          {[...icons, ...icons].map((icon, _i) => (
+            <Icon frameSize={frameSize} key={_i} icon={icon} />
+          ))}
         </div>
       </div>
       <style jsx>{`

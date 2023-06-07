@@ -1,16 +1,16 @@
 import cs from "classnames";
 import React, { useState } from "react";
-import { useWidth } from "../../store/WidthStore";
-import { linkHandler } from "../../utils/linkHandler";
-import { scale } from "../../utils/scale";
-import Baguette from "../Baguette";
+import {useWidth} from "../../store/WidthStore";
+import {scale} from "../../utils/scale";
+import {Button as ButtonFrame} from "../frames/Button";
+import {Icon as IconFrame} from "../frames/Icon";
 import Icon from "../Icon";
 
 interface Props {
   title: string;
   description: string[];
   techStack: string[];
-  links: { CODE: string; LINK: string; VIDEO: string };
+  links: {CODE: string; LINK: string; VIDEO: string};
   width: number;
 }
 
@@ -61,11 +61,6 @@ export default function Product({
     setActive((prevState) => !prevState);
   };
 
-  const buttons = new Map([
-    ["info", { icon: "info", clickHandler: expandHandler }],
-    ["github", { icon: "code", clickHandler: linkHandler(links.CODE) }],
-  ]);
-
   const initialWidth = 352;
   const initialHeight = 620;
   const height = scale(initialHeight, initialWidth, width);
@@ -102,18 +97,23 @@ export default function Product({
         </div>
       </a>
       <div className="_baguette buttons absolute">
-        <Baguette
-          crumbs={buttons}
-          _type="button"
-          {...{frameSize: ButtonFrameSize}}
+        <ButtonFrame
+          frameSize={ButtonFrameSize}
+          icon="info"
+          clickHandler={expandHandler}
         />
+        <a href={links.CODE} target="_blank">
+          <ButtonFrame frameSize={ButtonFrameSize} icon="code" />
+        </a>
       </div>
       <div className="_baguette tech_stack absolute">
-        <Baguette
-          crumbs={stack}
-          _type="icon"
-          {...{frameSize: techStackFrameSize, borderSize: 0}}
-        />
+        {stack.map((icon, _i) => (
+          <IconFrame
+            icon={icon}
+            frameSize={techStackFrameSize}
+            borderSize={0}
+          />
+        ))}
       </div>
       <div className={cs("_contentBox demo absolute", !active && "hide")}>
         {media[0] === "image" ? (
