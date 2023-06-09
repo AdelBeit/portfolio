@@ -109,6 +109,7 @@ export default function Product({
       <div className="_baguette tech_stack absolute">
         {stack.map((icon, _i) => (
           <IconFrame
+            key={_i}
             icon={icon}
             frameSize={techStackFrameSize}
             borderSize={0}
