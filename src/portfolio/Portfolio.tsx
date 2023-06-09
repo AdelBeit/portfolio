@@ -54,7 +54,6 @@ export function App() {
   }));
 
   useEffect(() => {
-    console.log(activeSection);
     window.addEventListener("wheel", scrollHandler, {passive: false});
     return () => {
       window.removeEventListener("wheel", scrollHandler);
