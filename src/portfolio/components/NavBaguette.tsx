@@ -1,19 +1,15 @@
 import cs from "classnames";
 import React from "react";
 import {ABOUT} from "../../data/portfolio.data";
-import {useSectionObserver} from "../hooks/useSectionObserver";
+import {useActiveSection} from "../store/ActiveSectionStore";
 import {useMusic} from "../store/MusicStore";
 import {useWidth} from "../store/WidthStore";
 import {Button as ButtonFrame} from "./frames/Button";
 
-interface Props {
-  showLanding: boolean;
-}
-
 // TODO: make the navbar 'dormant' further to the right of the screen, when hovered over, move icons to the left and expand gap between them
 
-export default function NavBaguette({showLanding}: Props) {
-  const {activeSection} = useSectionObserver();
+function NavBaguette() {
+  const {activeSection} = useActiveSection();
   const player = useMusic((state) => ({
     playing: state.playing,
     toggle: state.toggle,
@@ -68,7 +64,7 @@ export default function NavBaguette({showLanding}: Props) {
     </>
   );
 
-  if (showLanding) {
+  if (activeSection === "_landing") {
     const links = {...ABOUT.LINKS};
     buttons = (
       <>
@@ -125,3 +121,5 @@ export default function NavBaguette({showLanding}: Props) {
     </div>
   );
 }
+
+export {NavBaguette};

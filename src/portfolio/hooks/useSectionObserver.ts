@@ -23,7 +23,7 @@ function useSectionObserver() {
     sections.forEach((section) => observer.current.observe(section));
 
     return () => observer.current?.disconnect();
-  });
+  }, []);
 
   return {activeSection};
 }

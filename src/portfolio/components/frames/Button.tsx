@@ -1,6 +1,6 @@
 import cs from "classnames";
 import React from "react";
-import {useSectionObserver} from "../../hooks/useSectionObserver";
+import {useActiveSection} from "../../store/ActiveSectionStore";
 import {BaseFrameProps} from "../../types";
 import Icon from "../Icon";
 
@@ -19,7 +19,7 @@ function Button({
 }: Props) {
   const color = "amber";
   const iconSize = "60%";
-  const {activeSection} = useSectionObserver();
+  const {activeSection} = useActiveSection();
 
   return (
     <div

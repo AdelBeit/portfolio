@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import About from "./components/sections/About";
 import ContentBox from "./components/ContentBox";
-import NavBox from "./components/NavBaguette";
+import {NavBaguette as NavBox} from "./components/NavBaguette";
 import {scrollHandler} from "./utils/scrollHandler";
 import Product from "./components/sections/Product";
 import BlogPost from "./components/sections/BlogPost";
@@ -11,11 +11,10 @@ import {ETHERICONS} from "../data/portfolio.data";
 import {IconEther} from "react-icon-ether";
 import Landing from "./components/sections/Landing";
 import {LANDING, SONGS} from "../data/portfolio.data";
-import {WidthProvider} from "./store/WidthStore";
 import Layout from "./Layout";
 import Sound from "react-sound";
 import {useMusic} from "./store/MusicStore";
-import {useSectionObserver} from "./hooks/useSectionObserver";
+import {Providers} from "./Providers";
 
 /*
 css cyberpunk buttons https://codepen.io/jh3y/full/BajVmOg
@@ -45,7 +44,6 @@ duotone shape factory https://duotone.shapefactory.co/?f=000000&t=0b9c00&q=night
 // TODO: navbar change broken
 
 export function App() {
-  const {activeSection} = useSectionObserver();
   const player = useMusic((state) => ({
     songs: state.songs,
     songIndex: state.songIndex,
@@ -64,7 +62,7 @@ export function App() {
     <Layout>
       <div id="ether_container" className="_container relative">
         <IconEther icons={ETHERICONS} />
-        <WidthProvider>
+        <Providers>
           <ContentBox>
             <Landing
               title={LANDING.NAME}
@@ -77,8 +75,8 @@ export function App() {
             {/* <BlogPost  /> */}
             {/* <Experience  /> */}
           </ContentBox>
-          <NavBox showLanding={activeSection === "_landing"} />
-        </WidthProvider>
+          <NavBox />
+        </Providers>
         <Sound
           url={"/mp3/" + player.songs[player.songIndex]}
           playStatus={
