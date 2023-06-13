@@ -1551,9 +1551,9 @@ react-dom@18.1.0:
     scheduler "^0.22.0"
 
 react-icon-ether@^x:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-icon-ether/-/react-icon-ether-1.1.0.tgz#b832de58c813e3f4f8dcad7dd795e1849d55da2d"
-  integrity sha512-/jXkthszUF7F3YpYgnigKlGoyf8I1gVyXSp/iPFvkYHxAVJrMrzoZIbutV7PJyL4R5WAtk03kY5wzuhDadWdfQ==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-icon-ether/-/react-icon-ether-1.2.0.tgz#e778a2afa49b1d24dee55d5a8eff27c54f3f0e0f"
+  integrity sha512-iEkV0aIc+AjtPZ3+IhTIG4Bt8Ij5E+eCgWR1YpOhHizMhz7Bn8eU8DXKmTLRhZ/NEATHuvokcKGS5yCu9ef7mQ==
   dependencies:
     "@types/isomorphic-fetch" "^0.0.36"
     isomorphic-fetch "^3.0.0"

@@ -61,7 +61,7 @@ export function App() {
   return (
     <Layout>
       <div id="ether_container" className="_container relative">
-        <IconEther icons={ETHERICONS} />
+        <IconEther icons={ETHERICONS} localPath="/svgs/icons/static/" />
         <Providers>
           <ContentBox>
             <Landing
