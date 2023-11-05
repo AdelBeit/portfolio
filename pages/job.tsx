@@ -130,7 +130,7 @@ function App() {
   const [emails, setEmails] = useState(getEmails());
   const [message, setMessage] = useState<string>(templates.apply('early_career',{'name':`John Doe`, 'company':!!company ? company : '{{company}}'}));
 
-  const handleTextChange = (id, value) => {
+  const handleTextChange = (id: string, value: string) => {
     if (id === "firstName") {
       setFirstName(value);
     } else if (id === "lastName") {
