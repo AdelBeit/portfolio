@@ -117,16 +117,28 @@ const EDUCATION = {
 
 const PRODUCTS = [
   {
-    TITLE: "Icon Ether",
+    TITLE: "Audiobook Generator",
     CONTENT: [
-      "Animated component that spawns image/shaped particles with random x,y coords that move about and bounce off the screen. Designed in Figma",
-      "Fetches icons from SimpleIcons provided a valid name. Features automatic fallback to local images.",
+      "Webapp that generates personalized audio books from a given e-book, and an ElevenLabs cloned voice model. Powered by NextJS.",
     ],
-    STACK: ["react", "typescript", "Figma", "github", "yarn", "npm"],
+    STACK: ["react", "typescript", "nextdotjs", "github"],
     LINKS: {
       VIDEO: "",
-      CODE: "https://github.com/adelbeit/react-icon-ether",
-      LINK: "https://www.npmjs.com/package/react-icon-ether",
+      CODE: "https://github.com/AdelBeit/narrator",
+      LINK: "https://narrator.adelbeit.com/",
+    },
+  },
+  {
+    TITLE: "Smart Autofill",
+    CONTENT: [
+      "Web scraper that extracts form from a website. Runs it through chatgpt to pair different form inputs with given context data, and fills out the form using Playwright. Powered by Beautiful Soup, Python, and ChatGPT.",
+      "Due this projects capability to create spam, the source code is not public.",
+    ],
+    STACK: ["python", "playwright", "github"],
+    LINKS: {
+      VIDEO: "",
+      CODE: "https://github.com/AdelBeit/html-parser",
+      LINK: "https://narrator.adelbeit.com/",
     },
   },
   {
@@ -150,6 +162,19 @@ const PRODUCTS = [
       VIDEO: "",
       CODE: "https://github.com/adelbeit/jamroom",
       LINK: "https://jam.adelbeit.com/",
+    },
+  },
+  {
+    TITLE: "Icon Ether",
+    CONTENT: [
+      "Animated component that spawns image/shaped particles with random x,y coords that move about and bounce off the screen.",
+      "Fetches icons from SimpleIcons provided a valid name. Features automatic fallback to local images.",
+    ],
+    STACK: ["react", "typescript", "Figma", "github", "yarn", "npm"],
+    LINKS: {
+      VIDEO: "",
+      CODE: "https://github.com/adelbeit/react-icon-ether",
+      LINK: "https://www.npmjs.com/package/react-icon-ether",
     },
   },
   {
@@ -208,28 +233,6 @@ const PRODUCTS = [
   // },
 ];
 
-const EXPERIENCE = [
-  {
-    TITLE: "COX COMMUNICATIONS",
-    CONTENT: [
-      "Authored a tool that standardized the list of release changes by streamlining their delivery to respective stakeholders, eliminating the task from the project manager's to-do list.",
-      "Kept developers on track by ensuring all business requirements were well defined and formatted on JIRA for a multimillion-dollar project.",
-    ],
-    ROLE: "Scrum Master",
-    DATE: "2020-2021",
-  },
-  {
-    TITLE: "TMOBILE",
-    CONTENT: [
-      "Spearheaded the design, and execution of test cases by mentoring diverse teams of quality engineers resulting in 100% test coverage of projects collectively worth upwards of $100 million.",
-      "Built and automated UI tests using Tricentis Tosca for several projects worth $10+ million.",
-      "Created and maintained Oracle MySQL scripts for test data gathering which reduced testing workload by 50%.",
-    ],
-    ROLE: "Quality Engineer",
-    DATE: "2019-2020",
-  },
-];
-
 const BLOGPOSTS = [
   {TITLE: "TITLE", LINK: ""},
   {TITLE: "TITLE", LINK: ""},
@@ -242,7 +245,6 @@ export {
   ABOUT,
   EDUCATION,
   PRODUCTS,
-  EXPERIENCE,
   BLOGPOSTS,
   SONGS,
   TECHSTACK,

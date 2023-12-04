@@ -1,5 +1,4 @@
 import React from "react";
-import { EXPERIENCE } from "../../../data/portfolio.data";
 import { useWidth } from "../../store/WidthStore";
 
 import ExperienceCard from "../cards/Experience";
@@ -7,6 +6,7 @@ import ExperienceCard from "../cards/Experience";
 export default function Experience() {
   let width = 379;
   const windowWidth = useWidth().width;
+  const EXPERIENCE = [];
   if (windowWidth <= 480) {
     width = windowWidth - 100;
   }
