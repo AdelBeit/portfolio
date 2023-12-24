@@ -1,44 +1,47 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {ArrowDown} from "../../static/svgs/ArrowDown";
+import {ArrowUp} from "../../static/svgs/ArrowUp";
+import {MusicVis} from "../../static/svgs/musicVis";
 
 interface Props {
   icon: string;
   size?: string;
 }
 
-export default function Icon({ icon, size = "60%" }: Props) {
-  const animatedIcons = ["arrowup", "arrowdown", "music_vis"];
-  const isAnimated = animatedIcons.some((e) => icon.toLowerCase().includes(e));
-  const path = (isAnimated ? "./#_inline_" : "./svg stores/icons.svg#") + icon.toLowerCase();
+export default function Icon({icon, size = "60%"}: Props) {
+  const animatedIcons = {
+    arrow_up: <ArrowUp />,
+    arrow_down: <ArrowDown />,
+    music_vis: <MusicVis />,
+  };
+  const isAnimated = icon.toLowerCase() in Object.keys(animatedIcons);
+  const path = isAnimated
+    ? "./#_inline_"
+    : "./svg stores/icons.svg#" + icon.toLowerCase();
+  let svg = (
+    <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
+      <use href={path} xlinkHref={path} x="0" y="0"></use>
+    </svg>
+  );
+  if (icon.toLowerCase() in animatedIcons) svg = animatedIcons[icon];
   return (
     <div className={`_container _icon ${icon.toLowerCase()} relative`}>
-      <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
-        <use href={path} xlinkHref={path} x="0" y="0"></use>
-      </svg>
+      {svg}
       <style jsx>{`
         ._container {
           width: ${size};
           height: ${size};
         }
 
-        .arrowup,
-        .arrowdown {
+        .arrow_up,
+        .arrow_down {
           width: 40px;
           height: 40px;
         }
         .music_vis {
           width: 60px;
           height: 60px;
-          top: 10px;
-        }
-        @media only screen and (max-width: 600px) {
-          .music_vis {
-            top: 8px;
-          }
-        }
-        @media only screen and (max-width: 480px) {
-          .music_vis {
-            top: 6px;
-          }
+          top: 30px;
         }
       `}</style>
     </div>
@@ -61,7 +64,7 @@ export default function Icon({ icon, size = "60%" }: Props) {
  * # animated:
  * - nav bar icons:
  * - - music_vis
- * - - arrowdown/up
+ * - - arrow_down/up
  * - product card
  * # <object> <-- svg file
  */

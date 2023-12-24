@@ -59,7 +59,7 @@ function NavBaguette() {
         />
       </a>
       <a href="#_landing" onClick={(e) => scrollTo(e, "_landing")}>
-        <ButtonFrame shadow={true} icon="arrowup" />
+        <ButtonFrame shadow={true} icon="arrow_up" />
       </a>
     </>
   );
@@ -77,7 +77,7 @@ function NavBaguette() {
           </a>
         ))}
         <a href="#_products" onClick={(e) => scrollTo(e, "_products")}>
-          <ButtonFrame shadow={true} icon="arrowdown" />
+          <ButtonFrame shadow={true} icon="arrow_down" />
         </a>
       </>
     );

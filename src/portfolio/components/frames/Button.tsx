@@ -80,8 +80,8 @@ function Button({
       `}</style>
       <style jsx>{`
         ._container.products,
-        ._container.arrowup,
-        ._container.arrowdown,
+        ._container.arrow_up,
+        ._container.arrow_down,
         ._container.music_vis,
         ._container.music,
         ._container.resume {

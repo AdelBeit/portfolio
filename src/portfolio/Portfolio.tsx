@@ -6,7 +6,6 @@ import {scrollHandler} from "./utils/scrollHandler";
 import Product from "./components/sections/Product";
 import BlogPost from "./components/sections/BlogPost";
 import Experience from "./components/sections/Experience";
-import inlineSVG from "./utils/inlineSVG";
 import {ETHERICONS} from "../data/portfolio.data";
 import {IconEther} from "react-icon-ether";
 import Landing from "./components/sections/Landing";
@@ -157,11 +156,6 @@ export function App() {
             }
           }
         `}</style>
-        <div
-          className="hide"
-          id="animated_inline_svg"
-          dangerouslySetInnerHTML={{__html: inlineSVG}}
-        />
       </div>
     </Layout>
   );
