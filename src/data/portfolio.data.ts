@@ -1,5 +1,5 @@
 const LANDING = {
-  NAME: "Adele Beitvashahi",
+  NAME: "Adel Beitvashahi",
   ROLE: "Software Engineer",
   CONTENT: "I have a passion for developing software that's",
   KEYWORDS: [
