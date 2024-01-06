@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {ArrowDown} from "../../static/svgs/ArrowDown";
 import {ArrowUp} from "../../static/svgs/ArrowUp";
-import {MusicVis} from "../../static/svgs/musicVis";
+import {MusicVis} from "../../static/svgs/MusicVis";
 
 interface Props {
   icon: string;
