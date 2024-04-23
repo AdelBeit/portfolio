@@ -15,9 +15,8 @@ export default function Icon({icon, size = "60%"}: Props) {
     music_vis: <MusicVis />,
   };
   const isAnimated = icon.toLowerCase() in Object.keys(animatedIcons);
-  const path = isAnimated
-    ? "./#_inline_"
-    : "./svg stores/icons.svg#" + icon.toLowerCase();
+  let path = "./svg stores/icons.svg#" + icon.toLowerCase();
+  path = isAnimated ? "./#_inline_" : path;
   let svg = (
     <svg className="_svg absolute" xmlns="https://www.w3.org/2000/svg">
       <use href={path} xlinkHref={path} x="0" y="0"></use>

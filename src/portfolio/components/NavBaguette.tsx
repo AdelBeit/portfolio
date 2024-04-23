@@ -58,6 +58,13 @@ function NavBaguette() {
           classes={cs("_about", activeSection === "_about" && "active")}
         />
       </a>
+      <a href="#_blogpost" onClick={(e) => scrollTo(e, "_blogpost")}>
+        <ButtonFrame
+          shadow={true}
+          icon={"blogpost"}
+          classes={cs("_blogpost", activeSection === "_blogpost" && "active")}
+        />
+      </a>
       <a href="#_landing" onClick={(e) => scrollTo(e, "_landing")}>
         <ButtonFrame shadow={true} icon="arrow_up" />
       </a>
@@ -71,7 +78,7 @@ function NavBaguette() {
         <a href="#" onClick={player.toggle}>
           <ButtonFrame shadow={true} icon={musicIcon} />
         </a>
-        {["github", "email"].map((icon, _i) => (
+        {["github", "email","devdotto"].map((icon, _i) => (
           <a href={links[icon.toUpperCase()]} key={_i} target="_blank">
             <ButtonFrame shadow={true} icon={icon} />
           </a>

@@ -5,16 +5,16 @@ const ArrowDown = () => {
       viewBox="0 0 60 60"
       fill="none"
       stroke="currentColor"
-      stroke-linecap="round"
-      stroke-width="7"
+      strokeLinecap="round"
+      strokeWidth="7"
       xmlns="http://www.w3.org/2000/svg">
       <symbol
         id="arrow_down_stroke_target"
         viewBox="0 15 60 27"
         fill="none"
-        stroke-width="5">
-        <line x1="15" y1="15" x2="30" y2="27" stroke-linecap="round" />
-        <line x1="30" y1="27" x2="45" y2="15" stroke-linecap="round" />
+        strokeWidth="5">
+        <line x1="15" y1="15" x2="30" y2="27" strokeLinecap="round" />
+        <line x1="30" y1="27" x2="45" y2="15" strokeLinecap="round" />
       </symbol>
       <use
         href="#arrow_down_stroke_target"

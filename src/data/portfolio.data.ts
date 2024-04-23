@@ -47,6 +47,7 @@ const ABOUT = {
     GITHUB: "https://github.com/adelbeit",
     RESUME: "/Adele_Beitvashahi.pdf",
     EMAIL: "mailto:adelbeitvashahi@gmail.com",
+    DEVDOTTO: "https://dev.to/adelbeit",
   },
 };
 
@@ -234,8 +235,16 @@ const PRODUCTS = [
 ];
 
 const BLOGPOSTS = [
-  {TITLE: "TITLE", LINK: ""},
-  {TITLE: "TITLE", LINK: ""},
+  {
+    TITLE:
+      "How to persist client-side preferences on the client in Svelte (w/o DB)",
+    LINK: "https://dev.to/adelbeit/how-to-persist-user-preferences-in-svelte-wo-db-51nf",
+  },
+  {
+    TITLE:
+      "This website was built to serve with templatability in mind. Get started by forking the repo and customizing the profile.data.json! Just follow the link by clicking on this card.",
+    LINK: "https://github.com/adelbeit/portfolio",
+  }, // footer post
 ];
 
 const SONGS = ["mercenary.mp3", "spoiler.mp3", "star eater.mp3"];

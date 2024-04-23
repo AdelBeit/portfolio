@@ -71,7 +71,7 @@ export function App() {
             />
             <Product />
             <About />
-            {/* <BlogPost  /> */}
+            <BlogPost  />
             {/* <Experience  /> */}
           </ContentBox>
           <NavBox />

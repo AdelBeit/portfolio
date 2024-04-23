@@ -42,6 +42,7 @@ const icons = [
   "mui",
   "jira",
   "arduino",
+  "devdotto"
 ];
 
 const cdn = (icon, color = "33FF00") => {
