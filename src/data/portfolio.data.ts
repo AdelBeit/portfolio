@@ -118,9 +118,57 @@ const EDUCATION = {
 
 const PRODUCTS = [
   {
+    TITLE: "Image to Calendar",
+    CONTENT: [
+      "Webapp that extracts calendar events from a screenshot and generates ready-to-import calendar files. Uses an on-device (offline) optical character recognition (OCR) ML model called Tesseract.",
+    ],
+    STACK: ["javascript", "github", "css3"],
+    LINKS: {
+      VIDEO: "",
+      CODE: "https://github.com/adelbeit/event-extractor",
+      LINK: "https://event-extractor.vercel.app/",
+    },
+  },
+  {
+    TITLE: "Shelter Donation Manager",
+    CONTENT: [
+      "Fully functional, crossplatform, and responsive donation form hooked up to an SQL DB backend. With accessibility baked in. Allows you to perform CRUD operations on the new/existing donation data.",
+    ],
+    STACK: ["react", "nextdotjs", "postgresql", "css3"],
+    LINKS: {
+      VIDEO: "",
+      CODE: "https://github.com/adelbeit/shelter-donation-manager",
+      LINK: "https://shelter-donation-manager.vercel.app/",
+    },
+  },
+  {
+    TITLE: "Translation Services Landing Page",
+    CONTENT: [
+      "Responsive, accessible, and interactive landing page optimized for performance and SER (Search Engine Ranking).",
+    ],
+    STACK: ["svelte", "github", "css3"],
+    LINKS: {
+      VIDEO: "",
+      CODE: "https://github.com/adelbeit/translationservices1",
+      LINK: "https://translationservices1.vercel.app/",
+    },
+  },
+  {
+    TITLE: "Scrabble Buddy",
+    CONTENT: [
+      "Webapp that queries a PostgreSQL DB for valid scrabble words from the dictionary. Made in tandem with a GPT plugin that queries the server to provide accurage information to the user free of hallucinations. The DB contains the official scrabble dictionary made up of 13000 words. The UI is coming next.",
+    ],
+    STACK: ["javascript", "express", "nextdotjs", "postgresql"],
+    LINKS: {
+      VIDEO: "",
+      CODE: "https://github.com/AdelBeit/scrabble-buddy",
+      LINK: "https://scrabble.adelbeit.com/check/",
+    },
+  },
+  {
     TITLE: "Audiobook Generator",
     CONTENT: [
-      "Webapp that generates personalized audio books from a given e-book, and an ElevenLabs cloned voice model. Powered by NextJS.",
+      "Webapp that generates personalized audio books from a given e-book, and an ElevenLabs cloned voice model. Powered by NextJdotS.",
     ],
     STACK: ["react", "typescript", "nextdotjs", "github"],
     LINKS: {
@@ -132,7 +180,7 @@ const PRODUCTS = [
   {
     TITLE: "Smart Autofill",
     CONTENT: [
-      "Web scraper that extracts form from a website. Runs it through chatgpt to pair different form inputs with given context data, and fills out the form using Playwright. Powered by Beautiful Soup, Python, and ChatGPT.",
+      "Web scraper that extracts form from a website. Runs it through chatgpt to pair different form inputs with given context data, githubd fills out the form using Playwright. Powered by Beautiful Soup, Python, and ChatGPT.",
       "Due this projects capability to create spam, the source code is not public.",
     ],
     STACK: ["python", "playwright", "github"],
