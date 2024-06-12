@@ -118,15 +118,16 @@ const EDUCATION = {
 
 const PRODUCTS = [
   {
-    TITLE: "Image to Calendar",
+    TITLE: "Shift Calendarizer",
     CONTENT: [
-      "Webapp that extracts calendar events from a screenshot and generates ready-to-import calendar files. Uses an on-device (offline) optical character recognition (OCR) ML model called Tesseract.",
+      "Webapp that extracts shift information from a screenshot and generates ready-to-import calendar events file.",
+      "Uses Tesseract OCR (optical character recognition) ML model, which is cached after first use, allowing the cached app to work offline."
     ],
     STACK: ["javascript", "github", "css3"],
     LINKS: {
       VIDEO: "",
       CODE: "https://github.com/adelbeit/event-extractor",
-      LINK: "https://event-extractor.vercel.app/",
+      LINK: "https://calendarizer.adelbeit.com/",
     },
   },
   {
