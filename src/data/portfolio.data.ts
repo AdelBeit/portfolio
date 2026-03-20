@@ -118,6 +118,29 @@ const EDUCATION = {
 
 const PRODUCTS = [
   {
+    TITLE: "Jamroom",
+    CONTENT: [
+      "Progressive webapp that let's 10+ concurrent users jam out together with virtual instruments. Features offline caching.",
+      "Powered by a real-time Web Socket API to host many users in a virtual jam session, using Docker for continuous delivery to Digital Ocean.",
+    ],
+    STACK: [
+      "nextdotjs",
+      "react",
+      "typescript",
+      "tonejs",
+      "socketdotio",
+      "docker",
+      "digitalocean",
+      "figma",
+      "github",
+    ],
+    LINKS: {
+      VIDEO: "",
+      CODE: "https://github.com/adelbeit/jamroom",
+      LINK: "https://jam.adelbeit.com/",
+    },
+  },
+  {
     TITLE: "Shift Calendarizer",
     CONTENT: [
       "Webapp that extracts shift information from a screenshot and generates ready-to-import calendar events file.",
@@ -189,29 +212,6 @@ const PRODUCTS = [
       VIDEO: "",
       CODE: "https://github.com/AdelBeit/html-parser",
       LINK: "https://narrator.adelbeit.com/",
-    },
-  },
-  {
-    TITLE: "Jamroom",
-    CONTENT: [
-      "Progressive webapp that let's 10+ concurrent users jam out together with virtual instruments. Features offline caching.",
-      "Powered by a real-time Web Socket API to host many users in a virtual jam session, using Docker for continuous delivery to Digital Ocean.",
-    ],
-    STACK: [
-      "nextdotjs",
-      "react",
-      "typescript",
-      "tonejs",
-      "socketdotio",
-      "docker",
-      "digitalocean",
-      "figma",
-      "github",
-    ],
-    LINKS: {
-      VIDEO: "",
-      CODE: "https://github.com/adelbeit/jamroom",
-      LINK: "https://jam.adelbeit.com/",
     },
   },
   {
