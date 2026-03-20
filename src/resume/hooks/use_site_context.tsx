@@ -1,6 +1,5 @@
 import { Context, createContext, useContext } from "react";
 import { SiteData as DevelopmentData } from "../development.data";
-import { SiteData as ServiceData } from "../service.data";
 
 function createUseSite<T>(SiteContext: Context<T>) {
   return () => {
@@ -21,9 +20,7 @@ function createSiteContext<T>() {
   return { SiteContext, useSite };
 }
 
-const { SiteContext: ServiceContext, useSite: useService } =
-  createSiteContext<typeof ServiceData>();
 const { SiteContext: DevContext, useSite: useDev } =
   createSiteContext<typeof DevelopmentData>();
 
-export { ServiceContext, useService, DevContext, useDev };
+export { DevContext, useDev };
