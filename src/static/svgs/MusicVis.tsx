@@ -4,8 +4,8 @@ const MusicVis = () => {
       viewBox="0 0 130 60"
       fill="none"
       stroke="currentColor"
-      stroke-linecap="round"
-      stroke-width="7"
+      strokeLinecap="round"
+      strokeWidth="7"
       xmlns="http://www.w3.org/2000/svg">
       <g id="music_vis_stroke_target" transform="rotate(180 65 30)">
         <rect x="10" y="4" rx="0.5" width="7" height="10">
