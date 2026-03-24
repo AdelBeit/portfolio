@@ -169,6 +169,7 @@ const PRODUCTS = [
       LINK: "https://shelter-donation-manager.vercel.app/",
     },
   },
+  /*
   {
     TITLE: "Translation Services Landing Page",
     CONTENT: [
@@ -181,6 +182,7 @@ const PRODUCTS = [
       LINK: "https://translationservices1.vercel.app/",
     },
   },
+  */
   {
     TITLE: "Scrabble Buddy",
     CONTENT: [
