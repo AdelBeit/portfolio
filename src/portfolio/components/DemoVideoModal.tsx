@@ -14,11 +14,9 @@ const MODAL_UNDERLAY_STYLE: React.CSSProperties = {
 const MODAL_CONTENT_STYLE: React.CSSProperties = {
   position: "relative",
   width: "70vw",
-  height: "50vh",
+  height: "clamp(240px, 80vh, 800px)",
   maxWidth: 900,
-  maxHeight: 520,
   minWidth: 320,
-  minHeight: 200,
   background: "#111",
   border: "3px solid var(--green)",
   boxShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
