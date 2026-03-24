@@ -135,7 +135,10 @@ const PRODUCTS = [
       "github",
     ],
     LINKS: {
-      VIDEO: "",
+      VIDEO:
+        "https://68fwap572n8u3jpb.public.blob.vercel-storage.com/jamroom-demo/jamroom-demo.mp4",
+      THUMBNAIL:
+        "https://68fwap572n8u3jpb.public.blob.vercel-storage.com/jamroom-demo/jamroom-demo-thumbnail.png",
       CODE: "https://github.com/adelbeit/jamroom",
       LINK: "https://jam.adelbeit.com/",
     },
