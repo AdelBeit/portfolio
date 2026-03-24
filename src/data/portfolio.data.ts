@@ -151,7 +151,8 @@ const PRODUCTS = [
     ],
     STACK: ["javascript", "github", "css3"],
     LINKS: {
-      VIDEO: "",
+      VIDEO: "https://68fwap572n8u3jpb.public.blob.vercel-storage.com/calendarizer-demo/calendarizer-demo.mp4",
+      THUMBNAIL: "https://68fwap572n8u3jpb.public.blob.vercel-storage.com/calendarizer-demo/calendarizer-demo-thumbnail.webp",
       CODE: "https://github.com/adelbeit/event-extractor",
       LINK: "https://calendarizer.adelbeit.com/",
     },

@@ -13,9 +13,11 @@ const DEMO_TILE_STYLE: React.CSSProperties = {
 const DEMO_THUMB_STYLE: React.CSSProperties = {
   width: "100%",
   height: "auto",
+  maxWidth: "100%",
+  maxHeight: "100%",
   display: "block",
-  border: "3px solid var(--green)",
-  boxShadow: "0 0 18px rgba(0, 0, 0, 0.45)",
+  background: "transparent",
+  objectFit: "contain",
 };
 
 const DEMO_PLAY_STYLE: React.CSSProperties = {
