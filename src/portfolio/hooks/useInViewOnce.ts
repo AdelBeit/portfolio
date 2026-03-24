@@ -36,7 +36,7 @@ export function useInViewOnce(
     const target = ref.current;
     if (!target) return;
 
-    if ("IntersectionObserver" in window) {
+    if (typeof IntersectionObserver !== "undefined") {
       const observer = new IntersectionObserver(
         (entries) => {
           const entry = entries[0];
