@@ -1,5 +1,5 @@
 import cs from "classnames";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {useWidth} from "@/portfolio/store/WidthStore";
 import {scale} from "@/portfolio/utils/scale";
 import {Button as ButtonFrame} from "@/portfolio/components/frames/Button";
@@ -18,6 +18,8 @@ interface Props {
   techStack: string[];
   links: {CODE: string; LINK: string; VIDEO: string; THUMBNAIL?: string};
   width: number;
+  isOpen?: boolean;
+  onToggle?: (next: boolean) => void;
 }
 
 const ERROR_STYLE: React.CSSProperties = {
@@ -37,32 +39,47 @@ export default function Product({
   links,
   techStack: stack,
   width = 0,
+  isOpen,
+  onToggle,
 }: Props) {
   const [active, setActive] = useState(false);
+  const isControlled = typeof isOpen === "boolean";
+  const activeState = isControlled ? isOpen : active;
   const { open, close, Modal } = usePortalModal();
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInViewOnce(cardRef, { threshold: 0.05 });
+  const didMountRef = useRef(false);
 
   const media = getMediaType(links.VIDEO);
   // useIdleVideoPreload(links.VIDEO, media[0] === "video" && active);
 
-  const shouldMountMedia = isInView || active;
-  const expandHandler = (e: React.MouseEvent<HTMLElement>) => {
-    let animationStage = active ? ".p1" : ".p0";
-    let current = e.target as HTMLElement;
-    while (!current.classList.contains("_card")) {
-      current = current.parentElement;
+  const shouldMountMedia = isInView || activeState;
+
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
     }
-
-    let animateElement: SVGAnimateElement = (
-      current.querySelector("#card_svg") as HTMLObjectElement
-    ).contentDocument.querySelector(animationStage);
-    animateElement.beginElement();
-
-    let buttonElement = current.querySelector("._button.info");
-    buttonElement.classList.toggle("active");
-
-    setActive((prevState) => !prevState);
+    const current = cardRef.current;
+    if (!current) return;
+    const buttonElement = current.querySelector("._button.info");
+    if (buttonElement) {
+      buttonElement.classList.toggle("active", activeState);
+    }
+    const animationStage = activeState ? ".p0" : ".p1";
+    const objectEl = current.querySelector("#card_svg") as HTMLObjectElement | null;
+    const svgDoc = objectEl?.contentDocument;
+    const animateElement = svgDoc?.querySelector(animationStage) as
+      | SVGAnimateElement
+      | null;
+    animateElement?.beginElement();
+  }, [activeState]);
+  const expandHandler = () => {
+    if (isControlled) {
+      onToggle?.(!activeState);
+    } else {
+      setActive((prevState) => !prevState);
+    }
   };
 
   const openModal = () => open();
@@ -122,7 +139,7 @@ export default function Product({
           />
         ))}
       </div>
-      <div className={cs("_contentBox demo absolute", !active && "hide")}>
+      <div className={cs("_contentBox demo absolute", !activeState && "hide")}>
         {media[0] === "image" ? (
           shouldMountMedia ? <img src={links.VIDEO} /> : null
         ) : media[0] === "video" ? (
@@ -202,11 +219,11 @@ export default function Product({
 
           overflow-y: hidden;
           z-index: 1;
-          pointer-events: ${active ? "none" : "auto"};
+          pointer-events: ${activeState ? "none" : "auto"};
         }
 
         ._contentBox.description ul {
-          margin-top: ${active ? scalingFactor * 350 : 0}px;
+          margin-top: ${activeState ? scalingFactor * 350 : 0}px;
           transition: margin-top 0.18s ease-in-out;
         }
 
@@ -216,7 +233,7 @@ export default function Product({
 
           margin-left: 23px;
           margin-top: ${scalingFactor * 102}px;
-          opacity: ${active ? 1 : 0};
+          opacity: ${activeState ? 1 : 0};
 
           display: flex;
           flex-direction: column;
@@ -225,7 +242,7 @@ export default function Product({
 
           transition: opacity 0.2s;
           z-index: 2;
-          pointer-events: ${active ? "auto" : "none"};
+          pointer-events: ${activeState ? "auto" : "none"};
         }
 
         ._baguette {

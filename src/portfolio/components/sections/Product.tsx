@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { PRODUCTS } from "../../../data/portfolio.data";
 import {useWidth} from "../../store/WidthStore";
 import ProductCard from "../cards/Product";
 
 export default function Product() {
+  const [activeTitle, setActiveTitle] = useState<string | null>(null);
   let width = 379;
   const windowWidth = useWidth().width;
   if (windowWidth <= 480) {
@@ -20,6 +21,8 @@ export default function Product() {
             links={p.LINKS}
             techStack={p.STACK}
             width={width}
+            isOpen={activeTitle === p.TITLE}
+            onToggle={(next) => setActiveTitle(next ? p.TITLE : null)}
           />
         </div>
       ))}
