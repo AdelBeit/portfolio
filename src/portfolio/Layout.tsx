@@ -4,17 +4,20 @@ import React from "react";
 interface LayoutProps {
   children: React.ReactNode;
   title?: string;
+  description?: string;
 }
 
 export default function Layout({
   children,
   title = "Adele Beitvashahi",
+  description,
 }: LayoutProps) {
   const favicon = "/favicon.png";
   return (
     <>
       <Head>
         <title>{title}</title>
+        {description ? <meta name="description" content={description} /> : null}
 
         {/* <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="apple-touch-icon" href="/app_icons/icon-192x192.png" />

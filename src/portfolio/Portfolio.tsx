@@ -58,7 +58,8 @@ export function App() {
   }, []);
 
   return (
-    <Layout>
+    <Layout
+      description={LANDING.META_DESCRIPTION}>
       <div id="ether_container" className="_container relative">
         <IconEther icons={ETHERICONS} localPath="/svgs/icons/static/" />
         <Providers>

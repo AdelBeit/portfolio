@@ -2,6 +2,8 @@ const LANDING = {
   NAME: "Adele Beitvashahi",
   ROLE: "Software Engineer",
   CONTENT: "I have a passion for developing software that's",
+  META_DESCRIPTION:
+    "Senior software engineer specializing in fintech and AI, building production-ready products with TypeScript, React, and Node. View projects and skills.",
   KEYWORDS: [
     "accessible",
     "light weight",
