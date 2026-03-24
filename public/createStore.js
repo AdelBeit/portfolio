@@ -46,7 +46,8 @@ const createStore = (storeName, folderPath) => {
   symbolsSvg += "</svg>";
 
   // Write the new SVG file
-  fs.writeFileSync(path.join("./svg stores", storeName), symbolsSvg);
+  fs.writeFileSync(path.join(__dirname, "svg stores", storeName), symbolsSvg);
 };
 
-createStore("icons.svg", "./svgs/icons/static/");
+const baseDir = __dirname;
+createStore("icons.svg", path.join(baseDir, "svgs", "icons", "static"));
