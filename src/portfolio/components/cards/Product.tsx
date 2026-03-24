@@ -1,5 +1,5 @@
 import cs from "classnames";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {useWidth} from "@/portfolio/store/WidthStore";
 import {scale} from "@/portfolio/utils/scale";
 import {Button as ButtonFrame} from "@/portfolio/components/frames/Button";
@@ -10,6 +10,7 @@ import {usePortalModal} from "@/portfolio/hooks/usePortalModal";
 import DemoThumbnailButton from "@/portfolio/components/DemoThumbnailButton";
 import DemoVideoModal from "@/portfolio/components/DemoVideoModal";
 import {getMediaType} from "@/portfolio/utils/media";
+import {useInViewOnce} from "@/portfolio/hooks/useInViewOnce";
 
 interface Props {
   title: string;
@@ -39,10 +40,13 @@ export default function Product({
 }: Props) {
   const [active, setActive] = useState(false);
   const { open, close, Modal } = usePortalModal();
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInViewOnce(cardRef, { threshold: 0.05 });
 
   const media = getMediaType(links.VIDEO);
   // useIdleVideoPreload(links.VIDEO, media[0] === "video" && active);
 
+  const shouldMountMedia = isInView || active;
   const expandHandler = (e: React.MouseEvent<HTMLElement>) => {
     let animationStage = active ? ".p1" : ".p0";
     let current = e.target as HTMLElement;
@@ -84,7 +88,7 @@ export default function Product({
     windowWidth <= 480 ? ButtonFrameSize * scalingFactor : ButtonFrameSize;
 
   return (
-    <div className="_card _product relative">
+    <div ref={cardRef} className="_card _product relative">
       <object
         className="_svg absolute"
         id="card_svg"
@@ -120,12 +124,13 @@ export default function Product({
       </div>
       <div className={cs("_contentBox demo absolute", !active && "hide")}>
         {media[0] === "image" ? (
-          <img src={links.VIDEO} />
+          shouldMountMedia ? <img src={links.VIDEO} /> : null
         ) : media[0] === "video" ? (
           <DemoThumbnailButton
             title={title}
             thumbnailUrl={links.THUMBNAIL}
             onClick={openModal}
+            showThumbnail={shouldMountMedia}
           />
         ) : (
           <span style={ERROR_STYLE}>Showcase video coming soon!</span>

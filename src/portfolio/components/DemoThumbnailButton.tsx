@@ -41,6 +41,12 @@ const DEMO_PLAY_TRIANGLE_STYLE: React.CSSProperties = {
   borderLeft: "18px solid #fff",
 };
 
+const DEMO_THUMB_PLACEHOLDER_STYLE: React.CSSProperties = {
+  width: "100%",
+  height: "100%",
+  display: "block",
+};
+
 const DEMO_ERROR_STYLE: React.CSSProperties = {
   backgroundColor: "var(--black)",
   border: "2px solid var(--black)",
@@ -53,29 +59,38 @@ type Props = {
   title: string;
   thumbnailUrl?: string;
   onClick: () => void;
+  showThumbnail?: boolean;
 };
 
 export default function DemoThumbnailButton({
   title,
   thumbnailUrl,
   onClick,
+  showThumbnail = true,
 }: Props) {
+  const hasThumbnail = Boolean(thumbnailUrl);
+  const shouldShowThumbnail = hasThumbnail && showThumbnail;
+
   return (
     <button
       type="button"
       style={DEMO_TILE_STYLE}
       onClick={onClick}
       aria-label={`Open ${title} demo`}>
-      {thumbnailUrl ? (
+      {shouldShowThumbnail && (
         <img
           src={thumbnailUrl}
           alt={`${title} demo thumbnail`}
           style={DEMO_THUMB_STYLE}
         />
-      ) : (
+      )}
+      {!shouldShowThumbnail && hasThumbnail && (
+        <span style={DEMO_THUMB_PLACEHOLDER_STYLE} aria-hidden="true" />
+      )}
+      {!hasThumbnail && (
         <span style={DEMO_ERROR_STYLE}>Showcase video coming soon!</span>
       )}
-      {thumbnailUrl && (
+      {shouldShowThumbnail && (
         <span style={DEMO_PLAY_STYLE}>
           <span style={DEMO_PLAY_TRIANGLE_STYLE} />
         </span>
