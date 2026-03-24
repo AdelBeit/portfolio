@@ -1,18 +1,31 @@
 import cs from "classnames";
 import React, { useState } from "react";
-import {useWidth} from "../../store/WidthStore";
-import {scale} from "../../utils/scale";
-import {Button as ButtonFrame} from "../frames/Button";
-import {Icon as IconFrame} from "../frames/Icon";
-import Icon from "../Icon";
+import {useWidth} from "@/portfolio/store/WidthStore";
+import {scale} from "@/portfolio/utils/scale";
+import {Button as ButtonFrame} from "@/portfolio/components/frames/Button";
+import {Icon as IconFrame} from "@/portfolio/components/frames/Icon";
+import Icon from "@/portfolio/components/Icon";
+import {usePortalModal} from "@/portfolio/hooks/usePortalModal";
+// import {useIdleVideoPreload} from "@/portfolio/hooks/useIdleVideoPreload";
+import DemoThumbnailButton from "@/portfolio/components/DemoThumbnailButton";
+import DemoVideoModal from "@/portfolio/components/DemoVideoModal";
+import {getMediaType} from "@/portfolio/utils/media";
 
 interface Props {
   title: string;
   description: string[];
   techStack: string[];
-  links: {CODE: string; LINK: string; VIDEO: string};
+  links: {CODE: string; LINK: string; VIDEO: string; THUMBNAIL?: string};
   width: number;
 }
+
+const ERROR_STYLE: React.CSSProperties = {
+  backgroundColor: "var(--black)",
+  border: "2px solid var(--black)",
+  color: "var(--green)",
+  padding: 10,
+  margin: 10,
+};
 
 // TODO: passive scroll on tech stack
 // TODO: modularize the card svg components to adjust height and slide down amount
@@ -25,23 +38,10 @@ export default function Product({
   width = 0,
 }: Props) {
   const [active, setActive] = useState(false);
-
-  const getMediaType = (filePath: string) => {
-    const imageFormats = ["jpeg", "jpg", "png", "gif", "bmp", "webp"];
-    const videoFormats = ["mp4", "avi", "mov", "wmv", "mkv"];
-    const s = filePath.split(".");
-    const fileType = s[s.length - 1];
-    if (imageFormats.includes(fileType.toLowerCase())) {
-      return ["image", fileType];
-    }
-    if (videoFormats.includes(fileType.toLowerCase())) {
-      return ["video", fileType];
-    }
-    if (fileType === "") return ["", ""];
-    throw new Error("file type unknown");
-  };
+  const { open, close, Modal } = usePortalModal();
 
   const media = getMediaType(links.VIDEO);
+  // useIdleVideoPreload(links.VIDEO, media[0] === "video" && active);
 
   const expandHandler = (e: React.MouseEvent<HTMLElement>) => {
     let animationStage = active ? ".p1" : ".p0";
@@ -60,6 +60,8 @@ export default function Product({
 
     setActive((prevState) => !prevState);
   };
+
+  const openModal = () => open();
 
   const initialWidth = 352;
   const initialHeight = 620;
@@ -120,11 +122,21 @@ export default function Product({
         {media[0] === "image" ? (
           <img src={links.VIDEO} />
         ) : media[0] === "video" ? (
-          <video src={links.VIDEO} controls />
+          <DemoThumbnailButton
+            title={title}
+            thumbnailUrl={links.THUMBNAIL}
+            onClick={openModal}
+          />
         ) : (
-          <span className="_error">Showcase video coming soon!</span>
+          <span style={ERROR_STYLE}>Showcase video coming soon!</span>
         )}
       </div>
+      <DemoVideoModal
+        Modal={Modal}
+        onClose={close}
+        videoUrl={links.VIDEO}
+        posterUrl={links.THUMBNAIL}
+      />
       <div className="_contentBox hide-scroll-bar description disable-selection absolute">
         <ul>
           {description.map((desc, _index) => (
@@ -184,6 +196,8 @@ export default function Product({
           align-items: flex-start;
 
           overflow-y: hidden;
+          z-index: 1;
+          pointer-events: ${active ? "none" : "auto"};
         }
 
         ._contentBox.description ul {
@@ -205,21 +219,8 @@ export default function Product({
           align-items: center;
 
           transition: opacity 0.2s;
-        }
-
-        ._contentBox.demo img,
-        ._contentBox.demo video {
-          width: 100%;
-          height: auto;
-          align-self: flex-end;
-        }
-
-        ._contentBox.demo ._error {
-          background-color: var(--green);
-          border: 2px solid var(--black);
-          background-color: var(--black);
-          padding: 10px;
-          margin: 10px;
+          z-index: 2;
+          pointer-events: ${active ? "auto" : "none"};
         }
 
         ._baguette {
@@ -253,6 +254,7 @@ export default function Product({
         li:not(:last-child) {
           margin-bottom: 7px;
         }
+
       `}</style>
     </div>
   );
