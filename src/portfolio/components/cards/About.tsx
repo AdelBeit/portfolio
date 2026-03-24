@@ -38,8 +38,15 @@ export default function About({title, description, links, width = 0}: Props) {
         <span>{title}</span>
       </div>
       <div className="_baguette absolute">
-        {["github", "linkedin", "email", "resume"].map((icon, _i) => (
-          <a href={links[icon.toUpperCase()]} key={_i} target="_blank">
+        {(
+          [
+            {icon: "github", link: "GITHUB"},
+            {icon: "linkedin", link: "LINKEDIN"},
+            {icon: "email_send", link: "EMAIL"},
+            {icon: "resume", link: "RESUME"},
+          ] as Array<{icon: string; link: keyof Props["links"]}>
+        ).map(({icon, link}, _i) => (
+          <a href={links[link]} key={_i} target="_blank">
             <ButtonFrame shadow={true} icon={icon} frameSize={frameSize} />
           </a>
         ))}

@@ -78,8 +78,14 @@ function NavBaguette() {
         <a href="#" onClick={player.toggle}>
           <ButtonFrame shadow={true} icon={musicIcon} />
         </a>
-        {["github", "email","devdotto"].map((icon, _i) => (
-          <a href={links[icon.toUpperCase()]} key={_i} target="_blank">
+        {(
+          [
+            {icon: "github", link: "GITHUB"},
+            {icon: "email_send", link: "EMAIL"},
+            {icon: "devdotto", link: "DEVDOTTO"},
+          ] as Array<{icon: string; link: keyof typeof links}>
+        ).map(({icon, link}, _i) => (
+          <a href={links[link]} key={_i} target="_blank">
             <ButtonFrame shadow={true} icon={icon} />
           </a>
         ))}
