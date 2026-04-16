@@ -251,6 +251,25 @@
     "@typescript-eslint/types" "5.59.6"
     eslint-visitor-keys "^3.3.0"
 
+"@vercel/config@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@vercel/config/-/config-0.2.0.tgz#8e2067a98317cdc1bf85354e73f89d4fe42942aa"
+  integrity sha512-k0nY6er2/dMWnStYt+laVU1WGmyLxC+po6N53pPt1RaDQKZusLk/iHXGE93mOtszDY5FcQNJ/q2OS3v7MJPzzQ==
+  dependencies:
+    "@vercel/routing-utils" "6.1.1"
+    pretty-cache-header "^1.0.0"
+    zod "^3.22.0"
+
+"@vercel/routing-utils@6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@vercel/routing-utils/-/routing-utils-6.1.1.tgz#475828e261a4149d54d769bb4a2f0a5fe547ffc0"
+  integrity sha512-kUJn6CRuLvua5xvDZTJu1rC8GLdniC8D5VIzoJKm0dUdcUxv3LEx+pi8dokxWS+YM7cIs1Z3Y8ms/BDW1iBzzA==
+  dependencies:
+    path-to-regexp "6.1.0"
+    path-to-regexp-updated "npm:path-to-regexp@6.3.0"
+  optionalDependencies:
+    ajv "^6.12.3"
+
 acorn-jsx@^5.3.2:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.3.2.tgz#7ed5bb55908b3b2f1bc55c6af1653bada7f07937"
@@ -265,6 +284,16 @@ ajv@^6.10.0, ajv@^6.12.4:
   version "6.12.6"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
   integrity sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
+  dependencies:
+    fast-deep-equal "^3.1.1"
+    fast-json-stable-stringify "^2.0.0"
+    json-schema-traverse "^0.4.1"
+    uri-js "^4.2.2"
+
+ajv@^6.12.3:
+  version "6.14.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.14.0.tgz#fd067713e228210636ebb08c60bd3765d6dbe73a"
+  integrity sha512-IWrosm/yrn43eiKqkfkHis7QioDleaXQHdDVPKg0FSwwd/DuvyX79TZnFOnYpB7dcsFAMmtFztZuXPDvSePkFw==
   dependencies:
     fast-deep-equal "^3.1.1"
     fast-json-stable-stringify "^2.0.0"
@@ -1763,6 +1792,16 @@ path-parse@^1.0.7:
   resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
   integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
 
+"path-to-regexp-updated@npm:path-to-regexp@6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-6.3.0.tgz#2b6a26a337737a8e1416f9272ed0766b1c0389f4"
+  integrity sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ==
+
+path-to-regexp@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-6.1.0.tgz#0b18f88b7a0ce0bfae6a25990c909ab86f512427"
+  integrity sha512-h9DqehX3zZZDCEm+xbfU0ZmwCGFCAAraPJWMXJ4+v32NjZJilVg3k1TcKsRgIb8IQ/izZSaydDc1OhJCZvs2Dw==
+
 path-type@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
@@ -1854,6 +1893,13 @@ prelude-ls@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
+
+pretty-cache-header@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/pretty-cache-header/-/pretty-cache-header-1.0.0.tgz#66d400a6c2990833a3baeca9d9fcdd7e50587b7a"
+  integrity sha512-xtXazslu25CdnGnUkByU1RoOjK55TqwatJkjjJLg5ZAdz2Lngko/mmaUgeET36P2GMlNwh3fdM7FWBO717pNcw==
+  dependencies:
+    timestring "^6.0.0"
 
 prop-types@^15.5.7, prop-types@^15.8.1:
   version "15.8.1"
@@ -2200,6 +2246,11 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
+timestring@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/timestring/-/timestring-6.0.0.tgz#b0c7c331981ecf2066ce88bcfb8ee3ae32e7a0f6"
+  integrity sha512-wMctrWD2HZZLuIlchlkE2dfXJh7J2KDI9Dwl+2abPYg0mswQHfOAyQW3jJg1pY5VfttSINZuKcXoB3FGypVklA==
+
 to-regex-range@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/to-regex-range/-/to-regex-range-5.0.1.tgz#1648c44aae7c8d988a326018ed72f5b4dd0392e4"
@@ -2382,6 +2433,11 @@ yaml@^2.1.1:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.3.4.tgz#53fc1d514be80aabf386dc6001eb29bf3b7523b2"
   integrity sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==
+
+zod@^3.22.0:
+  version "3.25.76"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.25.76.tgz#26841c3f6fd22a6a2760e7ccb719179768471e34"
+  integrity sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==
 
 zustand@^4.3.2:
   version "4.3.8"
