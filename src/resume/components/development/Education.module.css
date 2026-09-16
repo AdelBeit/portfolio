@@ -1,8 +1,0 @@
-.header > div > :nth-child(1),
-.header > div > :nth-child(3) {
-  color: var(--color-alternate);
-}
-
-.card_header {
-  --card-justify-content: space-between;
-}
