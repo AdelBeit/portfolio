@@ -8,8 +8,9 @@ module.exports = {
     extend: {},
   },
   plugins: [require("daisyui")],
-  daisyui:{
-    themes:['cyberpunk','retro']
+  daisyui: {
+    themes: ['cyberpunk', 'retro'],
+    themeRoot: '[data-theme]'
   }
 }
 

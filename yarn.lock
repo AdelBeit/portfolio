@@ -773,13 +773,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"colord@npm:^2.9":
-  version: 2.9.3
-  resolution: "colord@npm:2.9.3"
-  checksum: 10c0/9699e956894d8996b28c686afe8988720785f476f59335c80ce852ded76ab3ebe252703aec53d9bef54f6219aea6b960fb3d9a8300058a1d0c0d4026460cd110
-  languageName: node
-  linkType: hard
-
 "commander@npm:^4.0.0":
   version: 4.1.1
   resolution: "commander@npm:4.1.1"
@@ -831,16 +824,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"daisyui@npm:^3.9.4":
-  version: 3.9.4
-  resolution: "daisyui@npm:3.9.4"
+"culori@npm:^3":
+  version: 3.3.0
+  resolution: "culori@npm:3.3.0"
+  checksum: 10c0/acd330a8f940dc22f36650ba722c9302a4745fee3c8fb40a27ac27228767e2cba4221c2dc414fce652b82cb264d28f65d8b76d505df402ecf94dbb9e440319e1
+  languageName: node
+  linkType: hard
+
+"daisyui@npm:4":
+  version: 4.12.24
+  resolution: "daisyui@npm:4.12.24"
   dependencies:
-    colord: "npm:^2.9"
     css-selector-tokenizer: "npm:^0.8"
-    postcss: "npm:^8"
+    culori: "npm:^3"
+    picocolors: "npm:^1"
     postcss-js: "npm:^4"
-    tailwindcss: "npm:^3.1"
-  checksum: 10c0/243e1218b453ed0dc6772fd5f8291b86c121d90f4f789d0444605e26aa3aa66f02a6fe8ad5f8315b1dd962b36efcacb21a961c8c2d2a50ee1fb5907fff2d5dff
+  checksum: 10c0/a5865e05b543965c21a934264da2c576f0760137344cb270e2d27183f03c9c51ae1b0af8ebe530fcd31ba4602711d57a5ddbf59c6c9461c53fdd73d53ed61375
   languageName: node
   linkType: hard
 
@@ -2565,6 +2564,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"picocolors@npm:^1":
+  version: 1.1.1
+  resolution: "picocolors@npm:1.1.1"
+  checksum: 10c0/e2e3e8170ab9d7c7421969adaa7e1b31434f789afb9b3f115f6b96d91945041ac3ceb02e9ec6fe6510ff036bcc0bf91e69a1772edc0b707e12b19c0f2d6bcf58
+  languageName: node
+  linkType: hard
+
 "picocolors@npm:^1.0.0":
   version: 1.0.0
   resolution: "picocolors@npm:1.0.0"
@@ -2610,7 +2616,7 @@ __metadata:
     "@vercel/config": "npm:^0.2.0"
     autoprefixer: "npm:^10.4.16"
     classnames: "npm:^2.3.2"
-    daisyui: "npm:^3.9.4"
+    daisyui: "npm:4"
     eslint: "npm:8.14.0"
     eslint-config-next: "npm:12.1.6"
     nanoid: "npm:^4.0.1"
@@ -2707,7 +2713,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8, postcss@npm:^8.4.23, postcss@npm:^8.4.31":
+"postcss@npm:^8.4.23, postcss@npm:^8.4.31":
   version: 8.4.31
   resolution: "postcss@npm:8.4.31"
   dependencies:
@@ -3199,7 +3205,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.1, tailwindcss@npm:^3.3.5":
+"tailwindcss@npm:^3.3.5":
   version: 3.3.5
   resolution: "tailwindcss@npm:3.3.5"
   dependencies:
