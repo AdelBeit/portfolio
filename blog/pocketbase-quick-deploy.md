@@ -1,15 +1,15 @@
 ---
 title: How to deploy your own PocketBase backend to a remote env in less than an hour
 published: false
-description: Context   I'm a frontend dev who keeps needing a backend for client sites. Now of course you might say...
+description: Context   Every once in a while I have to stand up a new backend/DB. I used to just use Supabase, but I don't like...
 tags: pocketbase, docker, nginx, tutorial
 # cover_image: TODO pick a cover image (and credit it at the bottom)
 ---
 
 ## <center>**Context**</center>
-Every once in a while I have to standup a new backend/DB. I used to just use Supabase, but I don't like the idea of owning my data, and I like my bill being the same number every month.
+Every once in a while I have to stand up a new backend/DB. I used to just use Supabase, but I don't like the idea of not owning my data, and I like my bill being the same number every month.
 
-I personally **love** Pocketbase for this. It's ✨one binary✨ with a database (SQLite), auth, file storage, a REST API and an admin dashboard baked in. No install wizard, no 14 microservices, no YAML cathedral. It's what I reach for whenever a project needs a small, self-contained backend. If you want to compare other options here are some [other alternatives](//todo claude add a link for alternatives to pocketbase/sqlite and have it as a link here) you could checkout.
+I personally **love** Pocketbase for this. It's ✨one binary✨ with a database (SQLite), auth, file storage, a REST API and an admin dashboard baked in. No install wizard, no 14 microservices, no YAML cathedral. It's what I reach for whenever a project needs a small, self-contained backend. If you want to compare other options, here are some [other alternatives](https://alternativeto.net/software/pocketbase/) you could check out.
 
 ## <center>**Challenge**</center>
 I've now set this up for a handful of projects, and every single time I had to rediscover the steps like a goldfish with a keyboard. So this is the cheat sheet.
@@ -25,19 +25,19 @@ By the end, requests will flow like this:
 3. Containerize it and keep it behind the local nginx
 4. Put nginx and the container on a VPS (remote env), with a domain and HTTPS
 5. Introduce a container registry for versioning our image (in our case GHCR)
-6. Automate the deploys with GitHub Actions or other CI/CD tool // claude verify im correct to refer to githubactions as cicd tool 
+6. Automate the deploys with GitHub Actions or another CI/CD tool
 
 ### What you'll need
-// claude im revamping this section you may need to expand on it a little bit or format my input
-- A DB binary, I'll be using pocketbase // claude what else do u dcall this? db tech? i dont know if db binary is the right word
-- A container runtime, im using Docker because it's what i like to use the most // claude i dont know if i can call docker a container runtime figure out what wording i should use in this bullet point
-- A reverse proxy tool for LB and routing, I'll be using Nginx // claude should i call the function as lb and routing? is nginx doing those things? or are they commonly called somsething else?
-- A version control system, I like github
-- A package registry, I use GCHR
-- A CI/CD tool, I use github actions // claude should it be called cicd tool? what else can i use to refer to it use whatever is best
-- A remote environment, I love Digital Ocean droplets
-- A domain/subdomain for making the DB accessible on the internet
-- *Optional* An endpoint healthcheck tool for automatic rollbacks // claude i again dont know if this is the right phrasing so fix it 
+Here's the stack I'm using, and what each piece is called in case you want to swap in your own:
+- **A backend/database:** I'll be using PocketBase, an open source backend in a single executable with SQLite built in
+- **A container platform:** I'm using Docker (and Docker Compose) because it's what I like to use the most
+- **A reverse proxy:** it routes incoming requests to the right app, handles HTTPS, and enforces limits (and it can load balance too, if you ever run more than one copy of your app). I'll be using nginx
+- **Version control:** Git, hosted on GitHub, because I like GitHub
+- **A container registry:** a place to store our built Docker images. I use GHCR (GitHub Container Registry)
+- **A CI/CD tool:** continuous integration/continuous delivery, the thing that builds and deploys for you on every push. I use GitHub Actions
+- **A remote environment:** a VPS (virtual private server) to run it all on. I love DigitalOcean droplets
+- **A domain/subdomain** for making the DB accessible on the internet
+- *Optional* **A health check monitor:** a service that keeps pinging PocketBase's health endpoint and alerts you (or triggers a rollback) when it stops responding
 
 and last but not least, a handy dandy terminal with basic knowledge of SSH.
 
@@ -62,11 +62,11 @@ PB_ENV=dev ./pocketbase serve
 ./pocketbase superuser upsert dev-admin@example.com change-me-locally
 ```
 
-If you're on Windows that's `pocketbase.exe`. You don't need `PB_ENV` and crosssnev but they're useful for "
-Locally I want a user to log in with so I'm not creating one by hand every time I wipe my database. But I **definitely** don't want that user existing in production. So let's make a migration that only runs when `PB_ENV=dev`.
-" // claude wanted to reorder this content so clean this up and make it fit in this sentence now since i reordered it
+If you're on Windows that's `pocketbase.exe`.
 
 The admin dashboard lives at `http://127.0.0.1:8090/_/`.
+
+You don't actually *need* `PB_ENV` (it isn't a PocketBase thing, just an environment variable I made up) or `cross-env` (a tiny tool that makes `PB_ENV=dev` work in any shell, Windows included), but they're useful for one very specific thing. Locally I want a user to log in with so I'm not creating one by hand every time I wipe my database. But I **definitely** don't want that user existing in production. So let's make a migration that only runs when `PB_ENV=dev`.
 
 ```bash
 ./pocketbase migrate create dev_user
@@ -165,13 +165,13 @@ Later we'll add a rate limit for any collection that strangers are allowed to wr
 ## <center>**3. Put PocketBase in Docker Compose, behind the same nginx**</center>
 Now we put PocketBase in a box, a container, 🐳
 
-**What does Docker give us?** It's a container runtime (//claude verify this wording) it makes it easy to setup the same environment across platforms/machines with a single command. To update you just pull the latest image, rollback is the same with an older image, and your data stays safe in a volume.
+**What does Docker give us?** It's a container platform: it packages an app and everything it needs into an image, and runs that image as an isolated container. That makes it easy to set up the same environment across platforms/machines with a single command. To update you just pull the latest image, rollback is the same with an older image, and your data stays safe in a volume.
 
 **What else could you use?**
 - Run the binary directly under `systemd`. Fewer layers, totally valid for a hobby project, but you're updating and wiring it up by hand every time
+- [Podman](https://podman.io/), a Docker-compatible alternative that runs without a background daemon
+- [Kubernetes](https://kubernetes.io/) (or a lighter orchestrator like Docker Swarm or Nomad). They run and scale containers across many servers, which is way more than one small PocketBase on one box needs, but good to know they exist for when you outgrow this
 - A managed PocketBase host, or a PaaS with persistent disks, if you'd rather not run a server at all
-
-// claude could wehave not mentioned kubernetes or some other technology here? even though theyd be more than what we need we would at least mention that reason in the gbullet point
 
 Here's the Dockerfile. Notice we only copy in `pb_hooks` and `pb_migrations`, the code, **not** the data. Your actual database lives in a volume.
 
@@ -220,10 +220,10 @@ volumes:
   pb_data:
 ```
 
-Three small details doing big work here:
-- notice i have pot 8091 mapping to 8090. thats to demonstrate the differnce. 8091 in this case is the port the client from public internet calls, its the port nginx is listening on for this app, and 8090 is the port the app is listening on inside the container // claude reword this a bit to make it work 
+A few small details doing big work here:
+- `127.0.0.1:8091:8090` is `host-ip:host-port:container-port`. Notice I mapped 8091 to 8090 on purpose, to show the difference. 8090 is the port PocketBase listens on *inside* the container. 8091 is the port Docker opens on the machine, and it's where nginx forwards requests to (that's the `proxy_pass`). The public internet never calls 8091, it talks to nginx. I picked 8091 because on my server 8090 was already taken by another PocketBase. Ask me how I know. Use any free port
+- That `127.0.0.1` (instead of `0.0.0.0`) means the container is only reachable through nginx and <mark>not directly from the internet</mark>
 - `PB_ENV=${PB_ENV:-production}` defaults to production, so you have to ask for dev on purpose. Our dev-only migration stays asleep unless you say otherwise
-- `127.0.0.1:8091:8090` instead of `0.0.0.0`, so the container is only reachable through nginx and <mark>not directly from the internet</mark>. We publish on 8091 instead of 8090 because on my server 8090 was already taken by another PocketBase. Ask me how I know. Use any free port
 - the `pb_data` volume, so recreating the container doesn't delete your database
 
 You can stop the binary from step 1 now (Ctrl+C). Start the container in dev mode, then point nginx at the new port by changing `proxy_pass` to `http://127.0.0.1:8091` and reloading:
@@ -248,7 +248,14 @@ Here's what we've achieved so far:
 ## <center>**4. Put it on a VPS**</center>
 Same two pieces, nginx and the compose file, but this time on a server on the internet.
 
-**Why a VPS?** I get a real Linux box with full control, a flat monthly price, and a place for several small apps. PocketBase wants a persistent disk, and a VPS has one.// claude give a quick small list of 4 or 5 vps providers like digital ocean dropbox, aws something azure something something
+**Why a VPS?** I get a real Linux box with full control, a flat monthly price, and a place for several small apps. PocketBase wants a persistent disk, and a VPS has one.
+
+Any provider works. A few to look at:
+- [DigitalOcean](https://www.digitalocean.com/) (Droplets)
+- [AWS](https://aws.amazon.com/) (Lightsail or EC2)
+- [Microsoft Azure](https://azure.microsoft.com/) (Virtual Machines)
+- [Google Cloud](https://cloud.google.com/) (Compute Engine)
+- [Hetzner](https://www.hetzner.com/cloud) (Cloud servers)
 
 Here's the order, and the order matters:
 
@@ -281,13 +288,13 @@ And **not on the server**, on your own machine, make a deploy key and give the s
 ssh-keygen -t ed25519 -C <username> -f ~/.ssh/<keyname> -N "<passphrase>"
 
 # log in as root once and copy the public key over
-ssh root@<droplet-ip> "cat >> /home/<username>/.ssh/authorized_keys" < ~/.ssh/<keyname>.pub
+ssh root@<vps-ip> "cat >> /home/<username>/.ssh/authorized_keys" < ~/.ssh/<keyname>.pub
 
 # or, if you want to prepend restrictions to the key
-sed 's/^/no-port-forwarding,no-agent-forwarding /' ~/.ssh/<keyname>.pub | ssh root@<droplet-ip> "cat >> /home/<username>/.ssh/authorized_keys"
+sed 's/^/no-port-forwarding,no-agent-forwarding /' ~/.ssh/<keyname>.pub | ssh root@<vps-ip> "cat >> /home/<username>/.ssh/authorized_keys"
 
 # make sure the new user can actually log in
-ssh <username>@<droplet-ip> -i ~/.ssh/<keyname>
+ssh <username>@<vps-ip> -i ~/.ssh/<keyname>
 ```
 
 A dedicated deploy key is cleaner than reusing your personal one, if it leaks you revoke that one key and nothing else.
@@ -296,8 +303,8 @@ A dedicated deploy key is cleaner than reusing your personal one, if it leaks yo
 For now we'll build the image right on the server. Run this from your `pocketbase/` folder (we're sending the code, not your local data):
 
 ```bash
-scp -r Dockerfile docker-compose.yml pb_hooks pb_migrations <username>@<droplet-ip>:/opt/<dirname>/
-ssh <username>@<droplet-ip> -i ~/.ssh/<keyname> "cd /opt/<dirname> && docker compose up -d --build"
+scp -r Dockerfile docker-compose.yml pb_hooks pb_migrations <username>@<vps-ip>:/opt/<dirname>/
+ssh <username>@<vps-ip> -i ~/.ssh/<keyname> "cd /opt/<dirname> && docker compose up -d --build"
 ```
 
 No `PB_ENV` this time, so it defaults to `production` and the dev user is never created.
@@ -338,10 +345,10 @@ That `limit_req` block is for any collection where you let strangers create reco
 Copy it over, enable it, and issue a free HTTPS certificate. Writing to `/etc/nginx` and running `certbot` needs root, so use your root login here. Your deploy user shouldn't need that power, and I'd keep it that way.
 
 ```bash
-scp nginx-<website-url>.conf root@<droplet-ip>:/etc/nginx/sites-available/<website-url>
-ssh root@<droplet-ip> "ln -s /etc/nginx/sites-available/<website-url> /etc/nginx/sites-enabled/ && nginx -t && systemctl reload nginx"
+scp nginx-<website-url>.conf root@<vps-ip>:/etc/nginx/sites-available/<website-url>
+ssh root@<vps-ip> "ln -s /etc/nginx/sites-available/<website-url> /etc/nginx/sites-enabled/ && nginx -t && systemctl reload nginx"
 # once DNS has propagated
-ssh root@<droplet-ip> "certbot --nginx -d <website-url>"
+ssh root@<vps-ip> "certbot --nginx -d <website-url>"
 ```
 
 Certbot rewrites the site file in place and adds the 443 block plus an 80 → 443 redirect.
@@ -350,7 +357,7 @@ Certbot rewrites the site file in place and adds the 443 block plus an 80 → 44
 The dev account was never created here (thanks `PB_ENV`), so nobody can log in yet:
 
 ```bash
-ssh <username>@<droplet-ip> -i ~/.ssh/<keyname>
+ssh <username>@<vps-ip> -i ~/.ssh/<keyname>
 cd /opt/<dirname>
 # confirm the container is running
 docker compose ps
@@ -405,7 +412,6 @@ Two notes. Image names on GHCR have to be lowercase. And `${IMAGE_TAG:-latest}` 
 You could build and push by hand, but we've built all this so we can just push to `main` and let the computer handle it automatically (AI, ladies and gentlemen).
 
 First, give GitHub the key it needs. In your repo settings, add these as **Actions secrets**:
-//claude since we are sticking to advertising a generic vps instead of specifically naming digital ocean droplet in every step then make sure you rename the droplet word in almost every place except the beginnign where i just name it to mention that is my preferred vps 
 - `VPS_HOST` = the VPS's IP
 - `VPS_USER` = `<username>`
 - `VPS_SSH_KEY` = the **private** key that matches the authorized key on the VPS
@@ -453,26 +459,26 @@ jobs:
             ghcr.io/<github-user>/<dirname>:${{ github.sha }}
             ghcr.io/<github-user>/<dirname>:latest
 
-      - name: Copy compose file to droplet
+      - name: Copy compose file to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.DROPLET_HOST }}
-          username: ${{ secrets.DROPLET_USER }}
-          key: ${{ secrets.DROPLET_SSH_KEY }}
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
           source: "pocketbase/docker-compose.yml"
           target: "/opt/<dirname>/"
           strip_components: 1
 
-      - name: Deploy to droplet
+      - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.3
         env:
           GHCR_ACTOR: ${{ github.actor }}
           GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           IMAGE_TAG: ${{ github.sha }}
         with:
-          host: ${{ secrets.DROPLET_HOST }}
-          username: ${{ secrets.DROPLET_USER }}
-          key: ${{ secrets.DROPLET_SSH_KEY }}
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
           envs: GHCR_ACTOR,GHCR_TOKEN,IMAGE_TAG
           script: |
             echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_ACTOR" --password-stdin
@@ -483,9 +489,9 @@ jobs:
       - name: Health check
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.DROPLET_HOST }}
-          username: ${{ secrets.DROPLET_USER }}
-          key: ${{ secrets.DROPLET_SSH_KEY }}
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             for i in $(seq 1 30); do
               if curl -sf http://127.0.0.1:8091/api/health > /dev/null 2>&1; then
@@ -515,7 +521,7 @@ Redeploy the frontend, and that's it.
 For the days when something is off, here's my "turn it off and on again" toolkit:
 
 ```bash
-ssh <username>@<droplet-ip> -i ~/.ssh/<keyname>
+ssh <username>@<vps-ip> -i ~/.ssh/<keyname>
 cd /opt/<dirname>
 docker compose ps                          # status
 docker compose logs -f                     # tail the logs
