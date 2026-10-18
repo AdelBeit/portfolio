@@ -61,7 +61,7 @@ In both shapes the opening gives the reader the lay of the land before the first
 - **Bold** is for emphasis words ("**definitely**", "**needs**"), the category label in a list, and the lead-in of a question ("**What else could you use?**"). *Italics* are for one stressed word ("*inside*").
 - Backticks for commands, files, env vars, ports, tool names, and concept terms (`hydrating`, `server side rendering (SSR)`, `nginx`).
 - Emoji are sparse and decorative: `✨` around one phrase, one topical emoji after a noun (🍪 after cookies, 🐳 after Docker), and `✅` on checklist items. Never in headings.
-- Headings: centered bold `##` for sections, plain `###` for subsections, `######` for a BONUS aside. Link an external tool once, on first mention.
+- Headings: centered bold `##` for sections, plain `###` for subsections, `######` for a footnote-style BONUS aside. Link an external tool once, on first mention.
 
 ### Code and content rules
 - Every code block starts with a file-path comment (`// $lib/utils/stores.js`, `# pocketbase/Dockerfile`) and carries short comments that explain the why. Examples are the minimum that works, then built on.

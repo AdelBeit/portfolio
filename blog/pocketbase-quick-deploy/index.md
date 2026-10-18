@@ -39,10 +39,9 @@ Here's the stack I'm using, and what each piece is called in case you want to sw
 - **A domain/subdomain** for making the DB accessible on the internet
 - *Optional* **A health check monitor:** a service that keeps pinging PocketBase's health endpoint and alerts you (or triggers a rollback) when it stops responding
 
-and last but not least, a handy dandy terminal with basic knowledge of SSH.
+and last but not least, a handy dandy terminal with basic knowledge of SSH.\*
 
-###### BONUS; a [song](https://youtu.be/WEirepuG604) to lock in and time yourself, if you don't finish this tutorial within an hour I'll personally refund you.
-
+###### \*BONUS: a [song](https://youtu.be/WEirepuG604) to lock in and time yourself. If you don't finish this tutorial within an hour, I'll personally refund you.
 
 <mark>Everything in angle brackets</mark> like `<username>` or `<website-url>` is a placeholder for your own value.
 
