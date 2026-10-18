@@ -2,21 +2,45 @@
 title: How to deploy your own PocketBase backend to a remote env in less than an hour
 published: false
 description: Context   I'm a frontend dev who keeps needing a backend for client sites. Now of course you might say...
-tags: pocketbase, docker, tutorial, devops
+tags: pocketbase, docker, nginx, tutorial
 # cover_image: TODO pick a cover image (and credit it at the bottom)
 ---
 
 ## <center>**Context**</center>
 I'm a frontend developer by trade, which means every few months a client asks for "just a little login and a place to store form submissions" and I have to go find a backend. Now of course you might say, why not Firebase or Supabase. To that I say, I like owning my data, and I like my bill being the same number every month.
 
-Enter PocketBase. It's ✨one binary✨ with a database (SQLite), auth, file storage, a REST API and an admin dashboard baked in. No install wizard, no 14 microservices, no YAML cathedral. Seriously everyone <mark>**needs** to try PocketBase</mark> at least once, you will feel like you've been cheating on your weekends.
+Enter PocketBase. It's ✨one binary✨ with a database (SQLite), auth, file storage, a REST API and an admin dashboard baked in. No install wizard, no 14 microservices, no YAML cathedral. It's what I reach for whenever a project needs a small, self-contained backend.
 
 ## <center>**Challenge**</center>
-I've now set this up for a handful of projects, and every single time I had to rediscover the steps like a goldfish with a keyboard. So this is the cheat sheet. The goal: get your own PocketBase instance running on a remote server <mark>in less than an hour</mark>, with the same steps working <mark>local **and** remote</mark> in a brand new environment, no clicking around dashboards, and no dev-only junk leaking into production.
+I've now set this up for a handful of projects, and every single time I had to rediscover the steps like a goldfish with a keyboard. So this is the cheat sheet: get your own PocketBase instance running on a remote server <mark>in less than an hour</mark>, with repeatable steps, no clicking around dashboards, and no dev-only junk leaking into production.
 
-This is also applicable to any other small backend you can put in a container. PocketBase just happens to make it painless.
+Before we start, a heads up. This is a very **specific** setup, with specific tools, and not everyone will want to use them or even be familiar with them. So here's the whole picture first, and at every stage I'll explain what each tool is for, what else you could use instead, and why I picked it. Swap in your own favorites wherever you like.
 
-First step is running it locally. Here's how:
+### What we're building
+By the end, requests will flow like this:
+
+`browser` → `nginx` (HTTPS, on a server) → `Docker container` (PocketBase) → `volume` (your database)
+
+### The plan
+1. Run PocketBase in a local dev environment
+2. Put it behind nginx
+3. Put it inside Docker Compose and keep it behind the local nginx
+4. Put nginx and the Docker Compose on a VPS (remote env), with a domain and HTTPS
+5. Introduce a container registry for versioning our image (in our case GHCR)
+6. Automate the deploys with GitHub Actions
+
+### What you'll need
+- A **Linux VPS** with root or sudo access. I use a DigitalOcean droplet, any provider works. Commands below assume Debian/Ubuntu.
+- A **domain or subdomain** you can add a DNS record to, like `api.yourdomain.com`
+- **Docker** (with the Compose plugin) on your machine **and** on the server. [Install guide](https://docs.docker.com/engine/install/)
+- **nginx** on your machine **and** on the server. I'll explain why we need it in step 2
+- A **GitHub** account and a repo for the project
+- A terminal and some basic comfort with SSH
+
+<mark>Everything in angle brackets</mark> like `<username>` or `<website-url>` is a placeholder for your own value.
+
+## <center>**1. PocketBase, locally**</center>
+Nothing fancy yet. We want PocketBase running on your machine so you know what we're about to ship. Here's how:
 
 ```bash
 # grab the binary for your OS/arch from https://github.com/pocketbase/pocketbase/releases
@@ -33,7 +57,7 @@ PB_ENV=dev ./pocketbase serve
 
 If you're on Windows that's `pocketbase.exe`, and I use `cross-env` so the `PB_ENV=dev` part works in any shell.
 
-The admin dashboard lives at `http://127.0.0.1:8090/_/`. Go say hi.
+The admin dashboard lives at `http://127.0.0.1:8090/_/`.
 
 `PB_ENV` isn't a PocketBase thing by the way, it's just an environment variable I made up, and it's about to be very useful.
 
@@ -81,11 +105,73 @@ migrate((app) => {
 
 That `PB_ENV` check is the whole trick. In production the migration runs, shrugs, and does nothing.
 
-Now the local side is done, but "works on my machine" is not a deployment strategy. Time to put it in a box 🐳
+Here's what we've achieved so far:
+- ✅ PocketBase running locally
+- ✅ a superuser and a dev-only user
+- ✅ migrations that know which environment they're in
 
-Here's the Dockerfile. Notice we only copy in `pb_hooks` and `pb_migrations`, the code, **not** the data. Your actual database lives in a volume, we'll get to that.
+## <center>**2. Put it behind nginx**</center>
+Right now you're talking to PocketBase directly on port 8090. That's fine on your laptop, but it's not what you want facing the internet. Before we touch the server, let's get used to the setup we'll use there.
+
+**What is nginx doing here?** It's a <mark>reverse proxy</mark>. It sits in front of PocketBase, accepts the incoming requests, and forwards them to it. That gives us a few things:
+- **HTTPS.** nginx handles the TLS certificate so PocketBase doesn't have to
+- **One front door for many apps.** Several apps can share one server and one port 443, routed by domain name
+- **Guard rails.** Rate limits and a max upload size, before a request ever reaches PocketBase
+- **Privacy.** The app itself only listens on localhost and can't be reached directly from the internet
+
+**What else could you use?**
+- [Caddy](https://caddyserver.com/) is simpler, and gets and renews HTTPS certificates automatically
+- [Traefik](https://traefik.io/) is built for containers and configures itself from Docker labels
+- PocketBase can also serve HTTPS by itself if you hand it a domain, which is the least moving parts if it's the only thing on the box
+
+**Why nginx then?** Honestly, familiarity. It's what's already on my server, other apps share that box, and I like having the rate limiting and upload limits written down in one config file I can read. If you're starting from scratch with a single app, Caddy is a perfectly good answer.
+
+Install nginx (`brew install nginx`, `sudo apt install nginx`, or the zip from [nginx.org](https://nginx.org/en/download.html) on Windows) and add this server block to your config. Where it goes depends on your OS: `conf.d/`, `sites-enabled/`, or inside `http {}` in `nginx.conf`.
+
+```conf
+# local dev: nginx listens on 8080 and forwards to PocketBase on 8090
+server {
+    listen 8080;
+    server_name localhost;
+
+    # max upload size, i.e. maxSelect:20 * maxSize:10MB per request
+    client_max_body_size 250m;
+
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+
+    location / {
+        proxy_pass http://127.0.0.1:8090;
+    }
+}
+```
+
+```bash
+nginx -t          # check the config
+nginx -s reload   # (or start nginx if it isn't running yet)
+```
+
+Now `http://localhost:8080/_/` shows the same dashboard, but through nginx. If you plan to use PocketBase's realtime subscriptions, double check [PocketBase's docs](https://pocketbase.io/docs/) for the extra nginx proxy settings they recommend.
+
+Later we'll add a rate limit for any collection that strangers are allowed to write to. For now, one thing to take away: nginx doesn't care what's behind it, as long as something answers on the port you give it. Which brings us to the next step.
+
+## <center>**3. Put PocketBase in Docker Compose, behind the same nginx**</center>
+Now we put PocketBase in a box, a container, 🐳
+
+**What does Docker give us?** So the thing we run on the server is the exact same thing we ran on our machine: same PocketBase version, same hooks, same migrations, no "I forgot to install something" moments. Updating is a pull, rolling back is a pull of an older tag, and your data stays safe in a volume.
+
+**What else could you use?**
+- Run the binary directly under `systemd`. Fewer layers, totally valid for a hobby project, but you're updating and wiring it up by hand every time
+- A managed PocketBase host, or a PaaS with persistent disks, if you'd rather not run a server at all
+
+**Why Docker then?** I want the same artifact locally and remotely, and I want the deploy to be one command. Docker Compose gives me both in a file I can read.
+
+Here's the Dockerfile. Notice we only copy in `pb_hooks` and `pb_migrations`, the code, **not** the data. Your actual database lives in a volume.
 
 ```dockerfile
+# pocketbase/Dockerfile
 FROM alpine:3.20
 
 # pin whatever version you tested against, bump it on purpose
@@ -110,17 +196,18 @@ CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8090"]
 
 Heads up, those two `COPY` lines will fail the build if the folders don't exist. That's why running `migrate up` locally first matters, it makes sure `pb_migrations/` is there so the image can actually be built.
 
-And the compose file that will live on the server:
+And the compose file:
 
 ```yml
+# pocketbase/docker-compose.yml
 services:
   pocketbase:
-    image: ghcr.io/<github-user>/<dirname>:${IMAGE_TAG:-latest}
+    build: .
     restart: unless-stopped
     ports:
-      - "127.0.0.1:<port>:8090"
+      - "127.0.0.1:8091:8090"
     environment:
-      - PB_ENV=production
+      - PB_ENV=${PB_ENV:-production}
     volumes:
       - pb_data:/pb/pb_data
 
@@ -129,16 +216,50 @@ volumes:
 ```
 
 Three small details doing big work here:
-- `PB_ENV=production` so our dev-only migration stays asleep.
-- `127.0.0.1:<port>:8090` instead of `0.0.0.0`, so the container is only reachable through nginx and <mark>not directly from the internet</mark>.
-- the `pb_data` volume, so redeploying the container doesn't deploy your database into the void.
+- `PB_ENV=${PB_ENV:-production}` defaults to production, so you have to ask for dev on purpose. Our dev-only migration stays asleep unless you say otherwise
+- `127.0.0.1:8091:8090` instead of `0.0.0.0`, so the container is only reachable through nginx and <mark>not directly from the internet</mark>. We publish on 8091 instead of 8090 because on my server 8090 was already taken by another PocketBase. Ask me how I know. Use any free port
+- the `pb_data` volume, so recreating the container doesn't delete your database
 
-So naturally the next question is, where does this box go? For me it's a DigitalOcean droplet, but any Linux server with Docker and nginx will do. If you already have another PocketBase running on it, pick a different `<port>`. Ask me how I know that 8090 was taken.
-
-Let's prep the server, **on the droplet**:
+You can stop the binary from step 1 now (Ctrl+C). Start the container in dev mode, then point nginx at the new port by changing `proxy_pass` to `http://127.0.0.1:8091` and reloading:
 
 ```bash
-# a dedicated user for deploys, don't deploy as root
+cd pocketbase
+PB_ENV=dev docker compose up -d --build
+# PowerShell: $env:PB_ENV="dev"; docker compose up -d --build
+nginx -s reload
+```
+
+`http://localhost:8080/_/` works again, same nginx, different thing behind it. The container starts with an empty database, so run the superuser command again:
+
+```bash
+docker compose exec pocketbase /pb/pocketbase superuser upsert dev-admin@example.com change-me-locally
+```
+
+Here's what we've achieved so far:
+- ✅ PocketBase running locally, directly and in a container
+- ✅ nginx in front of it
+- ✅ data kept in a volume instead of inside the container
+
+## <center>**4. Put it on a VPS**</center>
+Same two pieces, nginx and the compose file, but this time on a server on the internet.
+
+**Why a VPS?** I get a real Linux box with full control, a flat monthly price, and a place for several small apps. PocketBase wants a persistent disk, and a VPS has one. **Alternatives:** a PaaS with persistent volumes, or a managed PocketBase host, if you'd rather not run a server.
+
+Here's the order, and the order matters:
+
+### DNS first
+Add an **A record** pointing your subdomain (`api.yourdomain.com`, or anything you like) at the server's IP. DNS takes a while to propagate and we need it ready for HTTPS, so do it now and do the rest while it settles.
+
+### Prep the server
+Log in as root and install what we need (Debian/Ubuntu shown, Docker via the [install guide](https://docs.docker.com/engine/install/)):
+
+```bash
+apt update && apt install -y nginx certbot python3-certbot-nginx
+```
+
+Then create a dedicated user for deploys, don't deploy as root:
+
+```bash
 sudo adduser <username>
 sudo mkdir -p /opt/<dirname>
 sudo chown -R <username>:<username> /opt/<dirname>
@@ -148,7 +269,7 @@ sudo usermod -aG docker <username>
 sudo -u <username> mkdir -p -m 700 /home/<username>/.ssh
 ```
 
-And **not on the droplet**, on your own machine:
+And **not on the server**, on your own machine, make a deploy key and give the server the public half:
 
 ```bash
 # make a dedicated deploy key
@@ -164,15 +285,128 @@ sed 's/^/no-port-forwarding,no-agent-forwarding /' ~/.ssh/<keyname>.pub | ssh ro
 ssh <username>@<droplet-ip> -i ~/.ssh/<keyname>
 ```
 
-A dedicated deploy key is cleaner than reusing your personal one. If it ever leaks, you revoke one key and your whole life isn't on fire.
+A dedicated deploy key is cleaner than reusing your personal one, if it leaks you revoke that one key and nothing else.
 
-Now we need GitHub to be able to use that key. In your repo settings, add these as **Actions secrets**:
+### Get the files there and start it
+For now we'll build the image right on the server. Run this from your `pocketbase/` folder (we're sending the code, not your local data):
+
+```bash
+scp -r Dockerfile docker-compose.yml pb_hooks pb_migrations <username>@<droplet-ip>:/opt/<dirname>/
+ssh <username>@<droplet-ip> -i ~/.ssh/<keyname> "cd /opt/<dirname> && docker compose up -d --build"
+```
+
+No `PB_ENV` this time, so it defaults to `production` and the dev user is never created.
+
+### The server's nginx
+Same idea as before, with three upgrades: your real domain, the production port, and a rate limit.
+
+```conf
+# throttle public write endpoints to curb spam
+limit_req_zone $binary_remote_addr zone=<zone-name>:10m rate=5r/m;
+
+server {
+    listen 80;
+    server_name <website-url>;
+
+    # max upload size, i.e. maxSelect:20 * maxSize:10MB per request
+    client_max_body_size 250m;
+
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+
+    # any collection with a public (unauthenticated) createRule
+    location = /api/collections/<collection>/records {
+        limit_req zone=<zone-name> burst=3 nodelay;
+        proxy_pass http://127.0.0.1:8091;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8091;
+    }
+}
+```
+
+That `limit_req` block is for any collection where you let strangers create records, like a contact form. If the rule is public, the internet will find it. Rate limit it.
+
+Copy it over, enable it, and issue a free HTTPS certificate. Writing to `/etc/nginx` and running `certbot` needs root, so use your root login here. Your deploy user shouldn't need that power, and I'd keep it that way.
+
+```bash
+scp nginx-<website-url>.conf root@<droplet-ip>:/etc/nginx/sites-available/<website-url>
+ssh root@<droplet-ip> "ln -s /etc/nginx/sites-available/<website-url> /etc/nginx/sites-enabled/ && nginx -t && systemctl reload nginx"
+# once DNS has propagated
+ssh root@<droplet-ip> "certbot --nginx -d <website-url>"
+```
+
+Certbot rewrites the site file in place and adds the 443 block plus an 80 → 443 redirect.
+
+### Your production superuser
+The dev account was never created here (thanks `PB_ENV`), so nobody can log in yet:
+
+```bash
+ssh <username>@<droplet-ip> -i ~/.ssh/<keyname>
+cd /opt/<dirname>
+# confirm the container is running
+docker compose ps
+# create the real superuser with a real password
+docker compose exec pocketbase /pb/pocketbase superuser upsert <superuser-email> <strong-password>
+```
+
+Visit `https://<website-url>/_/` and log in.
+
+Here's what we've achieved so far:
+- ✅ PocketBase running on a server, in a container, only reachable through nginx
+- ✅ a domain and HTTPS
+- ✅ a deploy user with its own key
+- ✅ a real superuser and no dev account in production
+
+## <center>**5. A container registry**</center>
+Right now the server builds the image itself. It works, but every deploy means sending files over and building on a small machine, and there's no clean record of which version is running.
+
+**What's a container registry?** It's a place to store built Docker images, with tags. Instead of building on the server, we build once somewhere else, push the image to the registry with a version tag, and the server just **pulls** that exact image. That gets us:
+- **Faster, lighter deploys.** The server only downloads, it never builds
+- **Versioning.** We tag each image with the git commit that produced it, so you always know what's running and can roll back by pulling an older tag
+- **The same image everywhere.** What you tested is what you deploy
+
+**What else could you use?**
+- **Docker Hub**, the default and the most common, but anonymous pulls are rate limited
+- A cloud provider's own registry (AWS ECR, DigitalOcean Container Registry, and so on), good if you already live there, but another service to set up and pay attention to
+- Running your own registry, which is one more server to look after
+
+**Why GHCR?** [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry) (`ghcr.io`) lives right next to the code. Our deploy will run on GitHub Actions anyway, and Actions can log in to GHCR with the token it already has, no extra account and no extra secret to manage.
+
+Your compose file changes in one place: swap `build: .` for an `image:` line. This is the file that lives on the server from now on:
+
+```yml
+# pocketbase/docker-compose.yml
+services:
+  pocketbase:
+    image: ghcr.io/<github-user>/<dirname>:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8091:8090"
+    environment:
+      - PB_ENV=production
+    volumes:
+      - pb_data:/pb/pb_data
+
+volumes:
+  pb_data:
+```
+
+Two notes. Image names on GHCR have to be lowercase. And `${IMAGE_TAG:-latest}` means "use this tag, or `latest` if I didn't give one", which is how a deploy picks a specific version.
+
+## <center>**6. Automate it with GitHub Actions**</center>
+You could build and push by hand, but we've built all this so we can just push to `main` and let a robot do it.
+
+First, give GitHub the key it needs. In your repo settings, add these as **Actions secrets**:
 - `DROPLET_HOST` = the droplet's IP
 - `DROPLET_USER` = `<username>`
 - `DROPLET_SSH_KEY` = the **private** key that matches the authorized key on the droplet
 - `DROPLET_SSH_PASSPHRASE` = the passphrase, only if you set one
 
-Here's the workflow. It builds the image, pushes it to GitHub's container registry (GHCR), copies the compose file over, pulls and restarts on the droplet, and then waits for PocketBase to say it's healthy.
+Then the workflow. It builds the image, pushes it to GHCR, copies the compose file to the server, pulls and restarts, and waits for PocketBase to say it's healthy.
 
 ```yml
 # .github/workflows/deploy-pocketbase.yml
@@ -249,7 +483,7 @@ jobs:
           key: ${{ secrets.DROPLET_SSH_KEY }}
           script: |
             for i in $(seq 1 30); do
-              if curl -sf http://127.0.0.1:<port>/api/health > /dev/null 2>&1; then
+              if curl -sf http://127.0.0.1:8091/api/health > /dev/null 2>&1; then
                 echo "Health check passed"
                 exit 0
               fi
@@ -262,64 +496,10 @@ jobs:
 
 Because of `workflow_dispatch`, you can also trigger it by hand from the Actions tab, no merging required. Very handy for the "I changed nothing, please just try again" moments.
 
-Almost there. The container is only listening on localhost, so let's give it a front door. First, a DNS **A record** pointing your subdomain (`api.yourdomain.com`, or anything you like) at the droplet's IP.
+Push to `main` and watch the Actions tab do its thing. Every deploy is now tagged with its commit, and that's your rollback button.
 
-Then nginx. This config is the one I copy around:
-
-```conf
-# throttle public write endpoints to curb spam (see below)
-limit_req_zone $binary_remote_addr zone=<zone-name>:10m rate=5r/m;
-
-server {
-    listen 80;
-    server_name <website-url>;
-
-    # max upload size, i.e. maxSelect:20 * maxSize:10MB per request
-    client_max_body_size 250m;
-
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-
-    # any collection with a public (unauthenticated) createRule
-    location = /api/collections/<collection>/records {
-        limit_req zone=<zone-name> burst=3 nodelay;
-        proxy_pass http://127.0.0.1:<port>;
-    }
-
-    location / {
-        proxy_pass http://127.0.0.1:<port>;
-    }
-}
-```
-
-That `limit_req` block is for any collection where you let strangers create records, like a contact form. If the rule is public, the internet will find it. Rate limit it.
-
-Copy it over, enable it, and get a free TLS cert (after DNS has propagated, patience, young padawan):
-
-```bash
-scp nginx-<website-url>.conf <username>@<droplet-ip>:/etc/nginx/sites-available/<website-url>
-ssh <username>@<droplet-ip> "ln -s /etc/nginx/sites-available/<website-url> /etc/nginx/sites-enabled/ && nginx -t && systemctl reload nginx"
-ssh <username>@<droplet-ip> "certbot --nginx -d <website-url>"
-```
-
-Certbot rewrites the site file in place and adds the 443 block plus an 80 → 443 redirect. It's the most satisfying part of the whole process, don't skip it.
-
-> Note: writing to `/etc/nginx` and running `certbot` needs root, so use whichever account on the server has the right sudo setup, or run those through your root login. Your deploy user shouldn't need that power, and I'd keep it that way.
-
-Now push to `main` and watch the Actions tab do its thing. Once the health check goes green there's one last thing, **your production superuser**. Remember, the dev account was never created here (thanks `PB_ENV`), so there's nobody to log in yet:
-
-```bash
-ssh <username>@<droplet-ip> -i ~/.ssh/<keyname>
-cd /opt/<dirname>
-# confirm the container is running
-docker compose ps
-# create the real superuser with a real password
-docker compose exec pocketbase /pb/pocketbase superuser upsert <superuser-email> <strong-password>
-```
-
-Then point your frontend at it. For me that's an environment variable in Vercel:
+## <center>**Finishing touches**</center>
+Point your frontend at it. For me that's an environment variable in Vercel:
 
 ```bash
 NEXT_PUBLIC_POCKETBASE_URL=https://<website-url>
@@ -327,7 +507,7 @@ NEXT_PUBLIC_POCKETBASE_URL=https://<website-url>
 
 Redeploy the frontend, and that's it.
 
-And for the days when something is off, here's my "turn it off and on again" toolkit:
+For the days when something is off, here's my "turn it off and on again" toolkit:
 
 ```bash
 ssh <username>@<droplet-ip> -i ~/.ssh/<keyname>
@@ -339,16 +519,19 @@ docker compose pull && docker compose up -d   # get the latest image, then resta
 docker compose exec pocketbase sh          # shell into the running container
 ```
 
-Here's what we've achieved:
+What I left out, because it's beyond a one hour setup but you'll want it soon: **backups** of the `pb_data` volume, a **firewall** that only allows SSH, HTTP and HTTPS, and some kind of **uptime monitoring**.
+
+Here's the whole journey:
 - ✅ PocketBase running locally with a dev-only user
+- ✅ nginx in front of it, and why
 - ✅ a container that ships your code and keeps your data in a volume
-- ✅ a deploy key and a pipeline that deploys on every push to `main`
-- ✅ nginx, TLS and rate limiting in front of it
-- ✅ a real superuser and a frontend pointing at it
+- ✅ a VPS with a domain, HTTPS and rate limiting
+- ✅ a registry so every deploy has a version
+- ✅ a pipeline that deploys on every push to `main`
 
-And there you have it! This was how to <mark>publish</mark> a PocketBase instance in a <mark>new environment</mark>, local or remote, without losing your mind.
+And there you have it! This was how to <mark>deploy</mark> your own PocketBase backend to a <mark>remote environment</mark>, in less than an hour (once you've done it before).
 
-<h6>P.S. if you only need this for a hobby project, you could skip the pipeline and just `scp` the binary and run it under systemd. But where's the fun in that, and also you'll be doing it by hand every single time.</h6>
+<h6>P.S. if you only need this for a hobby project, you could skip the pipeline and the registry and stop at step 4. It works fine, you'll just be doing the deploys by hand.</h6>
 
 <h6>If you have any comments, questions, or concerns, please keep them to yourself.</h6>
 
