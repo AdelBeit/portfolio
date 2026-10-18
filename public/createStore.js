@@ -24,9 +24,10 @@ const replaceSvgWithSymbol = (svgString, fileName) => {
   // get rid of extra white space
   svgString = svgString.replace(/ +/g, " ");
 
-  // get rid of fill and stroke
-  svgString = svgString.replace(/ fill="(?!none)[^"]+"/g, "");
-  svgString = svgString.replace(/ stroke="(?!none)[^"]+"/g, "");
+  // get rid of fill and stroke, but keep "none" and "currentColor" (stripping currentColor
+  // leaves the root fill="none" in charge and the shapes render invisible)
+  svgString = svgString.replace(/ fill="(?!none|currentColor)[^"]+"/g, "");
+  svgString = svgString.replace(/ stroke="(?!none|currentColor)[^"]+"/g, "");
 
   return svgString.replace(/<\/svg>/g, "</symbol>");
 };
