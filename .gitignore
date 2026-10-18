@@ -33,3 +33,6 @@ yarn-error.log*
 
 ./public/downloadedImgs/
 ./public/downloaded Imgs/
+
+# yarn local install cache
+.yarn/install-state.gz
