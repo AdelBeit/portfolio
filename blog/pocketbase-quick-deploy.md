@@ -31,7 +31,7 @@ By the end, requests will flow like this:
 Here's the stack I'm using, and what each piece is called in case you want to swap in your own:
 - **A backend/database:** I'll be using PocketBase, an open source backend in a single executable with SQLite built in
 - **A container platform:** I'm using Docker (and Docker Compose) because it's what I like to use the most
-- **A reverse proxy:** it routes incoming requests to the right app, handles HTTPS, and enforces limits (and it can load balance too, if you ever run more than one copy of your app). I'll be using nginx
+- **A reverse proxy:** it routes incoming requests to the right app, handles HTTPS, and enforces limits. I'll be using nginx
 - **Version control:** Git, hosted on GitHub, because I like GitHub
 - **A container registry:** a place to store our built Docker images. I use GHCR (GitHub Container Registry)
 - **A CI/CD tool:** continuous integration/continuous delivery, the thing that builds and deploys for you on every push. I use GitHub Actions
@@ -221,7 +221,10 @@ volumes:
 ```
 
 A few small details doing big work here:
-- `127.0.0.1:8091:8090` is `host-ip:host-port:container-port`. Notice I mapped 8091 to 8090 on purpose, to show the difference. 8090 is the port PocketBase listens on *inside* the container. 8091 is the port Docker opens on the machine, and it's where nginx forwards requests to (that's the `proxy_pass`). The public internet never calls 8091, it talks to nginx. I picked 8091 because on my server 8090 was already taken by another PocketBase. Ask me how I know. Use any free port
+- `127.0.0.1:8091:8090` reads as `host-ip:host-port:container-port`, and the two port numbers are different on purpose so you can see which is which:
+  - **8090** is the port PocketBase listens on *inside* the container. It's fixed by the Dockerfile and nobody outside the container can see it
+  - **8091** is the port Docker listens on on the machine itself (the host). It passes whatever arrives there into the container's 8090. This is the port nginx forwards to, that's the `proxy_pass`. The public internet never calls 8091, it talks to nginx
+  - I picked 8091 because on my server 8090 was already taken by another PocketBase. Ask me how I know. Use any free port
 - That `127.0.0.1` (instead of `0.0.0.0`) means the container is only reachable through nginx and <mark>not directly from the internet</mark>
 - `PB_ENV=${PB_ENV:-production}` defaults to production, so you have to ask for dev on purpose. Our dev-only migration stays asleep unless you say otherwise
 - the `pb_data` volume, so recreating the container doesn't delete your database
