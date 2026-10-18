@@ -39,23 +39,11 @@ Here's the stack I'm using, and what each piece is called in case you want to sw
 - **A domain/subdomain** for making the DB accessible on the internet
 - *Optional* **A health check monitor:** a service that keeps pinging PocketBase's health endpoint and alerts you (or triggers a rollback) when it stops responding
 
-and last but not least, a handy dandy terminal with basic knowledge of SSH.\*[^1]
+and last but not least, a handy dandy terminal with basic knowledge of SSH.
 
-<!-- BONUS FORMAT OPTIONS: keep one and delete the rest, and fix the marker above: \* is for options 2, 3 and 4, [^1] is for option 1 only -->
+> BONUS: a [song](https://youtu.be/D4AsrfxgWGQ) to lock in and time yourself. If you don't finish this tutorial within an hour, I'll personally refund you.
 
-<!-- option 1: markdown footnote (jumps to the bottom of the post; unconfirmed on dev.to) -->
-[^1]: BONUS: a [song](https://youtu.be/D4AsrfxgWGQ) to lock in and time yourself. If you don't finish this tutorial within an hour, I'll personally refund you.
-
-<!-- option 2: small text -->
-<small>\*BONUS: a [song](https://youtu.be/D4AsrfxgWGQ) to lock in and time yourself. If you don't finish this tutorial within an hour, I'll personally refund you.</small>
-
-<!-- option 3: blockquote -->
-> \*BONUS: a [song](https://youtu.be/D4AsrfxgWGQ) to lock in and time yourself. If you don't finish this tutorial within an hour, I'll personally refund you.
-
-<!-- option 4: the current ###### heading (no marker needed) -->
-###### \*BONUS: a [song](https://youtu.be/D4AsrfxgWGQ) to lock in and time yourself. If you don't finish this tutorial within an hour, I'll personally refund you.
-
-<mark>Everything in angle brackets</mark> like `<username>` or `<website-url>` is a placeholder for your own value.
+Everything in angle brackets like `<username>` or `<website-url>` is a placeholder for your own value.
 
 ## **1. PocketBase, locally**
 Nothing fancy yet. We want PocketBase running on your machine so you know what we're about to ship. Here's how:
