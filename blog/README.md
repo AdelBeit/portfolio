@@ -46,7 +46,7 @@ Pick the shape that fits the post:
 | Sections | Flow with connective phrases: "Here's how:", "Let's do that", "So naturally we will want..." | `## <center>**N. Title**</center>`, ordered so each step builds on the last (local first, then remote) |
 | New tool | Introduced with the problem it solves | Three beats before the commands: what it does here, what else could you use (linked, including heavier options with an honest "more than you need"), and why I picked it (and when the alternative is the better answer) |
 | Checkpoints | Once, mid-post | At the end of most steps, plus a recap of the whole journey |
-| Asides | An `<h6>` tangent for an alternative approach | An `<h6>` P.S., and a `######` BONUS for the intro |
+| Asides | An `<h6>` tangent for an alternative approach | An `<h6>` P.S., and a `######` BONUS footnote for the intro (marked with `*` at the end of the list it belongs to) |
 
 In both shapes the opening gives the reader the lay of the land before the first command or code block. If a post uses a stack the reader may not share, say so plainly and explain each piece.
 
