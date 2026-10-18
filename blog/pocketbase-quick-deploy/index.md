@@ -107,7 +107,7 @@ migrate((app) => {
 })
 ```
 
-That `PB_ENV` check is the whole trick. In production the migration runs, shrugs, and does nothing.
+That `PB_ENV` check is <mark>the whole trick</mark>. In production the migration runs, shrugs, and does nothing.
 
 Here's what we've achieved so far:
 - ✅ PocketBase running locally
@@ -172,7 +172,7 @@ Now we put PocketBase in a box, a container, 🐳
 - [Kubernetes](https://kubernetes.io/) (or a lighter orchestrator like Docker Swarm or Nomad). They run and scale containers across many servers, which is way more than one small PocketBase on one box needs, but good to know they exist for when you outgrow this
 - A managed PocketBase host, or a PaaS with persistent disks, if you'd rather not run a server at all
 
-Here's the Dockerfile. Notice we only copy in `pb_hooks` and `pb_migrations`, the code, **not** the data. Your actual database lives in a volume.
+Here's the Dockerfile. Notice we only copy in `pb_hooks` and `pb_migrations`, the code, **not** the data. Your <mark>actual database lives in a volume</mark>.
 
 ```dockerfile
 # pocketbase/Dockerfile
@@ -271,7 +271,7 @@ Log in as root and install what we need (Debian/Ubuntu shown, Docker via the [in
 apt update && apt install -y nginx certbot python3-certbot-nginx
 ```
 
-Then create a dedicated user for deploys, don't deploy as root:
+Then create a dedicated user for deploys, <mark>don't deploy as root</mark>:
 
 ```bash
 sudo adduser <username>
@@ -379,7 +379,7 @@ Right now the server builds the image itself. It works, but every deploy means s
 
 **What's a container registry?** It's a place to store built Docker images, with tags. Instead of building on the server, we build once somewhere else, push the image to the registry with a version tag, and the server just **pulls** that exact image. That gets us:
 - **Faster, lighter deploys.** The server only downloads, it never builds
-- **Versioning.** We tag each image with the git commit that produced it, so you always know what's running and can roll back by pulling an older tag
+- **Versioning.** We tag each image with the git commit that produced it, so you always know what's running and can <mark>roll back by pulling an older tag</mark>
 - **The same image everywhere.** What you tested is what you deploy
 
 **What else could you use?**
