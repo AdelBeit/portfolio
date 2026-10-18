@@ -551,5 +551,5 @@ And there you have it! This was how to <mark>deploy</mark> your own PocketBase b
 ## Resources
 - [PocketBase Docs](https://pocketbase.io/docs/)
 - [Unpaid Intern](https://claude.ai/)
-- [Background Music](https://youtu.be/WEirepuG604)
+- [Background Music](https://youtu.be/D4AsrfxgWGQ)
 - [Shameless Plug](https://adelbeit.com/)
