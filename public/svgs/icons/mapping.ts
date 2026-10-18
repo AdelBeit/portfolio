@@ -1,8 +1,10 @@
 export const ICON_MAPPINGS = {
+  airtable: "Airtable",
   amazonaws: "AWS",
   android: "Android",
   androidstudio: "Android Studio",
   arduino: "Arduino",
+  auth0: "Auth0",
   babel: "Babel",
   bitbucket: "Bit Bucket",
   bootstrap: "Bootstrap",

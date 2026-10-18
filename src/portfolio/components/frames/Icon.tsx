@@ -34,7 +34,7 @@ function IconFrame({
         }
 
         ._container:hover::after {
-          content: "${ICON_MAPPINGS[icon.toLowerCase()]}";
+          content: "${ICON_MAPPINGS[icon.toLowerCase()] ?? icon.toLowerCase()}";
           width: fit-content;
           position: absolute;
           font-size: 12px;
