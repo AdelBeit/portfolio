@@ -19,6 +19,8 @@ By the end, requests will flow like this:
 
 `client` (any app that calls your backend) → Reverse proxy tool (`nginx`) (HTTPS, on a server) → `Docker container` (PocketBase) → `volume` (your database)
 
+![Diagram: a client sends HTTPS requests to nginx on the VPS, which forwards them to PocketBase inside a Docker container, with the data stored in a volume. Direct access to the container's port is blocked.](assets/request-flow.svg)
+
 ### The game plan (Agile style)
 1. Run PocketBase in a local dev environment
 2. Put it behind nginx
@@ -412,6 +414,10 @@ Two notes. Image names on GHCR have to be lowercase. And `${IMAGE_TAG:-latest}` 
 
 ## **6. Automate it with GitHub Actions**
 You could build and push by hand, but we've built all this so we can just push to `main` and let the computer handle it automatically (AI, ladies and gentlemen).
+
+Here's the whole pipeline at a glance:
+
+![Diagram: pushing to main triggers GitHub Actions, which builds the image and pushes it to GHCR. The VPS pulls the image and runs compose up, then a health check decides whether the deploy passes or fails.](assets/deploy-flow.svg)
 
 First, give GitHub the key it needs. In your repo settings, add these as **Actions secrets**:
 - `VPS_HOST` = the VPS's IP
