@@ -1,5 +1,5 @@
 ---
-title: How to publish a PocketBase instance in a new env, local or remote
+title: How to deploy your own PocketBase backend to a remote env in less than an hour
 published: false
 description: Context   I'm a frontend dev who keeps needing a backend for client sites. Now of course you might say...
 tags: pocketbase, docker, tutorial, devops
@@ -12,7 +12,7 @@ I'm a frontend developer by trade, which means every few months a client asks fo
 Enter PocketBase. It's ✨one binary✨ with a database (SQLite), auth, file storage, a REST API and an admin dashboard baked in. No install wizard, no 14 microservices, no YAML cathedral. Seriously everyone <mark>**needs** to try PocketBase</mark> at least once, you will feel like you've been cheating on your weekends.
 
 ## <center>**Challenge**</center>
-I've now set this up for a handful of projects, and every single time I had to rediscover the steps like a goldfish with a keyboard. So this is the cheat sheet. The goal: get a PocketBase instance running in a brand new environment, <mark>local **and** remote</mark>, with the same repeatable steps, no clicking around dashboards, and no dev-only junk leaking into production.
+I've now set this up for a handful of projects, and every single time I had to rediscover the steps like a goldfish with a keyboard. So this is the cheat sheet. The goal: get your own PocketBase instance running on a remote server <mark>in less than an hour</mark>, with the same steps working <mark>local **and** remote</mark> in a brand new environment, no clicking around dashboards, and no dev-only junk leaking into production.
 
 This is also applicable to any other small backend you can put in a container. PocketBase just happens to make it painless.
 
