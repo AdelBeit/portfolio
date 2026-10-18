@@ -45,7 +45,7 @@ and last but not least, a handy dandy terminal with basic knowledge of SSH.\*
 
 <mark>Everything in angle brackets</mark> like `<username>` or `<website-url>` is a placeholder for your own value.
 
-## <center>**1. PocketBase, locally**</center>
+## **1. PocketBase, locally**
 Nothing fancy yet. We want PocketBase running on your machine so you know what we're about to ship. Here's how:
 
 ```bash
@@ -114,7 +114,7 @@ Here's what we've achieved so far:
 - ✅ a superuser and a dev-only user
 - ✅ migrations that know which environment they're in
 
-## <center>**2. Put it behind nginx**</center>
+## **2. Put it behind nginx**
 Right now you're talking to PocketBase directly on port 8090. That's fine on your laptop, but it's not what you want facing the internet. Before we touch the server, let's get used to the setup we'll use there.
 
 **What is nginx doing here?** It's a <mark>reverse proxy</mark>. It sits in front of PocketBase, accepts the incoming requests, and forwards them to it. That gives us a few things:
@@ -161,7 +161,7 @@ Now `http://localhost:8080/_/` shows the same dashboard, but through nginx. If y
 
 Later we'll add a rate limit for any collection that strangers are allowed to write to. For now, one thing to take away: nginx doesn't care what's behind it, as long as something answers on the port you give it. Which brings us to the next step.
 
-## <center>**3. Put PocketBase in Docker Compose, behind the same nginx**</center>
+## **3. Put PocketBase in Docker Compose, behind the same nginx**
 Now we put PocketBase in a box, a container, 🐳
 
 **What does Docker give us?** It's a container platform: it packages an app and everything it needs into an image, and runs that image as an isolated container. That makes it easy to set up the same environment across platforms/machines with a single command. To update you just pull the latest image, rollback is the same with an older image, and your data stays safe in a volume.
@@ -247,7 +247,7 @@ Here's what we've achieved so far:
 - ✅ PocketBase running locally, directly and in a container
 - ✅ nginx in front of it
 
-## <center>**4. Put it on a VPS**</center>
+## **4. Put it on a VPS**
 Same two pieces, nginx and the compose file, but this time on a server on the internet.
 
 **Why a VPS?** I get a real Linux box with full control, a flat monthly price, and a place for several small apps. PocketBase wants a persistent disk, and a VPS has one.
@@ -374,7 +374,7 @@ Here's what we've achieved so far:
 - ✅ a deploy user with its own key
 - ✅ a real superuser and no dev account in production
 
-## <center>**5. A container registry**</center>
+## **5. A container registry**
 Right now the server builds the image itself. It works, but every deploy means sending files over and building on a small machine, and there's no clean record of which version is running.
 
 **What's a container registry?** It's a place to store built Docker images, with tags. Instead of building on the server, we build once somewhere else, push the image to the registry with a version tag, and the server just **pulls** that exact image. That gets us:
@@ -410,7 +410,7 @@ volumes:
 
 Two notes. Image names on GHCR have to be lowercase. And `${IMAGE_TAG:-latest}` means "use this tag, or `latest` if I didn't give one", which is how a deploy picks a specific version.
 
-## <center>**6. Automate it with GitHub Actions**</center>
+## **6. Automate it with GitHub Actions**
 You could build and push by hand, but we've built all this so we can just push to `main` and let the computer handle it automatically (AI, ladies and gentlemen).
 
 First, give GitHub the key it needs. In your repo settings, add these as **Actions secrets**:
@@ -511,7 +511,7 @@ Because of `workflow_dispatch`, you can also trigger it by hand from the Actions
 
 Push to `main` and watch the Actions tab do its thing. Every deploy is now tagged with its commit, and that's your rollback button.
 
-## <center>**Finishing touches**</center>
+## **Finishing touches**
 Point your frontend at it. For me that's an environment variable in Vercel:
 
 ```bash

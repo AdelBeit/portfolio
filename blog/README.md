@@ -43,7 +43,7 @@ Pick the shape that fits the post:
 | --- | --- | --- |
 | Body | Unnumbered narrative sections that build up: simplest version first, hit a problem ("But what's this??"), introduce the next piece ("Enter, `+layout.svelte`.") | Orientation first, then numbered sections |
 | Orientation | Not needed | Under Challenge, as `###`: *What we're building* (the whole flow on one line, arrows, backticks), *The game plan* (numbered steps), *What you'll need* (bold generic category, a short explanation, "I'm using X" so readers can swap tools) |
-| Sections | Flow with connective phrases: "Here's how:", "Let's do that", "So naturally we will want..." | `## <center>**N. Title**</center>`, ordered so each step builds on the last (local first, then remote) |
+| Sections | Flow with connective phrases: "Here's how:", "Let's do that", "So naturally we will want..." | `## **N. Title**` (not centered), ordered so each step builds on the last (local first, then remote) |
 | New tool | Introduced with the problem it solves | Three beats before the commands: what it does here, what else could you use (linked, including heavier options with an honest "more than you need"), and why I picked it (and when the alternative is the better answer) |
 | Checkpoints | Once, mid-post | At the end of most steps, plus a recap of the whole journey |
 | Asides | An `<h6>` tangent for an alternative approach | An `<h6>` P.S., and a `######` BONUS footnote for the intro (marked with `*` at the end of the list it belongs to) |
@@ -61,7 +61,7 @@ In both shapes the opening gives the reader the lay of the land before the first
 - **Bold** is for emphasis words ("**definitely**", "**needs**"), the category label in a list, and the lead-in of a question ("**What else could you use?**"). *Italics* are for one stressed word ("*inside*").
 - Backticks for commands, files, env vars, ports, tool names, and concept terms (`hydrating`, `server side rendering (SSR)`, `nginx`).
 - Emoji are sparse and decorative: `✨` around one phrase, one topical emoji after a noun (🍪 after cookies, 🐳 after Docker), and `✅` on checklist items. Never in headings.
-- Headings: centered bold `##` for sections, plain `###` for subsections, `######` for a footnote-style BONUS aside. Link an external tool once, on first mention.
+- Headings: centered bold `##` for the Context and Challenge openers, plain bold `##` for numbered steps and other sections, plain `###` for subsections, `######` for a footnote-style BONUS aside. Link an external tool once, on first mention.
 
 ### Code and content rules
 - Every code block starts with a file-path comment (`// $lib/utils/stores.js`, `# pocketbase/Dockerfile`) and carries short comments that explain the why. Examples are the minimum that works, then built on.
