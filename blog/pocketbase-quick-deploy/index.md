@@ -17,7 +17,7 @@ I've now set this up for a handful of projects, and every single time I had to r
 ### What we're building
 By the end, requests will flow like this:
 
-`browser` → Reverse proxy tool (`nginx`) (HTTPS, on a server) → `Docker container` (PocketBase) → `volume` (your database)
+`client` (any app that calls your backend) → Reverse proxy tool (`nginx`) (HTTPS, on a server) → `Docker container` (PocketBase) → `volume` (your database)
 
 ### The game plan (Agile style)
 1. Run PocketBase in a local dev environment
