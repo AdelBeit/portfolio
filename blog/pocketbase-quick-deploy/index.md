@@ -43,7 +43,7 @@ Here's the stack I'm using, and what each piece is called in case you want to sw
 
 and last but not least, a handy dandy terminal with basic knowledge of SSH.
 
-> BONUS: a [song](https://youtu.be/D4AsrfxgWGQ) to help you lock in and time yourself. If you don't finish this tutorial within an hour, I'll personally refund you.
+> BONUS: [some music](https://youtu.be/D4AsrfxgWGQ) to help you lock in and time yourself. If you don't finish this tutorial within an hour, I'll personally refund you.
 
 Everything in angle brackets like `<username>` or `<website-url>` is a placeholder for your own value.
 
@@ -130,7 +130,7 @@ Right now you're talking to PocketBase directly on port 8090. That's fine on you
 - [Traefik](https://traefik.io/) is built for containers and configures itself from Docker labels
 - PocketBase can also serve HTTPS by itself if you hand it a domain, which is the least moving parts if it's the only thing on the box
 
-**Why nginx then?** Honestly, familiarity. It comes with some extras out of the box like rate limiting and upload limits written down in one config file I can read. If you're starting from scratch with a single app, Caddy is a perfectly good answer as well.
+**Why nginx then?** For me it's familiarity and it gives me everything I need at the moment out of the box; Rate limiting and upload limits in one config file. If you're starting from scratch with a single app, Caddy is a perfectly good answer as well.
 
 Install nginx (`brew install nginx`, `sudo apt install nginx`, or the zip from [nginx.org](https://nginx.org/en/download.html) on Windows) and add this server block to your config. Where it goes depends on your OS: `conf.d/`, `sites-enabled/`, or inside `http {}` in `nginx.conf`.
 
@@ -225,7 +225,7 @@ A few small details doing big work here:
 - `127.0.0.1:8091:8090` reads as `host-ip:host-port:container-port`, and the two port numbers are different on purpose so you can see which is which:
   - **8090** is the port PocketBase listens on *inside* the container. It's fixed by the Dockerfile and nobody outside the container can see it
   - **8091** is the port Docker listens on on the machine itself (the host). It passes whatever arrives there into the container's 8090. This is the port nginx forwards to, that's the `proxy_pass`. The public internet never calls 8091, it talks to nginx
-  - I picked 8091 because on my server 8090 was already taken by another PocketBase. Ask me how I know. Use any free port
+  - 8090 is the default and you could have both of them ast 8090 or use any free port.
 - That `127.0.0.1` (instead of `0.0.0.0`) means the container is only reachable through nginx and <mark>not directly from the internet</mark>
 - `PB_ENV=${PB_ENV:-production}` defaults to production, so you have to ask for dev on purpose. Our dev-only migration stays asleep unless you say otherwise
 - the `pb_data` volume, so recreating the container doesn't delete your database
