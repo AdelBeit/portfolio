@@ -19,7 +19,7 @@ By the end, requests will flow like this:
 
 `client` (any app that calls your backend) → Reverse proxy tool (`nginx`) (HTTPS, on a server) → `Docker container` (PocketBase) → `volume` (your database)
 
-![Diagram: a client sends HTTPS requests to nginx on the VPS, which forwards them to PocketBase inside a Docker container, with the data stored in a volume. Direct access to the container's port is blocked.](assets/request-flow.svg)
+![Diagram: a client s![Diagram: a client sends HTTPS requests to nginx on the VPS, which forwards them to PocketBase inside a Docker container, with the data stored in a volume. Direct access to the container's port is blocked.](assets/request-flow.svg)
 
 ### The game plan (Agile style)
 1. Run PocketBase in a local dev environment
@@ -43,7 +43,7 @@ Here's the stack I'm using, and what each piece is called in case you want to sw
 
 and last but not least, a handy dandy terminal with basic knowledge of SSH.
 
-> BONUS: a [song](https://youtu.be/D4AsrfxgWGQ) to lock in and time yourself. If you don't finish this tutorial within an hour, I'll personally refund you.
+> BONUS: a [song](https://youtu.be/D4AsrfxgWGQ) to help you lock in and time yourself. If you don't finish this tutorial within an hour, I'll personally refund you.
 
 Everything in angle brackets like `<username>` or `<website-url>` is a placeholder for your own value.
 
@@ -418,14 +418,7 @@ You could build and push by hand, but we've built all this so we can just push t
 Here's the whole pipeline at a glance:
 
 ![Diagram: pushing to main triggers GitHub Actions, which builds the image and pushes it to GHCR. The VPS pulls the image and runs compose up, then a health check decides whether the deploy passes or fails.](assets/deploy-flow.svg)
-
-First, give GitHub the key it needs. In your repo settings, add these as **Actions secrets**:
-- `VPS_HOST` = the VPS's IP
-- `VPS_USER` = `<username>`
-- `VPS_SSH_KEY` = the **private** key that matches the authorized key on the VPS
-- `VPS_SSH_PASSPHRASE` = the passphrase, only if you set one
-
-Then the workflow. It builds the image, pushes it to GHCR, copies the compose file to the server, pulls and restarts, and waits for PocketBase to say it's healthy.
+s for PocketBase to say it's healthy.
 
 ```yml
 # .github/workflows/deploy-pocketbase.yml
